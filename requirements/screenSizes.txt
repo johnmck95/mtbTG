@@ -1,0 +1,6 @@
+Common Screen Sizes:
+
+Mobile: 320 x 568 px
+Tablet: 768 x 1024 px
+Desktop: 1280 x 720 px
+
