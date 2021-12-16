@@ -12,7 +12,7 @@ export default function Header() {
     return(
         <Box bg="black" color="white">
             <Container bg="black" maxW={['56.25rem']} p="0px">
-                <Flex justify="space-between" alignItems="center" px="10px" h='10vh'>
+                <Flex justify="space-between" alignItems="center" px="10px" h='50px'>
                         <Heading as='h1' fontSize={[null, 'md', 'lg', 'xl']} textDecoration="underline" m="5px">MTB TUNING GUIDE</Heading>
                         <Stack direction={['column', 'row']} fontSize='sm'  spacing={['0em','3rem', '4rem', '5rem']} alignItems="center">
                             <ButtonGroup spacing="1rem">

@@ -1,7 +1,8 @@
 .content {
     background-image: url(./images/hartland-enduro.jpg);
     background-repeat: no-repeat;
-    background-position: 100% 50%;
-    background-size: 100%;
-    height: 90vh;
+    background-position: 60% 50%;
+    background-size: 145%;
+    /* Minus 50px for the Header */
+    height: calc(100vh - 50px); 
 }
