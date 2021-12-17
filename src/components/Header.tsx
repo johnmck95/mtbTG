@@ -16,9 +16,9 @@ export default function Header() {
                         <Heading as='h1' fontSize={[null, 'md', 'lg', 'xl']} textDecoration="underline" m="5px">MTB TUNING GUIDE</Heading>
                         <Stack direction={['column', 'row']} fontSize='sm'  spacing={['0em','3rem', '4rem', '5rem']} alignItems="center">
                             <ButtonGroup spacing="1rem">
-                                <Link>ABOUT</Link>
+                                <Link href="/about">ABOUT</Link>
                                 <Text> | </Text>
-                                <Link>HELP</Link>              
+                                <Link href="/help">HELP</Link>              
                             </ButtonGroup>
                             <Text fontSize="xs">Page 1 of 3</Text>
                         </Stack>
