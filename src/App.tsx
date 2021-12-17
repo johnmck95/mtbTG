@@ -10,7 +10,7 @@ import "./app_style.css"
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Router>
-      <Header />
+    {/* <Header pageNumber={3}/> */}
       <body className="content">
         <Routes>
           <Route path="/" element={<Home/>} />
