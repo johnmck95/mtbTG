@@ -1,13 +1,5 @@
 import {Flex, Box, Heading, ButtonGroup, Link, Text, Stack, Container} from "@chakra-ui/react"
-import React from "react"
 
-/* Breakpoints:
-        480px
-        768px
-        992px
-        1280px
-        1536px
-*/
 interface HeaderProps {
     pageNumber: number;
 }
