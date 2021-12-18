@@ -12,6 +12,7 @@ export default function ChooseSetupGuide() {
     function advancedComingSoon(){
         setIsAdvancedHovered( () => !isAdvancedHovered)
     }
+    
     return (
         <Container  maxW={"37.5rem"}>
             <VStack bg='brand.darkGrey' m="30px" justify="flex-start"  borderRadius="16px" h="22rem">
@@ -35,5 +36,3 @@ export default function ChooseSetupGuide() {
         </Container>
     )
 }
-
-// w={['95vw', '85vw', '75vw', '65vw']}

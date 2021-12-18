@@ -6,12 +6,10 @@ export default function Home() {
     return(
         <>
             <Header pageNumber={1}/>
-
             <VStack alignSelf="center" justify={"center"} h="calc(100% - 50px)">
                 <ChooseSetupGuide />
             </VStack>
 
         </>
-
     )
 }

@@ -1,4 +1,4 @@
-import {Divider, Flex, Box, Heading, ButtonGroup, Link, Text, Stack, Container} from "@chakra-ui/react"
+import {Flex, Box, Heading, ButtonGroup, Link, Text, Stack, Container} from "@chakra-ui/react"
 
 interface HeaderProps {
     pageNumber: number;
