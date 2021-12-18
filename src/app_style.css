@@ -3,7 +3,5 @@
     background-repeat: no-repeat;
     background-position: 60% 50%;
     background-size: 145%;
-    /* Minus 50px for the Header */
-    /* height: calc(100vh - 50px);  */
     height: 100vh;
 }

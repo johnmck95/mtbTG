@@ -1,4 +1,4 @@
-import {Flex, Box, Heading, ButtonGroup, Link, Text, Stack, Container} from "@chakra-ui/react"
+import {Divider, Flex, Box, Heading, ButtonGroup, Link, Text, Stack, Container} from "@chakra-ui/react"
 
 interface HeaderProps {
     pageNumber: number;
@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export default function Header({pageNumber}: HeaderProps) {
     return(
-        <Box bg="black" color="white">
+        <Box as="header" bg="black" color="white">
             <Container bg="black" maxW={['56.25rem']} p="0px">
                 <Flex justify="space-between" alignItems="center" px="10px" h='50px'>
                         <Link href="/">

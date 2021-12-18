@@ -9,8 +9,10 @@ import "./app_style.css"
 const theme = extendTheme({
   colors: {
     brand: {
+      lightGrey: "#AAAAAA",
       darkGrey: "#414A4C",
       blue: "#5B7BC0",
+      white: "#FFFDFA",
     }
   }
 })
@@ -18,14 +20,13 @@ const theme = extendTheme({
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Router>
-    {/* <Header pageNumber={3}/> */}
-      <body className="content">
+      <main className="content">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/help" element={<Help/>} />
         </Routes>
-      </body>
+      </main>
     </Router>
   </ChakraProvider>
 )

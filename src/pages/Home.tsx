@@ -1,14 +1,17 @@
 import Header from "../components/Header"
 import ChooseSetupGuide from "../components/ChooseSetupGuide"
-import {VStack} from "@chakra-ui/react"
+import {VStack, Box} from "@chakra-ui/react"
 
-export default function Help() {
+export default function Home() {
     return(
         <>
             <Header pageNumber={1}/>
-            <VStack alignItems="center" h="100vh" m="0px" p="0px">
+
+            <VStack alignSelf="center" justify={"center"} h="calc(100% - 50px)">
                 <ChooseSetupGuide />
             </VStack>
+
         </>
+
     )
 }
