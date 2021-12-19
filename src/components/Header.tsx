@@ -4,6 +4,7 @@ interface HeaderProps {
     pageNumber: number;
 }
 
+/* MAKE ME STICKY! */
 export default function Header({pageNumber}: HeaderProps) {
     return(
         <Box as="header" bg="black" color="white">

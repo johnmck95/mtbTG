@@ -20,13 +20,13 @@ export default function ChooseSetupGuide() {
                 <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="80%" marginBottom="8rem"/>
                 <VStack w="60%" paddingTop={["1.5rem", "2rem","2.5rem"]} spacing="2.5rem">
                     <VStack w="100%">
-                        <Button w="100%" fontSize={isBasicHovered? "m" : "xl"} bg="brand.blue" onMouseEnter={basicComingSoon} onMouseLeave={basicComingSoon}>
+                        <Button color="brand.white" w="100%" fontSize={isBasicHovered? "m" : "xl"} bg="brand.blue" onMouseEnter={basicComingSoon} onMouseLeave={basicComingSoon}>
                             {isBasicHovered? "Coming Soon!" : "Basic"}
                         </Button>
                         <Text textAlign="center" fontSize="xs" color="lightGrey">Fastest Setup Guide</Text>
                     </VStack>
                     <VStack w="100%">
-                        <Button w="100%" fontSize={isAdvancedHovered? "m" : "xl"} bg="brand.blue" onMouseEnter={advancedComingSoon} onMouseLeave={advancedComingSoon}>
+                        <Button color="brand.white" w="100%" fontSize={isAdvancedHovered? "m" : "xl"} bg="brand.blue" onMouseEnter={advancedComingSoon} onMouseLeave={advancedComingSoon}>
                             {isAdvancedHovered? "Coming Less Soon" : "Advanced"}
                         </Button>
                         <Text textAlign="center" fontSize="xs" color="lightGrey">In-depth Setup Guide to Optimize Weight Distribution</Text>
