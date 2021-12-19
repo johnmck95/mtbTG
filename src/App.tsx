@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Help from "./pages/Help"
-import "./app_style.css"
+import "./style.css"
 
 const theme = extendTheme({
   colors: {
@@ -20,13 +20,11 @@ const theme = extendTheme({
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Router>
-      <main className="content">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/help" element={<Help/>} />
         </Routes>
-      </main>
     </Router>
   </ChakraProvider>
 )
