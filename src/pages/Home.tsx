@@ -1,4 +1,3 @@
-import Header from "../components/Header"
 import ChooseSetupGuide from "../components/ChooseSetupGuide"
 import {VStack, Box} from "@chakra-ui/react"
 import HomePhoto from "../images/hartland-enduro.jpg"
