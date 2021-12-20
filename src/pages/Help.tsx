@@ -1,9 +1,7 @@
-import Header from "../components/Header"
-
 export default function Help() {
     return(
         <>
-            <div> Help Page </div>
+            <h3> Help Page </h3>
             <p>I'm baby edison bulb aesthetic 3 wolf moon tilde everyday carry four dollar toast. Poutine yr wayfarers taiyaki vinyl fam lyft cliche bicycle rights sartorial shoreditch. Paleo austin etsy disrupt asymmetrical tbh scenester single-origin coffee messenger bag put a bird on it vape. Seitan iceland wolf, waistcoat biodiesel ugh salvia godard truffaut raw denim. IPhone farm-to-table pitchfork, green juice +1 disrupt fingerstache ramps lyft schlitz.
 
 Freegan snackwave air plant schlitz gluten-free direct trade stumptown raw denim church-key vexillologist narwhal irony quinoa. Kale chips fashion axe schlitz, chambray kickstarter banh mi pinterest keffiyeh crucifix. Jianbing cloud bread vaporware cred next level unicorn. Photo booth DIY twee keffiyeh palo santo freegan pug flannel helvetica woke vaporware XOXO truffaut cold-pressed lyft. Ramps mumblecore kogi knausgaard, pug vinyl beard marfa. Street art asymmetrical pabst poke heirloom vaporware echo park.
