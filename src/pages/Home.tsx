@@ -1,14 +1,14 @@
 import Header from "../components/Header"
 import ChooseSetupGuide from "../components/ChooseSetupGuide"
-import {VStack} from "@chakra-ui/react"
+import {VStack, Box} from "@chakra-ui/react"
+import HomePhoto from "../images/hartland-enduro.jpg"
 
 export default function Home() {
-    return(
-        <main className="home--background">
-            <Header pageNumber={1}/>
-            <VStack alignSelf="center" justify="center" h="calc(100% - 50px)">
+    return(   
+        <Box w="100%"  backgroundImage={HomePhoto} backgroundRepeat="no-repeat" backgroundPosition="60% 50%" backgroundSize="145%" height="calc(100vh - 50px)">
+            <VStack alignSelf="center" justify="center" h="100%" >
                 <ChooseSetupGuide />
             </VStack>
-        </main>
+        </Box>
     )
 }
