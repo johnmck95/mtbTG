@@ -19,6 +19,14 @@ export default function Header() {
       const { width } = useViewport()
       const breakpoint = 520;
 
+
+
+      const [isClicked, setIsClicked] = React.useState(true)
+
+      function handleClick() {
+        setIsClicked( () => !isClicked)
+      }
+
     return(
         <Box as="header" w="100%"  position="fixed" top="0" bg="brand.black" color="brand.white" zIndex="200">
             <Container bg="black" maxW="50rem" p="0px">
@@ -36,7 +44,12 @@ export default function Header() {
                         </HStack>
                     }
                     { width < breakpoint &&
-                        <Icon as={FaBars} w={6} h={6} mr="10px"/>
+                        <>
+                            {isClicked? 
+                                <Icon as={FaBars} w={6} h={6} mr="10px" onClick={handleClick}/> 
+                                : <div onClick={handleClick}> placeholder </div>
+                            }
+                        </>   
                     }
                 </Flex>
             </Container>
