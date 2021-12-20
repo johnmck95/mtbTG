@@ -1,4 +1,3 @@
-import Header from "../components/Header"
 import {Divider, Image, Text, Stack, VStack, Heading, AspectRatio, Container, List, ListItem, ListIcon} from "@chakra-ui/react"
 import headshot from "../images/headshot.jpg"
 import {MdOutlineDirectionsBike} from "react-icons/md";
@@ -7,21 +6,20 @@ import {FaLaptopCode} from "react-icons/fa"
 export default function About() {
     return(
         <>
-            <Header pageNumber={0}/>
-            <Container maxW="50rem" >
+            <Container maxW="50rem">
                 <Stack direction={['column', 'row']} spacing="2rem" alignItems="flex-start" my="3rem">
-                    <Image src={headshot} w="14rem" maxW="50%" borderRadius="6px" m="10px" alignSelf="center"/>
+                    <Image src={headshot} w={["20rem", "14rem"]} maxW={["80%","50%"]} borderRadius="6px" m="10px" alignSelf="center"/>
                     <VStack alignItems="flex-start"  m="10px">
                         <Heading as="h2" size="2xl" alignSelf="center" textAlign="center"> John McKinnon</Heading>
                         <Divider borderColor="brand.white"/>
                         <Heading as="h4" size="l" textAlign="center" >
                             3<sup>rd</sup> year Software Engineering Student at the University of Victoria
                         </Heading>
-                        <Text paddingTop="1.5rem" alignSelf="center" textDecoration="underline">
+                        <Text py="1rem" alignSelf="center" textAlign="center" textDecoration="underline">
                             The Tuning Guide was built for two reasons.
                         </Text>
                         <List>
-                            <ListItem>
+                            <ListItem mb="5px">
                                 <ListIcon as={MdOutlineDirectionsBike} color="brand.blue"/>
                                 To help mountain bikers get the most out of their products
                             </ListItem>
