@@ -6,7 +6,7 @@ import {FaLaptopCode} from "react-icons/fa"
 export default function About() {
     return(
         <>
-            <Container maxW="50rem">
+            <Container maxW="50rem" bg="brand.flatBlack">
                 <Stack direction={['column', 'row']} spacing="2rem" alignItems="flex-start" my="3rem">
                     <Image src={headshot} w={["20rem", "14rem"]} maxW={["80%","50%"]} borderRadius="6px" m="10px" alignSelf="center"/>
                     <VStack alignItems="flex-start"  m="10px">
@@ -40,7 +40,7 @@ export default function About() {
                         Bikes Racing Team, and living full time in Victoria completing my Software Engineering degree and riding one 
                         of my many bikes.
                     </Text>
-                    <AspectRatio my="3rem" maxW="768px">
+                    <AspectRatio my="3rem" py="3rem" maxW="768px">
                         <iframe
                             title="John McKinnon || Self-Shot"
                             src="https://www.youtube.com/embed/iF4yQ3PL_tY"
