@@ -13,7 +13,9 @@ const theme = extendTheme({
       darkGrey: "#414A4C",
       blue: "#5B7BC0",
       white: "#FFFDFA",
-      black: "black"
+      black: "black",
+      lightBlack: "#222222",
+      flatBlack: "#262626"
     }
   }
 })
@@ -21,7 +23,7 @@ const theme = extendTheme({
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Header />
-    <Box as="main" w="100%" pt="50px">
+    <Box as="main" w="100%" pt="50px" bg="brand.flatBlack" color="brand.white">
       <Router>
           <Routes>
             <Route path="/" element={<Home/>} />
