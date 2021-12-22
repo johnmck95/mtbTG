@@ -37,18 +37,35 @@ export default function Header() {
                         </HStack>
                     }
                     { width < breakpoint &&
-                        <Menu>
+                        <Menu autoSelect={true}>
                         {({ isOpen }) => (
                             <>
-                                <MenuButton ml="5px" as={IconButton} icon={ isOpen? <Icon as={FaRegWindowClose}/> : <Icon as={FaBars}/>}/>
-                                <MenuList minWidth="8rem "position="fixed" right="-45px" top="0px" bg="brand.darkGrey">
+                                <MenuButton 
+                                    as={IconButton} 
+                                    icon={ isOpen? <Icon as={FaRegWindowClose}/> :<Icon as={FaBars}/>}
+                                    ml="5px" 
+                                    bg="brand.lightBlack" 
+                                    _expanded={{bg: "brand.lightBlack"}}
+                                />
+                                <MenuList
+                                    minWidth="8rem" 
+                                    position="fixed" 
+                                    right="-45px" 
+                                    top="0px" 
+                                    bg="brand.flatBlack" 
+                                    border="none"
+                                    >
                                     <Link href="/about">
-                                        <MenuItem icon={ <Icon as={FaUser} />}>                                        
+                                        <MenuItem 
+                                            icon={ <Icon as={FaUser} />} bg="brand.flatBlack" _hover={{bg: 'brand.darkGrey'}}>                                        
                                             About                                      
                                         </MenuItem>
                                     </Link>
-                                    <Link href="/help"> 
-                                        <MenuItem icon={ <Icon as={FaQuestionCircle}/>} >
+                                    <Link href="/help" bg="brand.darkGrey"> 
+                                        <MenuItem 
+                                            icon={ <Icon as={FaQuestionCircle}/>}  
+                                            bg="brand.flatBlack" 
+                                            _hover={{bg: 'brand.darkGrey'}}>
                                             Help                                        
                                         </MenuItem>
                                     </Link>
