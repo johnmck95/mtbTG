@@ -1,7 +1,19 @@
 import {Flex, Box, ButtonGroup, Link, Text, HStack, Container, Image, Icon} from "@chakra-ui/react"
-import {FaBars} from "react-icons/fa"
+import {FaBars, FaRegWindowClose} from "react-icons/fa"
 import MtbTG from "../images/mtbTG-logo.png"
 import React from "react"
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuIcon,
+    MenuCommand,
+    MenuDivider,
+  } from '@chakra-ui/react'
 
 export default function Header() {
 
@@ -25,6 +37,7 @@ export default function Header() {
 
       function handleClick() {
         setIsClicked( () => !isClicked)
+        console.log("clicked")
       }
 
     return(
@@ -44,17 +57,28 @@ export default function Header() {
                         </HStack>
                     }
                     { width < breakpoint &&
-                        <>
-                            {isClicked? 
-                                <Icon as={FaBars} w={6} h={6} mr="10px" onClick={handleClick}/> 
-                                : <div onClick={handleClick}> placeholder </div>
-                            }
-                        </>   
+                        <Menu>
+                        {({ isOpen }) => (
+                            <>
+                            <MenuButton as={isOpen? FaRegWindowClose : FaBars}/>
+                            <MenuList position="fixed" right="0px" top="50px" bg="brand.black" bgColor="brand.black">
+                                <MenuItem href="/about">
+                                        <Link href="/about">
+                                            About
+                                        </Link>
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <Link href="/help">
+                                            Help
+                                        </Link>
+                                    </MenuItem>
+                                </MenuList>
+                            </>
+                        )}
+                        </Menu>
                     }
                 </Flex>
             </Container>
         </Box>
     )
 }
-
-{/* <Icon as={FaBars} /> */}
