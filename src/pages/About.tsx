@@ -6,7 +6,7 @@ import {FaLaptopCode} from "react-icons/fa"
 export default function About() {
     return(
         <>
-            <Container maxW="50rem">
+            <Container maxW="50rem" bg="brand.flatBlack">
                 <Stack direction={['column', 'row']} spacing="2rem" alignItems="flex-start" my="3rem">
                     <Image src={headshot} w={["20rem", "14rem"]} maxW={["80%","50%"]} borderRadius="6px" m="10px" alignSelf="center"/>
                     <VStack alignItems="flex-start"  m="10px">
