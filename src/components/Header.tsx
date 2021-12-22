@@ -53,12 +53,8 @@ export default function Header() {
                                     right="-45px" 
                                     top="0px" 
                                     bg="brand.flatBlack" 
-<<<<<<< HEAD
                                     border="1px solid black"
                                     boxShadow={"-4px 4px 15px 4px #222222 "}
-=======
-                                    border="none"
->>>>>>> main
                                     >
                                     <Link href="/about">
                                         <MenuItem 

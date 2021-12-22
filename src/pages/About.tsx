@@ -40,7 +40,7 @@ export default function About() {
                         Bikes Racing Team, and living full time in Victoria completing my Software Engineering degree and riding one 
                         of my many bikes.
                     </Text>
-                    <AspectRatio my="3rem" py="3rem" maxW="768px">
+                    <AspectRatio my="3rem" maxW="768px">
                         <iframe
                             title="John McKinnon || Self-Shot"
                             src="https://www.youtube.com/embed/iF4yQ3PL_tY"
