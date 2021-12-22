@@ -1,19 +1,8 @@
-import {Flex, Box, ButtonGroup, Link, Text, HStack, Container, Image, Icon} from "@chakra-ui/react"
-import {FaBars, FaRegWindowClose} from "react-icons/fa"
+import {Flex, Box, ButtonGroup, Link, Text, HStack, Container, Image, Icon, IconButton} from "@chakra-ui/react"
+import {FaBars, FaRegWindowClose, FaUser, FaQuestionCircle} from "react-icons/fa"
 import MtbTG from "../images/mtbTG-logo.png"
 import React from "react"
-import {
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuIcon,
-    MenuCommand,
-    MenuDivider,
-  } from '@chakra-ui/react'
+import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
 
 export default function Header() {
 
@@ -26,19 +15,10 @@ export default function Header() {
           return () => window.removeEventListener("resize", handleWindowResize);
         }, []);
         return { width };
-      }
+    }
 
-      const { width } = useViewport()
-      const breakpoint = 520;
-
-
-
-      const [isClicked, setIsClicked] = React.useState(true)
-
-      function handleClick() {
-        setIsClicked( () => !isClicked)
-        console.log("clicked")
-      }
+    const { width } = useViewport()
+    const breakpoint = 520;
 
     return(
         <Box as="header" w="100%"  position="fixed" top="0" bg="brand.black" color="brand.white" zIndex="200">
@@ -60,21 +40,17 @@ export default function Header() {
                         <Menu>
                         {({ isOpen }) => (
                             <>
-                            <MenuButton as={isOpen? FaRegWindowClose : FaBars}/>
-                            <MenuList position="fixed" right="0px" top="50px" bg="brand.black" bgColor="brand.black">
-                            <Link href="/about">
-                                <MenuItem href="/about">
-                                        
-                                            About
-                                      
-                                    </MenuItem>
+                                <MenuButton ml="5px" as={IconButton} icon={ isOpen? <Icon as={FaRegWindowClose}/> : <Icon as={FaBars}/>}/>
+                                <MenuList minWidth="8rem "position="fixed" right="-45px" top="0px" bg="brand.darkGrey">
+                                    <Link href="/about">
+                                        <MenuItem icon={ <Icon as={FaUser} />}>                                        
+                                            About                                      
+                                        </MenuItem>
                                     </Link>
-                                    <Link href="/help">
-                                    <MenuItem>
-                                       
-                                            Help
-                                        
-                                    </MenuItem>
+                                    <Link href="/help"> 
+                                        <MenuItem icon={ <Icon as={FaQuestionCircle}/>} >
+                                            Help                                        
+                                        </MenuItem>
                                     </Link>
                                 </MenuList>
                             </>
