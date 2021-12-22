@@ -37,7 +37,7 @@ export default function Header() {
                         </HStack>
                     }
                     { width < breakpoint &&
-                        <Menu autoSelect={true}>
+                        <Menu autoSelect={false}>
                         {({ isOpen }) => (
                             <>
                                 <MenuButton 
