@@ -62,16 +62,20 @@ export default function Header() {
                             <>
                             <MenuButton as={isOpen? FaRegWindowClose : FaBars}/>
                             <MenuList position="fixed" right="0px" top="50px" bg="brand.black" bgColor="brand.black">
+                            <Link href="/about">
                                 <MenuItem href="/about">
-                                        <Link href="/about">
+                                        
                                             About
-                                        </Link>
+                                      
                                     </MenuItem>
+                                    </Link>
+                                    <Link href="/help">
                                     <MenuItem>
-                                        <Link href="/help">
+                                       
                                             Help
-                                        </Link>
+                                        
                                     </MenuItem>
+                                    </Link>
                                 </MenuList>
                             </>
                         )}
