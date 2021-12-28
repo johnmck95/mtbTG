@@ -23,8 +23,8 @@ export default function Header() {
     return(
         <Box as="header" w="100%"  position="fixed" top="0" bg="brand.black" color="brand.white" zIndex="200">
             <Container bg="black" maxW="50rem" p="0px">
-                <Flex justify="space-between" alignItems="center" px="8px" h='50px'>
-                    <Link as="header" title="Mountain Bike Tuning Guide" href="/">
+                <Flex as="h1" title="Mountain Bike Tuning Guide" justify="space-between" alignItems="center" px="8px" h='50px'>
+                    <Link href="/">
                         <Image src={MtbTG} h={["30px", "40px"]} />
                     </Link>
                     { width >= breakpoint &&
