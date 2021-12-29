@@ -1,5 +1,4 @@
 import {Divider, Text, VStack, Heading, Button, Container} from "@chakra-ui/react"
-import {useState} from "react"
 
 
 interface ChooseSetupGuideProps {
