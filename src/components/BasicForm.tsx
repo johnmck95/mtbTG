@@ -1,22 +1,22 @@
 import React from "react"
-import {VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider} from "@chakra-ui/react"
+import {Button, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider} from "@chakra-ui/react"
 
 export default function BasicForm() {
     return(
         <Container  maxW="37.5rem">
-            <VStack bg="brand.darkGrey" borderRadius="16px" >
+            <VStack bg="brand.darkGrey" borderRadius="16px" pb="20px">
                 <Heading as='h2' textAlign="center" fontSize="2xl" color="brand.white" maxW="80%" marginTop={["1rem", "1.5rem","2rem"]} > RIDER METRICS </Heading>
                 <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
                 
                 <Container maxW={["85%", "75%"]}>
                     <SimpleGrid columns={2} columnGap={2}>
-                        <GridItem colSpan={1}>
+                        <GridItem colSpan={1} pb={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]}>Height (feet)</FormLabel>
                                 <Input placeholder="6" maxWidth={24}/>
                             </FormControl>
                         </GridItem>
-                        <GridItem colSpan={1}>
+                        <GridItem colSpan={1} pb={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]}>Height (inches)</FormLabel>
                                 <Input placeholder="2" maxWidth={24}/>
@@ -24,7 +24,7 @@ export default function BasicForm() {
                         </GridItem>
                     </SimpleGrid>
                     <SimpleGrid columns={1}> 
-                        <GridItem colSpan={1}>
+                        <GridItem colSpan={1} pb={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]}>Bike Type</FormLabel>
                                 <Select> 
@@ -50,7 +50,7 @@ export default function BasicForm() {
                     <Heading as='h2' textAlign="center" fontSize="2xl" color="brand.white" maxW="80%" marginTop={["1rem", "1.5rem","2rem"]} > BIKE METRICS </Heading>
                     <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
                     <Container maxW={["85%", "75%"]}>
-                        <SimpleGrid columns={2} columnGap={4} pb="30px">
+                        <SimpleGrid columns={2} columnGap={4} pb={3}>
                             <GridItem colSpan={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]}>Reach (mm)</FormLabel>
@@ -65,6 +65,8 @@ export default function BasicForm() {
                             </GridItem>
                         </SimpleGrid>
                     </Container>
+
+                    <Button w={36} bg="brand.blue" borderRadius='50px'> Next </Button>
             </VStack>
         </Container> 
     )
