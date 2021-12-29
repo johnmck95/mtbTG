@@ -3,13 +3,12 @@ import {useState} from "react"
 
 
 interface ChooseSetupGuideProps {
-    isBasicClicked: boolean;
     handleBasicClick: () => void;
     isAdvancedHovered: boolean;
     handleAdvancedHover:() => void;
 }
 
-export default function ChooseSetupGuide({isBasicClicked, handleBasicClick, isAdvancedHovered, handleAdvancedHover}: ChooseSetupGuideProps) {
+export default function ChooseSetupGuide({handleBasicClick, isAdvancedHovered, handleAdvancedHover}: ChooseSetupGuideProps) {
 
     return (
         <Container  maxW="37.5rem">
@@ -21,11 +20,11 @@ export default function ChooseSetupGuide({isBasicClicked, handleBasicClick, isAd
                         <Button 
                             color="brand.white" 
                             w="100%" 
-                            fontSize={isBasicClicked? "m" : "xl"} 
+                            fontSize="xl"
                             bg="brand.blue" 
                             onClick={handleBasicClick}
                             >
-                            {isBasicClicked? "Coming Soon!" : "Basic"}
+                            Basic
                         </Button>
                         <Text textAlign="center" fontSize="xs" color="lightGrey">Fastest Setup Guide</Text>
                     </VStack>
@@ -37,7 +36,7 @@ export default function ChooseSetupGuide({isBasicClicked, handleBasicClick, isAd
                             bg="brand.blue" 
                             onMouseEnter={handleAdvancedHover} 
                             onMouseLeave={handleAdvancedHover}>
-                                {isAdvancedHovered? "Coming Less Soon" : "Advanced"}
+                                {isAdvancedHovered? "Coming Eventually" : "Advanced"}
                         </Button>
                         <Text textAlign="center" fontSize="xs" color="lightGrey">In-depth Setup Guide to Optimize Weight Distribution</Text>
                         </VStack>
