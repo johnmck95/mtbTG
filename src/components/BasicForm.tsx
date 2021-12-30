@@ -1,5 +1,5 @@
-import {SyntheticEvent, useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, HStack } from "@chakra-ui/react"
+import {ChangeEvent, useState} from "react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box } from "@chakra-ui/react"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
@@ -17,8 +17,27 @@ export default function BasicForm() {
         bikeType: ""
     })
 
-    function handleChange(event: SyntheticEvent) {
-        event.preventDefault();
+
+    // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    //     console.log(event)
+    //     const {name, value} = event.target
+    //     setInputs(prevInputs => ({
+    //         ...prevInputs,
+    //         [name] : value,
+    //     }))
+    //   };
+
+    function handleChange(event: ChangeEvent<HTMLInputElement>) {
+        // event.preventDefault();
+        // console.log(typeof event)
+
+        
+        const {name, value} = event.target
+
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            [name] : value,
+        }))
         console.log(inputs)
     }
 
@@ -108,7 +127,7 @@ export default function BasicForm() {
                                 <Select 
                                     focusBorderColor='brand.blue' 
                                     name="weightBias"  
-                                    onChange={handleChange}
+                                    // onChange={handleChange}
                                     > 
                                     <option value={inputs.weightBias}> Neutral </option>
                                     <option value={inputs.weightBias}> Rearward </option>
@@ -184,7 +203,7 @@ export default function BasicForm() {
                                 <Select 
                                     focusBorderColor='brand.blue' 
                                     name="inputs.bikeType"
-                                    onChange={handleChange}
+                                    // onChange={handleChange}
                                     > 
                                     <option value={inputs.bikeType}> Enduro </option>
                                     <option value={inputs.bikeType}> Trail </option>
