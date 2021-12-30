@@ -1,13 +1,49 @@
-import React from "react"
-import {Button, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider} from "@chakra-ui/react"
+import {useState} from "react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, HStack } from "@chakra-ui/react"
 
 export default function BasicForm() {
+    const [inputs, setInputs] = useState({
+        height: "",
+        bikeType: "",
+        weightBias: "",
+        reach: "",
+        stack: ""
+    })
+
+    const [imperialRider, setImperialRider] = useState(true)
+
     return(
         <Container  maxW="37.5rem">
             <VStack bg="brand.darkGrey" borderRadius="16px" pb="20px">
-                <Heading as='h2' textAlign="center" fontSize="2xl" color="brand.white" maxW="80%" marginTop={["1rem", "1.5rem","2rem"]} > RIDER METRICS </Heading>
+
+                <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
+                    <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.5rem","2rem"]} > RIDER METRICS </Heading>
+                    <Box >
+                        <Button 
+                            position="absolute" 
+                            right="65px" 
+                            size="xs" 
+                            marginTop={["1rem", "1.5rem","2rem"]}
+                            zIndex={imperialRider? 0 : 1}
+                            bg={imperialRider? "brand.lightGrey" : "brand.blue"} 
+                            onClick={() => setImperialRider(prevImperialRider => !prevImperialRider)}>
+                                Metric
+                        </Button>
+                        <Button 
+                            position="absolute" 
+                            right="10px" 
+                            size="xs" 
+                            variant="ghost" 
+                            marginTop={["1rem", "1.5rem","2rem"]}
+                            zIndex={imperialRider? 1 : 0}
+                            bg={imperialRider? "brand.blue": "brand.lightGrey"} 
+                            onClick={() => setImperialRider(prevImperialRider => !prevImperialRider)}>
+                                Imperial
+                        </Button>
+                    </Box>
+                </Flex>
+
                 <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
-                
                 <Container maxW={["85%", "75%"]}>
                     <SimpleGrid columns={2} columnGap={2}>
                         <GridItem colSpan={1} pb={1}>
