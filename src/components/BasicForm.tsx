@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {SyntheticEvent, useState} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, HStack } from "@chakra-ui/react"
 
 export default function BasicForm() {
@@ -6,12 +6,21 @@ export default function BasicForm() {
     const [imperialBike, setImperialBike] = useState(false)
 
     const [inputs, setInputs] = useState({
-        height: "",
-        bikeType: "",
+        heightFeet: "",
+        heightInches: "",
+        heightCM: "",
         weightBias: "",
-        reach: "",
-        stack: ""
+        reachInches: "",
+        reachMM: "",
+        stackInches: "",
+        stackMM: "",
+        bikeType: ""
     })
+
+    function handleChange(event: SyntheticEvent) {
+        event.preventDefault();
+        console.log(inputs)
+    }
 
     return(
         <Container  maxW="37.5rem">
@@ -46,18 +55,32 @@ export default function BasicForm() {
                 </Flex>
                 <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
                 <Container maxW={["85%", "75%"]}>
-                    {imperialRider &&
+                    {imperialRider && //Rather than 2 conditional renders this can be broken down into the additional box being conditionally rendered and changing display values
                         <SimpleGrid columns={2} columnGap={2}>
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height (feet)</FormLabel>
-                                    <Input placeholder="6" maxWidth={24} focusBorderColor='brand.blue'/>
+                                    <Input 
+                                        placeholder="6" 
+                                        maxWidth={24} 
+                                        focusBorderColor='brand.blue'
+                                        value={inputs.heightFeet}
+                                        name={"heightFeet"}
+                                        onChange={handleChange}
+                                        />
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height (inches)</FormLabel>
-                                    <Input placeholder="2" maxWidth={24} focusBorderColor='brand.blue'/>
+                                    <Input 
+                                        placeholder="2" 
+                                        maxWidth={24} 
+                                        focusBorderColor='brand.blue'
+                                        value={inputs.heightInches}
+                                        name={"heightInches"}
+                                        onChange={handleChange}
+                                        />
                                 </FormControl>
                             </GridItem>
                         </SimpleGrid>
@@ -66,7 +89,14 @@ export default function BasicForm() {
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height (cm)</FormLabel>
-                                    <Input placeholder="187" maxWidth={24} focusBorderColor='brand.blue'/>
+                                    <Input 
+                                    placeholder="187" 
+                                    maxWidth={24} 
+                                    focusBorderColor='brand.blue'
+                                    value={inputs.heightCM}
+                                    name={"heightCM"}
+                                    onChange={handleChange}
+                                    />
                                 </FormControl>
                             </GridItem>
                         </SimpleGrid>
@@ -75,10 +105,14 @@ export default function BasicForm() {
                         <GridItem colSpan={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
-                                <Select> 
-                                    <option value="neutral">Neutral </option>
-                                    <option value="rearward"> Rearward </option>
-                                    <option value="forward"> Forward</option>
+                                <Select 
+                                    focusBorderColor='brand.blue' 
+                                    name="weightBias"  
+                                    onChange={handleChange}
+                                    > 
+                                    <option value={inputs.weightBias}> Neutral </option>
+                                    <option value={inputs.weightBias}> Rearward </option>
+                                    <option value={inputs.weightBias}> Forward </option>
                                 </Select>
                             </FormControl>
                         </GridItem>
@@ -120,23 +154,41 @@ export default function BasicForm() {
                             <GridItem colSpan={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Reach {imperialBike? "(inches)" : "(mm)"}</FormLabel>
-                                    <Input placeholder={imperialBike? "20.1" : "510"} maxWidth={24} focusBorderColor='brand.blue'/>
+                                    <Input 
+                                        placeholder={imperialBike? "20.1" : "510"} 
+                                        maxWidth={24} 
+                                        focusBorderColor='brand.blue'
+                                        value={imperialBike? inputs.reachInches : inputs.reachMM}
+                                        name={imperialBike? "reachInches" : "reachMM"}
+                                        onChange={handleChange}
+                                        />
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Stack {imperialBike? "(inches)" : "(mm)"}</FormLabel>
-                                    <Input placeholder={imperialBike? "25.2" : "640"} maxWidth={24} focusBorderColor='brand.blue'/>
+                                    <Input 
+                                        placeholder={imperialBike? "25.2" : "640"} 
+                                        maxWidth={24} 
+                                        focusBorderColor='brand.blue'
+                                        value={imperialBike? inputs.stackInches : inputs.stackMM}
+                                        name={imperialBike? "stackInches" : "stackMM"}
+                                        onChange={handleChange}
+                                        />
                                 </FormControl>
                             </GridItem>
 
                             <GridItem colSpan={2} pb={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Bike Type</FormLabel>
-                                <Select focusBorderColor='brand.blue'> 
-                                    <option value="end"> Enduro </option>
-                                    <option value="tr"> Trail </option>
-                                    <option value="xc"> Cross Country</option>
+                                <Select 
+                                    focusBorderColor='brand.blue' 
+                                    name="inputs.bikeType"
+                                    onChange={handleChange}
+                                    > 
+                                    <option value={inputs.bikeType}> Enduro </option>
+                                    <option value={inputs.bikeType}> Trail </option>
+                                    <option value={inputs.bikeType}> Cross Country</option>
                                 </Select>
                             </FormControl>
                         </GridItem>
