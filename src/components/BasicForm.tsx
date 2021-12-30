@@ -112,7 +112,7 @@ export default function BasicForm() {
                                 size="xs" 
                                 variant="ghost" 
                                 marginTop={["1rem", "1.5rem","2rem"]}
-                                zIndex={imperialRider? 1 : 0}
+                                zIndex={imperialBike? 1 : 0}
                                 bg={imperialBike? "brand.blue": "brand.lightGrey"} 
                                 onClick={() => setImperialBike(prevImperialBike => !prevImperialBike)}>
                                     Imperial
