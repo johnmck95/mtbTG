@@ -45,20 +45,31 @@ export default function BasicForm() {
 
                 <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
                 <Container maxW={["85%", "75%"]}>
-                    <SimpleGrid columns={2} columnGap={2}>
-                        <GridItem colSpan={1} pb={1}>
-                            <FormControl>
-                                <FormLabel fontSize={["xs", "sm", "md"]}>Height (feet)</FormLabel>
-                                <Input placeholder="6" maxWidth={24}/>
-                            </FormControl>
-                        </GridItem>
-                        <GridItem colSpan={1} pb={1}>
-                            <FormControl>
-                                <FormLabel fontSize={["xs", "sm", "md"]}>Height (inches)</FormLabel>
-                                <Input placeholder="2" maxWidth={24}/>
-                            </FormControl>
-                        </GridItem>
-                    </SimpleGrid>
+                    {imperialRider &&
+                        <SimpleGrid columns={2} columnGap={2}>
+                            <GridItem colSpan={1} pb={1}>
+                                <FormControl>
+                                    <FormLabel fontSize={["xs", "sm", "md"]}>Height (feet)</FormLabel>
+                                    <Input placeholder="6" maxWidth={24}/>
+                                </FormControl>
+                            </GridItem>
+                            <GridItem colSpan={1} pb={1}>
+                                <FormControl>
+                                    <FormLabel fontSize={["xs", "sm", "md"]}>Height (inches)</FormLabel>
+                                    <Input placeholder="2" maxWidth={24}/>
+                                </FormControl>
+                            </GridItem>
+                        </SimpleGrid>
+                    }{!imperialRider &&
+                        <SimpleGrid columns={2} columnGap={2}>
+                            <GridItem colSpan={1} pb={1}>
+                                <FormControl>
+                                    <FormLabel fontSize={["xs", "sm", "md"]}>Height (cm)</FormLabel>
+                                    <Input placeholder="187" maxWidth={24}/>
+                                </FormControl>
+                            </GridItem>
+                        </SimpleGrid>
+                    }
                     <SimpleGrid columns={1}> 
                         <GridItem colSpan={1} pb={1}>
                             <FormControl>
