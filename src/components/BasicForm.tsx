@@ -1,27 +1,39 @@
 import {useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, HStack } from "@chakra-ui/react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, HStack, useRadioGroup } from "@chakra-ui/react"
+import RadioComponent from "./RadioComponent.js"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
 
-    const [inputs, setInputs] = useState({
-        height: "",
-        bikeType: "",
-        weightBias: "",
-        reach: "",
-        stack: ""
-    })
+    const bikeTypeValues = ['Enduro', 'Trail', 'Cross Country']
+
+    const { getRootProps, getRadioProps } = useRadioGroup({
+        name: 'framework',
+        defaultValue: 'react',
+        onChange: console.log,
+      })
+    const group = getRootProps()
+
+
+    // const [inputs, setInputs] = useState({
+    //     height: "",
+    //     bikeType: "",
+    //     weightBias: "",
+    //     reach: "",
+    //     stack: ""
+    // })
 
     return(
-        <Container  maxW="37.5rem">
-            <VStack bg="brand.darkGrey" borderRadius="16px" pb="20px">
+        <Container  maxW="37.5rem" >
+            <VStack bg="brand.darkGrey" borderRadius="16px" pb={4}>
                 <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
-                    <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.5rem","2rem"]} > RIDER METRICS </Heading>
+                    <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.25rem"]} > RIDER METRICS </Heading>
                     <Box >
                         <Button 
                             position="absolute" 
                             right="65px" 
+                            bottom="2px"
                             size="xs" 
                             marginTop={["1rem", "1.5rem","2rem"]}
                             zIndex={imperialRider? 0 : 1}
@@ -32,6 +44,7 @@ export default function BasicForm() {
                         <Button 
                             position="absolute" 
                             right="10px" 
+                            bottom="2px"
                             size="xs" 
                             variant="ghost" 
                             marginTop={["1rem", "1.5rem","2rem"]}
@@ -49,13 +62,13 @@ export default function BasicForm() {
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]}>Height (feet)</FormLabel>
-                                    <Input placeholder="6" maxWidth={24}/>
+                                    <Input placeholder="6" maxWidth={24} focusBorderColor='brand.blue'/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]}>Height (inches)</FormLabel>
-                                    <Input placeholder="2" maxWidth={24}/>
+                                    <Input placeholder="2" maxWidth={24} focusBorderColor='brand.blue'/>
                                 </FormControl>
                             </GridItem>
                         </SimpleGrid>
@@ -64,7 +77,7 @@ export default function BasicForm() {
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]}>Height (cm)</FormLabel>
-                                    <Input placeholder="187" maxWidth={24}/>
+                                    <Input placeholder="187" maxWidth={24} focusBorderColor='brand.blue'/>
                                 </FormControl>
                             </GridItem>
                         </SimpleGrid>
@@ -73,17 +86,28 @@ export default function BasicForm() {
                         <GridItem colSpan={1} pb={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]}>Bike Type</FormLabel>
-                                <Select> 
+
+                                <HStack {...group}>
+                                    {bikeTypeValues.map((value) => {
+                                        const radio = getRadioProps({ value })
+                                        return (
+                                        <RadioComponent key={value} {...radio}>
+                                            {value}
+                                        </RadioComponent>
+                                        )
+                                    })}
+                                    </HStack>
+                                {/* <Select focusBorderColor='brand.blue'> 
                                     <option value="end"> Enduro </option>
                                     <option value="tr"> Trail </option>
                                     <option value="xc"> Cross Country</option>
-                                </Select>
+                                </Select> */}
                             </FormControl>
                         </GridItem>
                         <GridItem colSpan={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]}>Weight Bias</FormLabel>
-                                <Select> 
+                                <Select focusBorderColor='brand.blue'> 
                                     <option value="neutral">Neutral </option>
                                     <option value="rearward"> Rearward </option>
                                     <option value="forward"> Forward</option>
@@ -94,11 +118,12 @@ export default function BasicForm() {
                     </Container>
 
                      <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
-                        <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.5rem","2rem"]} > BIKE METRICS </Heading>
+                        <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.25rem"]} > BIKE METRICS </Heading>
                         <Box >
                             <Button 
                                 position="absolute" 
                                 right="65px" 
+                                bottom="2px"
                                 size="xs" 
                                 marginTop={["1rem", "1.5rem","2rem"]}
                                 zIndex={imperialBike? 0 : 1}
@@ -109,6 +134,7 @@ export default function BasicForm() {
                             <Button 
                                 position="absolute" 
                                 right="10px" 
+                                bottom="2px"
                                 size="xs" 
                                 variant="ghost" 
                                 marginTop={["1rem", "1.5rem","2rem"]}
@@ -126,13 +152,13 @@ export default function BasicForm() {
                             <GridItem colSpan={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]}>Reach {imperialBike? "(inches)" : "(mm)"}</FormLabel>
-                                    <Input placeholder={imperialBike? "20.1" : "510"} maxWidth={24}/>
+                                    <Input placeholder={imperialBike? "20.1" : "510"} maxWidth={24} focusBorderColor='brand.blue'/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]}>Stack {imperialBike? "(inches)" : "(mm)"}</FormLabel>
-                                    <Input placeholder={imperialBike? "25.2" : "640"} maxWidth={24}/>
+                                    <Input placeholder={imperialBike? "25.2" : "640"} maxWidth={24} focusBorderColor='brand.blue'/>
                                 </FormControl>
                             </GridItem>
                         </SimpleGrid>
