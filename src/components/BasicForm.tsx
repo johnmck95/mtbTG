@@ -1,6 +1,5 @@
 import {ChangeEvent, useState} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, MenuButton, Menu, MenuItem, MenuList } from "@chakra-ui/react"
-import { ChevronDownIcon } from "@chakra-ui/icons"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
