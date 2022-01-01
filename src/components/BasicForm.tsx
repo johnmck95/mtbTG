@@ -1,5 +1,6 @@
 import {ChangeEvent, useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box } from "@chakra-ui/react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, MenuButton, Menu, MenuItem, MenuList } from "@chakra-ui/react"
+import { ChevronDownIcon } from "@chakra-ui/icons"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
@@ -19,12 +20,12 @@ export default function BasicForm() {
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
-        stateRiderConversion()
+        riderStateConversion()
     }
 
     function toggleBikeUnit(){
         setImperialBike(prevImperialBike => !prevImperialBike)
-        stateBikeConversion()
+        bikeStateConversion()
     }
 
     function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
@@ -32,11 +33,12 @@ export default function BasicForm() {
         setInputs(prevInputs => ({
             ...prevInputs,
             [name] : value,
-        }))        
+        }))     
+        console.log(inputs)   
     }
 
      // NOTE: watch out for 'e' in the input
-    function stateRiderConversion() {
+    function riderStateConversion() {
         let heightCMCalc = 0
         let heightFootCalc = 0
         let heightInchesCalc = 0   
@@ -51,14 +53,14 @@ export default function BasicForm() {
 
         setInputs(prevInputs => ({
             ...prevInputs,
-            heightCM: heightCMCalc !== 0? heightCMCalc.toFixed(1) : inputs.heightCM,
+            heightCM: heightCMCalc !== 0? heightCMCalc.toFixed(0) : inputs.heightCM,
             heightFeet: heightFootCalc !== 0? heightFootCalc.toFixed(0) : inputs.heightFeet,
             heightInches: heightInchesCalc !== 0? heightInchesCalc.toFixed(0) : inputs.heightInches
         }))
     }
 
-    // NOTE: watch out for 'e' in the input
-    function stateBikeConversion() {
+    // NOTE: watch out for 'e' in the input - currently unhandled
+    function bikeStateConversion() {
         let reachMMCalc = 0
         let reachInchCalc = 0
         let stackMMCalc = 0
@@ -115,22 +117,22 @@ export default function BasicForm() {
                 </Flex>
                 <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
                 <Container maxW={["85%", "75%"]}>
-                    {imperialRider && //Rather than 2 conditional renders this can be broken down into the additional box being conditionally rendered and changing display values
-                        <SimpleGrid columns={2} columnGap={2}>
-                            <GridItem colSpan={1} pb={1}>
-                                <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height (feet)</FormLabel>
-                                    <Input 
-                                        placeholder="6" 
-                                        maxWidth={24} 
-                                        focusBorderColor='brand.blue'
-                                        type="number"
-                                        onChange={handleChange}
-                                        value={inputs.heightFeet}
-                                        name={"heightFeet"}
-                                        />
-                                </FormControl>
-                            </GridItem>
+                    <SimpleGrid columns={2} columnGap={2}>
+                        <GridItem colSpan={1} pb={1}>
+                            <FormControl>
+                                <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height {imperialRider? "(feet)" : "(cm)"}</FormLabel>
+                                <Input 
+                                    placeholder={imperialRider? "6" : "187"}
+                                    maxWidth={24} 
+                                    focusBorderColor='brand.blue'
+                                    type="number"
+                                    onChange={handleChange}
+                                    value={imperialRider? inputs.heightFeet : inputs.heightCM}
+                                    name={imperialRider? "heightFeet" : "heightCM"}
+                                    />
+                            </FormControl>
+                        </GridItem>
+                        {imperialRider &&
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height (inches)</FormLabel>
@@ -145,25 +147,8 @@ export default function BasicForm() {
                                         />
                                 </FormControl>
                             </GridItem>
-                        </SimpleGrid>
-                    }{!imperialRider &&
-                        <SimpleGrid columns={2} columnGap={2}>
-                            <GridItem colSpan={1} pb={1}>
-                                <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height (cm)</FormLabel>
-                                    <Input 
-                                        placeholder="187" 
-                                        maxWidth={24} 
-                                        focusBorderColor='brand.blue'
-                                        type="number"
-                                        value={inputs.heightCM}
-                                        name={"heightCM"}
-                                        onChange={handleChange}
-                                    />
-                                </FormControl>
-                            </GridItem>
-                        </SimpleGrid>
-                    }
+                        }
+                    </SimpleGrid>
                     <SimpleGrid columns={1}> 
                         <GridItem colSpan={1}>
                             <FormControl>
