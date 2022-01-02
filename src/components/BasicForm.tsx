@@ -1,12 +1,11 @@
 import {ChangeEvent, useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, HStack, useRadioGroup } from "@chakra-ui/react"
-import RadioBox from "./RadioBox.js"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box, HStack } from "@chakra-ui/react"
+import CustomRadio from "./CustomRadio"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
-    const weightBiases = ['Rearward', 'Neutral', 'Forward']
-         
+    
     const [inputs, setInputs] = useState({
         heightFeet: "",
         heightInches: "",
@@ -19,13 +18,6 @@ export default function BasicForm() {
         bikeType: ""
     })
 
-    const { getRootProps, getRadioProps } = useRadioGroup({
-        name: 'weightBias',
-        defaultValue: "",
-      })
-    const group = getRootProps()
-
-    console.log(inputs)
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
         riderStateConversion()
@@ -42,6 +34,13 @@ export default function BasicForm() {
             ...prevInputs,
             [name] : value,
         }))     
+    }
+
+    function handleCustomRadio(name: string, value: string) {
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            [name]: value
+        }))
     }
 
      // NOTE: watch out for 'e' in the input
@@ -160,16 +159,11 @@ export default function BasicForm() {
                         <GridItem colSpan={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
-                                    <HStack justify="space-between" {...group}>
-                                        {weightBiases.map((value) => {
-                                            const radio = getRadioProps({ value })
-                                            return (
-                                            <RadioBox key={value} handleState={setInputs} {...radio}>
-                                                {value}
-                                            </RadioBox>
-                                            )
-                                        })}
-                                    </HStack>
+                                <HStack justify="space-between">
+                                    <CustomRadio title="Rearward" name="weightBias" value="rearward" isChecked={inputs.weightBias === "rearward" ? true : false} handleCustomRadio={handleCustomRadio}/>
+                                    <CustomRadio title="Neutral" name="weightBias" value="neutral" isChecked={inputs.weightBias === "neutral" ? true : false} handleCustomRadio={handleCustomRadio}/>
+                                    <CustomRadio title="Forward" name="weightBias" value="forward" isChecked={inputs.weightBias === "forward" ? true : false} handleCustomRadio={handleCustomRadio}/>
+                                </HStack>
                             </FormControl>
                         </GridItem>
                     </SimpleGrid>
@@ -236,17 +230,11 @@ export default function BasicForm() {
                             <GridItem colSpan={2} pb={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Bike Type</FormLabel>
-                                <Select 
-                                    focusBorderColor='brand.blue' 
-                                    name="bikeType"
-                                    value={inputs.bikeType}
-                                    onChange={e => handleChange(e)}
-                                    > 
-                                    <option value="">-- Choose --</option>
-                                    <option value="enduro"> Enduro </option>
-                                    <option value="trail"> Trail </option>
-                                    <option value="xc"> Cross Country</option>
-                                </Select>
+                                <HStack justify="space-between">
+                                    <CustomRadio title="Enduro" name="bikeType" value="enduro" isChecked={inputs.bikeType === "enduro" ? true : false} handleCustomRadio={handleCustomRadio}/>
+                                    <CustomRadio title="Trail" name="bikeType" value="trail" isChecked={inputs.bikeType === "trail" ? true : false} handleCustomRadio={handleCustomRadio}/>
+                                    <CustomRadio title="Cross Country" name="bikeType" value="xc" isChecked={inputs.bikeType === "xc" ? true : false} handleCustomRadio={handleCustomRadio}/>
+                                </HStack>
                             </FormControl>
                         </GridItem>
                         </SimpleGrid>
