@@ -72,7 +72,7 @@ export default function BasicForm() {
         let reachInchCalc = 0
         let stackMMCalc = 0
         let stackInchCalc = 0
-
+        
         if (inputs.reachMM !== "")
             reachInchCalc = parseFloat(inputs.reachMM)/25.4
         if (inputs.stackMM !== "")
@@ -160,19 +160,6 @@ export default function BasicForm() {
                         <GridItem colSpan={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
-                                {/* <Select
-                                    id="weightBias"
-                                    focusBorderColor='brand.blue' 
-                                    name="weightBias"  
-                                    onChange={e => handleChange(e)}
-                                    value={inputs.weightBias}> 
-                                        <option value="">-- Choose --</option>
-                                        <option value="neutral"> Neutral </option>
-                                        <option value="rearward"> Rearward </option>
-                                        <option value="forward"> Forward </option>
-                                </Select> */}
-
-                
                                     <HStack justify="space-between" {...group}>
                                         {weightBiases.map((value) => {
                                             const radio = getRadioProps({ value })
@@ -183,8 +170,6 @@ export default function BasicForm() {
                                             )
                                         })}
                                     </HStack>
-                     
-
                             </FormControl>
                         </GridItem>
                     </SimpleGrid>

@@ -8,7 +8,7 @@ export default function RadioBox(props) {
 
     return(
       <Box as='label' size="sm">
-            <input onChange={props.onChange} {...input} />
+            <input {...input} />
         <Box
           {...checkbox}
           onClick={() =>props.handleState(prevInputs => ({...prevInputs, weightBias: props.children}))}
