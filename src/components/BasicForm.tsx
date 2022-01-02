@@ -1,5 +1,5 @@
 import {ChangeEvent, useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box, HStack } from "@chakra-ui/react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Stack, Box, HStack } from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 
 export default function BasicForm() {
@@ -17,6 +17,7 @@ export default function BasicForm() {
         stackMM: "",
         bikeType: ""
     })
+console.log(inputs)
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
@@ -132,6 +133,7 @@ export default function BasicForm() {
                                     maxWidth={24} 
                                     focusBorderColor='brand.blue'
                                     type="number"
+                                    boxShadow='md'
                                     onChange={handleChange}
                                     value={imperialRider? inputs.heightFeet : inputs.heightCM}
                                     name={imperialRider? "heightFeet" : "heightCM"}
@@ -147,6 +149,7 @@ export default function BasicForm() {
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
                                         type="number"
+                                        boxShadow='md'
                                         value={inputs.heightInches}
                                         name={"heightInches"}
                                         onChange={handleChange}
@@ -159,11 +162,35 @@ export default function BasicForm() {
                         <GridItem colSpan={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
-                                <HStack justify="space-between">
-                                    <CustomRadio title="Rearward" name="weightBias" value="rearward" isChecked={inputs.weightBias === "rearward" ? true : false} handleCustomRadio={handleCustomRadio}/>
-                                    <CustomRadio title="Neutral" name="weightBias" value="neutral" isChecked={inputs.weightBias === "neutral" ? true : false} handleCustomRadio={handleCustomRadio}/>
-                                    <CustomRadio title="Forward" name="weightBias" value="forward" isChecked={inputs.weightBias === "forward" ? true : false} handleCustomRadio={handleCustomRadio}/>
-                                </HStack>
+                                <Flex flexWrap="wrap" justify={["space-evenly", "space-between"]} spacing={3}>
+                                    <Box mb={["10px", 0]} w={["45%", "31%"]} mr={[2, 0]}>
+                                        <CustomRadio 
+                                                title="Rearward" 
+                                                name="weightBias" 
+                                                value="rearward" 
+                                                isChecked={inputs.weightBias === "rearward" ? true : false} 
+                                                handleCustomRadio={handleCustomRadio}
+                                                />
+                                    </Box>
+                                    <Box mb={["10px", 0]} w={["45%", "31%"]} ml={[2, 0]}>
+                                        <CustomRadio 
+                                                title="Neutral" 
+                                                name="weightBias" 
+                                                value="neutral" 
+                                                isChecked={inputs.weightBias === "neutral" ? true : false} 
+                                                handleCustomRadio={handleCustomRadio}
+                                                />
+                                    </Box>
+                                    <Box mb={[ 0]} w={["50%", "31%"]}>
+                                        <CustomRadio 
+                                                title="Forward" 
+                                                name="weightBias" 
+                                                value="forward" 
+                                                isChecked={inputs.weightBias === "forward" ? true : false} 
+                                                handleCustomRadio={handleCustomRadio}
+                                                />
+                                    </Box>
+                                </Flex>
                             </FormControl>
                         </GridItem>
                     </SimpleGrid>
@@ -206,6 +233,7 @@ export default function BasicForm() {
                                         placeholder={imperialBike? "20.1" : "510"} 
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
+                                        boxShadow='md'
                                         type="number"
                                         value={imperialBike? inputs.reachInches : inputs.reachMM}
                                         name={imperialBike? "reachInches" : "reachMM"}
@@ -221,23 +249,35 @@ export default function BasicForm() {
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
                                         type="number"
+                                        boxShadow='md'
                                         value={imperialBike? inputs.stackInches : inputs.stackMM}
                                         name={imperialBike? "stackInches" : "stackMM"}
                                         onChange={handleChange}
                                         />
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={2} pb={1}>
-                            <FormControl>
-                                <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Bike Type</FormLabel>
-                                <HStack justify="space-between">
-                                    <CustomRadio title="Enduro" name="bikeType" value="enduro" isChecked={inputs.bikeType === "enduro" ? true : false} handleCustomRadio={handleCustomRadio}/>
-                                    <CustomRadio title="Trail" name="bikeType" value="trail" isChecked={inputs.bikeType === "trail" ? true : false} handleCustomRadio={handleCustomRadio}/>
-                                    <CustomRadio title="Cross Country" name="bikeType" value="xc" isChecked={inputs.bikeType === "xc" ? true : false} handleCustomRadio={handleCustomRadio}/>
-                                </HStack>
-                            </FormControl>
-                        </GridItem>
                         </SimpleGrid>
+                            <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Bike Type</FormLabel>
+                            <SimpleGrid columns={[2]}  columnGap={[6, 6, 14]}> 
+                                <GridItem colSpan={1}>
+                                    <CustomRadio 
+                                        title="Enduro" 
+                                        name="bikeType" 
+                                        value="enduro" 
+                                        isChecked={inputs.bikeType === "enduro" ? true : false} 
+                                        handleCustomRadio={handleCustomRadio}
+                                        />
+                                </GridItem>
+                                <GridItem colSpan={1} >
+                                    <CustomRadio 
+                                        title="Trail" 
+                                        name="bikeType" 
+                                        value="trail" 
+                                        isChecked={inputs.bikeType === "trail" ? true : false} 
+                                        handleCustomRadio={handleCustomRadio}
+                                        />
+                                </GridItem>
+                            </SimpleGrid>
                     </Container>
                     <Button w={36} bg="brand.blue" borderRadius='50px'> Next </Button>
             </VStack>

@@ -9,9 +9,9 @@ interface CustomRadioProps{
 }
 export default function CustomRadio(props: CustomRadioProps) {
     const {title, name, value, isChecked, handleCustomRadio} = props
-    console.log(isChecked)
+    // console.log(isChecked)
     return(
-        <Box as='label'>
+        // <Box as='label'>
             <Box
                 onClick={() => handleCustomRadio(name, value)} 
                 bg="brand.darkGrey"
@@ -21,11 +21,13 @@ export default function CustomRadio(props: CustomRadioProps) {
                 borderColor={isChecked? "brand.white" : "brand.lightGrey"}
                 borderRadius='md'
                 boxShadow='md'
-                px={4}
+                textAlign="center"
+                px={[3, 3]}
                 py={2}
+                // mb={2}
                 >
                 {title}
             </Box>
-        </Box>
+        // </Box>
     )
 }
