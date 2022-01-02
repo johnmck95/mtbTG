@@ -1,10 +1,12 @@
 import {ChangeEvent, useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, MenuButton, Menu, MenuItem, MenuList } from "@chakra-ui/react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, HStack, useRadioGroup } from "@chakra-ui/react"
+import RadioBox from "./RadioBox.js"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
-
+    const weightBiases = ['Rearward', 'Neutral', 'Forward']
+         
     const [inputs, setInputs] = useState({
         heightFeet: "",
         heightInches: "",
@@ -17,6 +19,13 @@ export default function BasicForm() {
         bikeType: ""
     })
 
+    const { getRootProps, getRadioProps } = useRadioGroup({
+        name: 'weightBias',
+        defaultValue: "",
+      })
+    const group = getRootProps()
+
+    console.log(inputs)
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
         riderStateConversion()
@@ -33,7 +42,6 @@ export default function BasicForm() {
             ...prevInputs,
             [name] : value,
         }))     
-        console.log(inputs)   
     }
 
      // NOTE: watch out for 'e' in the input
@@ -152,7 +160,7 @@ export default function BasicForm() {
                         <GridItem colSpan={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
-                                <Select
+                                {/* <Select
                                     id="weightBias"
                                     focusBorderColor='brand.blue' 
                                     name="weightBias"  
@@ -162,7 +170,21 @@ export default function BasicForm() {
                                         <option value="neutral"> Neutral </option>
                                         <option value="rearward"> Rearward </option>
                                         <option value="forward"> Forward </option>
-                                </Select>
+                                </Select> */}
+
+                
+                                    <HStack justify="space-between" {...group}>
+                                        {weightBiases.map((value) => {
+                                            const radio = getRadioProps({ value })
+                                            return (
+                                            <RadioBox key={value} handleState={setInputs} {...radio}>
+                                                {value}
+                                            </RadioBox>
+                                            )
+                                        })}
+                                    </HStack>
+                     
+
                             </FormControl>
                         </GridItem>
                     </SimpleGrid>
