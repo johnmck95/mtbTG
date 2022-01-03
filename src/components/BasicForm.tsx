@@ -291,7 +291,7 @@ export default function BasicForm() {
                                 mb="2px">
                                     Bike Type
                             </FormLabel>
-                            <SimpleGrid columns={[2]} columnGap={[6, 6, 14]}> 
+                            <SimpleGrid columns={[2]} columnGap={[6, 6, 14]} mb={3}> 
                                 <GridItem colSpan={1}>
                                     <CustomRadio 
                                         title="Enduro" 
@@ -317,7 +317,7 @@ export default function BasicForm() {
                         bg="brand.blue" 
                         borderRadius='50px'
                         > 
-                            Next 
+                            Calculate 
                     </Button>
             </VStack>
         </Container> 
