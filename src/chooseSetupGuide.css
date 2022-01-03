@@ -1,19 +1,21 @@
-.basicFormBox{
+.chooseSetupGuideBox{
     overflow: auto;
 }
 
 @media screen and (orientation:portrait){
-    .basicFormBox{
+    .chooseSetupGuideBox{
         height: calc(100vh - 50px);
         display: flex;
         align-items: center;
+        /* background-color: magenta; */
     }
 }
 
 @media screen and (orientation:landscape){
-    .basicFormBox{
+    .chooseSetupGuideBox{
         height: 100%;
         display: flex;
         align-items: flex-start; 
+        /* background-color: aqua; */
     }
 }
