@@ -1,4 +1,4 @@
-import {Divider, Text, VStack, Heading, Button, Container} from "@chakra-ui/react"
+import {Divider, Box, Text, VStack, Heading, Button, Container} from "@chakra-ui/react"
 
 
 interface ChooseSetupGuideProps {
@@ -10,6 +10,12 @@ interface ChooseSetupGuideProps {
 export default function ChooseSetupGuide({handleBasicClick, isAdvancedHovered, handleAdvancedHover}: ChooseSetupGuideProps) {
 
     return (
+        <Box 
+            h="100%" 
+            overflow="auto" 
+            display="flex" 
+            alignItmes="center"
+            >
         <Container  maxW="37.5rem">
             <VStack bg='brand.darkGrey' m="30px" justify="flex-start"  borderRadius="16px" h="22rem">
                 <Heading as='h2' textAlign="center" fontSize="2xl" color="brand.white" maxW="80%" marginTop={["1rem", "1.5rem","2rem"]} >CHOOSE SETUP GUIDE</Heading>
@@ -42,5 +48,6 @@ export default function ChooseSetupGuide({handleBasicClick, isAdvancedHovered, h
                     </VStack>
             </VStack>
         </Container>
+        </Box>
     )
 }

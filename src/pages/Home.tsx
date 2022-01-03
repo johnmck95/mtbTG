@@ -27,8 +27,17 @@ export default function Home() {
     }
 
     return(   
-        <Box w="100%"  backgroundImage={HomePhoto} backgroundRepeat="no-repeat" backgroundPosition="60% 50%" backgroundSize="145%" height="calc(100vh - 50px)">
-            <VStack alignSelf="center" justify="center" h="100%" >
+        <Box 
+            className="Home-Box"
+            w="100%"  
+            backgroundImage={HomePhoto} 
+            backgroundRepeat="no-repeat" 
+            backgroundPosition="60% 50%" 
+            backgroundSize="145%" 
+            // height="calc(100vh - 50px)"
+            height="100%"
+            overflow="show"
+            >
                 {displayedComponent === "ChooseSetupGuide" && 
                     <ChooseSetupGuide 
                         handleBasicClick={handleBasic} 
@@ -38,7 +47,6 @@ export default function Home() {
                 { displayedComponent === "BasicForm" &&
                     <BasicForm/>
                 }
-            </VStack>
         </Box>
     )
 }

@@ -1,7 +1,7 @@
 import {ChangeEvent, useState} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
-
+import "../basicForm.css"
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
@@ -91,8 +91,24 @@ export default function BasicForm() {
     }
 
     return(
-        <Container  maxW="37.5rem">
-            <VStack bg="brand.darkGrey" borderRadius="16px" pb={4}>
+        // <Box 
+        //     // h="calc(100vh - 50px)" 
+        //     h="100%"
+        //     // my="5    0px" 
+        //     className="basicFormBox"
+        //     overflow="auto" 
+        //     w="100vw" 
+        //     // display="flex" 
+        //     // alignItems="flex-start"
+        //     position="relative"
+        //     // mt="50px"
+            
+        //     >
+            <div
+                className="basicFormBox">
+
+        <Container maxW="37.5rem">
+            <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10} >
                 <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
                     <Heading 
                         as='h2' 
@@ -321,5 +337,7 @@ export default function BasicForm() {
                     </Button>
             </VStack>
         </Container> 
+        {/* </Box> */}
+        </div>
     )
 }
