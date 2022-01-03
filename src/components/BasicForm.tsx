@@ -1,6 +1,6 @@
 import {ChangeEvent, useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Select, Heading, Divider, Box, MenuButton, Menu, MenuItem, MenuList } from "@chakra-ui/react"
-import { ChevronDownIcon } from "@chakra-ui/icons"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
+import CustomRadio from "./CustomRadio"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
@@ -34,7 +34,13 @@ export default function BasicForm() {
             ...prevInputs,
             [name] : value,
         }))     
-        console.log(inputs)   
+    }
+
+    function handleCustomRadio(name: string, value: string) {
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            [name]: value
+        }))
     }
 
      // NOTE: watch out for 'e' in the input
@@ -65,7 +71,7 @@ export default function BasicForm() {
         let reachInchCalc = 0
         let stackMMCalc = 0
         let stackInchCalc = 0
-
+        
         if (inputs.reachMM !== "")
             reachInchCalc = parseFloat(inputs.reachMM)/25.4
         if (inputs.stackMM !== "")
@@ -88,7 +94,17 @@ export default function BasicForm() {
         <Container  maxW="37.5rem">
             <VStack bg="brand.darkGrey" borderRadius="16px" pb={4}>
                 <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
-                    <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.25rem"]} > RIDER METRICS </Heading>
+                    <Heading 
+                        as='h2' 
+                        textAlign="center" 
+                        fontSize={["xl", "2xl"]} 
+                        color="brand.white" 
+                        maxW="80%" 
+                        ml={[-4, 0]} 
+                        mt={["1rem", "1.25rem"]} 
+                        >
+                            RIDER METRICS 
+                    </Heading>
                     <Box >
                         <Button 
                             position="absolute" 
@@ -126,6 +142,7 @@ export default function BasicForm() {
                                     maxWidth={24} 
                                     focusBorderColor='brand.blue'
                                     type="number"
+                                    boxShadow='md'  
                                     onChange={handleChange}
                                     value={imperialRider? inputs.heightFeet : inputs.heightCM}
                                     name={imperialRider? "heightFeet" : "heightCM"}
@@ -141,6 +158,7 @@ export default function BasicForm() {
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
                                         type="number"
+                                        boxShadow='md'
                                         value={inputs.heightInches}
                                         name={"heightInches"}
                                         onChange={handleChange}
@@ -153,23 +171,50 @@ export default function BasicForm() {
                         <GridItem colSpan={1}>
                             <FormControl>
                                 <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
-                                <Select
-                                    id="weightBias"
-                                    focusBorderColor='brand.blue' 
-                                    name="weightBias"  
-                                    onChange={e => handleChange(e)}
-                                    value={inputs.weightBias}> 
-                                        <option value="">-- Choose --</option>
-                                        <option value="neutral"> Neutral </option>
-                                        <option value="rearward"> Rearward </option>
-                                        <option value="forward"> Forward </option>
-                                </Select>
+                                <Flex flexWrap="wrap" justify={["space-evenly", "space-between"]} spacing={3}>
+                                    <Box mb={["10px", 0]} w={["45%", "31%"]} mr={[2, 0]}>
+                                        <CustomRadio 
+                                            title="Rearward" 
+                                            name="weightBias" 
+                                            value="rearward" 
+                                            isChecked={inputs.weightBias === "rearward" ? true : false} 
+                                            handleCustomRadio={handleCustomRadio}
+                                            />
+                                    </Box>
+                                    <Box mb={["10px", 0]} w={["45%", "31%"]} ml={[2, 0]}>
+                                        <CustomRadio 
+                                            title="Neutral" 
+                                            name="weightBias" 
+                                            value="neutral" 
+                                            isChecked={inputs.weightBias === "neutral" ? true : false} 
+                                            handleCustomRadio={handleCustomRadio}
+                                            />
+                                    </Box>
+                                    <Box mb={0} w={["50%", "31%"]}>
+                                        <CustomRadio 
+                                            title="Forward" 
+                                            name="weightBias" 
+                                            value="forward" 
+                                            isChecked={inputs.weightBias === "forward" ? true : false} 
+                                            handleCustomRadio={handleCustomRadio}
+                                            />
+                                    </Box>
+                                </Flex>
                             </FormControl>
                         </GridItem>
                     </SimpleGrid>
                     </Container>
                      <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
-                        <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.25rem"]} > BIKE METRICS </Heading>
+                        <Heading 
+                            as='h2' 
+                            textAlign="center" 
+                            fontSize={["xl", "2xl"]} 
+                            color="brand.white" 
+                            maxW="80%" ml={[-4, 0]} 
+                            mt={["1rem", "1.25rem"]} 
+                            > 
+                            BIKE METRICS 
+                        </Heading>
                         <Box >
                             <Button 
                                 position="absolute" 
@@ -201,11 +246,17 @@ export default function BasicForm() {
                         <SimpleGrid columns={2} columnGap={4} pb={3}>
                             <GridItem colSpan={1}>
                                 <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Reach {imperialBike? "(inches)" : "(mm)"}</FormLabel>
+                                    <FormLabel 
+                                        fontSize={["xs", "sm", "md"]} 
+                                        mx={0} 
+                                        mb="2px">
+                                            Reach {imperialBike? "(inches)" : "(mm)"}
+                                    </FormLabel>
                                     <Input 
                                         placeholder={imperialBike? "20.1" : "510"} 
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
+                                        boxShadow='md'
                                         type="number"
                                         value={imperialBike? inputs.reachInches : inputs.reachMM}
                                         name={imperialBike? "reachInches" : "reachMM"}
@@ -215,37 +266,59 @@ export default function BasicForm() {
                             </GridItem>
                             <GridItem colSpan={1}>
                                 <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Stack {imperialBike? "(inches)" : "(mm)"}</FormLabel>
+                                    <FormLabel 
+                                        fontSize={["xs", "sm", "md"]} 
+                                        mx={0} 
+                                        mb="2px">
+                                            Stack {imperialBike? "(inches)" : "(mm)"}
+                                    </FormLabel>
                                     <Input 
                                         placeholder={imperialBike? "25.2" : "640"} 
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
                                         type="number"
+                                        boxShadow='md'
                                         value={imperialBike? inputs.stackInches : inputs.stackMM}
                                         name={imperialBike? "stackInches" : "stackMM"}
                                         onChange={handleChange}
                                         />
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={2} pb={1}>
-                            <FormControl>
-                                <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Bike Type</FormLabel>
-                                <Select 
-                                    focusBorderColor='brand.blue' 
-                                    name="bikeType"
-                                    value={inputs.bikeType}
-                                    onChange={e => handleChange(e)}
-                                    > 
-                                    <option value="">-- Choose --</option>
-                                    <option value="enduro"> Enduro </option>
-                                    <option value="trail"> Trail </option>
-                                    <option value="xc"> Cross Country</option>
-                                </Select>
-                            </FormControl>
-                        </GridItem>
                         </SimpleGrid>
+                            <FormLabel 
+                                fontSize={["xs", "sm", "md"]} 
+                                mx={0} 
+                                mb="2px">
+                                    Bike Type
+                            </FormLabel>
+                            <SimpleGrid columns={[2]} columnGap={[6, 6, 14]} mb={3}> 
+                                <GridItem colSpan={1}>
+                                    <CustomRadio 
+                                        title="Enduro" 
+                                        name="bikeType" 
+                                        value="enduro" 
+                                        isChecked={inputs.bikeType === "enduro" ? true : false} 
+                                        handleCustomRadio={handleCustomRadio}
+                                        />
+                                </GridItem>
+                                <GridItem colSpan={1} >
+                                    <CustomRadio 
+                                        title="Trail" 
+                                        name="bikeType" 
+                                        value="trail" 
+                                        isChecked={inputs.bikeType === "trail" ? true : false} 
+                                        handleCustomRadio={handleCustomRadio}
+                                        />
+                                </GridItem>
+                            </SimpleGrid>
                     </Container>
-                    <Button w={36} bg="brand.blue" borderRadius='50px'> Next </Button>
+                    <Button 
+                        w={36} 
+                        bg="brand.blue" 
+                        borderRadius='50px'
+                        > 
+                            Calculate 
+                    </Button>
             </VStack>
         </Container> 
     )
