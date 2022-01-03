@@ -1,18 +1,14 @@
 import {Divider, Text, VStack, Heading, Button, Container} from "@chakra-ui/react"
-import {useState} from "react"
 
-export default function ChooseSetupGuide() {
-    const [isBasicHovered, setIsBasicHovered] = useState(false)
-    const [isAdvancedHovered, setIsAdvancedHovered] = useState(false)
 
-    function basicComingSoon() {
-        setIsBasicHovered(() => !isBasicHovered)
-    }
+interface ChooseSetupGuideProps {
+    handleBasicClick: () => void;
+    isAdvancedHovered: boolean;
+    handleAdvancedHover:() => void;
+}
 
-    function advancedComingSoon(){
-        setIsAdvancedHovered( () => !isAdvancedHovered)
-    }
-    
+export default function ChooseSetupGuide({handleBasicClick, isAdvancedHovered, handleAdvancedHover}: ChooseSetupGuideProps) {
+
     return (
         <Container  maxW="37.5rem">
             <VStack bg='brand.darkGrey' m="30px" justify="flex-start"  borderRadius="16px" h="22rem">
@@ -20,14 +16,26 @@ export default function ChooseSetupGuide() {
                 <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="80%" marginBottom="8rem"/>
                 <VStack w="60%" paddingTop={["1.5rem", "2rem","2.5rem"]} spacing="2.5rem">
                     <VStack w="100%">
-                        <Button color="brand.white" w="100%" fontSize={isBasicHovered? "m" : "xl"} bg="brand.blue" onMouseEnter={basicComingSoon} onMouseLeave={basicComingSoon}>
-                            {isBasicHovered? "Coming Soon!" : "Basic"}
+                        <Button 
+                            color="brand.white" 
+                            w="100%" 
+                            fontSize="xl"
+                            bg="brand.blue" 
+                            onClick={handleBasicClick}
+                            >
+                            Basic
                         </Button>
                         <Text textAlign="center" fontSize="xs" color="lightGrey">Fastest Setup Guide</Text>
                     </VStack>
                     <VStack w="100%">
-                        <Button color="brand.white" w="100%" fontSize={isAdvancedHovered? "m" : "xl"} bg="brand.blue" onMouseEnter={advancedComingSoon} onMouseLeave={advancedComingSoon}>
-                            {isAdvancedHovered? "Coming Less Soon" : "Advanced"}
+                        <Button 
+                            color="brand.white" 
+                            w="100%" 
+                            fontSize={isAdvancedHovered? "m" : "xl"} 
+                            bg="brand.blue" 
+                            onMouseEnter={handleAdvancedHover} 
+                            onMouseLeave={handleAdvancedHover}>
+                                {isAdvancedHovered? "Coming Eventually" : "Advanced"}
                         </Button>
                         <Text textAlign="center" fontSize="xs" color="lightGrey">In-depth Setup Guide to Optimize Weight Distribution</Text>
                         </VStack>
