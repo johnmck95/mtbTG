@@ -9,7 +9,7 @@ interface CustomRadioProps{
 }
 export default function CustomRadio(props: CustomRadioProps) {
     const {title, name, value, isChecked, handleCustomRadio} = props
-    // console.log(isChecked)
+
     return(
         <Box as='label' title={title}>
             <Box
@@ -24,7 +24,6 @@ export default function CustomRadio(props: CustomRadioProps) {
                 textAlign="center"
                 px={[3, 3]}
                 py={2}
-                // mb={2}
                 >
                 {title}
             </Box>

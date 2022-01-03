@@ -142,7 +142,7 @@ export default function BasicForm() {
                                     maxWidth={24} 
                                     focusBorderColor='brand.blue'
                                     type="number"
-                                    boxShadow='md'
+                                    boxShadow='md'  
                                     onChange={handleChange}
                                     value={imperialRider? inputs.heightFeet : inputs.heightCM}
                                     name={imperialRider? "heightFeet" : "heightCM"}
@@ -190,7 +190,7 @@ export default function BasicForm() {
                                             handleCustomRadio={handleCustomRadio}
                                             />
                                     </Box>
-                                    <Box mb={[ 0]} w={["50%", "31%"]}>
+                                    <Box mb={0} w={["50%", "31%"]}>
                                         <CustomRadio 
                                             title="Forward" 
                                             name="weightBias" 
