@@ -1,11 +1,11 @@
 import {ChangeEvent, useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Stack, Box, HStack } from "@chakra-ui/react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
-    
+
     const [inputs, setInputs] = useState({
         heightFeet: "",
         heightInches: "",
@@ -17,7 +17,6 @@ export default function BasicForm() {
         stackMM: "",
         bikeType: ""
     })
-console.log(inputs)
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
@@ -95,7 +94,17 @@ console.log(inputs)
         <Container  maxW="37.5rem">
             <VStack bg="brand.darkGrey" borderRadius="16px" pb={4}>
                 <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
-                    <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.25rem"]} > RIDER METRICS </Heading>
+                    <Heading 
+                        as='h2' 
+                        textAlign="center" 
+                        fontSize={["xl", "2xl"]} 
+                        color="brand.white" 
+                        maxW="80%" 
+                        ml={[-4, 0]} 
+                        mt={["1rem", "1.25rem"]} 
+                        >
+                            RIDER METRICS 
+                    </Heading>
                     <Box >
                         <Button 
                             position="absolute" 
@@ -165,30 +174,30 @@ console.log(inputs)
                                 <Flex flexWrap="wrap" justify={["space-evenly", "space-between"]} spacing={3}>
                                     <Box mb={["10px", 0]} w={["45%", "31%"]} mr={[2, 0]}>
                                         <CustomRadio 
-                                                title="Rearward" 
-                                                name="weightBias" 
-                                                value="rearward" 
-                                                isChecked={inputs.weightBias === "rearward" ? true : false} 
-                                                handleCustomRadio={handleCustomRadio}
-                                                />
+                                            title="Rearward" 
+                                            name="weightBias" 
+                                            value="rearward" 
+                                            isChecked={inputs.weightBias === "rearward" ? true : false} 
+                                            handleCustomRadio={handleCustomRadio}
+                                            />
                                     </Box>
                                     <Box mb={["10px", 0]} w={["45%", "31%"]} ml={[2, 0]}>
                                         <CustomRadio 
-                                                title="Neutral" 
-                                                name="weightBias" 
-                                                value="neutral" 
-                                                isChecked={inputs.weightBias === "neutral" ? true : false} 
-                                                handleCustomRadio={handleCustomRadio}
-                                                />
+                                            title="Neutral" 
+                                            name="weightBias" 
+                                            value="neutral" 
+                                            isChecked={inputs.weightBias === "neutral" ? true : false} 
+                                            handleCustomRadio={handleCustomRadio}
+                                            />
                                     </Box>
                                     <Box mb={[ 0]} w={["50%", "31%"]}>
                                         <CustomRadio 
-                                                title="Forward" 
-                                                name="weightBias" 
-                                                value="forward" 
-                                                isChecked={inputs.weightBias === "forward" ? true : false} 
-                                                handleCustomRadio={handleCustomRadio}
-                                                />
+                                            title="Forward" 
+                                            name="weightBias" 
+                                            value="forward" 
+                                            isChecked={inputs.weightBias === "forward" ? true : false} 
+                                            handleCustomRadio={handleCustomRadio}
+                                            />
                                     </Box>
                                 </Flex>
                             </FormControl>
@@ -196,7 +205,16 @@ console.log(inputs)
                     </SimpleGrid>
                     </Container>
                      <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
-                        <Heading as='h2' textAlign="center" fontSize={["xl", "2xl"]} color="brand.white" maxW="80%" ml={[-4, 0]} marginTop={["1rem", "1.25rem"]} > BIKE METRICS </Heading>
+                        <Heading 
+                            as='h2' 
+                            textAlign="center" 
+                            fontSize={["xl", "2xl"]} 
+                            color="brand.white" 
+                            maxW="80%" ml={[-4, 0]} 
+                            mt={["1rem", "1.25rem"]} 
+                            > 
+                            BIKE METRICS 
+                        </Heading>
                         <Box >
                             <Button 
                                 position="absolute" 
@@ -228,7 +246,12 @@ console.log(inputs)
                         <SimpleGrid columns={2} columnGap={4} pb={3}>
                             <GridItem colSpan={1}>
                                 <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Reach {imperialBike? "(inches)" : "(mm)"}</FormLabel>
+                                    <FormLabel 
+                                        fontSize={["xs", "sm", "md"]} 
+                                        mx={0} 
+                                        mb="2px">
+                                            Reach {imperialBike? "(inches)" : "(mm)"}
+                                    </FormLabel>
                                     <Input 
                                         placeholder={imperialBike? "20.1" : "510"} 
                                         maxWidth={24} 
@@ -243,7 +266,12 @@ console.log(inputs)
                             </GridItem>
                             <GridItem colSpan={1}>
                                 <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Stack {imperialBike? "(inches)" : "(mm)"}</FormLabel>
+                                    <FormLabel 
+                                        fontSize={["xs", "sm", "md"]} 
+                                        mx={0} 
+                                        mb="2px">
+                                            Stack {imperialBike? "(inches)" : "(mm)"}
+                                    </FormLabel>
                                     <Input 
                                         placeholder={imperialBike? "25.2" : "640"} 
                                         maxWidth={24} 
@@ -257,8 +285,13 @@ console.log(inputs)
                                 </FormControl>
                             </GridItem>
                         </SimpleGrid>
-                            <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Bike Type</FormLabel>
-                            <SimpleGrid columns={[2]}  columnGap={[6, 6, 14]}> 
+                            <FormLabel 
+                                fontSize={["xs", "sm", "md"]} 
+                                mx={0} 
+                                mb="2px">
+                                    Bike Type
+                            </FormLabel>
+                            <SimpleGrid columns={[2]} columnGap={[6, 6, 14]}> 
                                 <GridItem colSpan={1}>
                                     <CustomRadio 
                                         title="Enduro" 
@@ -279,7 +312,13 @@ console.log(inputs)
                                 </GridItem>
                             </SimpleGrid>
                     </Container>
-                    <Button w={36} bg="brand.blue" borderRadius='50px'> Next </Button>
+                    <Button 
+                        w={36} 
+                        bg="brand.blue" 
+                        borderRadius='50px'
+                        > 
+                            Next 
+                    </Button>
             </VStack>
         </Container> 
     )
