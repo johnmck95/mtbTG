@@ -11,7 +11,7 @@ export default function CustomRadio(props: CustomRadioProps) {
     const {title, name, value, isChecked, handleCustomRadio} = props
     // console.log(isChecked)
     return(
-        // <Box as='label'>
+        <Box as='label' title={title}>
             <Box
                 onClick={() => handleCustomRadio(name, value)} 
                 bg="brand.darkGrey"
@@ -28,6 +28,6 @@ export default function CustomRadio(props: CustomRadioProps) {
                 >
                 {title}
             </Box>
-        // </Box>
+        </Box>
     )
 }
