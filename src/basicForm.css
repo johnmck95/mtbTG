@@ -19,7 +19,7 @@
     }
 
     /* Landscape - Desktops / Tablets */
-      @media screen and (min-width: 768px){
+      @media screen and (min-width: 900px){
         .basicFormBox{
             height: calc(100vh - 50px);
             display: flex;
