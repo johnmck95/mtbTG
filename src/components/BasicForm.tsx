@@ -1,6 +1,7 @@
 import {ChangeEvent, useState} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
+import "../basicForm.css"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
@@ -43,7 +44,7 @@ export default function BasicForm() {
         }))
     }
 
-     // NOTE: watch out for 'e' in the input
+    // NOTE: watch out for 'e' in the input - currently unhandled
     function riderStateConversion() {
         let heightCMCalc = 0
         let heightFootCalc = 0
@@ -91,235 +92,246 @@ export default function BasicForm() {
     }
 
     return(
-        <Container  maxW="37.5rem">
-            <VStack bg="brand.darkGrey" borderRadius="16px" pb={4}>
-                <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
-                    <Heading 
-                        as='h2' 
-                        textAlign="center" 
-                        fontSize={["xl", "2xl"]} 
-                        color="brand.white" 
-                        maxW="80%" 
-                        ml={[-4, 0]} 
-                        mt={["1rem", "1.25rem"]} 
-                        >
-                            RIDER METRICS 
-                    </Heading>
-                    <Box >
-                        <Button 
-                            position="absolute" 
-                            right="65px"
-                            bottom="2px"
-                            size="xs" 
-                            marginTop={["1rem", "1.5rem","2rem"]}
-                            zIndex={imperialRider? 0 : 1}
-                            bg={imperialRider? "brand.lightGrey" : "brand.blue"} 
-                            onClick={toggleRiderUnit}>
-                                Metric
-                        </Button>
-                        <Button 
-                            position="absolute" 
-                            right="10px" 
-                            bottom="2px"
-                            size="xs" 
-                            variant="ghost" 
-                            marginTop={["1rem", "1.5rem","2rem"]}
-                            zIndex={imperialRider? 1 : 0}
-                            bg={imperialRider? "brand.blue": "brand.lightGrey"} 
-                            onClick={toggleRiderUnit}>
-                                Imperial
-                        </Button>
-                    </Box>
-                </Flex>
-                <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
-                <Container maxW={["85%", "75%"]}>
-                    <SimpleGrid columns={2} columnGap={2}>
-                        <GridItem colSpan={1} pb={1}>
-                            <FormControl>
-                                <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height {imperialRider? "(feet)" : "(cm)"}</FormLabel>
-                                <Input 
-                                    placeholder={imperialRider? "6" : "187"}
-                                    maxWidth={24} 
-                                    focusBorderColor='brand.blue'
-                                    type="number"
-                                    boxShadow='md'  
-                                    onChange={handleChange}
-                                    value={imperialRider? inputs.heightFeet : inputs.heightCM}
-                                    name={imperialRider? "heightFeet" : "heightCM"}
-                                    />
-                            </FormControl>
-                        </GridItem>
-                        {imperialRider &&
-                            <GridItem colSpan={1} pb={1}>
-                                <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Height (inches)</FormLabel>
-                                    <Input 
-                                        placeholder="2" 
-                                        maxWidth={24} 
-                                        focusBorderColor='brand.blue'
-                                        type="number"
-                                        boxShadow='md'
-                                        value={inputs.heightInches}
-                                        name={"heightInches"}
-                                        onChange={handleChange}
-                                        />
-                                </FormControl>
-                            </GridItem>
-                        }
-                    </SimpleGrid>
-                    <SimpleGrid columns={1}> 
-                        <GridItem colSpan={1}>
-                            <FormControl>
-                                <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
-                                <Flex flexWrap="wrap" justify={["space-evenly", "space-between"]} spacing={3}>
-                                    <Box mb={["10px", 0]} w={["45%", "31%"]} mr={[2, 0]}>
-                                        <CustomRadio 
-                                            title="Rearward" 
-                                            name="weightBias" 
-                                            value="rearward" 
-                                            isChecked={inputs.weightBias === "rearward" ? true : false} 
-                                            handleCustomRadio={handleCustomRadio}
-                                            />
-                                    </Box>
-                                    <Box mb={["10px", 0]} w={["45%", "31%"]} ml={[2, 0]}>
-                                        <CustomRadio 
-                                            title="Neutral" 
-                                            name="weightBias" 
-                                            value="neutral" 
-                                            isChecked={inputs.weightBias === "neutral" ? true : false} 
-                                            handleCustomRadio={handleCustomRadio}
-                                            />
-                                    </Box>
-                                    <Box mb={0} w={["50%", "31%"]}>
-                                        <CustomRadio 
-                                            title="Forward" 
-                                            name="weightBias" 
-                                            value="forward" 
-                                            isChecked={inputs.weightBias === "forward" ? true : false} 
-                                            handleCustomRadio={handleCustomRadio}
-                                            />
-                                    </Box>
-                                </Flex>
-                            </FormControl>
-                        </GridItem>
-                    </SimpleGrid>
-                    </Container>
-                     <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
+        <div className="basicFormBox">
+            <Container maxW="37.5rem">
+                <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10} >
+                    <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
                         <Heading 
                             as='h2' 
                             textAlign="center" 
                             fontSize={["xl", "2xl"]} 
                             color="brand.white" 
-                            maxW="80%" ml={[-4, 0]} 
+                            maxW="80%" 
+                            ml={[-4, 0]} 
                             mt={["1rem", "1.25rem"]} 
-                            > 
-                            BIKE METRICS 
+                            >
+                                RIDER METRICS 
                         </Heading>
                         <Box >
                             <Button 
                                 position="absolute" 
-                                right="65px" 
+                                right="65px"
                                 bottom="2px"
                                 size="xs" 
                                 marginTop={["1rem", "1.5rem","2rem"]}
-                                zIndex={imperialBike? 0 : 1}
-                                bg={imperialBike? "brand.lightGrey" : "brand.blue"} 
-                                onClick={toggleBikeUnit}>
+                                zIndex={imperialRider? 0 : 1}
+                                bg={imperialRider? "brand.lightGrey" : "brand.blue"} 
+                                onClick={toggleRiderUnit}>
                                     Metric
                             </Button>
                             <Button 
                                 position="absolute" 
                                 right="10px" 
-                                bottom="2px"    
+                                bottom="2px"
                                 size="xs" 
                                 variant="ghost" 
                                 marginTop={["1rem", "1.5rem","2rem"]}
-                                zIndex={imperialBike? 1 : 0}
-                                bg={imperialBike? "brand.blue": "brand.lightGrey"} 
-                                onClick={toggleBikeUnit}>
+                                zIndex={imperialRider? 1 : 0}
+                                bg={imperialRider? "brand.blue": "brand.lightGrey"} 
+                                onClick={toggleRiderUnit}>
                                     Imperial
                             </Button>
                         </Box>
                     </Flex>
                     <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
                     <Container maxW={["85%", "75%"]}>
-                        <SimpleGrid columns={2} columnGap={4} pb={3}>
-                            <GridItem colSpan={1}>
+                        <SimpleGrid columns={2} columnGap={2}>
+                            <GridItem colSpan={1} pb={1}>
                                 <FormControl>
                                     <FormLabel 
                                         fontSize={["xs", "sm", "md"]} 
-                                        mx={0} 
-                                        mb="2px">
-                                            Reach {imperialBike? "(inches)" : "(mm)"}
+                                        mx={0} mb="2px"
+                                        >Height {imperialRider? "(feet)" : "(cm)"}
                                     </FormLabel>
                                     <Input 
-                                        placeholder={imperialBike? "20.1" : "510"} 
+                                        placeholder={imperialRider? "6" : "187"}
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
-                                        boxShadow='md'
                                         type="number"
-                                        value={imperialBike? inputs.reachInches : inputs.reachMM}
-                                        name={imperialBike? "reachInches" : "reachMM"}
+                                        boxShadow='md'  
                                         onChange={handleChange}
+                                        value={imperialRider? inputs.heightFeet : inputs.heightCM}
+                                        name={imperialRider? "heightFeet" : "heightCM"}
                                         />
                                 </FormControl>
                             </GridItem>
+                            {imperialRider &&
+                                <GridItem colSpan={1} pb={1}>
+                                    <FormControl>
+                                        <FormLabel 
+                                            fontSize={["xs", "sm", "md"]} 
+                                            mx={0} 
+                                            mb="2px"
+                                            >Height (inches)
+                                        </FormLabel>
+                                        <Input 
+                                            placeholder="2" 
+                                            maxWidth={24} 
+                                            focusBorderColor='brand.blue'
+                                            type="number"
+                                            boxShadow='md'
+                                            value={inputs.heightInches}
+                                            name={"heightInches"}
+                                            onChange={handleChange}
+                                            />
+                                    </FormControl>
+                                </GridItem>
+                            }
+                        </SimpleGrid>
+                        <SimpleGrid columns={1}> 
                             <GridItem colSpan={1}>
                                 <FormControl>
-                                    <FormLabel 
-                                        fontSize={["xs", "sm", "md"]} 
-                                        mx={0} 
-                                        mb="2px">
-                                            Stack {imperialBike? "(inches)" : "(mm)"}
-                                    </FormLabel>
-                                    <Input 
-                                        placeholder={imperialBike? "25.2" : "640"} 
-                                        maxWidth={24} 
-                                        focusBorderColor='brand.blue'
-                                        type="number"
-                                        boxShadow='md'
-                                        value={imperialBike? inputs.stackInches : inputs.stackMM}
-                                        name={imperialBike? "stackInches" : "stackMM"}
-                                        onChange={handleChange}
-                                        />
+                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
+                                    <Flex flexWrap="wrap" justify={["space-evenly", "space-between"]} spacing={3}>
+                                        <Box mb={["10px", 0]} w={["45%", "31%"]} mr={[2, 0]}>
+                                            <CustomRadio 
+                                                title="Rearward" 
+                                                name="weightBias" 
+                                                value="rearward" 
+                                                isChecked={inputs.weightBias === "rearward" ? true : false} 
+                                                handleCustomRadio={handleCustomRadio}
+                                                />
+                                        </Box>
+                                        <Box mb={["10px", 0]} w={["45%", "31%"]} ml={[2, 0]}>
+                                            <CustomRadio 
+                                                title="Neutral" 
+                                                name="weightBias" 
+                                                value="neutral" 
+                                                isChecked={inputs.weightBias === "neutral" ? true : false} 
+                                                handleCustomRadio={handleCustomRadio}
+                                                />
+                                        </Box>
+                                        <Box mb={0} w={["50%", "31%"]}>
+                                            <CustomRadio 
+                                                title="Forward" 
+                                                name="weightBias" 
+                                                value="forward" 
+                                                isChecked={inputs.weightBias === "forward" ? true : false} 
+                                                handleCustomRadio={handleCustomRadio}
+                                                />
+                                        </Box>
+                                    </Flex>
                                 </FormControl>
                             </GridItem>
                         </SimpleGrid>
-                            <FormLabel 
-                                fontSize={["xs", "sm", "md"]} 
-                                mx={0} 
-                                mb="2px">
-                                    Bike Type
-                            </FormLabel>
-                            <SimpleGrid columns={[2]} columnGap={[6, 6, 14]} mb={3}> 
+                        </Container>
+                        <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
+                            <Heading 
+                                as='h2' 
+                                textAlign="center" 
+                                fontSize={["xl", "2xl"]} 
+                                color="brand.white" 
+                                maxW="80%" ml={[-4, 0]} 
+                                mt={["1rem", "1.25rem"]} 
+                                > 
+                                BIKE METRICS 
+                            </Heading>
+                            <Box >
+                                <Button 
+                                    position="absolute" 
+                                    right="65px" 
+                                    bottom="2px"
+                                    size="xs" 
+                                    marginTop={["1rem", "1.5rem","2rem"]}
+                                    zIndex={imperialBike? 0 : 1}
+                                    bg={imperialBike? "brand.lightGrey" : "brand.blue"} 
+                                    onClick={toggleBikeUnit}>
+                                        Metric
+                                </Button>
+                                <Button 
+                                    position="absolute" 
+                                    right="10px" 
+                                    bottom="2px"    
+                                    size="xs" 
+                                    variant="ghost" 
+                                    marginTop={["1rem", "1.5rem","2rem"]}
+                                    zIndex={imperialBike? 1 : 0}
+                                    bg={imperialBike? "brand.blue": "brand.lightGrey"} 
+                                    onClick={toggleBikeUnit}>
+                                        Imperial
+                                </Button>
+                            </Box>
+                        </Flex>
+                        <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
+                        <Container maxW={["85%", "75%"]}>
+                            <SimpleGrid columns={2} columnGap={4} pb={3}>
                                 <GridItem colSpan={1}>
-                                    <CustomRadio 
-                                        title="Enduro" 
-                                        name="bikeType" 
-                                        value="enduro" 
-                                        isChecked={inputs.bikeType === "enduro" ? true : false} 
-                                        handleCustomRadio={handleCustomRadio}
-                                        />
+                                    <FormControl>
+                                        <FormLabel 
+                                            fontSize={["xs", "sm", "md"]} 
+                                            mx={0} 
+                                            mb="2px">
+                                                Reach {imperialBike? "(inches)" : "(mm)"}
+                                        </FormLabel>
+                                        <Input 
+                                            placeholder={imperialBike? "20.1" : "510"} 
+                                            maxWidth={24} 
+                                            focusBorderColor='brand.blue'
+                                            boxShadow='md'
+                                            type="number"
+                                            value={imperialBike? inputs.reachInches : inputs.reachMM}
+                                            name={imperialBike? "reachInches" : "reachMM"}
+                                            onChange={handleChange}
+                                            />
+                                    </FormControl>
                                 </GridItem>
-                                <GridItem colSpan={1} >
-                                    <CustomRadio 
-                                        title="Trail" 
-                                        name="bikeType" 
-                                        value="trail" 
-                                        isChecked={inputs.bikeType === "trail" ? true : false} 
-                                        handleCustomRadio={handleCustomRadio}
-                                        />
+                                <GridItem colSpan={1}>
+                                    <FormControl>
+                                        <FormLabel 
+                                            fontSize={["xs", "sm", "md"]} 
+                                            mx={0} 
+                                            mb="2px">
+                                                Stack {imperialBike? "(inches)" : "(mm)"}
+                                        </FormLabel>
+                                        <Input 
+                                            placeholder={imperialBike? "25.2" : "640"} 
+                                            maxWidth={24} 
+                                            focusBorderColor='brand.blue'
+                                            type="number"
+                                            boxShadow='md'
+                                            value={imperialBike? inputs.stackInches : inputs.stackMM}
+                                            name={imperialBike? "stackInches" : "stackMM"}
+                                            onChange={handleChange}
+                                            />
+                                    </FormControl>
                                 </GridItem>
                             </SimpleGrid>
-                    </Container>
-                    <Button 
-                        w={36} 
-                        bg="brand.blue" 
-                        borderRadius='50px'
-                        > 
-                            Calculate 
-                    </Button>
-            </VStack>
-        </Container> 
+                                <FormLabel 
+                                    fontSize={["xs", "sm", "md"]} 
+                                    mx={0} 
+                                    mb="2px">
+                                        Bike Type
+                                </FormLabel>
+                                <SimpleGrid columns={[2]} columnGap={[6, 6, 14]} mb={3}> 
+                                    <GridItem colSpan={1}>
+                                        <CustomRadio 
+                                            title="Enduro" 
+                                            name="bikeType" 
+                                            value="enduro" 
+                                            isChecked={inputs.bikeType === "enduro" ? true : false} 
+                                            handleCustomRadio={handleCustomRadio}
+                                            />
+                                    </GridItem>
+                                    <GridItem colSpan={1} >
+                                        <CustomRadio 
+                                            title="Trail" 
+                                            name="bikeType" 
+                                            value="trail" 
+                                            isChecked={inputs.bikeType === "trail" ? true : false} 
+                                            handleCustomRadio={handleCustomRadio}
+                                            />
+                                    </GridItem>
+                                </SimpleGrid>
+                        </Container>
+                        <Button 
+                            w={36} 
+                            bg="brand.blue" 
+                            borderRadius='50px'
+                            > 
+                                Calculate 
+                        </Button>
+                </VStack>
+            </Container> 
+        </div>
     )
 }

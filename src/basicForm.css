@@ -1,0 +1,29 @@
+.basicFormBox{
+    overflow: auto;
+}
+
+@media screen and (orientation:portrait){
+    .basicFormBox{
+        height: calc(100vh - 50px);
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media screen and (orientation:landscape){
+    /* Landscape - Mobile */
+    .basicFormBox{
+        height: 100%;
+        display: flex;
+        align-items: flex-start; 
+    }
+
+    /* Landscape - Desktops / Tablets */
+      @media screen and (min-width: 900px){
+        .basicFormBox{
+            height: calc(100vh - 50px);
+            display: flex;
+            align-items: center;
+        }
+    }
+}

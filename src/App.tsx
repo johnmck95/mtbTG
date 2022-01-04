@@ -1,4 +1,3 @@
-import * as React from "react"
 import { ChakraProvider, extendTheme, Box } from "@chakra-ui/react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Header from "./components/Header"
@@ -23,7 +22,15 @@ const theme = extendTheme({
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Header />
-    <Box as="main" w="100%" pt="50px" bg="brand.flatBlack" color="brand.white">
+    <Box 
+      as="main" 
+      w="100%" 
+      mt="50px" 
+      bg="brand.flatBlack" 
+      color="brand.white"
+      height="calc(100vh - 50px)"
+      overflow="auto"
+      >
       <Router>
           <Routes>
             <Route path="/" element={<Home/>} />
