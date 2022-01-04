@@ -21,7 +21,7 @@ export default function Header() {
     const breakpoint = 520;
 
     return(
-        <Box className="HEADER-BOX" as="header" w="100%"  position="fixed" top="0" bg="brand.black" color="brand.white" zIndex="200">
+        <Box as="header" w="100%"  position="fixed" top="0" bg="brand.black" color="brand.white" zIndex="200">
             <Container bg="black" maxW="50rem" p="0px">
                 <Flex justify="space-between" alignItems="center" px="8px" h='50px'>
                     <Link href="/">

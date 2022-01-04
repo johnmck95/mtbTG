@@ -28,14 +28,12 @@ export default function Home() {
 
     return(   
         <Box 
-            className="Home-Box"
             w="100%"  
             backgroundImage={HomePhoto} 
             backgroundRepeat="no-repeat" 
             backgroundPosition="60% 50%" 
             backgroundSize="145%" 
-            height="100%"
-            >
+            height="100%">
                 {displayedComponent === "ChooseSetupGuide" && 
                     <ChooseSetupGuide 
                         handleBasicClick={handleBasic} 
