@@ -1,8 +1,8 @@
 import ChooseSetupGuide from "../components/ChooseSetupGuide"
 import BasicForm from "../components/BasicForm"
-import {VStack, Box} from "@chakra-ui/react"
+import {Box} from "@chakra-ui/react"
 import HomePhoto from "../images/hartland-enduro.jpg"
-import React, {useState} from "react"
+import {useState} from "react"
 
 export default function Home() {
     const [isBasicClicked, setIsBasicClicked] = useState(true) //intuitivelty this should be false, but the initial render sets it false in handleBasic
@@ -34,9 +34,7 @@ export default function Home() {
             backgroundRepeat="no-repeat" 
             backgroundPosition="60% 50%" 
             backgroundSize="145%" 
-            // height="calc(100vh - 50px)"
             height="100%"
-            overflow="show"
             >
                 {displayedComponent === "ChooseSetupGuide" && 
                     <ChooseSetupGuide 

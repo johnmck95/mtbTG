@@ -1,4 +1,4 @@
-import {Divider, Box, Text, VStack, Heading, Button, Container} from "@chakra-ui/react"
+import {Divider, Text, VStack, Heading, Button, Container} from "@chakra-ui/react"
 import "../chooseSetupGuide.css"
 
 interface ChooseSetupGuideProps {
@@ -11,10 +11,30 @@ export default function ChooseSetupGuide({handleBasicClick, isAdvancedHovered, h
 
     return (
         <div className="chooseSetupGuideBox">
-            <Container  maxW="37.5rem">
-                <VStack bg='brand.darkGrey' m="30px" justify="flex-start"  borderRadius="16px" h="22rem">
-                    <Heading as='h2' textAlign="center" fontSize="2xl" color="brand.white" maxW="80%" marginTop={["1rem", "1.5rem","2rem"]} >CHOOSE SETUP GUIDE</Heading>
-                    <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="80%" marginBottom="8rem"/>
+            <Container maxW="37.5rem">
+                <VStack 
+                    bg='brand.darkGrey' 
+                    m="30px" 
+                    justify="flex-start"  
+                    borderRadius="16px" 
+                    h="22rem"
+                    >
+                    <Heading 
+                        as='h2' 
+                        textAlign="center" 
+                        fontSize="2xl" 
+                        color="brand.white" 
+                        maxW="80%" 
+                        marginTop={["1rem", "1.5rem","2rem"]} 
+                        >CHOOSE SETUP GUIDE
+                    </Heading>
+                    <Divider 
+                        orientation='horizontal' 
+                        borderColor="brand.white" 
+                        size="xl" 
+                        maxW="80%" 
+                        marginBottom="8rem"
+                        />
                     <VStack w="60%" paddingTop={["1.5rem", "2rem","2.5rem"]} spacing="2.5rem">
                         <VStack w="100%">
                             <Button 
@@ -26,7 +46,12 @@ export default function ChooseSetupGuide({handleBasicClick, isAdvancedHovered, h
                                 >
                                 Basic
                             </Button>
-                            <Text textAlign="center" fontSize="xs" color="lightGrey">Fastest Setup Guide</Text>
+                            <Text 
+                                textAlign="center" 
+                                fontSize="xs" 
+                                color="lightGrey"
+                                >Fastest Setup Guide
+                            </Text>
                         </VStack>
                         <VStack w="100%">
                             <Button 
@@ -38,7 +63,12 @@ export default function ChooseSetupGuide({handleBasicClick, isAdvancedHovered, h
                                 onMouseLeave={handleAdvancedHover}>
                                     {isAdvancedHovered? "Coming Eventually" : "Advanced"}
                             </Button>
-                            <Text textAlign="center" fontSize="xs" color="lightGrey">In-depth Setup Guide to Optimize Weight Distribution</Text>
+                            <Text 
+                                textAlign="center" 
+                                fontSize="xs" 
+                                color="lightGrey"
+                                >In-depth Setup Guide to Optimize Weight Distribution
+                            </Text>
                             </VStack>
                         </VStack>
                 </VStack>

@@ -7,15 +7,22 @@
         height: calc(100vh - 50px);
         display: flex;
         align-items: center;
-        /* background-color: magenta; */
     }
 }
 
 @media screen and (orientation:landscape){
+    /* Landscape - Mobile */
     .chooseSetupGuideBox{
         height: 100%;
         display: flex;
         align-items: flex-start; 
-        /* background-color: aqua; */
+    }
+    /* Landscape - Desktops / Tablets */
+    @media screen and (min-width: 768px){
+        .chooseSetupGuideBox{
+            height: calc(100vh - 50px);
+            display: flex;
+            align-items: center;
+        }
     }
 }
