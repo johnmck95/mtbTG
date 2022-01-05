@@ -1,7 +1,7 @@
 import {ChangeEvent, useState} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
-import "../basicForm.css"
+import "../styling/basicForm.css"
 
 export default function BasicForm() {
     const [imperialRider, setImperialRider] = useState(true)
