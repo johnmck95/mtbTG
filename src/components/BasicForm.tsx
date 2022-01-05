@@ -66,6 +66,10 @@ export default function BasicForm() {
         }))
     }
 
+    function handleSubmit() {
+        console.log(inputs)
+    }
+
     // NOTE: watch out for 'e' in the input - currently unhandled
     function bikeStateConversion() {
         let reachMMCalc = 0
@@ -137,7 +141,7 @@ export default function BasicForm() {
                     <Container maxW={["85%", "75%"]}>
                         <SimpleGrid columns={2} columnGap={2}>
                             <GridItem colSpan={1} pb={1}>
-                                <FormControl autocomplete="none">
+                                <FormControl autoComplete="none">
                                     <FormLabel 
                                         fontSize={["xs", "sm", "md"]} 
                                         mx={0} mb="2px"
@@ -149,7 +153,7 @@ export default function BasicForm() {
                                         focusBorderColor='brand.blue'
                                         type="number"
                                         boxShadow='md'  
-                                        autocomplete="off"
+                                        autoComplete="off"
                                         onChange={handleChange}
                                         value={imperialRider? inputs.heightFeet : inputs.heightCM}
                                         name={imperialRider? "heightFeet" : "heightCM"}
@@ -171,7 +175,7 @@ export default function BasicForm() {
                                             focusBorderColor='brand.blue'
                                             type="number"
                                             boxShadow='md'
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             value={inputs.heightInches}
                                             name={"heightInches"}
                                             onChange={handleChange}
@@ -270,7 +274,7 @@ export default function BasicForm() {
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             type="number"
                                             value={imperialBike? inputs.reachInches : inputs.reachMM}
                                             name={imperialBike? "reachInches" : "reachMM"}
@@ -292,7 +296,7 @@ export default function BasicForm() {
                                             focusBorderColor='brand.blue'
                                             type="number"
                                             boxShadow='md'
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             value={imperialBike? inputs.stackInches : inputs.stackMM}
                                             name={imperialBike? "stackInches" : "stackMM"}
                                             onChange={handleChange}
@@ -331,6 +335,7 @@ export default function BasicForm() {
                             w={36} 
                             bg="brand.blue" 
                             borderRadius='50px'
+                            onClick={handleSubmit}
                             > 
                                 Calculate 
                         </Button>
