@@ -14,7 +14,6 @@ interface BikeConversionProps{
     stackMMCalc: number;
     stackInchCalc: number;
 }
-
 interface BasicFormProps{
     inputs: {
         heightFeet: string,
@@ -31,8 +30,10 @@ interface BasicFormProps{
     handleCustomRadio: (name: string, value: string) => void;
     handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
     handleBikeConversion: ({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: BikeConversionProps) => void;
+    handleFormCompletion: () => void;
 }
-export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion}: BasicFormProps) {
+
+export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
 
@@ -63,11 +64,6 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc})
     }
 
-    // keep here - Calculate completeness then add a handleIsFormComplete
-    function handleSubmit() {
-        console.log(inputs)
-    }
-
     // NOTE: watch out for 'e' in the input - currently unhandled
     function bikeStateConversion() {
         let reachMMCalc = 0
@@ -85,6 +81,39 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             stackMMCalc = parseFloat(inputs.stackInches)*25.4
         // updates state in home.tsx
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
+    }
+
+    function handleSubmit() {
+        const {heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
+        const requirements = 5;
+        let criteria = 0
+        /*  1. check height is from 5'0 to 6'6-----------------
+                a. heightCM is from 152cm to 198cm
+                a. 5foot 0inches to 6foot 6inches
+
+            2. Check a weight bias has been selected----------- done
+
+            3. check the reach is from 400mm to 550mm----------
+                a. 400mm to 550mm
+                b. 15inches to 22inches
+            4. Check stack height is from 550mm to 680mm-------
+
+            5. Check a bike type has been selected------------- done
+        */
+        
+        if(weightBias !== "") // #2
+            criteria++
+
+            console.log(parseInt(reachInches))
+        if( (parseInt(reachMM) > 400 && parseInt(reachMM) < 550) || ( parseInt(reachInches) > 15.7 && parseInt(reachInches) < 21.7) )
+            criteria++
+
+        if(bikeType !== "") // #5
+            criteria++
+        
+            console.log("Criteria: " + criteria + "/5")
+        if (criteria === requirements)
+            handleFormCompletion()
     }
 
     return(
@@ -262,13 +291,14 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 Reach {imperialBike? "(inches)" : "(mm)"}
                                         </FormLabel>
                                         <Input 
-                                            placeholder={imperialBike? "20.1" : "510"} 
+                                            placeholder={imperialBike? "20.08" : "510"} 
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
                                             autoComplete="off"
                                             type="number"
                                             value={imperialBike? inputs.reachInches : inputs.reachMM}
+                                            // value={imperialBike? Math.round(parseFloat(inputs.reachInches)) : Math.round(parseFloat(inputs.reachMM))}
                                             name={imperialBike? "reachInches" : "reachMM"}
                                             onChange={handleChange}
                                             />
@@ -283,7 +313,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 Stack {imperialBike? "(inches)" : "(mm)"}
                                         </FormLabel>
                                         <Input 
-                                            placeholder={imperialBike? "25.2" : "640"} 
+                                            placeholder={imperialBike? "25.20" : "640"} 
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             type="number"

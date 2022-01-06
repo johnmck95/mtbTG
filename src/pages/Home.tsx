@@ -6,9 +6,10 @@ import HomePhoto from "../images/hartland-enduro.jpg"
 import {ChangeEvent, useState} from "react"
 
 export default function Home() {
-    const [isBasicClicked, setIsBasicClicked] = useState(true) //intuitivelty this should be false, but the initial render sets it false in handleBasic
+
+    let displayedComponent = "ChooseSetupGuide"
+    const [isBasicClicked, setIsBasicClicked] = useState(false)
     const [isAdvancedHovered, setIsAdvancedHovered] = useState(false)
-    const [displayedComponent, setDisplayedComponent] = useState("ChooseSetupGuide")
     const [isFormComplete, setIsFormComplete] = useState(false)
     const [inputs, setInputs] = useState({
         heightFeet: "",
@@ -22,8 +23,12 @@ export default function Home() {
         bikeType: ""
     })
 
-    // ===================================== FROM basicForm.tsx =====================================
-    // updates input state basic on a change in input
+    
+    // ==========================================================================================================
+    // ===================================== basicForm.tsx  State Functions =====================================
+
+
+    /* Updates state from an <Input/> change in basicForm.tsx */
     function handleBasicChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
         const {name, value} = event.target
         setInputs(prevInputs => ({
@@ -31,7 +36,8 @@ export default function Home() {
             [name] : value,
         }))     
     }
-    //updates state based on our 'CustomRadioComponent'
+
+    /* Updates state based on our 'CustomRadioComponent' */
     function handleBasicCustomRadio(name: string, value: string) {
         setInputs(prevInputs => ({
             ...prevInputs,
@@ -39,7 +45,8 @@ export default function Home() {
         }))
     }
 
-    // handles the state conversion for metric/imperial riders
+    /* Updates state conversion for metric/imperial riders */
+    // ********** BUG: 152.4cm translates to 5foot 12 inches, this should be 5foot 0 ************** BUG
     interface handleBasicRiderConversionProps{
         heightCMCalc: number;
         heightFootCalc: number;
@@ -54,7 +61,7 @@ export default function Home() {
         }))
     }
 
-    // handles the state conversion for metric/imperial bikes
+    /* Updates state conversion for metric/imperial bikes */
     interface handleBasicBikeConversionProps{
         reachMMCalc: number;
         reachInchCalc: number;
@@ -65,33 +72,24 @@ export default function Home() {
         setInputs( prevInputs => ({
             ...prevInputs,
             reachMM: reachMMCalc !== 0? reachMMCalc.toFixed(0) : inputs.reachMM,
-            reachInches: reachInchCalc !== 0? reachInchCalc.toFixed(1) : inputs.reachInches,
+            reachInches: reachInchCalc !== 0? reachInchCalc.toFixed(2) : inputs.reachInches,
             stackMM: stackMMCalc !== 0? stackMMCalc.toFixed(0) : inputs.stackMM,
-            stackInches: stackInchCalc !== 0? stackInchCalc.toFixed(1) : inputs.stackInches
+            stackInches: stackInchCalc !== 0? stackInchCalc.toFixed(2) : inputs.stackInches
         }))
     }
     
-    // ===================================== FROM basicForm.tsx =====================================
 
-    // Is the 'Basic' button clciked on ChooseSetupGuide
-    function handleBasic() {
-        setIsBasicClicked( prevIsBasicClicked => !prevIsBasicClicked )
-        renderComponent()
-    }
+    // ================================== End Of basicForm.tsx  State Functions =================================
+    // ==========================================================================================================
 
-    // Is the 'Advanced' button clciked on ChooseSetupGuide
-    function handleAdvanced() {
-        setIsAdvancedHovered( prevIsAdvancedHovered => !prevIsAdvancedHovered )
-        //renderComponent() // This needs to be included when the advanced form is  built
-    }
 
-    // Selects whether to display ChooseSetupGuide, BasicForm or BasicOutput
-    function renderComponent() {
-        if( isBasicClicked )
-            setDisplayedComponent("BasicForm")
-        else
-            setDisplayedComponent("ChooseSetupGuide")
-    }
+    if(isFormComplete && isBasicClicked)
+        displayedComponent= "BasicOutput"
+    else if(isBasicClicked)
+        displayedComponent="BasicForm"
+    else
+        displayedComponent="ChooseSetupGuide"
+
 
     return(   
         <Box 
@@ -103,9 +101,9 @@ export default function Home() {
             height="100%">
                 {displayedComponent === "ChooseSetupGuide" && 
                     <ChooseSetupGuide 
-                        handleBasicClick={handleBasic} 
+                        handleBasicClick={ () => setIsBasicClicked( prevIsBasicClicked => !prevIsBasicClicked ) } 
                         isAdvancedHovered={isAdvancedHovered} 
-                        handleAdvancedHover={handleAdvanced}/>
+                        handleAdvancedHover={ () => setIsAdvancedHovered( prevIsAdvancedHovered => !prevIsAdvancedHovered ) }/>
                 }
                 { displayedComponent === "BasicForm" &&
                     <BasicForm
@@ -114,7 +112,13 @@ export default function Home() {
                         handleCustomRadio={handleBasicCustomRadio}
                         handleRiderConversion={handleBasicRiderConversion}
                         handleBikeConversion={handleBasicBikeConversion}
+                        handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}
                     />
+                }
+                {displayedComponent === "BasicOutput" &&
+                    <BasicOutput 
+                        inputs={inputs}
+                        />
                 }
         </Box>
     )
