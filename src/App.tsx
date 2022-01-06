@@ -14,7 +14,9 @@ const theme = extendTheme({
       white: "#FFFDFA",
       black: "black",
       lightBlack: "#222222",
-      flatBlack: "#262626"
+      flatBlack: "#262626",
+      
+      // darkGrey: '#121212' //testing this out
     }
   }
 })

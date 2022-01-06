@@ -1,7 +1,8 @@
 import {ChangeEvent, useState} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
+import {Button, HStack, Text, Icon, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
+import {BsExclamationTriangle} from "react-icons/bs"
 
 interface RiderConversionProps{
     heightCMCalc: number;
@@ -87,30 +88,44 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         const {heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         const requirements = 5;
         let criteria = 0
-        /*  1. check height is from 5'0 to 6'6-----------------
-                a. heightCM is from 152cm to 198cm
-                a. 5foot 0inches to 6foot 6inches
-
-            2. Check a weight bias has been selected----------- done
-
-            3. check the reach is from 400mm to 550mm----------
-                a. 400mm to 550mm
-                b. 15inches to 22inches
-            4. Check stack height is from 550mm to 680mm-------
-
-            5. Check a bike type has been selected------------- done
+        /*  1. check height is from 5'0 to 7'0
+            2. Check a weight bias has been selected
+            3. check the reach is from 400mm to 550mm
+            4. Check stack height is from 550mm to 680mm
+            5. Check a bike type has been selected
         */
-        
-        if(weightBias !== "") // #2
-            criteria++
+        // (heightFoot between x and y) && (heightInch between x and y) || (heightCM between x and y)
+        if( (parseInt(heightFeet) >= 5 && parseInt(heightFeet) <= 7) 
+            || (parseInt(heightCM) >= 152 && parseInt(heightCM) < 213)){
+                criteria++
+        }else{
+            // set a height error
+        }
 
-            console.log(parseInt(reachInches))
-        if( (parseInt(reachMM) > 400 && parseInt(reachMM) < 550) || ( parseInt(reachInches) > 15.7 && parseInt(reachInches) < 21.7) )
+        if (weightBias !== ""){
             criteria++
+        }else{
+            // set a weight bias error
+        }
+        if((parseInt(reachMM) >= 400 && parseInt(reachMM) <= 550) ||
+             ( parseFloat(reachInches) >= 15.75 && parseFloat(reachInches) <= 21.65)){ // #3
+            criteria++
+        }else{
+            // set a reach error
+        }
+        if ( (parseInt(stackMM) >= 550 && parseInt(stackMM) <= 680) ||
+            ( parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77) ){ //#4
+                criteria++
+        }else{
+            // set a stack error
+        }
+        if(bikeType !== ""){ // #5
+            criteria++
+        }else{
+            // set a bikeType error
+        }
 
-        if(bikeType !== "") // #5
-            criteria++
-        
+
             console.log("Criteria: " + criteria + "/5")
         if (criteria === requirements)
             handleFormCompletion()
@@ -174,6 +189,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                         focusBorderColor='brand.blue'
                                         type="number"
                                         boxShadow='md'  
+                                        borderColor="brand.lightGrey"
                                         autoComplete="off"
                                         onChange={handleChange}
                                         value={imperialRider? inputs.heightFeet : inputs.heightCM}
@@ -196,6 +212,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             focusBorderColor='brand.blue'
                                             type="number"
                                             boxShadow='md'
+                                            borderColor="brand.lightGrey"
                                             autoComplete="off"
                                             value={inputs.heightInches}
                                             name={"heightInches"}
@@ -204,6 +221,12 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     </FormControl>
                                 </GridItem>
                             }
+                            <GridItem colSpan={2}>
+                                <HStack>
+                                    <Icon as={BsExclamationTriangle} color="#d5798a" w={5} h={5}/>
+                                    <Text color="#d5798a" fontWeight={500}>Please enter a height from 5'0 to 7'0</Text>
+                                </HStack>
+                            </GridItem>
                         </SimpleGrid>
                         <SimpleGrid columns={1}> 
                             <GridItem colSpan={1}>
@@ -295,10 +318,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
+                                            borderColor="brand.lightGrey"
                                             autoComplete="off"
                                             type="number"
                                             value={imperialBike? inputs.reachInches : inputs.reachMM}
-                                            // value={imperialBike? Math.round(parseFloat(inputs.reachInches)) : Math.round(parseFloat(inputs.reachMM))}
                                             name={imperialBike? "reachInches" : "reachMM"}
                                             onChange={handleChange}
                                             />
@@ -318,6 +341,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             focusBorderColor='brand.blue'
                                             type="number"
                                             boxShadow='md'
+                                            borderColor="brand.lightGrey"
                                             autoComplete="off"
                                             value={imperialBike? inputs.stackInches : inputs.stackMM}
                                             name={imperialBike? "stackInches" : "stackMM"}
