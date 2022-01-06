@@ -3,21 +3,38 @@ import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormContro
 import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
 
-export default function BasicForm() {
+interface RiderConversionProps{
+    heightCMCalc: number;
+    heightFootCalc: number;
+    heightInchesCalc: number;
+}
+interface BikeConversionProps{
+    reachMMCalc: number;
+    reachInchCalc: number;
+    stackMMCalc: number;
+    stackInchCalc: number;
+}
+
+interface BasicFormProps{
+    inputs: {
+        heightFeet: string,
+        heightInches: string,
+        heightCM: string,
+        weightBias: string,
+        reachInches: string,
+        reachMM: string,
+        stackInches: string,
+        stackMM: string,
+        bikeType: string
+    };
+    handleChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void; //all these name have 'Basic' after 'handle' when in Home.tsx
+    handleCustomRadio: (name: string, value: string) => void;
+    handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
+    handleBikeConversion: ({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: BikeConversionProps) => void;
+}
+export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
-
-    const [inputs, setInputs] = useState({
-        heightFeet: "",
-        heightInches: "",
-        heightCM: "",
-        weightBias: "",
-        reachInches: "",
-        reachMM: "",
-        stackInches: "",
-        stackMM: "",
-        bikeType: ""
-    })
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
@@ -27,21 +44,6 @@ export default function BasicForm() {
     function toggleBikeUnit(){
         setImperialBike(prevImperialBike => !prevImperialBike)
         bikeStateConversion()
-    }
-
-    function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
-        const {name, value} = event.target
-        setInputs(prevInputs => ({
-            ...prevInputs,
-            [name] : value,
-        }))     
-    }
-
-    function handleCustomRadio(name: string, value: string) {
-        setInputs(prevInputs => ({
-            ...prevInputs,
-            [name]: value
-        }))
     }
 
     // NOTE: watch out for 'e' in the input - currently unhandled
@@ -57,15 +59,11 @@ export default function BasicForm() {
             heightFootCalc = Math.floor(totalInches / 12)
             heightInchesCalc = (totalInches % 12)          
         }
-
-        setInputs(prevInputs => ({
-            ...prevInputs,
-            heightCM: heightCMCalc !== 0? heightCMCalc.toFixed(0) : inputs.heightCM,
-            heightFeet: heightFootCalc !== 0? heightFootCalc.toFixed(0) : inputs.heightFeet,
-            heightInches: heightInchesCalc !== 0? heightInchesCalc.toFixed(0) : inputs.heightInches
-        }))
+        // updates state in home.tsx
+        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc})
     }
 
+    // keep here - Calculate completeness then add a handleIsFormComplete
     function handleSubmit() {
         console.log(inputs)
     }
@@ -85,14 +83,8 @@ export default function BasicForm() {
             reachMMCalc = parseFloat(inputs.reachInches)*25.4
         if(inputs.stackInches !== "")
             stackMMCalc = parseFloat(inputs.stackInches)*25.4
-
-        setInputs( prevInputs => ({
-            ...prevInputs,
-            reachMM: reachMMCalc !== 0? reachMMCalc.toFixed(0) : inputs.reachMM,
-            reachInches: reachInchCalc !== 0? reachInchCalc.toFixed(1) : inputs.reachInches,
-            stackMM: stackMMCalc !== 0? stackMMCalc.toFixed(0) : inputs.stackMM,
-            stackInches: stackInchCalc !== 0? stackInchCalc.toFixed(1) : inputs.stackInches
-        }))
+        // updates state in home.tsx
+        handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
     }
 
     return(
