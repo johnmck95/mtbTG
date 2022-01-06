@@ -37,9 +37,14 @@ interface BasicFormProps{
 export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
+    let requirements = 5 // Used for form submission. Needs to be updated when metric/imperial button state changes.
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
+        if (imperialRider)
+            requirements = 7
+        else
+            requirements = 5
         riderStateConversion()
     }
 
@@ -86,47 +91,89 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
 
     function handleSubmit() {
         const {heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
-        const requirements = 5;
         let criteria = 0
-        /*  1. check height is from 5'0 to 7'0
-            2. Check a weight bias has been selected
-            3. check the reach is from 400mm to 550mm
-            4. Check stack height is from 550mm to 680mm
-            5. Check a bike type has been selected
-        */
-        // (heightFoot between x and y) && (heightInch between x and y) || (heightCM between x and y)
-        if( (parseInt(heightFeet) >= 5 && parseInt(heightFeet) <= 7) 
-            || (parseInt(heightCM) >= 152 && parseInt(heightCM) < 213)){
-                criteria++
-        }else{
-            // set a height error
+        if(imperialRider)
+            requirements = 7; // additional checks required
+
+        /* 1. Check heightFeet is an integer for imperialRider*/
+        if(imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0){
+            criteria++
+        }else if(imperialRider){
+            console.log("Please enter a valid integer for Height (feet).")
+            return
         }
 
+        /* 2. Check heightInches is an integer from 0-11 for imperialRider */
+        if( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){
+            criteria++
+        }else if(imperialRider) {
+            console.log("Please enter an value between 0-11 for Height (inches).")
+            return
+        }
+
+        /* 3. Check height is from 5'0 to 6'6  for imperialRider*/
+        if( (imperialRider && (((parseInt(heightFeet) === 6 && parseFloat(heightInches) <= 6) 
+            || parseInt(heightFeet) === 5) && parseFloat(heightInches) < 12 ))){
+                criteria++
+        }else if (imperialRider){
+            console.log("Please enter a Height between 5'0 and 6'6.")
+            return
+        }
+
+        /* 4. Check height is from 152cm to 198cm for metricRider */
+        if(!imperialRider && (parseInt(heightCM) >= 152 && parseInt(heightCM) <= 198)){
+            criteria++
+        }else if(!imperialRider){
+            console.log("Please enter a Height between 152cm and 198cm.")
+            return
+        }
+
+        /* 5. Check a weight bias has been selected for all riders */
         if (weightBias !== ""){
             criteria++
         }else{
-            // set a weight bias error
+            console.log("Please select a Weight Bias.")
+            return
         }
-        if((parseInt(reachMM) >= 400 && parseInt(reachMM) <= 550) ||
-             ( parseFloat(reachInches) >= 15.75 && parseFloat(reachInches) <= 21.65)){ // #3
+
+        /* 6. Check the reach is from 400mm to 550mm for a metricRider*/
+        if( !imperialBike && ((parseInt(reachMM) >= 400 && parseInt(reachMM) <= 550))){
             criteria++
-        }else{
-            // set a reach error
+        }else if(!imperialBike){
+            console.log("Please enter a reach value between 400mm and 550mm.")
+            return
         }
-        if ( (parseInt(stackMM) >= 550 && parseInt(stackMM) <= 680) ||
-            ( parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77) ){ //#4
+
+        /* 7. Check the reach is from 15.75 - 21.65 inches for an imperialBike */
+        if(imperialBike && (parseFloat(reachInches) >= 15.75 && parseFloat(reachInches) <= 21.65)){
+            criteria++
+        }else if(imperialBike){
+            console.log("Please enter a reach value between 15.75 - 21.65 inches.")
+        }
+
+        /* 8. Check stack height is from 550mm to 680mm  for a metricRider*/
+        if ( !imperialBike && (parseInt(stackMM) >= 550 && parseInt(stackMM) <= 680)){
                 criteria++
-        }else{
+        }else if(!imperialBike){
+            console.log("Please enter a stack value between 550m and 680mm.")
             // set a stack error
         }
+
+        /* 9. Check the stack height is from 21.65 - 26.77 inches for an imperialRider */
+        if(imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
+            criteria++
+        }else if(imperialBike){
+            console.log("Please enter a stack value between 21.65 - 26.77 inches.")
+        }
+
+        /* 10. Check a bike type has been selected */
         if(bikeType !== ""){ // #5
             criteria++
         }else{
-            // set a bikeType error
+            console.log("Please select a bike type")
         }
 
-
-            console.log("Criteria: " + criteria + "/5")
+        console.log("Criteria: " + criteria + "/" + requirements)
         if (criteria === requirements)
             handleFormCompletion()
     }
