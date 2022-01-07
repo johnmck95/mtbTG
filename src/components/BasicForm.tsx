@@ -172,37 +172,31 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     }
 
     const heightErrorAlerts = errorCodes.map(error => {
-        if(showErrors && imperialRider && error.showError && error.errorNumber < 3){
+        if (showErrors && imperialRider && error.showError && error.errorNumber < 3){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        }else if(showErrors && !imperialRider && error.showError && error.errorNumber === 3){
+        } else if (showErrors && !imperialRider && error.showError && error.errorNumber === 3){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        }else{
-            return <div key={error.errorNumber}></div>
-        }
+        } else return null //<div key={error.errorNumber}></div>
     })
 
     const weightBiasErrorAlerts = errorCodes.map(error => {
-        if(showErrors && error.showError && error.errorNumber === 4)
+        if (showErrors && error.showError && error.errorNumber === 4)
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        else return <div key={error.errorNumber}></div>
+        else return null //<div key={error.errorNumber}></div>
     })
 
     const reachStackErrorAlerts = errorCodes.map(error => {
-        if(showErrors && !imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
-            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
-        }else if(showErrors && imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
-            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
-        }else{
-            return <div key={error.errorNumber}></div>
-        }
+        if (showErrors && !imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
+            return <ErrorAlert  key={error.errorNumber} errorMessage={error.errorMessage} />
+        } else if (showErrors && imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
+        } else return null
     })
 
     const bikeTypeErrorAlerts = errorCodes.map(error => {
-        if(showErrors && error.showError && error.errorNumber === 9){
+        if (showErrors && error.showError && error.errorNumber === 9){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
-        }else{
-            return <div key={error.errorNumber}></div>
-        }
+        } else return null       
     })
 
     return(
