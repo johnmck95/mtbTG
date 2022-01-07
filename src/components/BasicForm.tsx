@@ -28,7 +28,8 @@ interface BasicFormProps{
         stackMM: string,
         bikeType: string
     };
-    handleChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void; //all these name have 'Basic' after 'handle' when in Home.tsx
+    /* all these functions have 'Basic' after 'handle' when in Home.tsx */
+    handleChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void;
     handleCustomRadio: (name: string, value: string) => void;
     handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
     handleBikeConversion: ({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: BikeConversionProps) => void;
@@ -40,7 +41,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
-    let requirements = 5 // Used for form submission. Needs to be updated when metric/imperial button state changes.
+    let requirements = 5
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
@@ -69,7 +70,6 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             heightFootCalc = Math.floor(totalInches / 12)
             heightInchesCalc = (totalInches % 12)          
         }
-        // updates state in home.tsx
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc})
     }
 
@@ -88,7 +88,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             reachMMCalc = parseFloat(inputs.reachInches)*25.4
         if(inputs.stackInches !== "")
             stackMMCalc = parseFloat(inputs.stackInches)*25.4
-        // updates state in home.tsx
+
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
     }
 
@@ -172,13 +172,13 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else if (showErrors && !imperialRider && error.showError && error.errorNumber === 3){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else return null //<div key={error.errorNumber}></div>
+        } else return null
     })
 
     const weightBiasErrorAlerts = errorCodes.map(error => {
         if (showErrors && error.showError && error.errorNumber === 4)
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        else return null //<div key={error.errorNumber}></div>
+        else return null
     })
 
     const reachStackErrorAlerts = errorCodes.map(error => {
@@ -197,7 +197,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
 
     return(
         <div className="basicFormBox">
-            <Container maxW="37.5rem" >
+            <Container maxW="37.5rem">
                 <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10}>
                     <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
                         <Heading 
@@ -290,9 +290,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     </FormControl>
                                 </GridItem>
                             }
-
                             {heightErrorAlerts}
-
                         </SimpleGrid>
                         <SimpleGrid columns={1}> 
                             <GridItem colSpan={1}>
@@ -332,11 +330,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     </Flex>
                                 </FormControl>
                             </GridItem>
-
-
                             {weightBiasErrorAlerts}
-
-
                         </SimpleGrid>
                         </Container>
                         <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
@@ -425,11 +419,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             />
                                     </FormControl>
                                 </GridItem>
-
-
                                 {reachStackErrorAlerts}
-
-
                             </SimpleGrid>
                                 <FormLabel 
                                     fontSize={["xs", "sm", "md"]} 
@@ -459,10 +449,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             />
                                     </GridItem>
                                 </SimpleGrid>
-
                                 {bikeTypeErrorAlerts}
-
-
                         </Container>
                         <Button 
                             w={36} 
