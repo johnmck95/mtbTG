@@ -49,15 +49,11 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         else
             requirements = 5
         riderStateConversion()
-        if(showErrors)
-            handleSubmit()
     }
 
     function toggleBikeUnit(){
         setImperialBike(prevImperialBike => !prevImperialBike)
         bikeStateConversion()
-        if(showErrors)
-            handleSubmit()
     }
 
     // NOTE: watch out for 'e' in the input - currently unhandled
