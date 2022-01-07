@@ -201,8 +201,8 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
 
     return(
         <div className="basicFormBox">
-            <Container maxW="37.5rem">
-                <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10} >
+            <Container maxW="37.5rem" >
+                <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10}>
                     <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
                         <Heading 
                             as='h2' 
@@ -398,7 +398,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
-                                            borderColor="brand.lightGrey"
+                                            borderColor={(errorCodes[5].showError || errorCodes[6].showError)? "brand.error" : "brand.lightGrey"}
                                             autoComplete="off"
                                             type="number"
                                             value={imperialBike? inputs.reachInches : inputs.reachMM}
@@ -421,7 +421,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             focusBorderColor='brand.blue'
                                             type="number"
                                             boxShadow='md'
-                                            borderColor="brand.lightGrey"
+                                            borderColor={(errorCodes[7].showError || errorCodes[8].showError)? "brand.error" : "brand.lightGrey"}
                                             autoComplete="off"
                                             value={imperialBike? inputs.stackInches : inputs.stackMM}
                                             name={imperialBike? "stackInches" : "stackMM"}
