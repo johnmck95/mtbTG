@@ -8,6 +8,7 @@ import {ChangeEvent, useState} from "react"
 export default function Home() {
 
     let displayedComponent = "ChooseSetupGuide"
+    const [reRender, setReRender] = useState(0)
     const [isBasicClicked, setIsBasicClicked] = useState(false)
     const [isAdvancedHovered, setIsAdvancedHovered] = useState(false)
     const [isFormComplete, setIsFormComplete] = useState(false)
@@ -113,6 +114,7 @@ export default function Home() {
                         handleRiderConversion={handleBasicRiderConversion}
                         handleBikeConversion={handleBasicBikeConversion}
                         handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}
+                        handleReRender = {() => setReRender( () => reRender + 1 )}
                     />
                 }
                 {displayedComponent === "BasicOutput" &&

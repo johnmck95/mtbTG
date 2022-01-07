@@ -1,8 +1,9 @@
 import {ChangeEvent, useState} from "react"
-import {Button, HStack, Text, Icon, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
-import {BsExclamationTriangle} from "react-icons/bs"
+import errorCodes from "../data/ErrorCodes.js"
+import ErrorAlert from "./ErrorAlert"
 
 interface RiderConversionProps{
     heightCMCalc: number;
@@ -32,11 +33,13 @@ interface BasicFormProps{
     handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
     handleBikeConversion: ({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: BikeConversionProps) => void;
     handleFormCompletion: () => void;
+    handleReRender: () => void;
 }
 
-export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion}: BasicFormProps) {
+export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
+    const [showErrors, setShowErrors] = useState(false)
     let requirements = 5 // Used for form submission. Needs to be updated when metric/imperial button state changes.
 
     function toggleRiderUnit() {
@@ -46,11 +49,15 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         else
             requirements = 5
         riderStateConversion()
+        if(showErrors)
+            handleSubmit()
     }
 
     function toggleBikeUnit(){
         setImperialBike(prevImperialBike => !prevImperialBike)
         bikeStateConversion()
+        if(showErrors)
+            handleSubmit()
     }
 
     // NOTE: watch out for 'e' in the input - currently unhandled
@@ -93,90 +100,129 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         const {heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         let criteria = 0
         if(imperialRider)
-            requirements = 7; // additional checks required
+            requirements = 7;
+        setShowErrors(() => true)
 
-        /* 1. Check heightFeet is an integer for imperialRider*/
+        /* 0. Check heightFeet is an integer for imperialRider*/
         if(imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0){
             criteria++
+            errorCodes[0].showError = false
         }else if(imperialRider){
-            console.log("Please enter a valid integer for Height (feet).")
-            return
+            errorCodes[0].showError = true
         }
 
-        /* 2. Check heightInches is an integer from 0-11 for imperialRider */
+        /* 1. Check heightInches is less than 12 for imperialRider */
         if( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){
             criteria++
+            errorCodes[1].showError = false
         }else if(imperialRider) {
-            console.log("Please enter an value between 0-11 for Height (inches).")
-            return
+            errorCodes[1].showError = true
         }
 
-        /* 3. Check height is from 5'0 to 6'6  for imperialRider*/
-        if( (imperialRider && (((parseInt(heightFeet) === 6 && parseFloat(heightInches) <= 6) 
-            || parseInt(heightFeet) === 5) && parseFloat(heightInches) < 12 ))){
+        /* 2. Check height is from 5'0 to 6'6  for imperialRider*/
+        const totalInches = parseInt(heightFeet)*12 + parseFloat(heightInches)
+        if( totalInches >= 60 && totalInches <= 78){
                 criteria++
+                errorCodes[2].showError = false
         }else if (imperialRider){
-            console.log("Please enter a Height between 5'0 and 6'6.")
-            return
+            errorCodes[2].showError = true
         }
 
-        /* 4. Check height is from 152cm to 198cm for metricRider */
+        /* 3. Check height is from 152cm to 198cm for metricRider */
         if(!imperialRider && (parseInt(heightCM) >= 152 && parseInt(heightCM) <= 198)){
             criteria++
+            errorCodes[3].showError = false
         }else if(!imperialRider){
-            console.log("Please enter a Height between 152cm and 198cm.")
-            return
+            errorCodes[3].showError = true
         }
 
-        /* 5. Check a weight bias has been selected for all riders */
+        /* 4. Check a weight bias has been selected for all riders */
         if (weightBias !== ""){
             criteria++
+            errorCodes[4].showError = false
         }else{
-            console.log("Please select a Weight Bias.")
-            return
+            errorCodes[4].showError = true
         }
 
-        /* 6. Check the reach is from 400mm to 550mm for a metricRider*/
+        /* 5. Check the reach is from 400mm to 550mm for a metricRider*/
         if( !imperialBike && ((parseInt(reachMM) >= 400 && parseInt(reachMM) <= 550))){
             criteria++
+            errorCodes[5].showError = false
         }else if(!imperialBike){
-            console.log("Please enter a reach value between 400mm and 550mm.")
-            return
+            errorCodes[5].showError = true
         }
 
-        /* 7. Check the reach is from 15.75 - 21.65 inches for an imperialBike */
+        /* 6. Check the reach is from 15.75 - 21.65 inches for an imperialBike */
         if(imperialBike && (parseFloat(reachInches) >= 15.75 && parseFloat(reachInches) <= 21.65)){
             criteria++
+            errorCodes[6].showError = false
         }else if(imperialBike){
-            console.log("Please enter a reach value between 15.75 - 21.65 inches.")
+            errorCodes[6].showError = true
         }
 
-        /* 8. Check stack height is from 550mm to 680mm  for a metricRider*/
+        /* 7. Check stack height is from 550mm to 680mm  for a metricRider*/
         if ( !imperialBike && (parseInt(stackMM) >= 550 && parseInt(stackMM) <= 680)){
                 criteria++
+                errorCodes[7].showError = false
         }else if(!imperialBike){
-            console.log("Please enter a stack value between 550m and 680mm.")
-            // set a stack error
+            errorCodes[7].showError = true
         }
 
-        /* 9. Check the stack height is from 21.65 - 26.77 inches for an imperialRider */
+        /* 8. Check the stack height is from 21.65 - 26.77 inches for an imperialRider */
         if(imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
             criteria++
+            errorCodes[8].showError = false
         }else if(imperialBike){
-            console.log("Please enter a stack value between 21.65 - 26.77 inches.")
+            errorCodes[8].showError = true
         }
 
-        /* 10. Check a bike type has been selected */
+        /* 9. Check a bike type has been selected */
         if(bikeType !== ""){ // #5
             criteria++
+            errorCodes[9].showError = false
         }else{
-            console.log("Please select a bike type")
+            errorCodes[9].showError = true
         }
 
-        console.log("Criteria: " + criteria + "/" + requirements)
         if (criteria === requirements)
             handleFormCompletion()
+        else
+            handleReRender()
     }
+
+    const heightErrorAlerts = errorCodes.map(error => {
+        if(showErrors && imperialRider && error.showError && error.errorNumber < 3){
+            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+        }else if(showErrors && !imperialRider && error.showError && error.errorNumber === 3){
+            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+        }else{
+            return <></>
+        }
+    })
+
+    const weightBiasErrorAlerts = errorCodes.map(error => {
+        if(showErrors && error.showError && error.errorNumber === 4){
+            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+        }
+    })
+
+    const reachStackErrorAlerts = errorCodes.map(error => {
+        if(showErrors && !imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
+            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+        }else if(showErrors && imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
+            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+        }else{
+            return <></>
+        }
+    })
+
+    const bikeTypeErrorAlerts = errorCodes.map(error => {
+        if(showErrors && error.showError && error.errorNumber === 9){
+            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+        }else{
+            return <></>
+        }
+    })
 
     return(
         <div className="basicFormBox">
@@ -202,6 +248,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 size="xs" 
                                 marginTop={["1rem", "1.5rem","2rem"]}
                                 zIndex={imperialRider? 0 : 1}
+                                color={imperialRider? "brand.black": "brand.white"}
                                 bg={imperialRider? "brand.lightGrey" : "brand.blue"} 
                                 onClick={toggleRiderUnit}>
                                     Metric
@@ -215,6 +262,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 marginTop={["1rem", "1.5rem","2rem"]}
                                 zIndex={imperialRider? 1 : 0}
                                 bg={imperialRider? "brand.blue": "brand.lightGrey"} 
+                                color={imperialRider? "brand.white": "brand.black"}
                                 onClick={toggleRiderUnit}>
                                     Imperial
                             </Button>
@@ -236,7 +284,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                         focusBorderColor='brand.blue'
                                         type="number"
                                         boxShadow='md'  
-                                        borderColor="brand.lightGrey"
+                                        borderColor={
+                                            imperialRider? ((errorCodes[0].showError || errorCodes[2].showError)? "brand.error" : "brand.lightGrey")
+                                                : (errorCodes[3].showError? "brand.error" : "brand.lightGrey") 
+                                        }
                                         autoComplete="off"
                                         onChange={handleChange}
                                         value={imperialRider? inputs.heightFeet : inputs.heightCM}
@@ -259,7 +310,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             focusBorderColor='brand.blue'
                                             type="number"
                                             boxShadow='md'
-                                            borderColor="brand.lightGrey"
+                                            borderColor={(errorCodes[1].showError || errorCodes[2].showError)? "brand.error" : "brand.lightGrey"}
                                             autoComplete="off"
                                             value={inputs.heightInches}
                                             name={"heightInches"}
@@ -268,12 +319,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     </FormControl>
                                 </GridItem>
                             }
-                            <GridItem colSpan={2}>
-                                <HStack>
-                                    <Icon as={BsExclamationTriangle} color="#d5798a" w={5} h={5}/>
-                                    <Text color="#d5798a" fontWeight={500}>Please enter a height from 5'0 to 7'0</Text>
-                                </HStack>
-                            </GridItem>
+
+                            {heightErrorAlerts}
+
                         </SimpleGrid>
                         <SimpleGrid columns={1}> 
                             <GridItem colSpan={1}>
@@ -286,6 +334,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 name="weightBias" 
                                                 value="rearward" 
                                                 isChecked={inputs.weightBias === "rearward" ? true : false} 
+                                                isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
                                         </Box>
@@ -295,6 +344,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 name="weightBias" 
                                                 value="neutral" 
                                                 isChecked={inputs.weightBias === "neutral" ? true : false} 
+                                                isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
                                         </Box>
@@ -303,13 +353,19 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 title="Forward" 
                                                 name="weightBias" 
                                                 value="forward" 
-                                                isChecked={inputs.weightBias === "forward" ? true : false} 
+                                                isChecked={inputs.weightBias === "forward" ? true : false}
+                                                isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
                                         </Box>
                                     </Flex>
                                 </FormControl>
                             </GridItem>
+
+
+                            {weightBiasErrorAlerts}
+
+
                         </SimpleGrid>
                         </Container>
                         <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
@@ -331,6 +387,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     size="xs" 
                                     marginTop={["1rem", "1.5rem","2rem"]}
                                     zIndex={imperialBike? 0 : 1}
+                                    color={imperialBike? "brand.black" : "brand.white"}
                                     bg={imperialBike? "brand.lightGrey" : "brand.blue"} 
                                     onClick={toggleBikeUnit}>
                                         Metric
@@ -343,6 +400,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     variant="ghost" 
                                     marginTop={["1rem", "1.5rem","2rem"]}
                                     zIndex={imperialBike? 1 : 0}
+                                    color={imperialBike? "brand.white": "brand.black"}
                                     bg={imperialBike? "brand.blue": "brand.lightGrey"} 
                                     onClick={toggleBikeUnit}>
                                         Imperial
@@ -396,6 +454,11 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             />
                                     </FormControl>
                                 </GridItem>
+
+
+                                {reachStackErrorAlerts}
+
+
                             </SimpleGrid>
                                 <FormLabel 
                                     fontSize={["xs", "sm", "md"]} 
@@ -410,6 +473,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             name="bikeType" 
                                             value="enduro" 
                                             isChecked={inputs.bikeType === "enduro" ? true : false} 
+                                            isError={errorCodes[9].showError}
                                             handleCustomRadio={handleCustomRadio}
                                             />
                                     </GridItem>
@@ -419,10 +483,15 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             name="bikeType" 
                                             value="trail" 
                                             isChecked={inputs.bikeType === "trail" ? true : false} 
+                                            isError={errorCodes[9].showError}
                                             handleCustomRadio={handleCustomRadio}
                                             />
                                     </GridItem>
                                 </SimpleGrid>
+
+                                {bikeTypeErrorAlerts}
+
+
                         </Container>
                         <Button 
                             w={36} 

@@ -15,7 +15,7 @@ interface BasicOutputProps{
 }
 export default function BasicOutput({inputs}: BasicOutputProps) {
     return(
-        <VStack bg="brand.darkGrey">
+        <VStack bg="brand.darkGrey" maxW= "768px" borderRadius="20px">
             <Box> Height(feet) : {inputs.heightFeet} </Box>
             <Box> Height(Inches) : {inputs.heightInches} </Box>
             <Box> Height(CM) : {inputs.heightCM} </Box>
