@@ -2,7 +2,7 @@ import {ChangeEvent, useState} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
-import errorCodes from "../data/ErrorCodes.js"
+import errorCodes from "../data/ErrorCodes"
 import ErrorAlert from "./ErrorAlert"
 
 interface RiderConversionProps{
@@ -103,84 +103,65 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             requirements = 7;
         setShowErrors(() => true)
 
-        /* 0. Check heightFeet is an integer for imperialRider*/
-        if(imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0){
+        if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
             errorCodes[0].showError = false
-        }else if(imperialRider){
+        } else if (imperialRider){
             errorCodes[0].showError = true
         }
-
-        /* 1. Check heightInches is less than 12 for imperialRider */
-        if( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){
+        if ( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){
             criteria++
             errorCodes[1].showError = false
-        }else if(imperialRider) {
+        } else if (imperialRider) {
             errorCodes[1].showError = true
         }
-
-        /* 2. Check height is from 5'0 to 6'6  for imperialRider*/
         const totalInches = parseInt(heightFeet)*12 + parseFloat(heightInches)
-        if( totalInches >= 60 && totalInches <= 78){
+        if ( totalInches >= 60 && totalInches <= 78){
                 criteria++
                 errorCodes[2].showError = false
-        }else if (imperialRider){
+        } else if (imperialRider){
             errorCodes[2].showError = true
         }
-
-        /* 3. Check height is from 152cm to 198cm for metricRider */
-        if(!imperialRider && (parseInt(heightCM) >= 152 && parseInt(heightCM) <= 198)){
+        if (!imperialRider && (parseInt(heightCM) >= 152 && parseInt(heightCM) <= 198)){
             criteria++
             errorCodes[3].showError = false
-        }else if(!imperialRider){
+        } else if (!imperialRider){
             errorCodes[3].showError = true
         }
-
-        /* 4. Check a weight bias has been selected for all riders */
         if (weightBias !== ""){
             criteria++
             errorCodes[4].showError = false
-        }else{
+        } else {
             errorCodes[4].showError = true
         }
-
-        /* 5. Check the reach is from 400mm to 550mm for a metricRider*/
-        if( !imperialBike && ((parseInt(reachMM) >= 400 && parseInt(reachMM) <= 550))){
+        if ( !imperialBike && ((parseInt(reachMM) >= 400 && parseInt(reachMM) <= 550))){
             criteria++
             errorCodes[5].showError = false
-        }else if(!imperialBike){
+        } else if (!imperialBike){
             errorCodes[5].showError = true
         }
-
-        /* 6. Check the reach is from 15.75 - 21.65 inches for an imperialBike */
-        if(imperialBike && (parseFloat(reachInches) >= 15.75 && parseFloat(reachInches) <= 21.65)){
+        if (imperialBike && (parseFloat(reachInches) >= 15.75 && parseFloat(reachInches) <= 21.65)){
             criteria++
             errorCodes[6].showError = false
-        }else if(imperialBike){
+        } else if (imperialBike){
             errorCodes[6].showError = true
         }
-
-        /* 7. Check stack height is from 550mm to 680mm  for a metricRider*/
         if ( !imperialBike && (parseInt(stackMM) >= 550 && parseInt(stackMM) <= 680)){
                 criteria++
                 errorCodes[7].showError = false
-        }else if(!imperialBike){
+        } else if (!imperialBike){
             errorCodes[7].showError = true
         }
-
-        /* 8. Check the stack height is from 21.65 - 26.77 inches for an imperialRider */
-        if(imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
+        if (imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
             criteria++
             errorCodes[8].showError = false
-        }else if(imperialBike){
+        } else if (imperialBike){
             errorCodes[8].showError = true
         }
-
-        /* 9. Check a bike type has been selected */
-        if(bikeType !== ""){ // #5
+        if (bikeType !== ""){
             criteria++
             errorCodes[9].showError = false
-        }else{
+        } else {
             errorCodes[9].showError = true
         }
 
@@ -192,18 +173,18 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
 
     const heightErrorAlerts = errorCodes.map(error => {
         if(showErrors && imperialRider && error.showError && error.errorNumber < 3){
-            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         }else if(showErrors && !imperialRider && error.showError && error.errorNumber === 3){
-            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         }else{
-            return <></>
+            return <div key={error.errorNumber}></div>
         }
     })
 
     const weightBiasErrorAlerts = errorCodes.map(error => {
-        if(showErrors && error.showError && error.errorNumber === 4){
-            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
-        }
+        if(showErrors && error.showError && error.errorNumber === 4)
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
+        else return <div key={error.errorNumber}></div>
     })
 
     const reachStackErrorAlerts = errorCodes.map(error => {
@@ -212,15 +193,15 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         }else if(showErrors && imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
             return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
         }else{
-            return <></>
+            return <div key={error.errorNumber}></div>
         }
     })
 
     const bikeTypeErrorAlerts = errorCodes.map(error => {
         if(showErrors && error.showError && error.errorNumber === 9){
-            return <ErrorAlert errorMessage={error.errorMessage} key={error.errorNumber}/>
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         }else{
-            return <></>
+            return <div key={error.errorNumber}></div>
         }
     })
 

@@ -1,4 +1,4 @@
-let errorCodes = [
+const errorCodes = [
     {
         errorNumber: 0,
         errorMessage: "Please enter a valid integer for Height (feet)",

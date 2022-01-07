@@ -1,5 +1,4 @@
 import { Box } from "@chakra-ui/react"
-import { isError } from "util"
 
 interface CustomRadioProps{
     title: string;
