@@ -169,9 +169,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
 
         if(criteria === requirements)
             formHasErrors = false
-
         handleReRender()
-
     }
 
     function handleSubmit() {
