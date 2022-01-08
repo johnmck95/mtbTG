@@ -1,5 +1,5 @@
 import {Divider, Text, VStack, Heading, Button, Container} from "@chakra-ui/react"
-import "../chooseSetupGuide.css"
+import "../styling/chooseSetupGuide.css"
 
 interface ChooseSetupGuideProps {
     handleBasicClick: () => void;
