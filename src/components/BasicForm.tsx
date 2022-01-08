@@ -1,8 +1,8 @@
-import {ChangeEvent, useState} from "react"
+import {ChangeEvent, useState, useEffect} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
-import errorCodes from "../data/ErrorCodes"
+import {errorCodes} from "../data/ErrorCodes"
 import ErrorAlert from "./ErrorAlert"
 
 interface RiderConversionProps{
@@ -42,6 +42,13 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
     let requirements = 5
+
+
+    useEffect(() => {
+        if(showErrors)
+            handleSubmit()
+    }, [imperialRider, imperialRider, inputs])
+
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
@@ -162,37 +169,42 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         }
 
         if (criteria === requirements)
+        //if the user fixed the errors, the form shouldn't auto jump to the output page, it should wait to have 'calcualte' clicked again
             handleFormCompletion()
         else
             handleReRender()
     }
 
     const heightErrorAlerts = errorCodes.map(error => {
-        if (showErrors && imperialRider && error.showError && error.errorNumber < 3){
+        if (imperialRider && error.showError && error.errorNumber < 3){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else if (showErrors && !imperialRider && error.showError && error.errorNumber === 3){
+        } else if (!imperialRider && error.showError && error.errorNumber === 3){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else return null
     })
-
     const weightBiasErrorAlerts = errorCodes.map(error => {
-        if (showErrors && error.showError && error.errorNumber === 4)
+        if (error.showError && error.errorNumber === 4)
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         else return null
     })
-
     const reachStackErrorAlerts = errorCodes.map(error => {
-        if (showErrors && !imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
+        if (!imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
             return <ErrorAlert  key={error.errorNumber} errorMessage={error.errorMessage} />
-        } else if (showErrors && imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
+        } else if (imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         } else return null
     })
-
     const bikeTypeErrorAlerts = errorCodes.map(error => {
-        if (showErrors && error.showError && error.errorNumber === 9){
+        if (error.showError && error.errorNumber === 9){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         } else return null       
+    })
+
+
+    errorCodes.map( error => {
+        if( error.showError)
+            console.log(error.errorNumber + " : " + error.errorMessage)
+        return null
     })
 
     return(
