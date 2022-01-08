@@ -45,13 +45,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     const [showErrors, setShowErrors] = useState(false)
     let requirements = 5
 
-
-
     useEffect(() => {
         if(showErrors)
             handleSubmit()
     }, [imperialRider, imperialRider, inputs])
-
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
@@ -172,7 +169,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         }
 
         if (criteria === requirements){
-            if(formHasErrors){ // If the user fixed the form make them click calculate again
+            if(formHasErrors){ // If the user fixed the form make them click `calculate` before loading outputs
                     formHasErrors = false
                     return
                 }
