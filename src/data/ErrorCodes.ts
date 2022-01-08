@@ -1,3 +1,4 @@
+/* The array is a const, not the objects inside it */
 const errorCodes = [
     {
         errorNumber: 0,
@@ -51,4 +52,4 @@ const errorCodes = [
     },
 ]
 
-export default errorCodes
+export {errorCodes}
