@@ -3,8 +3,8 @@ import {HStack, Text, Icon, GridItem} from "@chakra-ui/react"
 
 interface ErrorAlertProps{
     errorMessage: string,
-
 }
+
 export default function ErrorAlert({errorMessage}: ErrorAlertProps) {
     return(
         <GridItem colSpan={2} my={1} mr={-6}>

@@ -13,6 +13,7 @@ interface BasicOutputProps{
         bikeType: string
     };
 }
+
 export default function BasicOutput({inputs}: BasicOutputProps) {
     return(
         <VStack bg="brand.darkGrey" maxW= "768px" borderRadius="20px">

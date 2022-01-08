@@ -91,7 +91,6 @@ export default function Home() {
     else
         displayedComponent="ChooseSetupGuide"
 
-
     return(   
         <Box 
             w="100%"  
