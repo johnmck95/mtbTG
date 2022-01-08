@@ -13,6 +13,7 @@ export default function ChooseSetupGuide({handleBasicClick, isAdvancedHovered, h
         <div className="chooseSetupGuideBox">
             <Container maxW="28rem">
                 <VStack 
+                    my={8}
                     bg='brand.darkGrey' 
                     py={8}
                     pb={10}
