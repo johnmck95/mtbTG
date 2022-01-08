@@ -221,7 +221,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 zIndex={imperialRider? 0 : 1}
                                 color={imperialRider? "brand.black": "brand.white"}
                                 bg={imperialRider? "brand.lightGrey" : "brand.blue"} 
-                                onClick={toggleRiderUnit}>
+                                onClick={toggleRiderUnit}
+                                _hover={ imperialRider? { bg: "brand.lightGrey", filter: "brightness(110%)"}
+                                                      : {bg: "brand.blue", filter: "brightness(110%)"} }
+                                >
                                     Metric
                             </Button>
                             <Button 
@@ -234,7 +237,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 zIndex={imperialRider? 1 : 0}
                                 bg={imperialRider? "brand.blue": "brand.lightGrey"} 
                                 color={imperialRider? "brand.white": "brand.black"}
-                                onClick={toggleRiderUnit}>
+                                onClick={toggleRiderUnit}
+                                _hover={ imperialRider? {bg: "brand.blue", filter: "brightness(110%)"}
+                                                     : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                >
                                     Imperial
                             </Button>
                         </Box>
@@ -354,7 +360,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     zIndex={imperialBike? 0 : 1}
                                     color={imperialBike? "brand.black" : "brand.white"}
                                     bg={imperialBike? "brand.lightGrey" : "brand.blue"} 
-                                    onClick={toggleBikeUnit}>
+                                    onClick={toggleBikeUnit}
+                                    _hover={ imperialBike? { bg: "brand.lightGrey", filter: "brightness(110%)" }
+                                    : {bg: "brand.blue", filter: "brightness(110%)"} }
+                                    >
                                         Metric
                                 </Button>
                                 <Button 
@@ -367,7 +376,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     zIndex={imperialBike? 1 : 0}
                                     color={imperialBike? "brand.white": "brand.black"}
                                     bg={imperialBike? "brand.blue": "brand.lightGrey"} 
-                                    onClick={toggleBikeUnit}>
+                                    onClick={toggleBikeUnit}
+                                    _hover={ imperialBike? {bg: "brand.blue", filter: "brightness(110%)"}
+                                                          : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                    >
                                         Imperial
                                 </Button>
                             </Box>
