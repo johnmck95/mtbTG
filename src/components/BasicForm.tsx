@@ -37,11 +37,14 @@ interface BasicFormProps{
     handleReRender: () => void;
 }
 
+let formHasErrors = false // This might be bad practice.. global variables.
+
 export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
     let requirements = 5
+
 
 
     useEffect(() => {
@@ -168,11 +171,16 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             errorCodes[9].showError = true
         }
 
-        if (criteria === requirements)
-        //if the user fixed the errors, the form shouldn't auto jump to the output page, it should wait to have 'calcualte' clicked again
-            handleFormCompletion()
-        else
+        if (criteria === requirements){
+            if(formHasErrors){ // If the user fixed the form make them click calculate again
+                    formHasErrors = false
+                    return
+                }
+                handleFormCompletion()
+        }else{
+            formHasErrors = true
             handleReRender()
+        }
     }
 
     const heightErrorAlerts = errorCodes.map(error => {
@@ -198,13 +206,6 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         if (error.showError && error.errorNumber === 9){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         } else return null       
-    })
-
-
-    errorCodes.map( error => {
-        if( error.showError)
-            console.log(error.errorNumber + " : " + error.errorMessage)
-        return null
     })
 
     return(
