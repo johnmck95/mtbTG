@@ -32,13 +32,12 @@ export default function About() {
                 </Stack>
                 <Divider borderColor="brand.white"/>
                     <Text textAlign="justify" textJustify="inter-word" paddingTop="2rem">
-                        Growing up on Vancouver Island, I have been a mountain biker for as long as I can remember.
-                        I raced downhill while attending high school, then moved to Whister the day after graduation.
-                        Since then, I have lived in Squamish, Vancouver, Victoria and New Zealand working in the bike insutry 
-                        as a service advisor, mechanic, instructor and trail builder. In 2019, I began started racing Enduro and won 
+                        Growing up on Vancouver Island, I have been mountain biking for as long as I can remember.
+                        I raced downhill in my teenage years, then moved to Whister the day after graduting high school.
+                        Since then, I have lived in Squamish, Vancouver, Victoria and New Zealand working in the Bike Insutry 
+                        as an Instructor, Service Advisor, Bike Mechanic, and Trail Builder. In 2019, I began racing Enduro and won 
                         the Island Cup Elite Championship, and the Hornby Island Bike Festival. These days, I am part of the Oak Bay 
-                        Bikes Racing Team, and living full time in Victoria completing my Software Engineering degree and riding one 
-                        of my many bikes.
+                        Bikes Racing Team, and living full time in Victoria completing my Software Engineering degree.
                     </Text>
                     <AspectRatio my="3rem" maxW="768px">
                         <iframe
