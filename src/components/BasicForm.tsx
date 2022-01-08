@@ -1,8 +1,8 @@
-import {ChangeEvent, useState} from "react"
+import {ChangeEvent, useState, useEffect} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
-import errorCodes from "../data/ErrorCodes"
+import {errorCodes} from "../data/ErrorCodes"
 import ErrorAlert from "./ErrorAlert"
 
 interface RiderConversionProps{
@@ -37,11 +37,21 @@ interface BasicFormProps{
     handleReRender: () => void;
 }
 
+let formHasErrors = false // This might be bad practice.. global variables.
+
 export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
     let requirements = 5
+
+
+
+    useEffect(() => {
+        if(showErrors)
+            handleSubmit()
+    }, [imperialRider, imperialRider, inputs])
+
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
@@ -161,36 +171,39 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             errorCodes[9].showError = true
         }
 
-        if (criteria === requirements)
-            handleFormCompletion()
-        else
+        if (criteria === requirements){
+            if(formHasErrors){ // If the user fixed the form make them click calculate again
+                    formHasErrors = false
+                    return
+                }
+                handleFormCompletion()
+        }else{
+            formHasErrors = true
             handleReRender()
+        }
     }
 
     const heightErrorAlerts = errorCodes.map(error => {
-        if (showErrors && imperialRider && error.showError && error.errorNumber < 3){
+        if (imperialRider && error.showError && error.errorNumber < 3){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else if (showErrors && !imperialRider && error.showError && error.errorNumber === 3){
+        } else if (!imperialRider && error.showError && error.errorNumber === 3){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else return null
     })
-
     const weightBiasErrorAlerts = errorCodes.map(error => {
-        if (showErrors && error.showError && error.errorNumber === 4)
+        if (error.showError && error.errorNumber === 4)
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         else return null
     })
-
     const reachStackErrorAlerts = errorCodes.map(error => {
-        if (showErrors && !imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
+        if (!imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
             return <ErrorAlert  key={error.errorNumber} errorMessage={error.errorMessage} />
-        } else if (showErrors && imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
+        } else if (imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         } else return null
     })
-
     const bikeTypeErrorAlerts = errorCodes.map(error => {
-        if (showErrors && error.showError && error.errorNumber === 9){
+        if (error.showError && error.errorNumber === 9){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         } else return null       
     })
@@ -221,7 +234,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 zIndex={imperialRider? 0 : 1}
                                 color={imperialRider? "brand.black": "brand.white"}
                                 bg={imperialRider? "brand.lightGrey" : "brand.blue"} 
-                                onClick={toggleRiderUnit}>
+                                onClick={toggleRiderUnit}
+                                _hover={ imperialRider? { bg: "brand.lightGrey", filter: "brightness(110%)"}
+                                                      : {bg: "brand.blue", filter: "brightness(110%)"} }
+                                >
                                     Metric
                             </Button>
                             <Button 
@@ -234,7 +250,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 zIndex={imperialRider? 1 : 0}
                                 bg={imperialRider? "brand.blue": "brand.lightGrey"} 
                                 color={imperialRider? "brand.white": "brand.black"}
-                                onClick={toggleRiderUnit}>
+                                onClick={toggleRiderUnit}
+                                _hover={ imperialRider? {bg: "brand.blue", filter: "brightness(110%)"}
+                                                     : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                >
                                     Imperial
                             </Button>
                         </Box>
@@ -354,7 +373,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     zIndex={imperialBike? 0 : 1}
                                     color={imperialBike? "brand.black" : "brand.white"}
                                     bg={imperialBike? "brand.lightGrey" : "brand.blue"} 
-                                    onClick={toggleBikeUnit}>
+                                    onClick={toggleBikeUnit}
+                                    _hover={ imperialBike? { bg: "brand.lightGrey", filter: "brightness(110%)" }
+                                    : {bg: "brand.blue", filter: "brightness(110%)"} }
+                                    >
                                         Metric
                                 </Button>
                                 <Button 
@@ -367,7 +389,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     zIndex={imperialBike? 1 : 0}
                                     color={imperialBike? "brand.white": "brand.black"}
                                     bg={imperialBike? "brand.blue": "brand.lightGrey"} 
-                                    onClick={toggleBikeUnit}>
+                                    onClick={toggleBikeUnit}
+                                    _hover={ imperialBike? {bg: "brand.blue", filter: "brightness(110%)"}
+                                                          : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                    >
                                         Imperial
                                 </Button>
                             </Box>
