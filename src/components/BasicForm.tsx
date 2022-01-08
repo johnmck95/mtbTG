@@ -37,18 +37,19 @@ interface BasicFormProps{
     handleReRender: () => void;
 }
 
-let formHasErrors = false // This might be bad practice.. global variables.
+let formHasErrors = true // This might be bad practice.. global variable.
 
 export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
+    let criteria = 0
     let requirements = 5
 
     useEffect(() => {
         if(showErrors)
-            handleSubmit()
-    }, [imperialRider, imperialRider, inputs])
+            handleErrors()
+    }, [imperialRider, imperialBike, inputs])
 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
@@ -99,12 +100,10 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
     }
 
-    function handleSubmit() {
+    function handleErrors() {
         const {heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
-        let criteria = 0
         if(imperialRider)
             requirements = 7;
-        setShowErrors(() => true)
 
         if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
@@ -168,16 +167,21 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             errorCodes[9].showError = true
         }
 
-        if (criteria === requirements){
-            if(formHasErrors){ // If the user fixed the form make them click `calculate` before loading outputs
-                    formHasErrors = false
-                    return
-                }
-                handleFormCompletion()
-        }else{
-            formHasErrors = true
-            handleReRender()
-        }
+        if(criteria === requirements)
+            formHasErrors = false
+
+        handleReRender()
+
+    }
+
+    function handleSubmit() {
+        setShowErrors(() => true)
+        if(!formHasErrors){
+            riderStateConversion()
+            bikeStateConversion()
+            handleFormCompletion()
+        }else    
+            handleErrors()
     }
 
     const heightErrorAlerts = errorCodes.map(error => {
@@ -233,7 +237,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 bg={imperialRider? "brand.lightGrey" : "brand.blue"} 
                                 onClick={toggleRiderUnit}
                                 _hover={ imperialRider? { bg: "brand.lightGrey", filter: "brightness(110%)"}
-                                                      : {bg: "brand.blue", filter: "brightness(110%)"} }
+                                                      : {bg: "brand.blue", filter: "brightness(90%)"} }
                                 >
                                     Metric
                             </Button>
@@ -248,7 +252,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 bg={imperialRider? "brand.blue": "brand.lightGrey"} 
                                 color={imperialRider? "brand.white": "brand.black"}
                                 onClick={toggleRiderUnit}
-                                _hover={ imperialRider? {bg: "brand.blue", filter: "brightness(110%)"}
+                                _hover={ imperialRider? {bg: "brand.blue", filter: "brightness(90%)"}
                                                      : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
                                 >
                                     Imperial
@@ -372,7 +376,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     bg={imperialBike? "brand.lightGrey" : "brand.blue"} 
                                     onClick={toggleBikeUnit}
                                     _hover={ imperialBike? { bg: "brand.lightGrey", filter: "brightness(110%)" }
-                                    : {bg: "brand.blue", filter: "brightness(110%)"} }
+                                    : {bg: "brand.blue", filter: "brightness(90%)"} }
                                     >
                                         Metric
                                 </Button>
@@ -387,7 +391,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     color={imperialBike? "brand.white": "brand.black"}
                                     bg={imperialBike? "brand.blue": "brand.lightGrey"} 
                                     onClick={toggleBikeUnit}
-                                    _hover={ imperialBike? {bg: "brand.blue", filter: "brightness(110%)"}
+                                    _hover={ imperialBike? {bg: "brand.blue", filter: "brightness(90%)"}
                                                           : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
                                     >
                                         Imperial
@@ -433,7 +437,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             focusBorderColor='brand.blue'
                                             type="number"
                                             boxShadow='md'
-                                            borderColor={(errorCodes[7].showError || errorCodes[8].showError)? "brand.error" : "brand.lightGrey"}
+                                            borderColor={imperialBike? (errorCodes[8].showError? "brand.error" : "brand.lightGrey") 
+                                                                     : (errorCodes[7].showError? "brand.error" : "brand.lightGrey")}
+
                                             autoComplete="off"
                                             value={imperialBike? inputs.stackInches : inputs.stackMM}
                                             name={imperialBike? "stackInches" : "stackMM"}
@@ -478,6 +484,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                             bg="brand.blue" 
                             borderRadius='50px'
                             onClick={handleSubmit}
+                            _hover={{bg: "brand.blue", filter: "brightness(90%)"}}
                             > 
                                 Calculate 
                         </Button>
