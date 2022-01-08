@@ -8,6 +8,15 @@
         display: flex;
         align-items: center;
     }
+
+    /* Portrait - short phones won't overflow on form error*/
+    @media screen and (max-height: 811px){
+        .basicFormBox{
+            height: 100%;
+            display: flex;
+            align-items: flex-start; 
+        }
+    }
 }
 
 @media screen and (orientation:landscape){
@@ -24,6 +33,15 @@
             height: calc(100vh - 50px);
             display: flex;
             align-items: center;
+        }
+
+        /* Prevent Nest Hub from overflow on form errors */
+        @media screen and (max-height:800px){
+            .basicFormBox{
+                height: 100%;
+                display: flex;
+                align-items: flex-start;
+            }
         }
     }
 }
