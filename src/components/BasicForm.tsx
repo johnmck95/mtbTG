@@ -48,7 +48,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
     let criteria = 0
-    let requirements = 5
+    let requirements = 6
 
     useEffect(() => {
         if(showErrors)
@@ -58,9 +58,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
         if (imperialRider)
-            requirements = 7
+            requirements = 8
         else
-            requirements = 5
+            requirements = 6
         riderStateConversion()
     }
 
@@ -112,9 +112,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     }
 
     function handleErrors() {
-        const {heightFeet, heightInches, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
+        const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         if(imperialRider)
-            requirements = 7;
+            requirements = 8;
 
         if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
@@ -165,17 +165,27 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         } else if (!imperialBike){
             errorCodes[7].showError = true
         }
-        if (imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
+        if ( imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
             criteria++
             errorCodes[8].showError = false
-        } else if (imperialBike){
+        } else if ( imperialBike){
             errorCodes[8].showError = true
         }
-        if (bikeType !== ""){
+        if ( bikeType !== ""){
             criteria++
             errorCodes[9].showError = false
         } else {
             errorCodes[9].showError = true
+        } if ( imperialRider && parseInt(weightLB) >= 80 && parseInt(weightLB) <= 240){
+            criteria++
+            errorCodes[10].showError = false
+        } else {
+            errorCodes[10].showError = true
+        } if ( !imperialRider && parseInt(weightKG) >= 36 && parseInt(weightKG) <= 109){
+            criteria++
+            errorCodes[11].showError = false
+        } else {
+            errorCodes[11].showError = true
         }
 
         if(criteria === requirements)
@@ -197,6 +207,13 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         if (imperialRider && error.showError && error.errorNumber < 3){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else if (!imperialRider && error.showError && error.errorNumber === 3){
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
+        } else return null
+    })
+    const weightErrorAlerts = errorCodes.map(error => {
+        if (imperialRider && error.showError && error.errorNumber === 10){
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
+        } else if(!imperialRider && error.showError && error.errorNumber === 11){
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else return null
     })
@@ -334,11 +351,11 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                         focusBorderColor='brand.blue'
                                         type="number"
                                         boxShadow='md'  
-                                        borderColor={"brand.lightGrey"}
-                                        // borderColor={    ** TODO: Once error codes have been made **
-                                        //     imperialRider? ((errorCodes[0].showError || errorCodes[2].showError)? "brand.error" : "brand.lightGrey")
-                                        //         : (errorCodes[3].showError? "brand.error" : "brand.lightGrey") 
-                                        // }
+                                        // borderColor={"brand.lightGrey"}
+                                        borderColor={
+                                            imperialRider? (errorCodes[10].showError? "brand.error" : "brand.lightGrey")
+                                                : (errorCodes[11].showError? "brand.error" : "brand.lightGrey") 
+                                        }
                                         autoComplete="off"
                                         onChange={handleChange}
                                         value={imperialRider? inputs.weightLB : inputs.weightKG}
@@ -346,6 +363,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                         />
                                 </FormControl>
                             </GridItem>
+                            {weightErrorAlerts}
 
 
                         </SimpleGrid>
