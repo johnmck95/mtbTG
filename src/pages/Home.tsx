@@ -4,6 +4,7 @@ import BasicForm from "../components/BasicForm"
 import {Box} from "@chakra-ui/react"
 import HomePhoto from "../images/hartland-enduro.jpg"
 import {ChangeEvent, useState} from "react"
+import basicAlgorithm from "../algorithms/basicAlgorithm"
 
 export default function Home() {
 
@@ -91,6 +92,9 @@ export default function Home() {
     else
         displayedComponent="ChooseSetupGuide"
 
+
+    const outputs = basicAlgorithm(inputs)
+
     return(   
         <Box 
             w="100%"  
@@ -117,9 +121,13 @@ export default function Home() {
                     />
                 }
                 {displayedComponent === "BasicOutput" &&
+                <>
                     <BasicOutput 
                         inputs={inputs}
+                        outputs={outputs}
                         />
+
+                </>  
                 }
         </Box>
     )
