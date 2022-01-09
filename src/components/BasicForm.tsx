@@ -195,12 +195,12 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
 
     function handleSubmit() {
         setShowErrors(() => true)
+        handleErrors()
         if(!formHasErrors){
             riderStateConversion()
             bikeStateConversion()
             handleFormCompletion()
-        }else    
-            handleErrors()
+        }
     }
 
     const heightErrorAlerts = errorCodes.map(error => {
@@ -468,7 +468,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
-                                            borderColor={(errorCodes[5].showError || errorCodes[6].showError)? "brand.error" : "brand.lightGrey"}
+                                            // borderColor={(errorCodes[5].showError || errorCodes[6].showError)? "brand.error" : "brand.lightGrey"}
+                                            borderColor={imperialBike? (errorCodes[6].showError? "brand.error" : "brand.lightGrey") 
+                                                                     : (errorCodes[5].showError? "brand.error" : "brand.lightGrey")}
                                             autoComplete="off"
                                             type="number"
                                             value={imperialBike? inputs.reachInches : inputs.reachMM}
@@ -493,7 +495,6 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             boxShadow='md'
                                             borderColor={imperialBike? (errorCodes[8].showError? "brand.error" : "brand.lightGrey") 
                                                                      : (errorCodes[7].showError? "brand.error" : "brand.lightGrey")}
-
                                             autoComplete="off"
                                             value={imperialBike? inputs.stackInches : inputs.stackMM}
                                             name={imperialBike? "stackInches" : "stackMM"}
