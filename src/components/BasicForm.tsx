@@ -9,6 +9,8 @@ interface RiderConversionProps{
     heightCMCalc: number;
     heightFootCalc: number;
     heightInchesCalc: number;
+    weightLBCalc: number;
+    weightKGCalc: number;
 }
 interface BikeConversionProps{
     reachMMCalc: number;
@@ -21,6 +23,8 @@ interface BasicFormProps{
         heightFeet: string,
         heightInches: string,
         heightCM: string,
+        weightLB: string,
+        weightKG: string,
         handling: string,
         reachInches: string,
         reachMM: string,
@@ -69,16 +73,23 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     function riderStateConversion() {
         let heightCMCalc = 0
         let heightFootCalc = 0
-        let heightInchesCalc = 0   
+        let heightInchesCalc = 0
+        let weightKGCalc = 0
+        let weightLBCalc = 0
 
         if (inputs.heightFeet !== "" && inputs.heightInches !== "")
-             heightCMCalc = parseFloat(inputs.heightFeet) * 30.48 + parseFloat(inputs.heightInches) * 2.54
+             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseInt(inputs.heightInches) * 2.54
         if (inputs.heightCM !== ""){
-            const totalInches = parseFloat(inputs.heightCM) / 2.54
+            const totalInches = parseInt(inputs.heightCM) / 2.54
             heightFootCalc = Math.floor(totalInches / 12)
             heightInchesCalc = (totalInches % 12)          
         }
-        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc})
+        if (inputs.weightLB !== "")
+            weightKGCalc = parseInt(inputs.weightLB) / 2.205
+        if(inputs.weightKG !== "")
+            weightLBCalc = parseInt(inputs.weightKG) * 2.205
+
+        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
     }
 
     // NOTE: watch out for 'e' in the input - currently unhandled
@@ -89,9 +100,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         let stackInchCalc = 0
         
         if (inputs.reachMM !== "")
-            reachInchCalc = parseFloat(inputs.reachMM)/25.4
+            reachInchCalc = parseInt(inputs.reachMM)/25.4
         if (inputs.stackMM !== "")
-            stackInchCalc = parseFloat(inputs.stackMM)/25.4
+            stackInchCalc = parseInt(inputs.stackMM)/25.4
         if (inputs.reachInches !== "")
             reachMMCalc = parseFloat(inputs.reachInches)*25.4
         if(inputs.stackInches !== "")
@@ -257,9 +268,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                             </Button>
                         </Box>
                     </Flex>
-                    <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
+                    <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                     <Container maxW={["85%", "75%"]}>
-                        <SimpleGrid columns={2} columnGap={2}>
+                        <SimpleGrid columns={2} columnGap={2} row={2}>
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl autoComplete="none">
                                     <FormLabel 
@@ -309,6 +320,34 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 </GridItem>
                             }
                             {heightErrorAlerts}
+                           
+                            <GridItem colSpan={1} pb={1}>
+                                <FormControl autoComplete="none">
+                                    <FormLabel 
+                                        fontSize={["xs", "sm", "md"]} 
+                                        mx={0} mb="2px"
+                                        >Weight {imperialRider? "(lb)" : "(kg)"}
+                                    </FormLabel>
+                                    <Input 
+                                        placeholder={imperialRider? "180" : "82"}
+                                        maxWidth={24} 
+                                        focusBorderColor='brand.blue'
+                                        type="number"
+                                        boxShadow='md'  
+                                        borderColor={"brand.lightGrey"}
+                                        // borderColor={    ** TODO: Once error codes have been made **
+                                        //     imperialRider? ((errorCodes[0].showError || errorCodes[2].showError)? "brand.error" : "brand.lightGrey")
+                                        //         : (errorCodes[3].showError? "brand.error" : "brand.lightGrey") 
+                                        // }
+                                        autoComplete="off"
+                                        onChange={handleChange}
+                                        value={imperialRider? inputs.weightLB : inputs.weightKG}
+                                        name={imperialRider? "weightLB" : "weightKG"}
+                                        />
+                                </FormControl>
+                            </GridItem>
+
+
                         </SimpleGrid>
                         <SimpleGrid columns={1}> 
                             <GridItem colSpan={1}>
