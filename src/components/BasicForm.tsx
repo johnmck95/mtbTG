@@ -351,7 +351,6 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                         focusBorderColor='brand.blue'
                                         type="number"
                                         boxShadow='md'  
-                                        // borderColor={"brand.lightGrey"}
                                         borderColor={
                                             imperialRider? (errorCodes[10].showError? "brand.error" : "brand.lightGrey")
                                                 : (errorCodes[11].showError? "brand.error" : "brand.lightGrey") 
