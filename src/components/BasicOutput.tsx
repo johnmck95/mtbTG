@@ -13,11 +13,13 @@ interface BasicOutputProps{
         bikeType: string
     };
     outputs: {
-        effectiveRAD: string,
-        effectiveReach: string,
-        effectiveStack: string,
         barWidth: string,
+        barRise: string,
+        stemLength: string,
         spacers: string,
+        frontTirePSI: string,
+        rearTirePSI: string,
+        inserts: string,
     }
 }
 
@@ -38,11 +40,13 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
             </VStack>
 
             <VStack bg="brand.darkGrey" w="50%" maxW= "768px" borderRadius="20px">
-                <Box>{outputs.effectiveReach} </Box>
-                <Box>{outputs.effectiveStack} </Box>
-                <Box>{outputs.effectiveRAD} </Box>
                 <Box>{outputs.barWidth} </Box>
+                <Box>{outputs.barRise} </Box>
+                <Box>{outputs.stemLength} </Box>
                 <Box>{outputs.spacers} </Box>
+                <Box>{outputs.frontTirePSI} </Box>
+                <Box>{outputs.rearTirePSI} </Box>
+                <Box>{outputs.inserts} </Box>
             </VStack>
         </HStack>
 

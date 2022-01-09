@@ -12,12 +12,14 @@ interface BasicAlgorithmProps{
 
 function basicAlgorithm({heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType}: BasicAlgorithmProps) {
     const outputs = {
-        effectiveRAD: "Effective Rad",
-        effectiveReach: "Effective Reach",
-        effectiveStack: "Effective Stack",
-        barWidth: "Handlear Width",
+        barWidth: "Handlebar Width",
+        barRise: "Handlebar Rise",
         stemLength: "Stem Length",
         spacers: "Stem Spacers",
+        frontTirePSI: "Front Tire Pressure",
+        rearTirePSI: "Rear Tire Pressure",
+        inserts: "Inserts"
+
     }
     return outputs
 }
