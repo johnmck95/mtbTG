@@ -287,7 +287,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                     </Flex>
                     <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                     <Container maxW={["85%", "75%"]}>
-                        <SimpleGrid columns={2} columnGap={2} row={2}>
+                        <SimpleGrid columns={2} columnGap={2}>
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl autoComplete="none">
                                     <FormLabel 
@@ -468,7 +468,6 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
-                                            // borderColor={(errorCodes[5].showError || errorCodes[6].showError)? "brand.error" : "brand.lightGrey"}
                                             borderColor={imperialBike? (errorCodes[6].showError? "brand.error" : "brand.lightGrey") 
                                                                      : (errorCodes[5].showError? "brand.error" : "brand.lightGrey")}
                                             autoComplete="off"
