@@ -22,7 +22,7 @@ const errorCodes = [
     },
     {
         errorNumber: 4,
-        errorMessage: "Please select a Weight Bias",
+        errorMessage: "Please select a Handling preference",
         showError: false,
     },
     {

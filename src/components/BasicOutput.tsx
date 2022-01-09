@@ -5,7 +5,7 @@ interface BasicOutputProps{
         heightFeet: string,
         heightInches: string,
         heightCM: string,
-        weightBias: string,
+        handling: string,
         reachInches: string,
         reachMM: string,
         stackInches: string,
@@ -31,7 +31,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                 <Box> Height(feet) : {inputs.heightFeet} </Box>
                 <Box> Height(Inches) : {inputs.heightInches} </Box>
                 <Box> Height(CM) : {inputs.heightCM} </Box>
-                <Box> Weight Bias : {inputs.weightBias} </Box>
+                <Box> Handling : {inputs.handling} </Box>
                 <Box> Reach(Inches) : {inputs.reachInches} </Box>
                 <Box> Reach(MM) : {inputs.reachMM} </Box>
                 <Box> Stack(MM) : {inputs.stackMM} </Box>

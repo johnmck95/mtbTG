@@ -17,7 +17,7 @@ export default function Home() {
         heightFeet: "",
         heightInches: "",
         heightCM: "",
-        weightBias: "",
+        handling: "",
         reachInches: "",
         reachMM: "",
         stackInches: "",

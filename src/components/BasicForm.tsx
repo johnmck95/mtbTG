@@ -21,7 +21,7 @@ interface BasicFormProps{
         heightFeet: string,
         heightInches: string,
         heightCM: string,
-        weightBias: string,
+        handling: string,
         reachInches: string,
         reachMM: string,
         stackInches: string,
@@ -101,7 +101,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     }
 
     function handleErrors() {
-        const {heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
+        const {heightFeet, heightInches, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         if(imperialRider)
             requirements = 7;
 
@@ -130,7 +130,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         } else if (!imperialRider){
             errorCodes[3].showError = true
         }
-        if (weightBias !== ""){
+        if (handling !== ""){
             criteria++
             errorCodes[4].showError = false
         } else {
@@ -189,7 +189,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else return null
     })
-    const weightBiasErrorAlerts = errorCodes.map(error => {
+    const handlingErrorAlerts = errorCodes.map(error => {
         if (error.showError && error.errorNumber === 4)
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         else return null
@@ -313,14 +313,14 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                         <SimpleGrid columns={1}> 
                             <GridItem colSpan={1}>
                                 <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
+                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Handling</FormLabel>
                                     <Flex flexWrap="wrap" justify={["space-evenly", "space-between"]} spacing={3}>
                                         <Box mb={["10px", 0]} w={["45%", "31%"]} mr={[2, 0]}>
                                             <CustomRadio 
-                                                title="Rearward" 
-                                                name="weightBias" 
-                                                value="rearward" 
-                                                isChecked={inputs.weightBias === "rearward" ? true : false} 
+                                                title="Stable" 
+                                                name="handling" 
+                                                value="stable" 
+                                                isChecked={inputs.handling === "stable" ? true : false} 
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
@@ -328,19 +328,19 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                         <Box mb={["10px", 0]} w={["45%", "31%"]} ml={[2, 0]}>
                                             <CustomRadio 
                                                 title="Neutral" 
-                                                name="weightBias" 
+                                                name="handling" 
                                                 value="neutral" 
-                                                isChecked={inputs.weightBias === "neutral" ? true : false} 
+                                                isChecked={inputs.handling === "neutral" ? true : false} 
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
                                         </Box>
                                         <Box mb={0} w={["50%", "31%"]}>
                                             <CustomRadio 
-                                                title="Forward" 
-                                                name="weightBias" 
-                                                value="forward" 
-                                                isChecked={inputs.weightBias === "forward" ? true : false}
+                                                title="Agile" 
+                                                name="handling" 
+                                                value="agile" 
+                                                isChecked={inputs.handling === "agile" ? true : false}
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
@@ -348,7 +348,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     </Flex>
                                 </FormControl>
                             </GridItem>
-                            {weightBiasErrorAlerts}
+                            {handlingErrorAlerts}
                         </SimpleGrid>
                         </Container>
                         <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
