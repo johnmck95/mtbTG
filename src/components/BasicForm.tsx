@@ -1,5 +1,5 @@
 import {ChangeEvent, useState, useEffect} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box, Slider, SliderMark, SliderTrack, SliderFilledTrack, Tooltip, Text, SliderThumb} from "@chakra-ui/react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
 import {errorCodes} from "../data/ErrorCodes"
@@ -50,7 +50,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
     let criteria = 0
-    let requirements = 6
+    let requirements = 7
 
     console.log(inputs)
 
@@ -62,9 +62,9 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
         if (imperialRider)
-            requirements = 8
+            requirements = 9
         else
-            requirements = 6
+            requirements = 7
         riderStateConversion()
     }
 
@@ -118,7 +118,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
     function handleErrors() {
         const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         if(imperialRider)
-            requirements = 8;
+            requirements = 9;
 
         if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
@@ -190,7 +190,13 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
             errorCodes[11].showError = false
         } else {
             errorCodes[11].showError = true
+        } if ( inputs.skillLevel !== "") {
+            criteria++
+            errorCodes[12].showError = false
+        } else {
+            errorCodes[12].showError = true
         }
+
 
         if(criteria === requirements)
             formHasErrors = false
@@ -224,6 +230,11 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
     const handlingErrorAlerts = errorCodes.map(error => {
         if (error.showError && error.errorNumber === 4)
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
+        else return null
+    })
+    const skillLevelErrorAlerts = errorCodes.map(error => {
+        if (error.showError && error.errorNumber === 12)
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         else return null
     })
     const reachStackErrorAlerts = errorCodes.map(error => {
@@ -369,7 +380,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                             {weightErrorAlerts}
                         </SimpleGrid>
                         <SimpleGrid columns={1}> 
-                            <GridItem colSpan={1}>
+                            <GridItem colSpan={3}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Handling</FormLabel>
                                     <Flex justify="space-between" spacing={[2, 4, 6]} mb={2}>
@@ -408,14 +419,16 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                             </GridItem>
                             {handlingErrorAlerts}
 
-                            <FormLabel 
-                                fontSize={["xs", "sm", "md"]} 
-                                mx={0} 
-                                mb="2px"
-                                > Skill Level
-                            </FormLabel>
-                            <SkillSlider handleChange={handleCustomComponent}/>
-                        
+                            <GridItem colSpan={3}>
+                                <FormLabel 
+                                    fontSize={["xs", "sm", "md"]} 
+                                    mx={0} 
+                                    mb="2px"
+                                    > Skill Level
+                                </FormLabel>
+                                <SkillSlider handleChange={handleCustomComponent}/>
+                            </GridItem>
+                            {skillLevelErrorAlerts}
 
 
                         </SimpleGrid>

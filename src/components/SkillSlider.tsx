@@ -41,29 +41,26 @@ export default function SkillSlider({handleChange}: SkillSliderProps){
                     </SliderMark>
                     <SliderTrack bg='brand.lightGrey'>
                         <Box position='relative' right={10} />
-                        <SliderFilledTrack bg='brand.white' />
+                        <SliderFilledTrack bg={sliderValue !== 0?'brand.blue' : 'brand.white'} />
                     </SliderTrack>
-                    <SliderThumb boxSize={5}  bg='brand.blue' />
+                    <SliderThumb boxSize={5} bg={sliderValue !== 0?'brand.blue' : 'brand.white'}/>
                 </Slider>
-                {sliderValue === 0 &&
-                    <Text> Please Choose a Skill Level </Text>
-                }
-                            {sliderValue === 1 &&
+                { sliderValue === 1 &&
                     <Text> Beginner </Text>
                 }
-                            {sliderValue === 2 &&
+                { sliderValue === 2 &&
                     <Text> Novice </Text>
                 }
-                            {sliderValue === 3 &&
+                { sliderValue === 3 &&
                     <Text> Intermediate </Text>
                 }
-                            {sliderValue === 4 &&
+                { sliderValue === 4 &&
                     <Text> Advanced </Text>
                 }
-                            {sliderValue === 5 &&
+                { sliderValue === 5 &&
                     <Text> Expert </Text>
                 }
-                            {sliderValue === 6 &&
+                { sliderValue === 6 &&
                     <Text> Professional </Text>
                 }
             </Box>
