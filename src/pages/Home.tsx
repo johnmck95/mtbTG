@@ -17,7 +17,9 @@ export default function Home() {
         heightFeet: "",
         heightInches: "",
         heightCM: "",
-        weightBias: "",
+        weightLB: "",
+        weightKG: "",
+        handling: "",
         reachInches: "",
         reachMM: "",
         stackInches: "",
@@ -48,18 +50,21 @@ export default function Home() {
     }
 
     /* Updates state conversion for metric/imperial riders */
-    // ********** BUG: 152.4cm translates to 5foot 12 inches, this should be 5foot 0 ************** BUG
     interface handleBasicRiderConversionProps{
         heightCMCalc: number;
         heightFootCalc: number;
         heightInchesCalc: number;
+        weightKGCalc: number;
+        weightLBCalc: number;
     }
-    function handleBasicRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc}: handleBasicRiderConversionProps) {
+    function handleBasicRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightKGCalc, weightLBCalc}: handleBasicRiderConversionProps) {
         setInputs(prevInputs => ({
             ...prevInputs,
             heightCM: heightCMCalc !== 0? heightCMCalc.toFixed(0) : inputs.heightCM,
             heightFeet: heightFootCalc !== 0? heightFootCalc.toFixed(0) : inputs.heightFeet,
-            heightInches: heightInchesCalc !== 0? heightInchesCalc.toFixed(0) : inputs.heightInches
+            heightInches: heightInchesCalc !== 0? heightInchesCalc.toFixed(0) : inputs.heightInches,
+            weightKG: weightKGCalc !== 0? weightKGCalc.toFixed(0) : inputs.weightKG,
+            weightLB: weightLBCalc !== 0? weightLBCalc.toFixed(0) : inputs.weightLB
         }))
     }
 

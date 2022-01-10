@@ -9,6 +9,8 @@ interface RiderConversionProps{
     heightCMCalc: number;
     heightFootCalc: number;
     heightInchesCalc: number;
+    weightLBCalc: number;
+    weightKGCalc: number;
 }
 interface BikeConversionProps{
     reachMMCalc: number;
@@ -21,7 +23,9 @@ interface BasicFormProps{
         heightFeet: string,
         heightInches: string,
         heightCM: string,
-        weightBias: string,
+        weightLB: string,
+        weightKG: string,
+        handling: string,
         reachInches: string,
         reachMM: string,
         stackInches: string,
@@ -44,7 +48,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
     let criteria = 0
-    let requirements = 5
+    let requirements = 6
 
     useEffect(() => {
         if(showErrors)
@@ -54,9 +58,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
         if (imperialRider)
-            requirements = 7
+            requirements = 8
         else
-            requirements = 5
+            requirements = 6
         riderStateConversion()
     }
 
@@ -69,16 +73,23 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     function riderStateConversion() {
         let heightCMCalc = 0
         let heightFootCalc = 0
-        let heightInchesCalc = 0   
+        let heightInchesCalc = 0
+        let weightKGCalc = 0
+        let weightLBCalc = 0
 
         if (inputs.heightFeet !== "" && inputs.heightInches !== "")
-             heightCMCalc = parseFloat(inputs.heightFeet) * 30.48 + parseFloat(inputs.heightInches) * 2.54
+             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseInt(inputs.heightInches) * 2.54
         if (inputs.heightCM !== ""){
-            const totalInches = parseFloat(inputs.heightCM) / 2.54
+            const totalInches = parseInt(inputs.heightCM) / 2.54
             heightFootCalc = Math.floor(totalInches / 12)
             heightInchesCalc = (totalInches % 12)          
         }
-        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc})
+        if (inputs.weightLB !== "")
+            weightKGCalc = parseInt(inputs.weightLB) / 2.205
+        if(inputs.weightKG !== "")
+            weightLBCalc = parseInt(inputs.weightKG) * 2.205
+
+        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
     }
 
     // NOTE: watch out for 'e' in the input - currently unhandled
@@ -89,9 +100,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         let stackInchCalc = 0
         
         if (inputs.reachMM !== "")
-            reachInchCalc = parseFloat(inputs.reachMM)/25.4
+            reachInchCalc = parseInt(inputs.reachMM)/25.4
         if (inputs.stackMM !== "")
-            stackInchCalc = parseFloat(inputs.stackMM)/25.4
+            stackInchCalc = parseInt(inputs.stackMM)/25.4
         if (inputs.reachInches !== "")
             reachMMCalc = parseFloat(inputs.reachInches)*25.4
         if(inputs.stackInches !== "")
@@ -101,9 +112,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     }
 
     function handleErrors() {
-        const {heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
+        const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         if(imperialRider)
-            requirements = 7;
+            requirements = 8;
 
         if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
@@ -130,7 +141,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         } else if (!imperialRider){
             errorCodes[3].showError = true
         }
-        if (weightBias !== ""){
+        if (handling !== ""){
             criteria++
             errorCodes[4].showError = false
         } else {
@@ -154,17 +165,27 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
         } else if (!imperialBike){
             errorCodes[7].showError = true
         }
-        if (imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
+        if ( imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
             criteria++
             errorCodes[8].showError = false
-        } else if (imperialBike){
+        } else if ( imperialBike){
             errorCodes[8].showError = true
         }
-        if (bikeType !== ""){
+        if ( bikeType !== ""){
             criteria++
             errorCodes[9].showError = false
         } else {
             errorCodes[9].showError = true
+        } if ( imperialRider && parseInt(weightLB) >= 80 && parseInt(weightLB) <= 240){
+            criteria++
+            errorCodes[10].showError = false
+        } else {
+            errorCodes[10].showError = true
+        } if ( !imperialRider && parseInt(weightKG) >= 36 && parseInt(weightKG) <= 109){
+            criteria++
+            errorCodes[11].showError = false
+        } else {
+            errorCodes[11].showError = true
         }
 
         if(criteria === requirements)
@@ -174,12 +195,12 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
 
     function handleSubmit() {
         setShowErrors(() => true)
+        handleErrors()
         if(!formHasErrors){
             riderStateConversion()
             bikeStateConversion()
             handleFormCompletion()
-        }else    
-            handleErrors()
+        }
     }
 
     const heightErrorAlerts = errorCodes.map(error => {
@@ -189,7 +210,14 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else return null
     })
-    const weightBiasErrorAlerts = errorCodes.map(error => {
+    const weightErrorAlerts = errorCodes.map(error => {
+        if (imperialRider && error.showError && error.errorNumber === 10){
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
+        } else if(!imperialRider && error.showError && error.errorNumber === 11){
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
+        } else return null
+    })
+    const handlingErrorAlerts = errorCodes.map(error => {
         if (error.showError && error.errorNumber === 4)
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         else return null
@@ -210,7 +238,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     return(
         <div className="basicFormBox">
             <Container maxW="37.5rem">
-                <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10}>
+                <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10} boxShadow='2xl'>
                     <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
                         <Heading 
                             as='h2' 
@@ -257,7 +285,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                             </Button>
                         </Box>
                     </Flex>
-                    <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" marginBottom="8rem"/>
+                    <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                     <Container maxW={["85%", "75%"]}>
                         <SimpleGrid columns={2} columnGap={2}>
                             <GridItem colSpan={1} pb={1}>
@@ -309,38 +337,66 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 </GridItem>
                             }
                             {heightErrorAlerts}
+                           
+                            <GridItem colSpan={1} pb={1}>
+                                <FormControl autoComplete="none">
+                                    <FormLabel 
+                                        fontSize={["xs", "sm", "md"]} 
+                                        mx={0} mb="2px"
+                                        >Weight {imperialRider? "(lb)" : "(kg)"}
+                                    </FormLabel>
+                                    <Input 
+                                        placeholder={imperialRider? "180" : "82"}
+                                        maxWidth={24} 
+                                        focusBorderColor='brand.blue'
+                                        type="number"
+                                        boxShadow='md'  
+                                        borderColor={
+                                            imperialRider? (errorCodes[10].showError? "brand.error" : "brand.lightGrey")
+                                                : (errorCodes[11].showError? "brand.error" : "brand.lightGrey") 
+                                        }
+                                        autoComplete="off"
+                                        onChange={handleChange}
+                                        value={imperialRider? inputs.weightLB : inputs.weightKG}
+                                        name={imperialRider? "weightLB" : "weightKG"}
+                                        />
+                                </FormControl>
+                            </GridItem>
+                            {weightErrorAlerts}
+
+
                         </SimpleGrid>
                         <SimpleGrid columns={1}> 
                             <GridItem colSpan={1}>
                                 <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Weight Bias</FormLabel>
-                                    <Flex flexWrap="wrap" justify={["space-evenly", "space-between"]} spacing={3}>
-                                        <Box mb={["10px", 0]} w={["45%", "31%"]} mr={[2, 0]}>
+                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Handling</FormLabel>
+                                    <Flex justify="space-between" spacing={[2, 4, 6]}>
+                                        <Box mr={[2, 6]} w="100%" >
                                             <CustomRadio 
-                                                title="Rearward" 
-                                                name="weightBias" 
-                                                value="rearward" 
-                                                isChecked={inputs.weightBias === "rearward" ? true : false} 
+                                                title="Stable" 
+                                                name="handling" 
+                                                value="stable" 
+                                                isChecked={inputs.handling === "stable" ? true : false} 
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
                                         </Box>
-                                        <Box mb={["10px", 0]} w={["45%", "31%"]} ml={[2, 0]}>
+                                        <Box w="100%">
                                             <CustomRadio 
                                                 title="Neutral" 
-                                                name="weightBias" 
+                                                name="handling" 
                                                 value="neutral" 
-                                                isChecked={inputs.weightBias === "neutral" ? true : false} 
+                                                isChecked={inputs.handling === "neutral" ? true : false} 
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
                                         </Box>
-                                        <Box mb={0} w={["50%", "31%"]}>
+                                        <Box w="100%" ml={[2, 6]}>
                                             <CustomRadio 
-                                                title="Forward" 
-                                                name="weightBias" 
-                                                value="forward" 
-                                                isChecked={inputs.weightBias === "forward" ? true : false}
+                                                title="Agile" 
+                                                name="handling" 
+                                                value="agile" 
+                                                isChecked={inputs.handling === "agile" ? true : false}
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
@@ -348,7 +404,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                     </Flex>
                                 </FormControl>
                             </GridItem>
-                            {weightBiasErrorAlerts}
+                            {handlingErrorAlerts}
                         </SimpleGrid>
                         </Container>
                         <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
@@ -412,7 +468,8 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
-                                            borderColor={(errorCodes[5].showError || errorCodes[6].showError)? "brand.error" : "brand.lightGrey"}
+                                            borderColor={imperialBike? (errorCodes[6].showError? "brand.error" : "brand.lightGrey") 
+                                                                     : (errorCodes[5].showError? "brand.error" : "brand.lightGrey")}
                                             autoComplete="off"
                                             type="number"
                                             value={imperialBike? inputs.reachInches : inputs.reachMM}
@@ -437,7 +494,6 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             boxShadow='md'
                                             borderColor={imperialBike? (errorCodes[8].showError? "brand.error" : "brand.lightGrey") 
                                                                      : (errorCodes[7].showError? "brand.error" : "brand.lightGrey")}
-
                                             autoComplete="off"
                                             value={imperialBike? inputs.stackInches : inputs.stackMM}
                                             name={imperialBike? "stackInches" : "stackMM"}

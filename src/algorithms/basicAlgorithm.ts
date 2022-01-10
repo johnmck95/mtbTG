@@ -2,7 +2,7 @@ interface BasicAlgorithmProps{
         heightFeet: string,
         heightInches: string,
         heightCM: string,
-        weightBias: string,
+        handling: string,
         reachInches: string,
         reachMM: string,
         stackInches: string,
@@ -10,7 +10,7 @@ interface BasicAlgorithmProps{
         bikeType: string
 }
 
-function basicAlgorithm({heightFeet, heightInches, heightCM, weightBias, reachInches, reachMM, stackInches, stackMM, bikeType}: BasicAlgorithmProps) {
+function basicAlgorithm({heightFeet, heightInches, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType}: BasicAlgorithmProps) {
     const outputs = {
         barWidth: "Handlebar Width",
         barRise: "Handlebar Rise",
