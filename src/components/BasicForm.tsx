@@ -1,9 +1,10 @@
 import {ChangeEvent, useState, useEffect} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
+import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box, Slider, SliderMark, SliderTrack, SliderFilledTrack, Tooltip, Text, SliderThumb} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
 import {errorCodes} from "../data/ErrorCodes"
 import ErrorAlert from "./ErrorAlert"
+import SkillSlider from "./SkillSlider"
 
 interface RiderConversionProps{
     heightCMCalc: number;
@@ -26,6 +27,7 @@ interface BasicFormProps{
         weightLB: string,
         weightKG: string,
         handling: string,
+        skillLevel: string,
         reachInches: string,
         reachMM: string,
         stackInches: string,
@@ -34,7 +36,7 @@ interface BasicFormProps{
     };
     /* all these functions have 'Basic' after 'handle' when in Home.tsx */
     handleChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void;
-    handleCustomRadio: (name: string, value: string) => void;
+    handleCustomComponent: (name: string, value: string) => void;
     handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
     handleBikeConversion: ({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: BikeConversionProps) => void;
     handleFormCompletion: () => void;
@@ -43,12 +45,14 @@ interface BasicFormProps{
 
 let formHasErrors = true // This might be bad practice.. global variable.
 
-export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
+export default function BasicForm({inputs, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
     let criteria = 0
     let requirements = 6
+
+    console.log(inputs)
 
     useEffect(() => {
         if(showErrors)
@@ -363,14 +367,12 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 </FormControl>
                             </GridItem>
                             {weightErrorAlerts}
-
-
                         </SimpleGrid>
                         <SimpleGrid columns={1}> 
                             <GridItem colSpan={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Handling</FormLabel>
-                                    <Flex justify="space-between" spacing={[2, 4, 6]}>
+                                    <Flex justify="space-between" spacing={[2, 4, 6]} mb={2}>
                                         <Box mr={[2, 6]} w="100%" >
                                             <CustomRadio 
                                                 title="Stable" 
@@ -378,7 +380,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 value="stable" 
                                                 isChecked={inputs.handling === "stable" ? true : false} 
                                                 isError={errorCodes[4].showError}
-                                                handleCustomRadio={handleCustomRadio}
+                                                handleCustomRadio={handleCustomComponent}
                                                 />
                                         </Box>
                                         <Box w="100%">
@@ -388,7 +390,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 value="neutral" 
                                                 isChecked={inputs.handling === "neutral" ? true : false} 
                                                 isError={errorCodes[4].showError}
-                                                handleCustomRadio={handleCustomRadio}
+                                                handleCustomRadio={handleCustomComponent}
                                                 />
                                         </Box>
                                         <Box w="100%" ml={[2, 6]}>
@@ -398,13 +400,24 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 value="agile" 
                                                 isChecked={inputs.handling === "agile" ? true : false}
                                                 isError={errorCodes[4].showError}
-                                                handleCustomRadio={handleCustomRadio}
+                                                handleCustomRadio={handleCustomComponent}
                                                 />
                                         </Box>
                                     </Flex>
                                 </FormControl>
                             </GridItem>
                             {handlingErrorAlerts}
+
+                            <FormLabel 
+                                fontSize={["xs", "sm", "md"]} 
+                                mx={0} 
+                                mb="2px"
+                                > Skill Level
+                            </FormLabel>
+                            <SkillSlider handleChange={handleCustomComponent}/>
+                        
+
+
                         </SimpleGrid>
                         </Container>
                         <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
@@ -517,7 +530,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             value="enduro" 
                                             isChecked={inputs.bikeType === "enduro" ? true : false} 
                                             isError={errorCodes[9].showError}
-                                            handleCustomRadio={handleCustomRadio}
+                                            handleCustomRadio={handleCustomComponent}
                                             />
                                     </GridItem>
                                     <GridItem colSpan={1} >
@@ -527,7 +540,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             value="trail" 
                                             isChecked={inputs.bikeType === "trail" ? true : false} 
                                             isError={errorCodes[9].showError}
-                                            handleCustomRadio={handleCustomRadio}
+                                            handleCustomRadio={handleCustomComponent}
                                             />
                                     </GridItem>
                                 </SimpleGrid>
