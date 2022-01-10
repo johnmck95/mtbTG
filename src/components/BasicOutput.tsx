@@ -8,6 +8,7 @@ interface BasicOutputProps{
         weightLB: string,
         weightKG: string,
         handling: string,
+        skillLevel: string,
         reachInches: string,
         reachMM: string,
         stackInches: string,
@@ -36,6 +37,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                 <Box> Weight(LB) : {inputs.weightLB}</Box>
                 <Box> Weight(KG) : {inputs.weightKG}</Box>
                 <Box> Handling : {inputs.handling} </Box>
+                <Box> Skill Level: {inputs.skillLevel} </Box>
                 <Box> Reach(Inches) : {inputs.reachInches} </Box>
                 <Box> Reach(MM) : {inputs.reachMM} </Box>
                 <Box> Stack(MM) : {inputs.stackMM} </Box>
