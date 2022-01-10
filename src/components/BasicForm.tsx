@@ -238,7 +238,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     return(
         <div className="basicFormBox">
             <Container maxW="37.5rem">
-                <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10}>
+                <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10} boxShadow='2xl'>
                     <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
                         <Heading 
                             as='h2' 
@@ -370,8 +370,8 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                             <GridItem colSpan={1}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Handling</FormLabel>
-                                    <Flex flexWrap="wrap" justify={["space-evenly", "space-between"]} spacing={3}>
-                                        <Box mb={["10px", 0]} w={["45%", "31%"]} mr={[2, 0]}>
+                                    <Flex justify="space-between" spacing={[2, 4, 6]}>
+                                        <Box mr={[2, 6]} w="100%" >
                                             <CustomRadio 
                                                 title="Stable" 
                                                 name="handling" 
@@ -381,7 +381,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
                                         </Box>
-                                        <Box mb={["10px", 0]} w={["45%", "31%"]} ml={[2, 0]}>
+                                        <Box w="100%">
                                             <CustomRadio 
                                                 title="Neutral" 
                                                 name="handling" 
@@ -391,7 +391,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 handleCustomRadio={handleCustomRadio}
                                                 />
                                         </Box>
-                                        <Box mb={0} w={["50%", "31%"]}>
+                                        <Box w="100%" ml={[2, 6]}>
                                             <CustomRadio 
                                                 title="Agile" 
                                                 name="handling" 
