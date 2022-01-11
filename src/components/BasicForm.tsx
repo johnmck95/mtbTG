@@ -252,7 +252,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
 
     return(
         <div className="basicFormBox">
-            <Container maxW="37.5rem">
+            <Container maxW="37.5rem" py={4}>
                 <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10} boxShadow='2xl'>
                     <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
                         <Heading 
