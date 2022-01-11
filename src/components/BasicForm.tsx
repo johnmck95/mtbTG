@@ -52,8 +52,6 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
     let criteria = 0
     let requirements = 7
 
-    console.log(inputs)
-
     useEffect(() => {
         if(showErrors)
             handleErrors()
@@ -418,7 +416,6 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                 </FormControl>
                             </GridItem>
                             {handlingErrorAlerts}
-
                             <GridItem colSpan={3}>
                                 <FormLabel 
                                     fontSize={["xs", "sm", "md"]} 
@@ -429,8 +426,6 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                 <SkillSlider handleChange={handleCustomComponent}/>
                             </GridItem>
                             {skillLevelErrorAlerts}
-
-
                         </SimpleGrid>
                         </Container>
                         <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
