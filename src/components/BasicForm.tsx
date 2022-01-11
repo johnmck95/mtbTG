@@ -4,6 +4,7 @@ import CustomRadio from "./CustomRadio"
 import "../styling/basicForm.css"
 import {errorCodes} from "../data/ErrorCodes"
 import ErrorAlert from "./ErrorAlert"
+import SkillSlider from "./SkillSlider"
 
 interface RiderConversionProps{
     heightCMCalc: number;
@@ -26,6 +27,7 @@ interface BasicFormProps{
         weightLB: string,
         weightKG: string,
         handling: string,
+        skillLevel: string,
         reachInches: string,
         reachMM: string,
         stackInches: string,
@@ -34,7 +36,7 @@ interface BasicFormProps{
     };
     /* all these functions have 'Basic' after 'handle' when in Home.tsx */
     handleChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void;
-    handleCustomRadio: (name: string, value: string) => void;
+    handleCustomComponent: (name: string, value: string) => void;
     handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
     handleBikeConversion: ({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: BikeConversionProps) => void;
     handleFormCompletion: () => void;
@@ -43,12 +45,12 @@ interface BasicFormProps{
 
 let formHasErrors = true // This might be bad practice.. global variable.
 
-export default function BasicForm({inputs, handleChange, handleCustomRadio, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
+export default function BasicForm({inputs, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
     let criteria = 0
-    let requirements = 6
+    let requirements = 7
 
     useEffect(() => {
         if(showErrors)
@@ -58,9 +60,9 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     function toggleRiderUnit() {
         setImperialRider(prevImperialRider => !prevImperialRider)
         if (imperialRider)
-            requirements = 8
+            requirements = 9
         else
-            requirements = 6
+            requirements = 7
         riderStateConversion()
     }
 
@@ -114,7 +116,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
     function handleErrors() {
         const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         if(imperialRider)
-            requirements = 8;
+            requirements = 9;
 
         if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
@@ -186,7 +188,13 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             errorCodes[11].showError = false
         } else {
             errorCodes[11].showError = true
+        } if ( inputs.skillLevel !== "") {
+            criteria++
+            errorCodes[12].showError = false
+        } else {
+            errorCodes[12].showError = true
         }
+
 
         if(criteria === requirements)
             formHasErrors = false
@@ -222,6 +230,11 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         else return null
     })
+    const skillLevelErrorAlerts = errorCodes.map(error => {
+        if (error.showError && error.errorNumber === 12)
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
+        else return null
+    })
     const reachStackErrorAlerts = errorCodes.map(error => {
         if (!imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
             return <ErrorAlert  key={error.errorNumber} errorMessage={error.errorMessage} />
@@ -237,7 +250,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
 
     return(
         <div className="basicFormBox">
-            <Container maxW="37.5rem">
+            <Container maxW="37.5rem" py={4}>
                 <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10} boxShadow='2xl'>
                     <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
                         <Heading 
@@ -363,14 +376,12 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                 </FormControl>
                             </GridItem>
                             {weightErrorAlerts}
-
-
                         </SimpleGrid>
                         <SimpleGrid columns={1}> 
-                            <GridItem colSpan={1}>
+                            <GridItem colSpan={3}>
                                 <FormControl>
                                     <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Handling</FormLabel>
-                                    <Flex justify="space-between" spacing={[2, 4, 6]}>
+                                    <Flex justify="space-between" spacing={[2, 4, 6]} mb={2}>
                                         <Box mr={[2, 6]} w="100%" >
                                             <CustomRadio 
                                                 title="Stable" 
@@ -378,7 +389,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 value="stable" 
                                                 isChecked={inputs.handling === "stable" ? true : false} 
                                                 isError={errorCodes[4].showError}
-                                                handleCustomRadio={handleCustomRadio}
+                                                handleCustomRadio={handleCustomComponent}
                                                 />
                                         </Box>
                                         <Box w="100%">
@@ -388,7 +399,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 value="neutral" 
                                                 isChecked={inputs.handling === "neutral" ? true : false} 
                                                 isError={errorCodes[4].showError}
-                                                handleCustomRadio={handleCustomRadio}
+                                                handleCustomRadio={handleCustomComponent}
                                                 />
                                         </Box>
                                         <Box w="100%" ml={[2, 6]}>
@@ -398,13 +409,23 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                                 value="agile" 
                                                 isChecked={inputs.handling === "agile" ? true : false}
                                                 isError={errorCodes[4].showError}
-                                                handleCustomRadio={handleCustomRadio}
+                                                handleCustomRadio={handleCustomComponent}
                                                 />
                                         </Box>
                                     </Flex>
                                 </FormControl>
                             </GridItem>
                             {handlingErrorAlerts}
+                            <GridItem colSpan={3}>
+                                <FormLabel 
+                                    fontSize={["xs", "sm", "md"]} 
+                                    mx={0} 
+                                    mb="2px"
+                                    > Skill Level
+                                </FormLabel>
+                                <SkillSlider handleChange={handleCustomComponent}/>
+                            </GridItem>
+                            {skillLevelErrorAlerts}
                         </SimpleGrid>
                         </Container>
                         <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
@@ -517,7 +538,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             value="enduro" 
                                             isChecked={inputs.bikeType === "enduro" ? true : false} 
                                             isError={errorCodes[9].showError}
-                                            handleCustomRadio={handleCustomRadio}
+                                            handleCustomRadio={handleCustomComponent}
                                             />
                                     </GridItem>
                                     <GridItem colSpan={1} >
@@ -527,7 +548,7 @@ export default function BasicForm({inputs, handleChange, handleCustomRadio, hand
                                             value="trail" 
                                             isChecked={inputs.bikeType === "trail" ? true : false} 
                                             isError={errorCodes[9].showError}
-                                            handleCustomRadio={handleCustomRadio}
+                                            handleCustomRadio={handleCustomComponent}
                                             />
                                     </GridItem>
                                 </SimpleGrid>

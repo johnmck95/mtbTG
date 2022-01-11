@@ -20,6 +20,7 @@ export default function Home() {
         weightLB: "",
         weightKG: "",
         handling: "",
+        skillLevel: "",
         reachInches: "",
         reachMM: "",
         stackInches: "",
@@ -42,7 +43,7 @@ export default function Home() {
     }
 
     /* Updates state based on our 'CustomRadioComponent' */
-    function handleBasicCustomRadio(name: string, value: string) {
+    function handleBasicCustomComponent(name: string, value: string) {
         setInputs(prevInputs => ({
             ...prevInputs,
             [name]: value
@@ -118,7 +119,7 @@ export default function Home() {
                     <BasicForm
                         inputs={inputs}
                         handleChange={handleBasicChange}
-                        handleCustomRadio={handleBasicCustomRadio}
+                        handleCustomComponent={handleBasicCustomComponent}
                         handleRiderConversion={handleBasicRiderConversion}
                         handleBikeConversion={handleBasicBikeConversion}
                         handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}

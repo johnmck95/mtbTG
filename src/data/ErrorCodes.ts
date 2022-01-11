@@ -58,6 +58,11 @@ const errorCodes = [
         errorNumber: 11,
         errorMessage: "Please enter a weight between 36 and 109 kilograms",
         showError: false,
+    },
+    {
+        errorNumber: 12,
+        errorMessage: "Please select a Skill Level",
+        showError: false,
     }
 ]
 
