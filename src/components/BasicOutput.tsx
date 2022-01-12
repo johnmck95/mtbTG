@@ -1,5 +1,6 @@
-import {Text, Divider, Button, GridItem, Heading, HStack, SimpleGrid, VStack} from "@chakra-ui/react"
+import {Text, Divider, Button, GridItem, Heading, HStack, SimpleGrid, VStack, Container, Icon} from "@chakra-ui/react"
 import {useState} from "react"
+import {FaArrowRight} from "react-icons/fa"
 
 interface BasicOutputProps{
     inputs: {
@@ -30,6 +31,7 @@ interface BasicOutputProps{
 export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
     const [showSidePanel, setShopwSidePanel] = useState(true)
     return(
+        <Container maxW="75rem" h="calc(100vh - 50px)">
         <HStack justify="center" alignItems={"flex-start"} py={10}>
             {showSidePanel &&
             <VStack w="30%" bg="#414A4C" pr={0} borderRadius="md">
@@ -45,42 +47,36 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Text>{inputs.heightCM}cm</Text>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text>Weight</Text>
                     </GridItem>
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Text>{inputs.weightKG}kg</Text>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text>Handling</Text>
                     </GridItem>
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Text>{inputs.handling}</Text>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text>Skill Level</Text>
                     </GridItem>
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Text>{inputs.skillLevel}</Text>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text>Reach</Text>
                     </GridItem>
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Text>{inputs.reachMM}mm</Text>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text>Stack</Text>
                     </GridItem>
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Text>{inputs.stackMM}mm</Text>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text>Bike Type</Text>
                     </GridItem>
@@ -96,12 +92,17 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
 
 
             <VStack w="60%" bg="brand.darkGrey" pl={0} borderRadius="md">
-                <Heading fontSize="xl">
-                    YOUR SETTINGS
-                </Heading>
+                <HStack bg="red" w="100%">
+                    <Icon 
+                        as={FaArrowRight} 
+                        color="brand.lightGrey" 
+                        w={5} h={5} 
+                        alignSelf={"flex-start"}
+                        />
+                    <Heading fontSize="xl" >YOUR SETTINGS</Heading>
+                </HStack>
                 <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                 <SimpleGrid columns={3} columnGap={2} w="75%">
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text textDecoration={"underline"}>Handlebar Width</Text>
                     </GridItem>
@@ -111,7 +112,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text textDecoration={"underline"}>Handlebar Rise</Text>
                     </GridItem>
@@ -121,7 +121,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text textDecoration={"underline"}>Stem Length</Text>
                     </GridItem>
@@ -131,7 +130,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text textDecoration={"underline"}>Stem Spacers</Text>
                     </GridItem>
@@ -141,7 +139,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     <GridItem colSpan={1} w="100%" textAlign="right" mb={8}>
                         <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text textDecoration={"underline"}>Front Tire</Text>
                     </GridItem>
@@ -151,7 +148,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text textDecoration={"underline"}>Rear Tire</Text>
                     </GridItem>
@@ -161,7 +157,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     <GridItem colSpan={1} w="100%" textAlign="right">
                         <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
                     </GridItem>
-
                     <GridItem colSpan={1} w="100%" textAlign="left">
                         <Text textDecoration={"underline"}>Inserts</Text>
                     </GridItem>
@@ -174,6 +169,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                 </SimpleGrid>
             </VStack>
         </HStack>
+        </Container>
     )
 }
 
