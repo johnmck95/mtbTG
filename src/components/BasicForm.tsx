@@ -304,7 +304,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl autoComplete="none">
                                     <FormLabel 
-                                        fontSize={["xs", "sm", "md"]} 
+                                        fontSize={["sm", "md"]} 
                                         mx={0} mb="2px"
                                         >Height {imperialRider? "(feet)" : "(cm)"}
                                     </FormLabel>
@@ -329,7 +329,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                 <GridItem colSpan={1} pb={1}>
                                     <FormControl>
                                         <FormLabel 
-                                            fontSize={["xs", "sm", "md"]} 
+                                            fontSize={["sm", "md"]} 
                                             mx={0} 
                                             mb="2px"
                                             >Height (inches)
@@ -354,7 +354,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl autoComplete="none">
                                     <FormLabel 
-                                        fontSize={["xs", "sm", "md"]} 
+                                        fontSize={["sm", "md"]} 
                                         mx={0} mb="2px"
                                         >Weight {imperialRider? "(lb)" : "(kg)"}
                                     </FormLabel>
@@ -380,7 +380,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                         <SimpleGrid columns={1}> 
                             <GridItem colSpan={3}>
                                 <FormControl>
-                                    <FormLabel fontSize={["xs", "sm", "md"]} mx={0} mb="2px">Handling</FormLabel>
+                                    <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">Handling</FormLabel>
                                     <Flex justify="space-between" spacing={[2, 4, 6]} mb={2}>
                                         <Box mr={[2, 6]} w="100%" >
                                             <CustomRadio 
@@ -418,7 +418,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                             {handlingErrorAlerts}
                             <GridItem colSpan={3}>
                                 <FormLabel 
-                                    fontSize={["xs", "sm", "md"]} 
+                                    fontSize={["sm", "md"]} 
                                     mx={0} 
                                     mb="2px"
                                     > Skill Level
@@ -479,7 +479,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                 <GridItem colSpan={1}>
                                     <FormControl>
                                         <FormLabel 
-                                            fontSize={["xs", "sm", "md"]} 
+                                            fontSize={["sm", "md"]} 
                                             mx={0} 
                                             mb="2px">
                                                 Reach {imperialBike? "(inches)" : "(mm)"}
@@ -502,7 +502,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                 <GridItem colSpan={1}>
                                     <FormControl>
                                         <FormLabel 
-                                            fontSize={["xs", "sm", "md"]} 
+                                            fontSize={["sm", "md"]} 
                                             mx={0} 
                                             mb="2px">
                                                 Stack {imperialBike? "(inches)" : "(mm)"}
@@ -525,7 +525,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                 {reachStackErrorAlerts}
                             </SimpleGrid>
                                 <FormLabel 
-                                    fontSize={["xs", "sm", "md"]} 
+                                    fontSize={["sm", "md"]} 
                                     mx={0} 
                                     mb="2px">
                                         Bike Type
