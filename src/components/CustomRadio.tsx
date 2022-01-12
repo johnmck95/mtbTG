@@ -26,7 +26,7 @@ export default function CustomRadio(props: CustomRadioProps) {
                 cursor='pointer'
                 border="1px solid #AAAAAA"
                 borderColor={borderColor}
-                borderRadius='md'
+                borderRadius='3px'
                 boxShadow='md'
                 textAlign="center"
                 px={[3, 3]}
