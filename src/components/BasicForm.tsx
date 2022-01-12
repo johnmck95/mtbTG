@@ -308,15 +308,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                         mx={0} mb="2px"
                                         >Height {imperialRider? "(feet)" : "(cm)"}
                                     </FormLabel>
-
-                                    {/* <Button variant='form' /> */}
                                     <Input 
-                                        variant='outline'
-                                        colorScheme='Components.Input.Outline'
-                                        />
-                                    <Input 
-                                        // variant={'form'}
-                                        // variant='unstyled'
                                         variant='outline'
                                         placeholder={imperialRider? "6" : "187"}
                                         maxWidth={24} 
@@ -331,6 +323,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                         onChange={handleChange}
                                         value={imperialRider? inputs.heightFeet : inputs.heightCM}
                                         name={imperialRider? "heightFeet" : "heightCM"}
+                                        _placeholder={{ color: 'brand.placeholder' }}
                                         />
                                 </FormControl>
                             </GridItem>
@@ -354,6 +347,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                             value={inputs.heightInches}
                                             name={"heightInches"}
                                             onChange={handleChange}
+                                            _placeholder={{ color: 'brand.placeholder' }}
                                             />
                                     </FormControl>
                                 </GridItem>
@@ -381,6 +375,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                         onChange={handleChange}
                                         value={imperialRider? inputs.weightLB : inputs.weightKG}
                                         name={imperialRider? "weightLB" : "weightKG"}
+                                        _placeholder={{ color: 'brand.placeholder' }}
                                         />
                                 </FormControl>
                             </GridItem>
@@ -505,6 +500,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                             value={imperialBike? inputs.reachInches : inputs.reachMM}
                                             name={imperialBike? "reachInches" : "reachMM"}
                                             onChange={handleChange}
+                                            _placeholder={{ color: 'brand.placeholder' }}
                                             />
                                     </FormControl>
                                 </GridItem>
@@ -528,6 +524,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                             value={imperialBike? inputs.stackInches : inputs.stackMM}
                                             name={imperialBike? "stackInches" : "stackMM"}
                                             onChange={handleChange}
+                                            _placeholder={{ color: 'brand.placeholder' }}
                                             />
                                     </FormControl>
                                 </GridItem>

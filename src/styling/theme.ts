@@ -1,5 +1,4 @@
 import { extendTheme } from "@chakra-ui/react";
-import {InputStyles as Input} from './components/inputStyles'
 
 export const theme = extendTheme({
     colors: {
@@ -13,22 +12,8 @@ export const theme = extendTheme({
             black: "black",
             lightBlack: "#222222",
             flatBlack: "#262626",
-            error: "#d5798a"
+            error: "#d5798a",
+            placeholder: '#7E7E7E'
         }
     },
-    components: {
-        Input: {
-            variants: {
-                'with-shadow': {
-                    bg: 'red.400',
-                    boxShadow: '0 0 2px 2px #efdfde',
-                  },
-                  // 4. We can override existing variants
-                  outline: () => ({
-                    bg:'red.500',
-                  }),
-            }
-        }
-    }
-
 })

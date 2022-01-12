@@ -11,7 +11,7 @@ interface CustomRadioProps{
 export default function CustomRadio(props: CustomRadioProps) {
     const {title, name, value, isChecked, isError, handleCustomRadio} = props
 
-    let borderColor = "brand.lightGrey"
+    let borderColor = "brand.placeholder"
     if(isChecked)
         borderColor = "brand.white"
     if(isError)
@@ -31,6 +31,7 @@ export default function CustomRadio(props: CustomRadioProps) {
                 textAlign="center"
                 px={[3, 3]}
                 py={2}
+
                 >
                 {title}
             </Box>
