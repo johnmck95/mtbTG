@@ -309,7 +309,6 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                         >Height {imperialRider? "(feet)" : "(cm)"}
                                     </FormLabel>
                                     <Input 
-                                        variant='outline'
                                         placeholder={imperialRider? "6" : "187"}
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
