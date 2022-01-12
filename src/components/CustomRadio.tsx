@@ -31,7 +31,6 @@ export default function CustomRadio(props: CustomRadioProps) {
                 textAlign="center"
                 px={[3, 3]}
                 py={2}
-
                 >
                 {title}
             </Box>
