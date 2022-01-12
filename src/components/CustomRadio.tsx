@@ -11,7 +11,7 @@ interface CustomRadioProps{
 export default function CustomRadio(props: CustomRadioProps) {
     const {title, name, value, isChecked, isError, handleCustomRadio} = props
 
-    let borderColor = "brand.lightGrey"
+    let borderColor = "brand.placeholder"
     if(isChecked)
         borderColor = "brand.white"
     if(isError)

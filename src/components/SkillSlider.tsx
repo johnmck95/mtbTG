@@ -1,5 +1,5 @@
 import {useState} from "react"
-import {Box, Slider, SliderTrack, SliderFilledTrack, Text, SliderThumb, Heading, Flex} from "@chakra-ui/react"
+import {Box, Slider, SliderTrack, SliderFilledTrack, Text, SliderThumb} from "@chakra-ui/react"
 
 interface SkillSliderProps {
     handleChange: (name: string, value: string) => void;
