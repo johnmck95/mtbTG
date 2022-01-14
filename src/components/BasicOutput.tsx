@@ -145,6 +145,9 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     </HStack>
                     <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                     <SimpleGrid columns={3} columnGap={2} w={['85%', '80%', '75%']}>
+                        <GridItem colSpan={3}>
+                            <Text color='red.300'> <b>IMPORTANT: The Tuning Guide is under active development and is NOT FUNCTIONAL at this time.</b></Text>
+                        </GridItem>
                         <GridItem colSpan={1} w="100%" textAlign="left">
                             <Text textDecoration={"underline"}>Handlebar Width</Text>
                         </GridItem>
