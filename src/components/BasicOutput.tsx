@@ -1,6 +1,6 @@
 import {Text, Divider, Button, GridItem, Heading, HStack, SimpleGrid, VStack, Container, Icon} from "@chakra-ui/react"
 import {useState} from "react"
-import {FaArrowRight} from "react-icons/fa"
+import {FaArrowRight, FaArrowLeft} from "react-icons/fa"
 
 interface BasicOutputProps{
     inputs: {
@@ -29,7 +29,7 @@ interface BasicOutputProps{
 }
 
 export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
-    const [showSidePanel, setShopwSidePanel] = useState(true)
+    const [showSidePanel, setShowSidePanel] = useState(true)
     return(
         <Container maxW="75rem" h="calc(100vh - 50px)">
         <HStack justify="center" alignItems={"flex-start"} py={10}>
@@ -92,12 +92,17 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
 
 
             <VStack w="60%" bg="brand.darkGrey" pl={0} borderRadius="md">
-                <HStack bg="red" w="100%">
+                <HStack w="100%" position='relative' justify='center'>
                     <Icon 
-                        as={FaArrowRight} 
-                        color="brand.lightGrey" 
+                        as={showSidePanel? FaArrowRight : FaArrowLeft} 
+                        position='absolute'
+                        left='5%'
+                        top='75%'
+                        transform={'translate(-50%, -50%)'}
+                        color="brand.white" 
                         w={5} h={5} 
                         alignSelf={"flex-start"}
+                        onClick={() => setShowSidePanel(prevShowSidePanel => !prevShowSidePanel)}
                         />
                     <Heading fontSize="xl" >YOUR SETTINGS</Heading>
                 </HStack>
