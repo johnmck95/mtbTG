@@ -42,7 +42,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     </Heading>
                     <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                     <SimpleGrid columns={2} columnGap={2} w="75%">
-
                         <GridItem colSpan={1} w="100%" textAlign="left">
                             <Text>Height</Text>
                         </GridItem>
@@ -89,10 +88,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                 </VStack>
                 }
 
-
-
-
-
                 <VStack w={['100%', '80%']} bg="brand.darkGrey"borderRadius="md">
                     <HStack w="100%" justify='space-between'>
                         <HStack w={['60%', '80%']} justify='center' position='relative'>
@@ -110,43 +105,43 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                             <Heading fontSize={['lg', "xl"]} ml='auto' pt={4}>YOUR SETTINGS</Heading>
                         </HStack>
                         <Box bg='red' position='relative' top="20px">
-                                <Button 
-                                    position="absolute" 
-                                    right="65px"
-                                    bottom="2px"
-                                    size={'xs'} 
-                                    marginTop={["1rem", "1.5rem","2rem"]}
-                                    zIndex={metricOutput? 0 : 1}
-                                    color={metricOutput? "brand.black": "brand.white"}
-                                    bg={metricOutput? "brand.lightGrey" : "brand.blue"} 
-                                    onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
-                                    _hover={metricOutput? { bg: "brand.lightGrey", filter: "brightness(110%)"}
-                                                        : {bg: "brand.blue", filter: "brightness(90%)"} }
-                                    >
-                                        Metric
-                                </Button>
-                                <Button 
-                                    position="absolute" 
-                                    right="10px" 
-                                    bottom="2px"
-                                    size="xs" 
-                                    variant="ghost" 
-                                    marginTop={["1rem", "1.5rem","2rem"]}
-                                    zIndex={metricOutput? 1 : 0}
-                                    bg={metricOutput? "brand.blue": "brand.lightGrey"} 
-                                    color={metricOutput? "brand.white": "brand.black"}
-                                    onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
-                                    _hover={metricOutput? {bg: "brand.blue", filter: "brightness(90%)"}
-                                                        : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
-                                    >
-                                        Imperial
-                                </Button>
-                            </Box>
+                            <Button 
+                                position="absolute" 
+                                right="65px"
+                                bottom="2px"
+                                size={'xs'} 
+                                marginTop={["1rem", "1.5rem","2rem"]}
+                                zIndex={metricOutput? 0 : 1}
+                                color={metricOutput? "brand.black": "brand.white"}
+                                bg={metricOutput? "brand.lightGrey" : "brand.blue"} 
+                                onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
+                                _hover={metricOutput? { bg: "brand.lightGrey", filter: "brightness(110%)"}
+                                                    : {bg: "brand.blue", filter: "brightness(90%)"} }
+                                >
+                                    Metric
+                            </Button>
+                            <Button 
+                                position="absolute" 
+                                right="10px" 
+                                bottom="2px"
+                                size="xs" 
+                                variant="ghost" 
+                                marginTop={["1rem", "1.5rem","2rem"]}
+                                zIndex={metricOutput? 1 : 0}
+                                bg={metricOutput? "brand.blue": "brand.lightGrey"} 
+                                color={metricOutput? "brand.white": "brand.black"}
+                                onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
+                                _hover={metricOutput? {bg: "brand.blue", filter: "brightness(90%)"}
+                                                    : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                >
+                                    Imperial
+                            </Button>
+                        </Box>
                     </HStack>
                     <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                     <SimpleGrid columns={3} columnGap={2} w={['85%', '80%', '75%']}>
                         <GridItem colSpan={3}>
-                            <Text color='red.300'> <b>IMPORTANT: The Tuning Guide is under active development and is NOT FUNCTIONAL at this time.</b></Text>
+                            <Text color='red.300' textAlign='justify'> <b>IMPORTANT: The Tuning Guide is under active development and is NOT FUNCTIONAL at this time.</b></Text>
                         </GridItem>
                         <GridItem colSpan={1} w="100%" textAlign="left">
                             <Text textDecoration={"underline"}>Handlebar Width</Text>
