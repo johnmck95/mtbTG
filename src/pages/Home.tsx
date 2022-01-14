@@ -2,7 +2,7 @@ import ChooseSetupGuide from "../components/ChooseSetupGuide"
 import BasicOutput from "../components/BasicOutput"
 import BasicForm from "../components/BasicForm"
 import {Box} from "@chakra-ui/react"
-import HomePhoto from "../images/hartland-enduro.jpg"
+import HomePhoto from "../images/hartland-enduro.webp"
 import {ChangeEvent, useState} from "react"
 import basicAlgorithm from "../algorithms/basicAlgorithm"
 
