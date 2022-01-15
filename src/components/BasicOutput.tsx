@@ -153,7 +153,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.barWidth}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <LearnMoreModal title="Handlebar Width"/>
+                                <LearnMoreModal id={0}/>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Handlebar Rise</Text>
@@ -162,7 +162,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.barRise}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <LearnMoreModal title="Handlebar Rise"/> 
+                                <LearnMoreModal  id={1}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Stem Length</Text>
@@ -171,7 +171,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.stemLength}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <LearnMoreModal title="Stem Length"/> 
+                                <LearnMoreModal  id={2}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Stem Spacers</Text>
@@ -180,7 +180,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.spacers}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right" mb={8}>
-                                <LearnMoreModal title="Stem Spacers"/> 
+                                <LearnMoreModal  id={3}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Front Tire</Text>
@@ -189,7 +189,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.frontTirePSI}psi</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <LearnMoreModal title="Front Tire Pressure"/> 
+                                <LearnMoreModal id={4}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Rear Tire</Text>
@@ -198,7 +198,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.rearTirePSI}psi</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <LearnMoreModal title="Rear Tire Pressure"/> 
+                                <LearnMoreModal id={5}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Inserts</Text>
@@ -207,7 +207,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.inserts}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <LearnMoreModal title="Inserts"/> 
+                                <LearnMoreModal  id={6}/> 
                             </GridItem>
                         </SimpleGrid>
                     </VStack>

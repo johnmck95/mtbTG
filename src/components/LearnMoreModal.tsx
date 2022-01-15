@@ -2,25 +2,12 @@ import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, 
 import {learnMoreModal as modalData} from "../data/LearnMoreModal"
 
 interface LeanMoreModalProps{
-    title: string
+    id: number
 }
-export default function LearnMoreModal({title}: LeanMoreModalProps) {  
+export default function LearnMoreModal({id}: LeanMoreModalProps) {  
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    let val = 0
-    if(title === "Handlebar Rise")
-        val = 1
-    else if(title === "Stem Length")
-        val = 2
-    else if(title === "Stem Spacers")
-        val = 3
-    else if(title === "Front Tire Pressure")
-        val = 4
-    else if(title === "Rear Tire Pressure")
-        val = 5
-    else if(title === "Inserts")
-        val = 6
-    const data = modalData[val]
+    const data = modalData[id]
 
 
     return (
@@ -30,7 +17,7 @@ export default function LearnMoreModal({title}: LeanMoreModalProps) {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                <ModalHeader>{title}</ModalHeader>
+                <ModalHeader>{data.title}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     {data.description}

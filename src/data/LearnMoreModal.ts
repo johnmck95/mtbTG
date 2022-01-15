@@ -2,7 +2,7 @@ const learnMoreModal= [
     {
         id: 0,
         title: "Handlebar Width",
-        description: "bar width",
+        description: "Handlebar width is measured without grips.",
     },
     {
         id: 1,
