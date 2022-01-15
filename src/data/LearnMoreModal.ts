@@ -1,45 +1,39 @@
 const learnMoreModal= [
     {
-        modalNumber: 0,
-        modalTitle: "Handlebar Width",
-        modalDescription: "",
+        id: 0,
+        title: "Handlebar Width",
+        description: "bar width",
+    },
+    {
+        id: 1,
+        title: "Handlebar Rise",
+        description: "bar rise",
+    },
+    {
+        id: 2,
+        title: "Stem Length",
+        description: "stem length",
+    },
+    {
+        id: 3,
+        title: "Stem Spacers",
+        description: "stem spacers",
+    },
+    {
+        id: 4,
+        title: "Front Tire Pressure",
+        description: "fr pressure",
 
     },
     {
-        modalNumber: 1,
-        modalTitle: "Handlebar Rise",
-        modalDescription: "",
-
+        id: 5,
+        title: "Rear Tire Pressure",
+        description: "rr pressure",
     },
     {
-        modalNumber: 2,
-        modalTitle: "Stem Length",
-        modalDescription: "",
-
-    },
-    {
-        modalNumber: 3,
-        modalTitle: "",
-        modalDescription: "",
-
-    },
-    {
-        modalNumber: 4,
-        modalTitle: "",
-        modalDescription: "",
-
-    },
-    {
-        modalNumber: 5,
-        modalTitle: "",
-        modalDescription: "",
-
-    },
-    {
-        modalNumber: 6,
-        modalTitle: "",
-        modalDescription: "",
-
+        id: 6,
+        title: "Inserts",
+        description: "inserts",
     },
 ]
 

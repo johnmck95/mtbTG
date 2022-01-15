@@ -186,16 +186,16 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Front Tire</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.frontTirePSI}</Text>
+                                <Text>{outputs.frontTirePSI}psi</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal title="Front Tire Pressure"/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
-                                <Text textDecoration={"underline"}>Rear Tire Pressuree</Text>
+                                <Text textDecoration={"underline"}>Rear Tire</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.rearTirePSI}</Text>
+                                <Text>{outputs.rearTirePSI}psi</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal title="Rear Tire Pressure"/> 
