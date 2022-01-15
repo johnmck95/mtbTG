@@ -2,6 +2,7 @@ import {Text, Divider, Button, GridItem, Heading, Stack, HStack, SimpleGrid, VSt
 import {useState} from "react"
 import {FaArrowRight, FaArrowLeft} from "react-icons/fa"
 import '../styling/basicOutput.css'
+import LearnMoreModal from "./LearnMoreModal"
 
 interface BasicOutputProps{
     inputs: {
@@ -152,7 +153,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.barWidth}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal title="Handlebar Width"/>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Handlebar Rise</Text>
@@ -161,7 +162,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.barRise}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal title="Handlebar Rise"/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Stem Length</Text>
@@ -170,7 +171,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.stemLength}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal title="Stem Length"/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Stem Spacers</Text>
@@ -179,7 +180,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.spacers}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right" mb={8}>
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal title="Stem Spacers"/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Front Tire</Text>
@@ -188,16 +189,16 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.frontTirePSI}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal title="Front Tire Pressure"/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
-                                <Text textDecoration={"underline"}>Rear Tire</Text>
+                                <Text textDecoration={"underline"}>Rear Tire Pressuree</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <Text>{outputs.rearTirePSI}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal title="Rear Tire Pressure"/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Inserts</Text>
@@ -206,7 +207,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.inserts}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal title="Inserts"/> 
                             </GridItem>
                         </SimpleGrid>
                     </VStack>
