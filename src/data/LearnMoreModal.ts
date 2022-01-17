@@ -7,33 +7,33 @@ const learnMoreModal= [
     {
         id: 1,
         title: "Handlebar Rise",
-        description: "bar rise",
+        description: "bar rise description",
     },
     {
         id: 2,
         title: "Stem Length",
-        description: "stem length",
+        description: "stem length description",
     },
     {
         id: 3,
         title: "Stem Spacers",
-        description: "stem spacers",
+        description: "stem spacers description",
     },
     {
         id: 4,
         title: "Front Tire Pressure",
-        description: "fr pressure",
+        description: "front pressure description",
 
     },
     {
         id: 5,
         title: "Rear Tire Pressure",
-        description: "rr pressure",
+        description: "rear pressure description",
     },
     {
         id: 6,
         title: "Inserts",
-        description: "inserts",
+        description: "inserts description",
     },
 ]
 

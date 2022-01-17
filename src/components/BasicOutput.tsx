@@ -150,7 +150,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Handlebar Width</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.barWidth}</Text>
+                                <Text>{outputs.barWidth}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal id={0}/>
@@ -159,7 +159,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Handlebar Rise</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.barRise}</Text>
+                                <Text>{outputs.barRise}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal  id={1}/> 
@@ -168,7 +168,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Stem Length</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.stemLength}</Text>
+                                <Text>{outputs.stemLength}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal  id={2}/> 
@@ -177,7 +177,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Stem Spacers</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.spacers}</Text>
+                                <Text>{outputs.spacers}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right" mb={8}>
                                 <LearnMoreModal  id={3}/> 
