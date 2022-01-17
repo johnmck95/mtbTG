@@ -52,6 +52,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
     let criteria = 0
     let requirements = 7
 
+    // ** missing dependencies: 'handleErrors' and 'showErrors' **
     useEffect(() => {
         if(showErrors)
             handleErrors()
