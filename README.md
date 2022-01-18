@@ -1,33 +1,40 @@
-## Project Overview
+# Project Overview
 
-This repositpory contains the code for https://mtbtg.netlify.app/,
+This repository contains the code for https://mtbtg.netlify.app/,
 a Mountain Bike Tuning Guide built with React, Typescript and ChakraUI.
-The site is automatically deployed via Netlify. This projecet is being
-actively developed, and is not a finsihed product.
+The site is automatically deployed via Netlify. This project is being
+actively developed, and is not a completed product at this stage.
 
 
 ### What is a Mountain Bike Tuning Guide?
 
-The Tuning Guide takes a series of rider inputs, and calculates how to optimize
-the riders body position. With this information, it makes suggestions for how
-the rider should setup their specific bike to optimize their experience on the bike.
+The Tuning Guide is a tool for mountain bikers to optimize their weight
+distribution, and therefore get the best experience on their bike.
+The user completes a form that provides metrics to the Tuning Guide to
+optimize the riders body position. Once it calculates their ideal bike
+setup, it returns personalized instuctions on the adjustments that need 
+to be made. 
 
 
-### Why build this?
+### Why Build This?
 
-There are two main reasons. Firtly, I wanted to start building a portfolio to
+There are two main reasons. Firtly, I want to start building a portfolio to
 show future employers. Secondly, I'm an avid mountain biker and have seen there
 is a genuine need for the product. Together, this is my perfect passion project.
-My goal is to eventually purchase a domain and make the product available to 
-help other mountian bikers.
+My goal is to build a polished, tested, and responsive UI that genuinely helps mountain
+bikers. If I can accomplish this, I will purchase a web domain and make the
+Tuning Guide a free, public product with the goal of reaching more users.
 
 
-## How To Use
+# How To Use
 
 ### Run Locally with `yarn start`
 
 Runs the app in the development mode.<br /> Open
 [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br /> You will also see any lint errors
-in the console.
+
+### View the Latest Deployed Changes
+
+In order to share my progress before completing the Tuning Guide, I am
+regularly deploying changes at https://mtbtg.netlify.app/.
