@@ -19,7 +19,7 @@ export default function LearnMoreModal({id}: LeanMoreModalProps) {
                 <ModalOverlay />
                 <ModalContent bg='brand.darkGrey'>
                     <ModalHeader textDecoration="underline" color="brand.white">{data.title}</ModalHeader>
-                    <ModalCloseButton />
+                    <ModalCloseButton color="brand.white"/>
                     <ModalBody color="brand.white">
                         {data.description}
                         <Image mt={8}src={MtbTG}  />
