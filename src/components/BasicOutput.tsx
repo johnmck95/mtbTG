@@ -2,6 +2,7 @@ import {Text, Divider, Button, GridItem, Heading, Stack, HStack, SimpleGrid, VSt
 import {useState} from "react"
 import {FaArrowRight, FaArrowLeft} from "react-icons/fa"
 import '../styling/basicOutput.css'
+import LearnMoreModal from "./LearnMoreModal"
 
 interface BasicOutputProps{
     inputs: {
@@ -19,10 +20,14 @@ interface BasicOutputProps{
         bikeType: string
     };
     outputs: {
-        barWidth: string,
-        barRise: string,
-        stemLength: string,
-        spacers: string,
+        barWidthMM: string,
+        barWidthInch: string,
+        barRiseMM: string,
+        barRiseInch: string,
+        stemLengthMM: string,
+        stemLengthInch: string,
+        spacersMM: string,
+        spacersInch: string,
         frontTirePSI: string,
         rearTirePSI: string,
         inserts: string,
@@ -113,12 +118,12 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                     bottom="2px"
                                     size={'xs'} 
                                     marginTop={["1rem", "1.5rem","2rem"]}
-                                    zIndex={metricOutput? 0 : 1}
-                                    color={metricOutput? "brand.black": "brand.white"}
-                                    bg={metricOutput? "brand.lightGrey" : "brand.blue"} 
+                                    zIndex={metricOutput? 1 : 0}
+                                    color={metricOutput? "brand.white" : "brand.black"}
+                                    bg={metricOutput? "brand.blue" : "brand.lightGrey"} 
                                     onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
-                                    _hover={metricOutput? { bg: "brand.lightGrey", filter: "brightness(110%)"}
-                                                        : {bg: "brand.blue", filter: "brightness(90%)"} }
+                                    _hover={metricOutput? {bg: "brand.blue", filter: "brightness(90%)"}
+                                                        : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
                                     >
                                         Metric
                                 </Button>
@@ -129,15 +134,16 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                     size="xs" 
                                     variant="ghost" 
                                     marginTop={["1rem", "1.5rem","2rem"]}
-                                    zIndex={metricOutput? 1 : 0}
-                                    bg={metricOutput? "brand.blue": "brand.lightGrey"} 
-                                    color={metricOutput? "brand.white": "brand.black"}
+                                    zIndex={metricOutput? 0 : 1}
+                                    bg={metricOutput? "brand.lightGrey" : "brand.blue"} 
+                                    color={metricOutput? "brand.black" : "brand.white"}
                                     onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
-                                    _hover={metricOutput? {bg: "brand.blue", filter: "brightness(90%)"}
-                                                        : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                    _hover={metricOutput? { bg: "brand.lightGrey", filter: "brightness(110%)"}
+                                                        : {bg: "brand.blue", filter: "brightness(90%)"} }
                                     >
                                         Imperial
                                 </Button>
+                    
                             </Box>
                         </HStack>
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
@@ -149,55 +155,55 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Handlebar Width</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.barWidth}</Text>
+                                <Text>{metricOutput? outputs.barWidthMM : outputs.barWidthInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal id={0}/>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Handlebar Rise</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.barRise}</Text>
+                                <Text>{metricOutput? outputs.barRiseMM : outputs.barRiseInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal  id={1}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Stem Length</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.stemLength}</Text>
+                                <Text>{metricOutput? outputs.stemLengthMM : outputs.stemLengthInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal  id={2}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Stem Spacers</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.spacers}</Text>
+                                <Text>{metricOutput? outputs.spacersMM : outputs.spacersInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right" mb={8}>
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal  id={3}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Front Tire</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.frontTirePSI}</Text>
+                                <Text>{outputs.frontTirePSI}psi</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal id={4}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Rear Tire</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.rearTirePSI}</Text>
+                                <Text>{outputs.rearTirePSI}psi</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal id={5}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Inserts</Text>
@@ -206,7 +212,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{outputs.inserts}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Button size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+                                <LearnMoreModal  id={6}/> 
                             </GridItem>
                         </SimpleGrid>
                     </VStack>

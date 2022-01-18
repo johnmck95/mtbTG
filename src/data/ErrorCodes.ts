@@ -54,7 +54,8 @@ const errorCodes = [
         errorNumber: 10,
         errorMessage: "Please enter a weight between 80 and 240 pounds",
         showError: false,
-    },{
+    },
+    {
         errorNumber: 11,
         errorMessage: "Please enter a weight between 36 and 109 kilograms",
         showError: false,

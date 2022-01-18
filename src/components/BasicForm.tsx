@@ -43,7 +43,7 @@ interface BasicFormProps{
     handleReRender: () => void;
 }
 
-let formHasErrors = true // This might be bad practice.. global variable.
+let formHasErrors = true
 
 export default function BasicForm({inputs, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
     const [imperialRider, setImperialRider] = useState(true)
@@ -52,6 +52,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
     let criteria = 0
     let requirements = 7
 
+    // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect
     useEffect(() => {
         if(showErrors)
             handleErrors()
@@ -71,7 +72,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
         bikeStateConversion()
     }
 
-    // NOTE: watch out for 'e' in the input - currently unhandled
+    // TODO: watch out for 'e' in the input - currently unhandled
     function riderStateConversion() {
         let heightCMCalc = 0
         let heightFootCalc = 0
@@ -94,7 +95,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
     }
 
-    // NOTE: watch out for 'e' in the input - currently unhandled
+    // TODO: watch out for 'e' in the input - currently unhandled
     function bikeStateConversion() {
         let reachMMCalc = 0
         let reachInchCalc = 0
