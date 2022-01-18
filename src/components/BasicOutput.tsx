@@ -20,10 +20,14 @@ interface BasicOutputProps{
         bikeType: string
     };
     outputs: {
-        barWidth: string,
-        barRise: string,
-        stemLength: string,
-        spacers: string,
+        barWidthMM: string,
+        barWidthInch: string,
+        barRiseMM: string,
+        barRiseInch: string,
+        stemLengthMM: string,
+        stemLengthInch: string,
+        spacersMM: string,
+        spacersInch: string,
         frontTirePSI: string,
         rearTirePSI: string,
         inserts: string,
@@ -114,12 +118,12 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                     bottom="2px"
                                     size={'xs'} 
                                     marginTop={["1rem", "1.5rem","2rem"]}
-                                    zIndex={metricOutput? 0 : 1}
-                                    color={metricOutput? "brand.black": "brand.white"}
-                                    bg={metricOutput? "brand.lightGrey" : "brand.blue"} 
+                                    zIndex={metricOutput? 1 : 0}
+                                    color={metricOutput? "brand.white" : "brand.black"}
+                                    bg={metricOutput? "brand.blue" : "brand.lightGrey"} 
                                     onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
-                                    _hover={metricOutput? { bg: "brand.lightGrey", filter: "brightness(110%)"}
-                                                        : {bg: "brand.blue", filter: "brightness(90%)"} }
+                                    _hover={metricOutput? {bg: "brand.blue", filter: "brightness(90%)"}
+                                                        : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
                                     >
                                         Metric
                                 </Button>
@@ -130,15 +134,16 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                     size="xs" 
                                     variant="ghost" 
                                     marginTop={["1rem", "1.5rem","2rem"]}
-                                    zIndex={metricOutput? 1 : 0}
-                                    bg={metricOutput? "brand.blue": "brand.lightGrey"} 
-                                    color={metricOutput? "brand.white": "brand.black"}
+                                    zIndex={metricOutput? 0 : 1}
+                                    bg={metricOutput? "brand.lightGrey" : "brand.blue"} 
+                                    color={metricOutput? "brand.black" : "brand.white"}
                                     onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
-                                    _hover={metricOutput? {bg: "brand.blue", filter: "brightness(90%)"}
-                                                        : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                    _hover={metricOutput? { bg: "brand.lightGrey", filter: "brightness(110%)"}
+                                                        : {bg: "brand.blue", filter: "brightness(90%)"} }
                                     >
                                         Imperial
                                 </Button>
+                    
                             </Box>
                         </HStack>
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
@@ -150,7 +155,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Handlebar Width</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.barWidth}{metricOutput? "mm" : '"'}</Text>
+                                <Text>{metricOutput? outputs.barWidthMM : outputs.barWidthInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal id={0}/>
@@ -159,7 +164,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Handlebar Rise</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.barRise}{metricOutput? "mm" : '"'}</Text>
+                                <Text>{metricOutput? outputs.barRiseMM : outputs.barRiseInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal  id={1}/> 
@@ -168,7 +173,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Stem Length</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.stemLength}{metricOutput? "mm" : '"'}</Text>
+                                <Text>{metricOutput? outputs.stemLengthMM : outputs.stemLengthInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal  id={2}/> 
@@ -177,7 +182,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text textDecoration={"underline"}>Stem Spacers</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.spacers}{metricOutput? "mm" : '"'}</Text>
+                                <Text>{metricOutput? outputs.spacersMM : outputs.spacersInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right" mb={8}>
                                 <LearnMoreModal  id={3}/> 

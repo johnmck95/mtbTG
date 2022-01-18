@@ -12,10 +12,14 @@ interface BasicAlgorithmProps{
 
 function basicAlgorithm({heightFeet, heightInches, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType}: BasicAlgorithmProps) {
     const outputs = {
-        barWidth: "780",
-        barRise: "25",
-        stemLength: "50",
-        spacers: "10",
+        barWidthMM: "780",
+        barWidthInch: "30.7",
+        barRiseMM: "25",
+        barRiseInch: "1.0",
+        stemLengthMM: "50",
+        stemLengthInch: "2.0",
+        spacersMM: "10",
+        spacersInch: "0.4",
         frontTirePSI: "22",
         rearTirePSI: "25",
         inserts: "yes"
