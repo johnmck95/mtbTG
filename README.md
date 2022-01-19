@@ -18,7 +18,7 @@ to be made.
 
 ### Why Build This?
 
-There are two main reasons. Firtly, I want to start building a portfolio to
+There are two main reasons. Firstly, I want to start building a portfolio to
 show future employers. Secondly, I'm an avid mountain biker and have seen there
 is a genuine need for the product. Together, this is my perfect passion project.
 My goal is to build a polished, tested, and responsive UI that genuinely helps mountain
