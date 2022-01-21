@@ -1,4 +1,5 @@
 import { Box } from "@chakra-ui/react"
+import { KeyboardEvent } from "react"
 
 interface CustomRadioProps{
     title: string;
@@ -17,10 +18,17 @@ export default function CustomRadio(props: CustomRadioProps) {
     if(isError)
         borderColor = "brand.error"
         
+    function handleKeyPress(event: KeyboardEvent<HTMLImageElement>){
+        if (event.key === 'Enter')
+            handleCustomRadio(name, value)
+    }
+
     return(
         <Box as='label' title={title}>
             <Box
+                tabIndex={0}
                 onClick={() => handleCustomRadio(name, value)} 
+                onKeyPress={handleKeyPress}
                 bg="brand.darkGrey"
                 color={isChecked? "brand.white" : "brand.lightGrey"}
                 cursor='pointer'
