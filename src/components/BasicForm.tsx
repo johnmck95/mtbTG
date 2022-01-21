@@ -266,7 +266,8 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                 RIDER METRICS 
                         </Heading>
                         <Box >
-                            <Button 
+                            <Button
+                                tabIndex={-1}
                                 position="absolute" 
                                 right="65px"
                                 bottom="2px"
@@ -282,6 +283,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                     Metric
                             </Button>
                             <Button 
+                                tabIndex={-1}
                                 position="absolute" 
                                 right="10px" 
                                 bottom="2px"
@@ -445,6 +447,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                             </Heading>
                             <Box >
                                 <Button 
+                                    tabIndex={-1}
                                     position="absolute" 
                                     right="65px" 
                                     bottom="2px"
@@ -460,6 +463,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
                                         Metric
                                 </Button>
                                 <Button 
+                                    tabIndex={-1}
                                     position="absolute" 
                                     right="10px" 
                                     bottom="2px"    
