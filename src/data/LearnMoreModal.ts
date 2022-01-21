@@ -2,7 +2,7 @@ const learnMoreModal= [
     {
         id: 0,
         title: "Handlebar Width",
-        description: "Remove the grips and meausure between the widest points of the bar, with your preferred bar roll. Handlebar width will vary based on a persons height and wingspan. This adjustment assumes an average ape index. Handlebar width is strongly correlated to getting the tires onto side knobs while cornering, adjusting your effective reach, and general stability in a straight line."
+        description: "Remove the grips and meausure between the widest points of the bar (with your preferred bar roll). Handlebar width will vary based on a persons height and wingspan. This adjustment assumes an average ape index. Handlebar width is strongly correlated to getting the tires onto side knobs while cornering, adjusting your effective reach, and general stability in a straight line."
     },
     {
         id: 1,
@@ -22,18 +22,18 @@ const learnMoreModal= [
     {
         id: 4,
         title: "Front Tire Pressure",
-        description: "Tire pressure should be routinely checked, as your tire/rim combination will allow air loss. It is recommended to check air pressure before each ride for maximum performance.",
+        description: "Tire pressure should be routinely checked, as your tires will naturally lose pressure. It is recommended to check air pressure before each ride for maximum performance.",
 
     },
     {
         id: 5,
         title: "Rear Tire Pressure",
-        description: "Tire pressure should be routinely checked, as your tire/rim combination will allow air loss. It is recommended to check air pressure before each ride for maximum performance.",
+        description: "Tire pressure should be routinely checked, as your tires will naturally lose pressure. It is recommended to check air pressure before each ride for maximum performance.",
     },
     {
         id: 6,
         title: "Inserts",
-        description: "Tire inserts can help increase traction by dampening the tires air chamber and allowing you to run lower pressures from the added rim protection. There are a plethora of tire inserts to choose from, some of which will not provide both benefits. CushCore is our recommendation, but please consult your local bike shop if in doubt.",
+        description: "Tire inserts can help increase traction by dampening the air chamber in the tire and allowing you to run lower pressures from the added rim protection. There are a plethora of tire inserts to choose from, some of which will not provide both benefits. CushCore is our recommendation, but please consult your local bike shop if in doubt.",
     },
 ]
 
