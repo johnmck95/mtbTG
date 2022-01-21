@@ -16,7 +16,6 @@ export default function LearnMoreModal({id}: LeanMoreModalProps) {
             <Button 
                 onClick={onOpen} 
                 size="xs" 
-                variant="solid"
                 bg="brand.darkGrey" 
                 filter="brightness(120%)"
                 color="brand.white" 

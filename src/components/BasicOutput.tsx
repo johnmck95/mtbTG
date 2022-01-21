@@ -1,6 +1,6 @@
 import {Text, Divider, Button, GridItem, Heading, Stack, HStack, SimpleGrid, VStack, Container, Icon, Box} from "@chakra-ui/react"
 import {useState} from "react"
-import {FaArrowRight, FaArrowLeft} from "react-icons/fa"
+import {FaArrowRight, FaArrowLeft,FaRegWindowClose, FaBars} from "react-icons/fa"
 import '../styling/basicOutput.css'
 import LearnMoreModal from "./LearnMoreModal"
 
@@ -44,9 +44,25 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                 <Stack direction={['column', 'column', 'row']} justify="center" alignItems={"center"} py={10} >
                     {showSidePanel &&
                     <VStack w={['100%', '80%', "30%"]} bg="#414A4C" pr={0} borderRadius="md" alignSelf={['center', null, "flex-start",]}>
-                        <Heading fontSize="xl">
-                            RIDER INFORMATION
-                        </Heading>
+
+                        <HStack position='relative' justify='center' w='100%'>
+                            <Icon 
+                                    as={showSidePanel? FaRegWindowClose : FaBars} 
+                                    position='absolute'
+                                    left='7%'
+                                    top='70%'
+                                    transform={'translate(-50%, -50%)'}
+                                    color="brand.white" 
+                                    w={5} h={5} 
+                                    alignSelf={"flex-start"}
+                                    onClick={() => setShowSidePanel(prevShowSidePanel => !prevShowSidePanel)}
+                                    />
+                            <Heading fontSize="lg" pt={4}>
+                                RIDER INFO
+                            </Heading>
+                        </HStack>
+
+
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                         <SimpleGrid columns={2} columnGap={2} w="75%">
                             <GridItem colSpan={1} w="100%" textAlign="left">
@@ -99,9 +115,10 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                         <HStack w="100%" justify='space-between'>
                             <HStack w={['60%', '80%']} justify='center' position='relative'>
                                 <Icon 
-                                    as={showSidePanel? FaArrowRight : FaArrowLeft} 
+                                    as={FaBars} 
                                     position='absolute'
-                                    left='7%'
+                                    // left='7%'
+                                    left='11%'
                                     top='75%'
                                     transform={'translate(-50%, -50%)'}
                                     color="brand.white" 
@@ -109,9 +126,9 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                     alignSelf={"flex-start"}
                                     onClick={() => setShowSidePanel(prevShowSidePanel => !prevShowSidePanel)}
                                     />
-                                <Heading fontSize={['lg', "xl"]} ml='auto' pt={4}>YOUR SETTINGS</Heading>
+                                <Heading fontSize={['lg', "xl"]} ml='auto' pl={4} pt={4}>YOUR SETTINGS</Heading>
                             </HStack>
-                            <Box bg='red' position='relative' top="20px">
+                            <Box position='relative' top="20px">
                                 <Button 
                                     position="absolute" 
                                     right="65px"
@@ -167,7 +184,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Text>{metricOutput? outputs.barRiseMM : outputs.barRiseInch}{metricOutput? "mm" : '"'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <LearnMoreModal  id={1}/> 
+                                <LearnMoreModal id={1}/> 
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Stem Length</Text>
