@@ -43,8 +43,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
             <Container maxW="75rem" h="calc(100vh - 50px)">
                 <Stack direction={['column', 'column', 'row']} justify="center" alignItems={"center"} py={10} >
                     {showSidePanel &&
-                    <VStack w={['100%', '80%', "30%"]} bg="#414A4C" pr={0} borderRadius="md" alignSelf={['center', null, "flex-start",]}>
-
+                    <VStack w={['100%', '80%', "30%"]} bg="brand.darkGrey" pr={0} borderRadius="md" alignSelf={['center', null, "flex-start",]}>
                         <HStack position='relative' justify='center' w='100%'>
                             <Icon 
                                     as={showSidePanel? FaRegWindowClose : FaBars} 
@@ -61,10 +60,8 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 RIDER INFO
                             </Heading>
                         </HStack>
-
-
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
-                        <SimpleGrid columns={2} columnGap={2} w="75%">
+                        <SimpleGrid columns={2} columnGap={2} w="75%" pb={4}>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Height</Text>
                             </GridItem>
@@ -163,7 +160,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                             </Box>
                         </HStack>
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
-                        <SimpleGrid columns={3} columnGap={2} w={['85%', '80%', '75%']}>
+                        <SimpleGrid columns={3} columnGap={2} w={['85%', '80%', '75%']} pb={4}>
                             <GridItem colSpan={3}>
                                 <Text color='red.300' textAlign='justify'> <b>IMPORTANT: The Tuning Guide is under active development and is NOT FUNCTIONAL at this time.</b></Text>
                             </GridItem>
