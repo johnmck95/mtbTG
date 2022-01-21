@@ -34,7 +34,6 @@ interface FormProps{
         stackMM: string,
         bikeType: string
     };
-    /* all these functions have 'Basic' after 'handle' when in Home.tsx */
     handleChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void;
     handleCustomComponent: (name: string, value: string) => void;
     handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
