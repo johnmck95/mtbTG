@@ -13,9 +13,18 @@ export default function LearnMoreModal({id}: LeanMoreModalProps) {
 
     return (
         <>
-            <Button onClick={onOpen} size="xs" bg="brand.blue" color="brand.white" my={2}> Learn More </Button>
+            <Button 
+                onClick={onOpen} 
+                size="xs" 
+                bg="brand.darkGrey" 
+                filter="brightness(120%)"
+                color="brand.white" 
+                my={2}
+                _hover={{bg: "brand.blue"}}
+                > learn more 
+            </Button>
         
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={onClose} isCentered>
                 <ModalOverlay />
                 <ModalContent bg='brand.darkGrey'>
                     <ModalHeader textDecoration="underline" color="brand.white">{data.title}</ModalHeader>
