@@ -46,7 +46,7 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                     <VStack w={['100%', '80%', "30%"]} bg="brand.darkGrey" pr={0} borderRadius="md" alignSelf={['center', null, "flex-start",]}>
                         <HStack position='relative' justify='center' w='100%'>
                             <Icon 
-                                    as={showSidePanel? FaRegWindowClose : FaBars} 
+                                    as={FaRegWindowClose} 
                                     position='absolute'
                                     left='7%'
                                     top='70%'
