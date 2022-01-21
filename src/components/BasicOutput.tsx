@@ -1,6 +1,6 @@
 import {Text, Divider, Button, GridItem, Heading, Stack, HStack, SimpleGrid, VStack, Container, Icon, Box} from "@chakra-ui/react"
 import {useState} from "react"
-import {FaArrowRight, FaArrowLeft,FaRegWindowClose, FaBars} from "react-icons/fa"
+import {FaRegWindowClose, FaBars} from "react-icons/fa"
 import '../styling/basicOutput.css'
 import LearnMoreModal from "./LearnMoreModal"
 
@@ -117,7 +117,6 @@ export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
                                 <Icon 
                                     as={FaBars} 
                                     position='absolute'
-                                    // left='7%'
                                     left='11%'
                                     top='75%'
                                     transform={'translate(-50%, -50%)'}
