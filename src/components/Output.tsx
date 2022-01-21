@@ -1,10 +1,10 @@
 import {Text, Divider, Button, GridItem, Heading, Stack, HStack, SimpleGrid, VStack, Container, Icon, Box} from "@chakra-ui/react"
 import {useState} from "react"
 import {FaRegWindowClose, FaBars} from "react-icons/fa"
-import '../styling/basicOutput.css'
+import '../styling/output.css'
 import LearnMoreModal from "./LearnMoreModal"
 
-interface BasicOutputProps{
+interface OutputProps{
     inputs: {
         heightFeet: string,
         heightInches: string,
@@ -34,12 +34,12 @@ interface BasicOutputProps{
     }
 }
 
-export default function BasicOutput({inputs, outputs}: BasicOutputProps) {
+export default function Output({inputs, outputs}: OutputProps) {
     const [showSidePanel, setShowSidePanel] = useState(true)
     const [metricOutput, setMetricOutput] = useState(true)
 
     return(
-        <div className='basicOutputBox'>
+        <div className='outputBox'>
             <Container maxW="75rem" h="calc(100vh - 50px)">
                 <Stack direction={['column', 'column', 'row']} justify="center" alignItems={"center"} py={10} >
                     {showSidePanel &&

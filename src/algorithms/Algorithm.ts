@@ -1,4 +1,4 @@
-interface BasicAlgorithmProps{
+interface AlgorithmProps{
         heightFeet: string,
         heightInches: string,
         heightCM: string,
@@ -10,7 +10,7 @@ interface BasicAlgorithmProps{
         bikeType: string
 }
 
-function basicAlgorithm({heightFeet, heightInches, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType}: BasicAlgorithmProps) {
+function Algorithm({heightFeet, heightInches, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType}: AlgorithmProps) {
     const outputs = {
         barWidthMM: "780",
         barWidthInch: "30.7",
@@ -28,4 +28,4 @@ function basicAlgorithm({heightFeet, heightInches, heightCM, handling, reachInch
     return outputs
 }
 
-export default basicAlgorithm
+export default Algorithm

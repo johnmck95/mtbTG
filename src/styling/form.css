@@ -1,4 +1,4 @@
-.basicFormBox{
+.formBox{
     overflow: auto;
     height: 100%;
     display: flex;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (min-height: 1050px) {
-    .basicFormBox{
+    .formBox{
         height: calc(100vh - 50px);
         display: flex;
         align-items: center;

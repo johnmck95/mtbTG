@@ -1,7 +1,7 @@
 import {ChangeEvent, useState, useEffect} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "./CustomRadio"
-import "../styling/basicForm.css"
+import "../styling/form.css"
 import {errorCodes} from "../data/ErrorCodes"
 import ErrorAlert from "./ErrorAlert"
 import SkillSlider from "./SkillSlider"
@@ -19,7 +19,7 @@ interface BikeConversionProps{
     stackMMCalc: number;
     stackInchCalc: number;
 }
-interface BasicFormProps{
+interface FormProps{
     inputs: {
         heightFeet: string,
         heightInches: string,
@@ -45,7 +45,7 @@ interface BasicFormProps{
 
 let formHasErrors = true
 
-export default function BasicForm({inputs, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: BasicFormProps) {
+export default function Form({inputs, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [showErrors, setShowErrors] = useState(false)
@@ -250,7 +250,7 @@ export default function BasicForm({inputs, handleChange, handleCustomComponent, 
     })
 
     return(
-        <div className="basicFormBox">
+        <div className="formBox">
             <Container maxW="37.5rem" py={4}>
                 <VStack bg="brand.darkGrey" borderRadius="16px" pb={4} my={10} boxShadow='2xl'>
                     <Flex position="relative" justifyContent={["space-around", "center"]} w="100%">
