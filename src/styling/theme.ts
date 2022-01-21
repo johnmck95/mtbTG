@@ -3,8 +3,6 @@ import { extendTheme } from "@chakra-ui/react";
 export const theme = extendTheme({
     colors: {
         brand: {
-            // lightGrey: "#AAAAAA", // The original lightGrey
-            // darkGrey: "#414A4C", //The original darkGrey
             lightGrey: "#BDBDBD",
             darkGrey: "#303638",
             blue: "#5B7BC0",
