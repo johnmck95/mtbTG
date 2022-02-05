@@ -1,18 +1,14 @@
-import ChooseSetupGuide from "../components/ChooseSetupGuide"
-import BasicOutput from "../components/BasicOutput"
-import BasicForm from "../components/BasicForm"
+import Output from "../components/Output"
+import Form from "../components/Form"
 import {Box} from "@chakra-ui/react"
 import HomePhoto from "../images/hartland-enduro.jpg"
-// import HomePhoto from "../images/hartland-enduro.webp"
 import {ChangeEvent, useState} from "react"
-import basicAlgorithm from "../algorithms/basicAlgorithm"
+import Algorithm from "../algorithms/Algorithm"
 
 export default function Home() {
 
-    let displayedComponent = "ChooseSetupGuide"
+    let displayedComponent = "Form"
     const [reRender, setReRender] = useState(0)
-    const [isBasicClicked, setIsBasicClicked] = useState(false)
-    const [isAdvancedHovered, setIsAdvancedHovered] = useState(false)
     const [isFormComplete, setIsFormComplete] = useState(false)
     const [inputs, setInputs] = useState({
         heightFeet: "",
@@ -29,13 +25,8 @@ export default function Home() {
         bikeType: ""
     })
 
-    
-    // ==========================================================================================================
-    // ===================================== basicForm.tsx  State Functions =====================================
-
-
-    /* Updates state from an <Input/> change in basicForm.tsx */
-    function handleBasicChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
+    /* Updates state from an <Input/> change in Form.tsx */
+    function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
         const {name, value} = event.target
         setInputs(prevInputs => ({
             ...prevInputs,
@@ -44,7 +35,7 @@ export default function Home() {
     }
 
     /* Updates state based on our 'CustomRadioComponent' */
-    function handleBasicCustomComponent(name: string, value: string) {
+    function handleCustomComponent(name: string, value: string) {
         setInputs(prevInputs => ({
             ...prevInputs,
             [name]: value
@@ -52,14 +43,14 @@ export default function Home() {
     }
 
     /* Updates state conversion for metric/imperial riders */
-    interface handleBasicRiderConversionProps{
+    interface handleRiderConversionProps{
         heightCMCalc: number;
         heightFootCalc: number;
         heightInchesCalc: number;
         weightKGCalc: number;
         weightLBCalc: number;
     }
-    function handleBasicRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightKGCalc, weightLBCalc}: handleBasicRiderConversionProps) {
+    function handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightKGCalc, weightLBCalc}: handleRiderConversionProps) {
         setInputs(prevInputs => ({
             ...prevInputs,
             heightCM: heightCMCalc !== 0? heightCMCalc.toFixed(0) : inputs.heightCM,
@@ -71,13 +62,13 @@ export default function Home() {
     }
 
     /* Updates state conversion for metric/imperial bikes */
-    interface handleBasicBikeConversionProps{
+    interface handleBikeConversionProps{
         reachMMCalc: number;
         reachInchCalc: number;
         stackMMCalc: number;
         stackInchCalc: number;
     }
-    function handleBasicBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: handleBasicBikeConversionProps){
+    function handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: handleBikeConversionProps){
         setInputs( prevInputs => ({
             ...prevInputs,
             reachMM: reachMMCalc !== 0? reachMMCalc.toFixed(0) : inputs.reachMM,
@@ -86,21 +77,13 @@ export default function Home() {
             stackInches: stackInchCalc !== 0? stackInchCalc.toFixed(2) : inputs.stackInches
         }))
     }
-    
-
-    // ================================== End Of basicForm.tsx  State Functions =================================
-    // ==========================================================================================================
 
 
-    if(isFormComplete && isBasicClicked)
-        displayedComponent= "BasicOutput"
-    else if(isBasicClicked)
-        displayedComponent="BasicForm"
+    if(isFormComplete)
+        displayedComponent= "Output"
     else
-        displayedComponent="ChooseSetupGuide"
-
-
-    const outputs = basicAlgorithm(inputs)
+        displayedComponent="Form"
+    const outputs = Algorithm(inputs)
 
     return(   
         <Box 
@@ -110,30 +93,23 @@ export default function Home() {
             backgroundPosition="60% 50%" 
             backgroundSize="145%" 
             height="100%">
-                {displayedComponent === "ChooseSetupGuide" && 
-                    <ChooseSetupGuide 
-                        handleBasicClick={ () => setIsBasicClicked( prevIsBasicClicked => !prevIsBasicClicked ) } 
-                        isAdvancedHovered={isAdvancedHovered} 
-                        handleAdvancedHover={ () => setIsAdvancedHovered( prevIsAdvancedHovered => !prevIsAdvancedHovered ) }/>
-                }
-                { displayedComponent === "BasicForm" &&
-                    <BasicForm
+                { displayedComponent === "Form" &&
+                    <Form
                         inputs={inputs}
-                        handleChange={handleBasicChange}
-                        handleCustomComponent={handleBasicCustomComponent}
-                        handleRiderConversion={handleBasicRiderConversion}
-                        handleBikeConversion={handleBasicBikeConversion}
+                        handleChange={handleChange}
+                        handleCustomComponent={handleCustomComponent}
+                        handleRiderConversion={handleRiderConversion}
+                        handleBikeConversion={handleBikeConversion}
                         handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}
                         handleReRender = {() => setReRender( () => reRender + 1 )}
                     />
                 }
-                {displayedComponent === "BasicOutput" &&
+                {displayedComponent === "Output" &&
                 <>
-                    <BasicOutput 
+                    <Output 
                         inputs={inputs}
                         outputs={outputs}
                         />
-
                 </>  
                 }
         </Box>
