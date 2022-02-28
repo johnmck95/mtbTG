@@ -3,7 +3,7 @@ import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormContro
 import CustomRadio from "./CustomRadio"
 import "../styling/form.css"
 import {errorCodes} from "../data/ErrorCodes"
-import ErrorAlert from "./ErrorAlert"
+import ErrorAlert from "./ErrorAlert/ErrorAlert"
 import SkillSlider from "./SkillSlider"
 
 interface RiderConversionProps{
