@@ -38,3 +38,39 @@ Runs the app in the development mode.<br /> Open
 
 In order to share my progress before completing the Tuning Guide, I am
 regularly deploying changes at https://mtbtg.netlify.app/.
+
+
+-----
+
+
+# Key Skills Demonstrated
+## React
+- Created a React application from concept to production.
+- useState
+- useEffect
+- multi-level state passing through props
+- composable components
+- form generation + submission
+
+## CSS / HTML 
+- Reponsive design for all devices 320px and larger
+- Executed through Chakrai UI props to increase development speed
+- Event listeners
+
+## Typescript
+- Mapping over data
+- Use of .ts and .tsx files
+- Interface proficiency 
+- Anonymous functions 
+
+## General Developer Proficiency
+- Version Control
+- Use of GitHub issues to track features and bugs
+- Github KanBan board for organization
+- Branch Protection
+- Continuous Integration - test suite + ESLint(coming soon) execution on PRs.
+- Clearly documented PRs with photos
+
+## Software Testing (more to come soon)
+- Unit Tests
+- End-to-End Tests
