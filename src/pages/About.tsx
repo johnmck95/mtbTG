@@ -1,5 +1,5 @@
 import {Divider, Image, Text, Stack, VStack, Heading, AspectRatio, Container, List, ListItem, ListIcon} from "@chakra-ui/react"
-import headshot from "../images/headshot.jpg"
+import headshot from "../images/headshot.png"
 import {MdOutlineDirectionsBike} from "react-icons/md";
 import {FaLaptopCode} from "react-icons/fa"
 
