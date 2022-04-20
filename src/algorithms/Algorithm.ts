@@ -69,6 +69,7 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
 
     tireInsertCalc()
     barWidthCalc()
+    
     return outputs
 }
 
