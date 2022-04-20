@@ -1,7 +1,11 @@
 import Output from "../components/Output"
 import Form from "../components/Form"
 import {Box} from "@chakra-ui/react"
-import HomePhoto from "../images/hartland-enduro.jpg"
+import HomePhotoSm from "../images/hartland-enduro-SM,414x620.jpg"
+import HomePhotoMd from "../images/hartland-enduro-MD,768x1150.jpg"
+import HomePhotoLg from "../images/hartland-enduro-LG,1080x1618.jpg"
+import HomePhotoXl from "../images/hartland-enduro-XL,1280x1917.jpg"
+
 import {ChangeEvent, useState} from "react"
 import Algorithm from "../algorithm/Algorithm/Algorithm"
 
@@ -88,7 +92,7 @@ export default function Home() {
     return(   
         <Box 
             w="100%"  
-            backgroundImage={HomePhoto} 
+            backgroundImage={[HomePhotoSm, HomePhotoMd, HomePhotoLg, HomePhotoXl]} 
             backgroundRepeat="no-repeat" 
             backgroundPosition="60% 50%" 
             backgroundSize="145%" 
