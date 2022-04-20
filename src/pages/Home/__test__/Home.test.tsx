@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, waitForElement, waitForElementToBeRemoved } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import Home from "../Home"
 

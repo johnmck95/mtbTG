@@ -1,5 +1,5 @@
-import Output from "../../components/Output"
-import Form from "../../components/Form"
+import Output from "../../components/Output/Output"
+import Form from "../../components/Form/Form"
 import {Box} from "@chakra-ui/react"
 import HomePhotoSm from "../../images/hartland-enduro-SM,414x620.jpg"
 import HomePhotoMd from "../../images/hartland-enduro-MD,768x1150.jpg"

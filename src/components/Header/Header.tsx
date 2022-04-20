@@ -1,6 +1,6 @@
 import {Flex, Box, ButtonGroup, Link, Text, HStack, Container, Image, Icon, IconButton} from "@chakra-ui/react"
 import {FaBars, FaRegWindowClose, FaUser, FaQuestionCircle} from "react-icons/fa"
-import MtbTG from "../images/mtbTG-logo.png"
+import MtbTG from "../../images/mtbTG-logo.png"
 import React from "react"
 import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
 
