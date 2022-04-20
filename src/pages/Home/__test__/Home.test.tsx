@@ -25,4 +25,3 @@ test("Renders Output Page after successful form completion", async () => {
         expect(screen.getByText("YOUR SETTINGS")).toBeInTheDocument()
       });
 })
-
