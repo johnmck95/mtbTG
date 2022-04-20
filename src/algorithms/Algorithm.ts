@@ -2,7 +2,10 @@ interface AlgorithmProps{
         heightFeet: string,
         heightInches: string,
         heightCM: string,
+        weightLB: string,
+        weightKG: string,
         handling: string,
+        skillLevel: string,
         reachInches: string,
         reachMM: string,
         stackInches: string,
@@ -10,7 +13,7 @@ interface AlgorithmProps{
         bikeType: string
 }
 
-function Algorithm({heightFeet, heightInches, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType}: AlgorithmProps) {
+function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, handling, skillLevel, reachInches, reachMM, stackInches, stackMM, bikeType}: AlgorithmProps) {
     const outputs = {
         barWidthMM: "",
         barWidthInch: "",
@@ -22,7 +25,7 @@ function Algorithm({heightFeet, heightInches, heightCM, handling, reachInches, r
         spacersInch: "",
         frontTirePSI: "",
         rearTirePSI: "",
-        inserts: "" // yes/no
+        inserts: ""
 
     }
     function barWidthCalc(){
@@ -31,6 +34,40 @@ function Algorithm({heightFeet, heightInches, heightCM, handling, reachInches, r
         outputs.barWidthInch = ((riderHeight * 0.7692 + 625.38) / 25.4).toFixed(1)
     }
     
+    function tireInsertCalc(){
+        if(skillLevel === 'beginner'){
+            outputs.inserts = 'No'
+        }
+        else if (skillLevel === 'novice'){
+            outputs.inserts = 'No'
+        }
+        else if (skillLevel === 'intermediate'){
+            if (parseInt(weightLB) >= 200)
+                outputs.inserts = 'Yes'
+            else
+                outputs.inserts = 'No'
+        }
+        else if (skillLevel === 'advanced'){
+            if (parseInt(weightLB) >= 150)
+                outputs.inserts = 'Yes'
+            else
+                outputs.inserts = 'No'
+        }
+        else if (skillLevel === 'expert'){
+            if (parseInt(weightLB) >= 135)
+                outputs.inserts = 'Yes'
+            else
+                outputs.inserts = 'No'
+        }
+        else if (skillLevel === 'professional'){
+            if (parseInt(weightLB) >= 135)
+                outputs.inserts = 'Yes'
+            else
+                outputs.inserts = 'No'
+        }
+    }
+
+    tireInsertCalc()
     barWidthCalc()
     return outputs
 }
