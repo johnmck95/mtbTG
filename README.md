@@ -53,9 +53,11 @@ regularly deploying changes at https://mtbtg.netlify.app/.
 - form generation + submission
 
 ## CSS / HTML 
-- Reponsive design for all devices 320px and larger
+- Responsive design for all devices 320px and larger
 - Executed through Chakrai UI props to increase development speed
 - Event listeners
+- Flexbox
+- Grid
 
 ## Typescript
 - Mapping over data
@@ -68,9 +70,9 @@ regularly deploying changes at https://mtbtg.netlify.app/.
 - Use of GitHub issues to track features and bugs
 - Github KanBan board for organization
 - Branch Protection
-- Continuous Integration - test suite + ESLint(coming soon) execution on PRs.
-- Clearly documented PRs with photos
+- Continuous Integration: test suite + ESLint(coming soon)
+- Clearly documented PRs
 
 ## Software Testing (more to come soon)
 - Unit Tests
-- End-to-End Tests
+- End-to-End Tests (coming soon)
