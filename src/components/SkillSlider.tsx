@@ -28,7 +28,7 @@ export default function SkillSlider({handleChange}: SkillSliderProps){
         }
         return(
             <Box>
-                <Slider defaultValue={3} min={1} max={6} step={1} onChange={(val) => handleSlide(val)}>
+                <Slider defaultValue={3} min={1} max={6} step={1} onChange={(val) => handleSlide(val)} data-testid="sliderValue">
                     <SliderTrack bg='brand.lightGrey'>
                         <Box position='relative' right={10} />
                         <SliderFilledTrack bg={sliderValue !== 0?'brand.blue' : 'brand.white'} />

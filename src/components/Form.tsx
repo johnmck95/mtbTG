@@ -426,7 +426,7 @@ export default function Form({inputs, handleChange, handleCustomComponent, handl
                                     fontSize={["sm", "md"]} 
                                     mx={0} 
                                     mb="2px"
-                                    > Skill Level
+                                    >Skill Level
                                 </FormLabel>
                                 <SkillSlider handleChange={handleCustomComponent}/>
                             </GridItem>
