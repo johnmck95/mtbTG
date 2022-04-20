@@ -3,7 +3,7 @@ import Form from "../components/Form"
 import {Box} from "@chakra-ui/react"
 import HomePhoto from "../images/hartland-enduro.jpg"
 import {ChangeEvent, useState} from "react"
-import Algorithm from "../algorithms/Algorithm"
+import Algorithm from "../algorithm/Algorithm/Algorithm"
 
 export default function Home() {
 

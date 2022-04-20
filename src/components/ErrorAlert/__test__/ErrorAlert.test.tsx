@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import ErrorAlert from './../ErrorAlert'
-import {errorCodes} from "./../../../data/ErrorCodes"
+import ErrorAlert from './../ErrorAlert';
+import {errorCodes} from "./../../../data/ErrorCodes";
 
 test("ErrorAlert renders without error", () => {
     const { getByText } = render(<ErrorAlert errorMessage="test message" />);
