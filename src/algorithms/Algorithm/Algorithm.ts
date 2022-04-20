@@ -34,6 +34,7 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
         outputs.barWidthInch = ((riderHeight * 0.7692 + 625.38) / 25.4).toFixed(1)
     }
     
+    /* You will likely want to consider bike type in the future */
     function tireInsertCalc(){
         if(skillLevel === 'beginner'){
             outputs.inserts = 'No'
@@ -48,19 +49,19 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
                 outputs.inserts = 'No'
         }
         else if (skillLevel === 'advanced'){
-            if (parseInt(weightLB) >= 150)
+            if (parseInt(weightLB) >= 155)
                 outputs.inserts = 'Yes'
             else
                 outputs.inserts = 'No'
         }
         else if (skillLevel === 'expert'){
-            if (parseInt(weightLB) >= 135)
+            if (parseInt(weightLB) >= 140)
                 outputs.inserts = 'Yes'
             else
                 outputs.inserts = 'No'
         }
         else if (skillLevel === 'professional'){
-            if (parseInt(weightLB) >= 135)
+            if (parseInt(weightLB) >= 140)
                 outputs.inserts = 'Yes'
             else
                 outputs.inserts = 'No'

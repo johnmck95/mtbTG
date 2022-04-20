@@ -222,7 +222,7 @@ export default function Output({inputs, outputs}: OutputProps) {
                                 <Text textDecoration={"underline"}>Inserts</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.inserts}</Text>
+                                <Text data-testid="insertsResponse">{outputs.inserts}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal  id={6}/> 

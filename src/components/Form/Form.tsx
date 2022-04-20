@@ -51,10 +51,11 @@ export default function Form({inputs, handleChange, handleCustomComponent, handl
     let criteria = 0
     let requirements = 7
 
-    // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect
+    // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
     useEffect(() => {
         if(showErrors)
             handleErrors()
+            // eslint-disable-next-line
     }, [imperialRider, imperialBike, inputs])
 
     function toggleRiderUnit() {
