@@ -1,13 +1,13 @@
-import Output from "../components/Output"
-import Form from "../components/Form"
+import Output from "../../components/Output/Output"
+import Form from "../../components/Form/Form"
 import {Box} from "@chakra-ui/react"
-import HomePhotoSm from "../images/hartland-enduro-SM,414x620.jpg"
-import HomePhotoMd from "../images/hartland-enduro-MD,768x1150.jpg"
-import HomePhotoLg from "../images/hartland-enduro-LG,1080x1618.jpg"
-import HomePhotoXl from "../images/hartland-enduro-XL,1280x1917.jpg"
+import HomePhotoSm from "../../images/hartland-enduro-SM,414x620.jpg"
+import HomePhotoMd from "../../images/hartland-enduro-MD,768x1150.jpg"
+import HomePhotoLg from "../../images/hartland-enduro-LG,1080x1618.jpg"
+import HomePhotoXl from "../../images/hartland-enduro-XL,1280x1917.jpg"
 
 import {ChangeEvent, useState} from "react"
-import Algorithm from "../algorithms/Algorithm"
+import Algorithm from "../../algorithm/Algorithm/Algorithm"
 
 export default function Home() {
 

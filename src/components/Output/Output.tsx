@@ -1,8 +1,8 @@
 import {Text, Divider, Button, GridItem, Heading, Stack, HStack, SimpleGrid, VStack, Container, Icon, Box} from "@chakra-ui/react"
 import {useState} from "react"
 import {FaRegWindowClose, FaBars} from "react-icons/fa"
-import '../styling/output.css'
-import LearnMoreModal from "./LearnMoreModal"
+import '../../styling/output.css'
+import LearnMoreModal from "../LearnMoreModal/LearnMoreModal"
 
 interface OutputProps{
     inputs: {

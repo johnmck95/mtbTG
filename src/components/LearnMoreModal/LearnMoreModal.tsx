@@ -1,6 +1,6 @@
 import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, Link, Image} from '@chakra-ui/react'
-import {learnMoreModal as modalData} from "../data/LearnMoreModal"
-import MtbTG from "../images/mtbTG-logo.png"
+import {learnMoreModal as modalData} from "../../data/LearnMoreModal"
+import MtbTG from "../../images/mtbTG-logo.png"
 
 interface LeanMoreModalProps{
     id: number
