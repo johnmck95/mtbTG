@@ -7,7 +7,8 @@ import HomePhotoLg from "../../images/hartland-enduro-LG,1080x1618.jpg"
 import HomePhotoXl from "../../images/hartland-enduro-XL,1280x1917.jpg"
 
 import {ChangeEvent, useState} from "react"
-import Algorithm from "../../algorithm/Algorithm/Algorithm"
+// import Algorithm from "../../algorithm/Algorithm/Algorithm"
+import Algorithm from "../../algorithms/Algorithm/Algorithm"
 
 export default function Home() {
 
