@@ -75,7 +75,7 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
         const enduroConst = 1                                           // +1 psi for enduro bike rider
         if( bikeType === 'enduro') 
             initialCalc += enduroConst
-        outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0);
+        outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0)
         outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
     }
 
@@ -86,11 +86,32 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
         const enduroConst = 1    
         if (bikeType === 'enduro')
             initialCalc += enduroConst 
-        outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0);
+        outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0)
         outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
     }
 
-    function intermediateTirePressure(){}
+    function intermediateTirePressure(){
+        const enduroConst = 2
+        if ( parseInt(weightLB) >= 200){  // Running Inserts
+            let initialCalc = 0.05 * parseInt(weightLB)
+            const frTireConst = 12
+            const rrTireConst = 14
+            if (bikeType === 'enduro')
+                initialCalc += enduroConst
+            outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0)
+            outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
+        } else {  // No inserts
+            let initialFrontCalc = 0.0833 * parseInt(weightLB) + 9.3328
+            let initialRearCalc = 0.0917 * parseInt(weightLB) + 9.6661
+            if (bikeType === 'enduro'){
+                initialFrontCalc += enduroConst
+                initialRearCalc += enduroConst
+            }
+            outputs.frontTirePSI = initialFrontCalc.toFixed(0)
+            outputs.rearTirePSI = initialRearCalc.toFixed(0)
+        }
+    }
+
     function advancedTirePressure(){}
     function expertTirePressure(){}
     function professionalTirePressure(){}
@@ -106,7 +127,7 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
 
     barWidthCalc()
     tireInsertCalc()
-    tirePressureCalc() // Must call tireInsertCalc() first
+    tirePressureCalc()
     
     return outputs
 }

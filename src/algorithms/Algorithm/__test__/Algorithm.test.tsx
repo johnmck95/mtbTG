@@ -64,7 +64,7 @@ describe("Initialize the inputs", () => {
     // **** BEGINNERS **** //
     test("80lb beginnner rider on trail bike: No inserts, 15psi front & 16psi rear", () => {
         inputs.skillLevel = 'beginner'
-        inputs.weightLB = '80lb'
+        inputs.weightLB = '80'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
@@ -74,7 +74,7 @@ describe("Initialize the inputs", () => {
 
     test("80lb beginnner rider on enduro bike: No inserts, 16psi front, 17psi rear", () => {
         inputs.skillLevel = 'beginner'
-        inputs.weightLB = '80lb'
+        inputs.weightLB = '80'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
@@ -84,7 +84,7 @@ describe("Initialize the inputs", () => {
 
     test("240lb beginnner rider on trail bike: No inserts, 25psi front, 26psi rear", () => {
         inputs.skillLevel = 'beginner'
-        inputs.weightLB = '240lb'
+        inputs.weightLB = '240'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
@@ -94,7 +94,7 @@ describe("Initialize the inputs", () => {
 
     test("240lb beginnner rider on enduro bike: No inserts, 26psi front, 27psi rear", () => {
         inputs.skillLevel = 'beginner'
-        inputs.weightLB = '240lb'
+        inputs.weightLB = '240'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
@@ -105,7 +105,7 @@ describe("Initialize the inputs", () => {
     // **** NOVICES **** //
     test("80lb novice rider on trail bike: No inserts, 15psi front, 16psi rear", () => {
         inputs.skillLevel = 'novice'
-        inputs.weightLB = '80lb'
+        inputs.weightLB = '80'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
@@ -115,7 +115,7 @@ describe("Initialize the inputs", () => {
 
     test("80lb novice rider on enduro bike: No inserts, 16psi front, 17psi rear", () => {
         inputs.skillLevel = 'novice'
-        inputs.weightLB = '80lb'
+        inputs.weightLB = '80'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
@@ -125,7 +125,7 @@ describe("Initialize the inputs", () => {
 
     test("240lb novice rider on trail bike: No inserts, 27psi front, 28psi rear", () => {
         inputs.skillLevel = 'novice'
-        inputs.weightLB = '240lb'
+        inputs.weightLB = '240'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
@@ -135,13 +135,97 @@ describe("Initialize the inputs", () => {
 
     test("240lb novice rider on enduro bike: No inserts, 28psi front, 29psi rear", () => {
         inputs.skillLevel = 'novice'
-        inputs.weightLB = '240lb'
+        inputs.weightLB = '240'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("28psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi")
     })
+
+    // **** INTERMEDIATES **** //
+
+    test("80lb intermediate rider on trail bike: No inserts, 16psi front, 17psi rear", () => {
+        inputs.skillLevel = 'intermediate'
+        inputs.weightLB = '80'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi")
+    })
+
+    test("80lb intermediate rider on enduro bike: No inserts, 18psi front, 19psi rear", () => {
+        inputs.skillLevel = 'intermediate'
+        inputs.weightLB = '80'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("18psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("19psi")
+    })
+
+    test("199.99lb intermediate rider on trail bike: No inserts, 26psi front, 28psi rear", () => {
+        inputs.skillLevel = 'intermediate'
+        inputs.weightLB = '199.99'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi")
+    })
+
+    test("199.99lb intermediate rider on enduro bike: No inserts, 28psi front, 30psi rear", () => {
+        inputs.skillLevel = 'intermediate'
+        inputs.weightLB = '199.99'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("28psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("30psi")
+    })
+
+    test("200lb intermediate rider on trail bike: Yes inserts, 22psi front, 24psi rear", () => {
+        inputs.skillLevel = 'intermediate'
+        inputs.weightLB = '200'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("22psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("24psi")
+    })
+
+    test("200lb intermediate rider on enduro bike: Yes inserts, 24psi front, 26psi rear", () => {
+        inputs.skillLevel = 'intermediate'
+        inputs.weightLB = '200'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
+    })
+
+    test("240lb intermediate rider on trail bike: Yes inserts, 24psi front, 26psi rear", () => {
+        inputs.skillLevel = 'intermediate'
+        inputs.weightLB = '240'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
+    })
+
+    test("240lb intermediate rider on enduro bike: Yes inserts, 26psi front, 28psi rear", () => {
+        inputs.skillLevel = 'intermediate'
+        inputs.weightLB = '240'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi")
+    })
+
+    // **** ADVANCED **** //
 
     //-----------------------------//
     //* END OF TIRE PRESSURE TESTS */
