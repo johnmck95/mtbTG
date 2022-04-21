@@ -68,8 +68,37 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
         }
     }
 
-    tireInsertCalc()
+    function beginnerTirePressure(){
+        let initialCalc = 0.0625 * parseInt(weightLB)                   // The linear curve based on rider weight
+        const frTireConst = 10                                          // The vertical shift for front tire
+        const rrTireConst = 11                                          // The vertical shift for rear tire
+        const enduroConst = 1                                           // +1 psi for enduro bike rider
+
+        if( bikeType === 'enduro') 
+            initialCalc += enduroConst
+
+        outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0);
+        outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
+    }
+
+    function noviceTirePressure(){}
+    function intermediateTirePressure(){}
+    function advancedTirePressure(){}
+    function expertTirePressure(){}
+    function professionalTirePressure(){}
+
+    function tirePressureCalc() {
+        if( skillLevel === "beginner") beginnerTirePressure()
+        else if( skillLevel === "novice") noviceTirePressure()
+        else if( skillLevel === "intermediate") intermediateTirePressure()
+        else if( skillLevel === "advanced") advancedTirePressure()
+        else if( skillLevel === "expert") expertTirePressure()
+        else if( skillLevel === "professional") professionalTirePressure()
+    }
+
     barWidthCalc()
+    tireInsertCalc()
+    tirePressureCalc() // Must call tireInsertCalc() first
     
     return outputs
 }

@@ -204,7 +204,7 @@ export default function Output({inputs, outputs}: OutputProps) {
                                 <Text textDecoration={"underline"}>Front Tire</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.frontTirePSI}psi</Text>
+                                <Text data-testid='frontTireOutput'>{outputs.frontTirePSI}psi</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal id={4}/> 
@@ -213,7 +213,7 @@ export default function Output({inputs, outputs}: OutputProps) {
                                 <Text textDecoration={"underline"}>Rear Tire</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{outputs.rearTirePSI}psi</Text>
+                                <Text data-testid="rearTireOutput">{outputs.rearTirePSI}psi</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal id={5}/> 
@@ -222,7 +222,7 @@ export default function Output({inputs, outputs}: OutputProps) {
                                 <Text textDecoration={"underline"}>Inserts</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text data-testid="insertsResponse">{outputs.inserts}</Text>
+                                <Text data-testid="insertsOutput">{outputs.inserts}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
                                 <LearnMoreModal  id={6}/> 

@@ -55,9 +55,59 @@ describe("Initialize the inputs", () => {
 
     //** STEM SPACERS */
 
-    //** FRONT TIRE PRESSURE */
 
-    //** REAR TIRE PRESSURE */
+    
+    //-------------------------------//
+    //* START OF TIRE PRESSURE TESTS */
+    //-------------------------------//
+
+    // **** BEGINNERS **** //
+    test("80lb beginnner rider on trail bike: No inserts, 15psi front & 16psi rear", () => {
+        inputs.skillLevel = 'beginner'
+        inputs.weightLB = '80lb'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("15psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("16psi")
+    })
+
+    test("80lb beginnner rider on enduro bike: No inserts, 16psi front, 17psi rear", () => {
+        inputs.skillLevel = 'beginner'
+        inputs.weightLB = '80lb'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi")
+    })
+
+    test("240lb beginnner rider on trail bike: No inserts, 25psi front, 26psi rear", () => {
+        inputs.skillLevel = 'beginner'
+        inputs.weightLB = '240lb'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
+    })
+
+    test("240lb beginnner rider on enduro bike: No inserts, 26psi front, 27psi rear", () => {
+        inputs.skillLevel = 'beginner'
+        inputs.weightLB = '240lb'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
+    })
+
+    // **** NOVICES **** //
+
+    //-----------------------------//
+    //* END OF TIRE PRESSURE TESTS */
+    //-----------------------------//
+
 
     //------------------------------//
     //* START OF TIRE INSERTS TESTS */
@@ -66,14 +116,14 @@ describe("Initialize the inputs", () => {
         inputs.skillLevel="beginner"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("No")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
     test("NO inserts for novice riders", () => {
         inputs.skillLevel="novice"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("No")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
     test("YES inserts for intermediate riders >= 200 lbs", () =>{
@@ -81,7 +131,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = "200"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("Yes")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes")
     })
 
     test("NO inserts for intermediate riders < 200 lbs", () => {
@@ -89,7 +139,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = "199.9"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("No")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
     test("YES inserts for advanced riders >= 155 lbs", () =>{
@@ -97,7 +147,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = "155"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("Yes")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes")
     })
 
     test("NO inserts for advanced riders < 155 lbs", () =>{
@@ -105,7 +155,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = "154"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("No")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
     test("YES inserts for expert riders >= 140 lbs", () => {
@@ -113,7 +163,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = "140"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("Yes")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes")
     })
     
     test("NO inserts for expert riders < 140 lbs", () => {
@@ -121,7 +171,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = "139.999"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("No")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
     test("YES inserts for professional riders >= 140 lbs", () => {
@@ -129,14 +179,14 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = "140"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("Yes")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes")
     })
     test("NO inserts for professional riders < 140 lbs", () => {
         inputs.skillLevel="professional"
         inputs.weightLB = "139.999"
         const outputs = Algorithm(inputs)
         render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsResponse")).toHaveTextContent("No")
+        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
     //----------------------------//
     //* END OF TIRE INSERTS TESTS */
