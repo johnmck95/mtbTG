@@ -5,9 +5,8 @@ import HomePhotoSm from "../../images/hartland-enduro-SM,414x620.jpg"
 import HomePhotoMd from "../../images/hartland-enduro-MD,768x1150.jpg"
 import HomePhotoLg from "../../images/hartland-enduro-LG,1080x1618.jpg"
 import HomePhotoXl from "../../images/hartland-enduro-XL,1280x1917.jpg"
-
 import {ChangeEvent, useState} from "react"
-import Algorithm from "../../algorithm/Algorithm/Algorithm"
+import Algorithm from "../../algorithms/Algorithm/Algorithm"
 
 export default function Home() {
 
@@ -84,9 +83,9 @@ export default function Home() {
 
 
     if(isFormComplete)
-        displayedComponent= "Output"
+        displayedComponent = "Output"
     else
-        displayedComponent="Form"
+        displayedComponent = "Form"
     const outputs = Algorithm(inputs)
 
     return(   

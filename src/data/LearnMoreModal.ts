@@ -22,13 +22,13 @@ const learnMoreModal= [
     {
         id: 4,
         title: "Front Tire Pressure",
-        description: "Tire pressure should be routinely checked, as your tires will naturally lose pressure. It is recommended to check air pressure before each ride for maximum performance.",
+        description: "Tire pressure should be routinely checked, as your tires will naturally lose pressure. It is recommended to check air pressure before each ride for maximum performance. Please note, all recommendations assume an appropriate tire compound and inner rim width.",
 
     },
     {
         id: 5,
         title: "Rear Tire Pressure",
-        description: "Tire pressure should be routinely checked, as your tires will naturally lose pressure. It is recommended to check air pressure before each ride for maximum performance.",
+        description: "Tire pressure should be routinely checked, as your tires will naturally lose pressure. It is recommended to check air pressure before each ride for maximum performance.  Please note, all recommendations assume an appropriate tire compound and inner rim width.",
     },
     {
         id: 6,
