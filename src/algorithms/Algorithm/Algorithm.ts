@@ -92,7 +92,7 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
 
     function intermediateTirePressure(){
         const enduroConst = 2
-        if ( parseInt(weightLB) >= 200){  // Running Inserts
+        if ( parseInt(weightLB) >= 200 ){  // Running Inserts
             let initialCalc = 0.05 * parseInt(weightLB)
             const frTireConst = 12
             const rrTireConst = 14
@@ -100,7 +100,7 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
                 initialCalc += enduroConst
             outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0)
             outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
-        } else {  // No inserts
+        } else {  // No Inserts
             let initialFrontCalc = 0.0833 * parseInt(weightLB) + 9.3328
             let initialRearCalc = 0.0917 * parseInt(weightLB) + 9.6661
             if (bikeType === 'enduro'){
@@ -114,7 +114,7 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
 
     function advancedTirePressure(){
         const enduroConst = 1
-        if ( parseInt(weightLB) >= 155){  // Running Inserts
+        if ( parseInt(weightLB) >= 155 ){  // Running Inserts
             let initialCalc = 0.0588 * parseInt(weightLB)
             const frTireConst = 9.8824
             const rrTireConst = 11.882
@@ -122,7 +122,7 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
                 initialCalc += enduroConst
             outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0)
             outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
-        } else { // No inserts
+        } else { // No Inserts
             let initialFrontCalc = 0.08 * parseInt(weightLB) + 10.599
             let initialRearCalc = 0.0933 * parseInt(weightLB) + 10.532
             if (bikeType === 'enduro'){
@@ -133,7 +133,31 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
             outputs.rearTirePSI = initialRearCalc.toFixed(0)
         }
     }
-    function expertTirePressure(){}
+    function expertTirePressure(){
+        if ( parseInt(weightLB) >= 140 ){ // Running Inserts
+            const enduroConst = 1
+            let initialFrontCalc = 0.0429 * parseInt(weightLB) + 13.496
+            let initialRearCalc = 0.0302 * parseInt(weightLB) + 18.64
+            if (bikeType === 'enduro'){
+                initialFrontCalc += enduroConst
+                initialRearCalc += enduroConst
+            }
+            outputs.frontTirePSI = initialFrontCalc.toFixed(0)
+            outputs.rearTirePSI = initialRearCalc.toFixed(0)
+        } else { // No Inserts
+            const enduroConstFr = 1
+            const enduroConstRr = 2
+            let initialFrontCalc = 0.0833 * parseInt(weightLB) + 11.332
+            let initialRearCalc = 0.1 * parseInt(weightLB) + 10.999
+            if (bikeType === 'enduro'){
+                initialFrontCalc += enduroConstFr
+                initialRearCalc += enduroConstRr
+            }
+            outputs.frontTirePSI = initialFrontCalc.toFixed(0)
+            outputs.rearTirePSI = initialRearCalc.toFixed(0)
+        }
+    }
+
     function professionalTirePressure(){}
 
     function tirePressureCalc() {
