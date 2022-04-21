@@ -73,15 +73,23 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
         const frTireConst = 10                                          // The vertical shift for front tire
         const rrTireConst = 11                                          // The vertical shift for rear tire
         const enduroConst = 1                                           // +1 psi for enduro bike rider
-
         if( bikeType === 'enduro') 
             initialCalc += enduroConst
-
         outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0);
         outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
     }
 
-    function noviceTirePressure(){}
+    function noviceTirePressure(){
+        let initialCalc = 0.075 * parseInt(weightLB)
+        const frTireConst = 9
+        const rrTireConst = 10
+        const enduroConst = 1    
+        if (bikeType === 'enduro')
+            initialCalc += enduroConst 
+        outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0);
+        outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
+    }
+
     function intermediateTirePressure(){}
     function advancedTirePressure(){}
     function expertTirePressure(){}

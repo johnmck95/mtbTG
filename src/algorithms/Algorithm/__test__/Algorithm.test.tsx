@@ -103,6 +103,45 @@ describe("Initialize the inputs", () => {
     })
 
     // **** NOVICES **** //
+    test("80lb novice rider on trail bike: No inserts, 15psi front, 16psi rear", () => {
+        inputs.skillLevel = 'novice'
+        inputs.weightLB = '80lb'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("15psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("16psi")
+    })
+
+    test("80lb novice rider on enduro bike: No inserts, 16psi front, 17psi rear", () => {
+        inputs.skillLevel = 'novice'
+        inputs.weightLB = '80lb'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi")
+    })
+
+    test("240lb novice rider on trail bike: No inserts, 27psi front, 28psi rear", () => {
+        inputs.skillLevel = 'novice'
+        inputs.weightLB = '240lb'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("27psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi")
+    })
+
+    test("240lb novice rider on enduro bike: No inserts, 28psi front, 29psi rear", () => {
+        inputs.skillLevel = 'novice'
+        inputs.weightLB = '240lb'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("28psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi")
+    })
 
     //-----------------------------//
     //* END OF TIRE PRESSURE TESTS */
