@@ -37,7 +37,9 @@ describe("Initialize the inputs", () => {
 
 
     /* Handlebar width should be rounded to nearest mm */
-    //** HANDLEBAR WIDTH */
+    //-------------------------------//
+    //** START HANDLEBAR WIDTH TESTS */
+    //-------------------------------//
     test.todo("Bar width for person 5'0 is 743mm")
 
     test.todo("Bar width for person 5'11 is ___")
@@ -48,12 +50,17 @@ describe("Initialize the inputs", () => {
 
     test.todo("Bar width for person 6'6 is ___")
 
-
+    //------------------//
     //** HANDLEBAR RISE */
+    //------------------//
 
+    //----------------//
     //** STEM LENGTH */
+    //----------------//
 
+    //----------------//
     //** STEM SPACERS */
+    //----------------//
 
 
     
@@ -144,7 +151,6 @@ describe("Initialize the inputs", () => {
     })
 
     // **** INTERMEDIATES **** //
-
     test("80lb intermediate rider on trail bike: No inserts, 16psi front, 17psi rear", () => {
         inputs.skillLevel = 'intermediate'
         inputs.weightLB = '80'
@@ -306,7 +312,7 @@ describe("Initialize the inputs", () => {
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
     })
 
-    // **** ADVANCED **** //
+    // **** EXPERT **** //
     test("80lb expert rider on trail bike: No inserts, 18psi front, 19psi rear", () => {
         inputs.skillLevel = 'expert'
         inputs.weightLB = '80'
@@ -407,6 +413,86 @@ describe("Initialize the inputs", () => {
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
     })
 
+    // **** PROFESSIONAL **** //
+    test("80lb professional rider on trail bike: No inserts, 20psi front, 21psi rear", () => {
+        inputs.skillLevel = 'professional'
+        inputs.weightLB = '80'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("20psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("21psi")
+    })
+
+    test("80lb professional rider on enduro bike: No inserts, 21psi front, 23psi rear", () => {
+        inputs.skillLevel = 'professional'
+        inputs.weightLB = '80'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("21psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("23psi")
+    })
+
+    test("139.99lb professional rider on trail bike: No inserts, 25psi front, 27psi rear", () => {
+        inputs.skillLevel = 'professional'
+        inputs.weightLB = '139.99'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
+    })
+
+    test("139.99lb professional rider on enduro bike: No inserts, 26psi front, 29psi rear", () => {
+        inputs.skillLevel = 'professional'
+        inputs.weightLB = '139.99'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi")
+    })
+
+    test("140lb professional rider on trail bike: Yes inserts, 22psi front, 25psi rear", () => {
+        inputs.skillLevel = 'professional'
+        inputs.weightLB = '140'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("22psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi")
+    })
+
+    test("140lb professional rider on enduro bike: Yes inserts, 23psi front, 26psi rear", () => {
+        inputs.skillLevel = 'professional'
+        inputs.weightLB = '140'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("23psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
+    })
+
+    test("240lb professional rider on trail bike: Yes inserts, 26psi front, 28psi rear", () => {
+        inputs.skillLevel = 'professional'
+        inputs.weightLB = '240'
+        inputs.bikeType = 'trail'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi")
+    })
+
+    test("240lb professional rider on enduro bike: Yes inserts, 27psi front, 29psi rear", () => {
+        inputs.skillLevel = 'professional'
+        inputs.weightLB = '240'
+        inputs.bikeType = 'enduro'
+        const outputs = Algorithm(inputs)
+        render(<Output inputs={inputs} outputs={outputs}/>)
+        expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("27psi")
+        expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi")
+    })
 
     //-----------------------------//
     //* END OF TIRE PRESSURE TESTS */
