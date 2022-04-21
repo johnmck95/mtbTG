@@ -68,10 +68,10 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
     }
 
     function beginnerTirePressure(){
-        let calc = 0.0625 * parseInt(weightLB)                   // The linear curve based on rider weight
-        const frTireConst = 10                                          // The vertical shift for front tire
-        const rrTireConst = 11                                          // The vertical shift for rear tire
-        const enduroConst = 1                                           // +1 psi for enduro bike rider
+        let calc = 0.0625 * parseInt(weightLB)
+        const frTireConst = 10
+        const rrTireConst = 11
+        const enduroConst = 1
         if( bikeType === 'enduro') 
             calc += enduroConst
         outputs.frontTirePSI = (calc + frTireConst).toFixed(0)
