@@ -112,7 +112,27 @@ function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, hand
         }
     }
 
-    function advancedTirePressure(){}
+    function advancedTirePressure(){
+        const enduroConst = 2
+        if ( parseInt(weightLB) >= 155){  // Running Inserts
+            let initialCalc = 0.0588 * parseInt(weightLB)
+            const frTireConst = 10.882
+            const rrTireConst = 12.882
+            if (bikeType === 'enduro')
+                initialCalc += enduroConst
+            outputs.frontTirePSI = (initialCalc + frTireConst).toFixed(0)
+            outputs.rearTirePSI = (initialCalc + rrTireConst).toFixed(0)
+        } else { // No inserts
+            let initialFrontCalc = 0.0933 * parseInt(weightLB) + 9.5323
+            let initialRearCalc = 0.1067 * parseInt(weightLB) + 9.4655
+            if (bikeType === 'enduro'){
+                initialFrontCalc += enduroConst
+                initialRearCalc += enduroConst
+            }
+            outputs.frontTirePSI = initialFrontCalc.toFixed(0)
+            outputs.rearTirePSI = initialRearCalc.toFixed(0)
+        }
+    }
     function expertTirePressure(){}
     function professionalTirePressure(){}
 
