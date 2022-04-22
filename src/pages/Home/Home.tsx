@@ -11,6 +11,8 @@ import Algorithm from "../../algorithms/Algorithm/Algorithm"
 export default function Home() {
 
     let displayedComponent = "Form"
+    const [imperialRider, setImperialRider] = useState(true)
+    const [imperialBike, setImperialBike] = useState(false)
     const [reRender, setReRender] = useState(0)
     const [isFormComplete, setIsFormComplete] = useState(false)
     const [inputs, setInputs] = useState({
@@ -99,6 +101,10 @@ export default function Home() {
                 { displayedComponent === "Form" &&
                     <Form
                         inputs={inputs}
+                        imperialRider={imperialRider}
+                        imperialBike={imperialBike}
+                        handleImperialRider={() => setImperialRider( prevImperialRider => !prevImperialRider )}
+                        handleImperialBike={() => setImperialBike( prevImperialBike => !prevImperialBike )}
                         handleChange={handleChange}
                         handleCustomComponent={handleCustomComponent}
                         handleRiderConversion={handleRiderConversion}
@@ -112,6 +118,8 @@ export default function Home() {
                     <Output 
                         inputs={inputs}
                         outputs={outputs}
+                        imperialRider={imperialRider}
+                        imperialBike={imperialBike}
                         />
                 </>  
                 }
