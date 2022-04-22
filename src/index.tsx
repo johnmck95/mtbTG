@@ -1,3 +1,6 @@
+// mtbTG - A React application that helps Mountain Bikers quickly setup their bikes.
+// Copyright (C) 2022 John McKinnon
+
 import { ColorModeScript } from "@chakra-ui/react"
 import * as React from "react"
 import ReactDOM from "react-dom"
