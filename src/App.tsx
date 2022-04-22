@@ -1,3 +1,6 @@
+// mtbTG - A React application that helps Mountain Bikers quickly setup their bikes.
+// Copyright (C) 2022 John McKinnon
+
 import { ChakraProvider, Box } from "@chakra-ui/react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Header from "./components/Header/Header"
