@@ -34,6 +34,10 @@ interface FormProps{
         stackMM: string,
         bikeType: string
     };
+    imperialRider: boolean,
+    imperialBike: boolean,
+    handleImperialRider: () => void,
+    handleImperialBike: () => void,
     handleChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void;
     handleCustomComponent: (name: string, value: string) => void;
     handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
@@ -44,9 +48,7 @@ interface FormProps{
 
 let formHasErrors = true
 
-export default function Form({inputs, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
-    const [imperialRider, setImperialRider] = useState(true)
-    const [imperialBike, setImperialBike] = useState(false)
+export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
     const [showErrors, setShowErrors] = useState(false)
     let criteria = 0
     let requirements = 7
@@ -59,7 +61,7 @@ export default function Form({inputs, handleChange, handleCustomComponent, handl
     }, [imperialRider, imperialBike, inputs])
 
     function toggleRiderUnit() {
-        setImperialRider(prevImperialRider => !prevImperialRider)
+        handleImperialRider()
         if (imperialRider)
             requirements = 9
         else
@@ -68,7 +70,7 @@ export default function Form({inputs, handleChange, handleCustomComponent, handl
     }
 
     function toggleBikeUnit(){
-        setImperialBike(prevImperialBike => !prevImperialBike)
+        handleImperialBike()
         bikeStateConversion()
     }
 
