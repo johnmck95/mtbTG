@@ -32,9 +32,11 @@ interface OutputProps{
         rearTirePSI: string,
         inserts: string,
     }
+    imperialRider: boolean,
+    imperialBike: boolean,
 }
 
-export default function Output({inputs, outputs}: OutputProps) {
+export default function Output({inputs, outputs, imperialRider, imperialBike}: OutputProps) {
     const [showSidePanel, setShowSidePanel] = useState(true)
     const [metricOutput, setMetricOutput] = useState(true)
 
@@ -66,13 +68,13 @@ export default function Output({inputs, outputs}: OutputProps) {
                                 <Text>Height</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{inputs.heightCM}cm</Text>
+                                <Text>{imperialRider? inputs.heightFeet + '\'' + inputs.heightInches + "\"" : inputs.heightCM + 'cm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Weight</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{inputs.weightKG}kg</Text>
+                                <Text>{imperialRider? inputs.weightLB + 'lb' : inputs.weightKG + 'kg'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Handling</Text>
@@ -90,13 +92,13 @@ export default function Output({inputs, outputs}: OutputProps) {
                                 <Text>Reach</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{inputs.reachMM}mm</Text>
+                                <Text>{imperialBike? inputs.reachInches + '"' : inputs.reachMM + 'mm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Stack</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{inputs.stackMM}mm</Text>
+                                <Text>{imperialBike? inputs.stackInches + '"' : inputs.stackMM + 'mm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Bike Type</Text>

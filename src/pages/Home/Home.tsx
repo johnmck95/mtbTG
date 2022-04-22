@@ -118,6 +118,8 @@ export default function Home() {
                     <Output 
                         inputs={inputs}
                         outputs={outputs}
+                        imperialRider={imperialRider}
+                        imperialBike={imperialBike}
                         />
                 </>  
                 }
