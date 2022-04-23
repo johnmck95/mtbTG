@@ -199,7 +199,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         }
 
 
-        if(criteria === requirements)
+        if(criteria >= requirements)
             formHasErrors = false
         handleReRender()
     }
