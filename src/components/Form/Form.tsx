@@ -51,7 +51,7 @@ let formHasErrors = true
 export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
     const [showErrors, setShowErrors] = useState(false)
     let criteria = 0
-    let requirements = 7
+    let requirements = 100
 
     // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
     useEffect(() => {
@@ -62,10 +62,6 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
 
     function toggleRiderUnit() {
         handleImperialRider()
-        if (imperialRider)
-            requirements = 9
-        else
-            requirements = 7
         riderStateConversion()
     }
 
@@ -118,8 +114,9 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
 
     function handleErrors() {
         const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
-        if(imperialRider)
-            requirements = 9;
+    
+        if (imperialRider) requirements = 9
+        else if (!imperialRider) requirements = 7
 
         if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
@@ -127,17 +124,19 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else if (imperialRider){
             errorCodes[0].showError = true
         }
-        if ( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){
+        if ( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){ 
             criteria++
             errorCodes[1].showError = false
+            console.log("Height (inches) criteria++")
         } else if (imperialRider) {
             errorCodes[1].showError = true
         }
         const totalInches = parseInt(heightFeet)*12 + parseFloat(heightInches)
-        if ( totalInches >= 60 && totalInches <= 78){
+        if ( imperialRider && totalInches >= 60 && totalInches <= 78){
                 criteria++
                 errorCodes[2].showError = false
-        } else if (imperialRider){
+                console.log("Height between 5'0 and 6'6 criteria++")
+        } else {
             errorCodes[2].showError = true
         }
         if (!imperialRider && (parseInt(heightCM) >= 152 && parseInt(heightCM) <= 198)){
@@ -198,9 +197,9 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             errorCodes[12].showError = true
         }
 
-
-        if(criteria >= requirements)
+        if(criteria === requirements)
             formHasErrors = false
+
         handleReRender()
     }
 
