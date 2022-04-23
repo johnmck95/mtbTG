@@ -1,6 +1,6 @@
 import Output from "../../components/Output/Output"
 import Form from "../../components/Form/Form"
-import {Box} from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import HomePhotoSm from "../../images/hartland-enduro-SM,414x620.jpg"
 import HomePhotoMd from "../../images/hartland-enduro-MD,768x1150.jpg"
 import HomePhotoLg from "../../images/hartland-enduro-LG,1080x1618.jpg"
@@ -9,7 +9,6 @@ import {ChangeEvent, useState} from "react"
 import Algorithm from "../../algorithms/Algorithm/Algorithm"
 
 export default function Home() {
-
     let displayedComponent = "Form"
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)

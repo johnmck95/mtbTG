@@ -1,4 +1,4 @@
-import {ChangeEvent, useState, useEffect} from "react"
+import {ChangeEvent, useState, useEffect, useCallback, useRef} from "react"
 import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
 import CustomRadio from "../CustomRadio/CustomRadio"
 import "../../styling/form.css"
@@ -51,75 +51,12 @@ let formHasErrors = true
 export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
     const [showErrors, setShowErrors] = useState(false)
     let criteria = 0
-    let requirements = 7
+    let requirements = useRef(7)
 
-    // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
-    useEffect(() => {
-        if(showErrors)
-            handleErrors()
-            // eslint-disable-next-line
-    }, [imperialRider, imperialBike, inputs])
-
-    function toggleRiderUnit() {
-        handleImperialRider()
-        if (imperialRider)
-            requirements = 9
-        else
-            requirements = 7
-        riderStateConversion()
-    }
-
-    function toggleBikeUnit(){
-        handleImperialBike()
-        bikeStateConversion()
-    }
-
-    // TODO: watch out for 'e' in the input - currently unhandled
-    function riderStateConversion() {
-        let heightCMCalc = 0
-        let heightFootCalc = 0
-        let heightInchesCalc = 0
-        let weightKGCalc = 0
-        let weightLBCalc = 0
-
-        if (inputs.heightFeet !== "" && inputs.heightInches !== "")
-             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseInt(inputs.heightInches) * 2.54
-        if (inputs.heightCM !== ""){
-            const totalInches = parseInt(inputs.heightCM) / 2.54
-            heightFootCalc = Math.floor(totalInches / 12)
-            heightInchesCalc = (totalInches % 12)          
-        }
-        if (inputs.weightLB !== "")
-            weightKGCalc = parseInt(inputs.weightLB) / 2.205
-        if(inputs.weightKG !== "")
-            weightLBCalc = parseInt(inputs.weightKG) * 2.205
-
-        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
-    }
-
-    // TODO: watch out for 'e' in the input - currently unhandled
-    function bikeStateConversion() {
-        let reachMMCalc = 0
-        let reachInchCalc = 0
-        let stackMMCalc = 0
-        let stackInchCalc = 0
-        
-        if (inputs.reachMM !== "")
-            reachInchCalc = parseInt(inputs.reachMM)/25.4
-        if (inputs.stackMM !== "")
-            stackInchCalc = parseInt(inputs.stackMM)/25.4
-        if (inputs.reachInches !== "")
-            reachMMCalc = parseFloat(inputs.reachInches)*25.4
-        if(inputs.stackInches !== "")
-            stackMMCalc = parseFloat(inputs.stackInches)*25.4
-
-        handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
-    }
-
-    function handleErrors() {
+    const handleErrors = useCallback(() => {
         const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         if(imperialRider)
-            requirements = 9;
+            requirements.current = 9;
 
         if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
@@ -199,13 +136,74 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         }
 
 
-        if(criteria >= requirements)
+        if(criteria >= requirements.current)
             formHasErrors = false
-        handleReRender()
+        // handleReRender()
+    }, [criteria, inputs, imperialBike, imperialRider] )
+
+    useEffect(() => {
+        if(showErrors)
+            handleErrors()  
+    }, [imperialRider, imperialBike, inputs, handleErrors, showErrors])
+
+    function toggleRiderUnit() {
+        handleImperialRider()
+        if (imperialRider)
+            requirements.current = 9
+        else
+            requirements.current = 7
+        riderStateConversion()
+    }
+
+    function toggleBikeUnit(){
+        handleImperialBike()
+        bikeStateConversion()
+    }
+
+    // TODO: watch out for 'e' in the input - currently unhandled
+    function riderStateConversion() {
+        let heightCMCalc = 0
+        let heightFootCalc = 0
+        let heightInchesCalc = 0
+        let weightKGCalc = 0
+        let weightLBCalc = 0
+
+        if (inputs.heightFeet !== "" && inputs.heightInches !== "")
+             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseInt(inputs.heightInches) * 2.54
+        if (inputs.heightCM !== ""){
+            const totalInches = parseInt(inputs.heightCM) / 2.54
+            heightFootCalc = Math.floor(totalInches / 12)
+            heightInchesCalc = (totalInches % 12)          
+        }
+        if (inputs.weightLB !== "")
+            weightKGCalc = parseInt(inputs.weightLB) / 2.205
+        if(inputs.weightKG !== "")
+            weightLBCalc = parseInt(inputs.weightKG) * 2.205
+
+        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
+    }
+
+    // TODO: watch out for 'e' in the input - currently unhandled
+    function bikeStateConversion() {
+        let reachMMCalc = 0
+        let reachInchCalc = 0
+        let stackMMCalc = 0
+        let stackInchCalc = 0
+        
+        if (inputs.reachMM !== "")
+            reachInchCalc = parseInt(inputs.reachMM)/25.4
+        if (inputs.stackMM !== "")
+            stackInchCalc = parseInt(inputs.stackMM)/25.4
+        if (inputs.reachInches !== "")
+            reachMMCalc = parseFloat(inputs.reachInches)*25.4
+        if(inputs.stackInches !== "")
+            stackMMCalc = parseFloat(inputs.stackInches)*25.4
+
+        handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
     }
 
     function handleSubmit() {
-        setShowErrors(() => true)
+        setShowErrors(() => true )
         handleErrors()
         if(!formHasErrors){
             riderStateConversion()
