@@ -127,7 +127,6 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         if ( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){ 
             criteria++
             errorCodes[1].showError = false
-            console.log("Height (inches) criteria++")
         } else if (imperialRider) {
             errorCodes[1].showError = true
         }
