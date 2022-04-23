@@ -140,7 +140,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
 
         handleReRender() 
 
-    }, [criteria, inputs, imperialBike, imperialRider] )
+    }, [criteria, inputs, imperialBike, imperialRider, handleReRender] )
 
     useEffect(() => {
         if(showErrors)

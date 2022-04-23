@@ -5,7 +5,7 @@ import HomePhotoSm from "../../images/hartland-enduro-SM,414x620.jpg"
 import HomePhotoMd from "../../images/hartland-enduro-MD,768x1150.jpg"
 import HomePhotoLg from "../../images/hartland-enduro-LG,1080x1618.jpg"
 import HomePhotoXl from "../../images/hartland-enduro-XL,1280x1917.jpg"
-import {ChangeEvent, useState} from "react"
+import {ChangeEvent, useCallback, useState} from "react"
 import Algorithm from "../../algorithms/Algorithm/Algorithm"
 
 export default function Home() {
@@ -82,6 +82,22 @@ export default function Home() {
         }))
     }
 
+    // const formComponent = <Form inputs={inputs} imperialRider={imperialRider} imperialBike={imperialBike} handleImperialRider={() => setImperialRider( prevImperialRider => !prevImperialRider )}handleImperialBike={() => setImperialBike( prevImperialBike => !prevImperialBike )} handleChange={handleChange} handleCustomComponent={handleCustomComponent} handleRiderConversion={handleRiderConversion} handleBikeConversion={handleBikeConversion} handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )} handleReRender = {() => setReRender( () => reRender + 1 )} />
+    const form = useCallback(() => {
+                          <Form
+                            inputs={inputs}
+                            imperialRider={imperialRider}
+                            imperialBike={imperialBike}
+                            handleImperialRider={() => setImperialRider( prevImperialRider => !prevImperialRider )}
+                            handleImperialBike={() => setImperialBike( prevImperialBike => !prevImperialBike )}
+                            handleChange={handleChange}
+                            handleCustomComponent={handleCustomComponent}
+                            handleRiderConversion={handleRiderConversion}
+                            handleBikeConversion={handleBikeConversion}
+                            handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}
+                            handleReRender = {() => setReRender( () => reRender + 1 )}
+                        />
+    }, [inputs, handleBikeConversion, handleRiderConversion, imperialBike, imperialRider, reRender])
 
     if(isFormComplete)
         displayedComponent = "Output"
@@ -98,19 +114,20 @@ export default function Home() {
             backgroundSize="145%" 
             height="100%">
                 { displayedComponent === "Form" &&
-                    <Form
-                        inputs={inputs}
-                        imperialRider={imperialRider}
-                        imperialBike={imperialBike}
-                        handleImperialRider={() => setImperialRider( prevImperialRider => !prevImperialRider )}
-                        handleImperialBike={() => setImperialBike( prevImperialBike => !prevImperialBike )}
-                        handleChange={handleChange}
-                        handleCustomComponent={handleCustomComponent}
-                        handleRiderConversion={handleRiderConversion}
-                        handleBikeConversion={handleBikeConversion}
-                        handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}
-                        handleReRender = {() => setReRender( () => reRender + 1 )}
-                    />
+                form
+                    // <Form
+                    //     inputs={inputs}
+                    //     imperialRider={imperialRider}
+                    //     imperialBike={imperialBike}
+                    //     handleImperialRider={() => setImperialRider( prevImperialRider => !prevImperialRider )}
+                    //     handleImperialBike={() => setImperialBike( prevImperialBike => !prevImperialBike )}
+                    //     handleChange={handleChange}
+                    //     handleCustomComponent={handleCustomComponent}
+                    //     handleRiderConversion={handleRiderConversion}
+                    //     handleBikeConversion={handleBikeConversion}
+                    //     handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}
+                    //     handleReRender = {() => setReRender( () => reRender + 1 )}
+                    // />
                 }
                 {displayedComponent === "Output" &&
                 <>
