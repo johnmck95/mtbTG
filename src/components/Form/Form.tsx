@@ -124,7 +124,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else if (imperialRider){
             errorCodes[0].showError = true
         }
-        if ( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){ 
+        if ( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){
             criteria++
             errorCodes[1].showError = false
         } else if (imperialRider) {
@@ -134,7 +134,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         if ( imperialRider && totalInches >= 60 && totalInches <= 78){
                 criteria++
                 errorCodes[2].showError = false
-        } else {
+        } else if (imperialRider){
             errorCodes[2].showError = true
         }
         if (!imperialRider && (parseInt(heightCM) >= 152 && parseInt(heightCM) <= 198)){
