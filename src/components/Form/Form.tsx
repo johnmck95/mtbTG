@@ -135,16 +135,17 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             errorCodes[12].showError = true
         }
 
-
         if(criteria >= requirements.current)
             formHasErrors = false
-        // handleReRender()
+
+        handleReRender() 
+
     }, [criteria, inputs, imperialBike, imperialRider] )
 
     useEffect(() => {
         if(showErrors)
-            handleErrors()  
-    }, [imperialRider, imperialBike, inputs, handleErrors, showErrors])
+            handleErrors() 
+    }, [imperialRider, imperialBike, inputs, showErrors, handleErrors])
 
     function toggleRiderUnit() {
         handleImperialRider()

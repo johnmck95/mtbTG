@@ -35,7 +35,7 @@ export default function Home() {
         setInputs(prevInputs => ({
             ...prevInputs,
             [name] : value,
-        }))     
+        }))
     }
 
     /* Updates state based on our 'CustomRadioComponent' */
@@ -90,7 +90,7 @@ export default function Home() {
     const outputs = Algorithm(inputs)
 
     return(   
-        <Box 
+        <Box
             w="100%"  
             backgroundImage={[HomePhotoSm, HomePhotoMd, HomePhotoLg, HomePhotoXl]} 
             backgroundRepeat="no-repeat" 
