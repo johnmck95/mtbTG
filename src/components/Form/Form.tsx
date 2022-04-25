@@ -170,7 +170,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         if ( imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
             criteria++
             errorCodes[8].showError = false
-        } else if ( imperialBike){
+        } else if ( imperialBike ){
             errorCodes[8].showError = true
         }
         if ( bikeType !== ""){
@@ -428,7 +428,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                     mb="2px"
                                     >Skill Level
                                 </FormLabel>
-                                <SkillSlider handleChange={handleCustomComponent}/>
+                                <SkillSlider skillLevel={inputs.skillLevel} handleChange={handleCustomComponent}/>
                             </GridItem>
                             {skillLevelErrorAlerts}
                         </SimpleGrid>
