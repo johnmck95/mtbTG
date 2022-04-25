@@ -34,9 +34,10 @@ interface OutputProps{
     }
     imperialRider: boolean,
     imperialBike: boolean,
+    handleShowForm: () => void,
 }
 
-export default function Output({inputs, outputs, imperialRider, imperialBike}: OutputProps) {
+export default function Output({inputs, outputs, imperialRider, imperialBike, handleShowForm}: OutputProps) {
     const [showSidePanel, setShowSidePanel] = useState(true)
     const [metricOutput, setMetricOutput] = useState(true)
 
@@ -61,6 +62,11 @@ export default function Output({inputs, outputs, imperialRider, imperialBike}: O
                             <Heading fontSize="lg" pt={4}>
                                 RIDER INFO
                             </Heading>
+                            <Button
+                               onClick={handleShowForm}
+                            >
+                                EDIT
+                            </Button>
                         </HStack>
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                         <SimpleGrid columns={2} columnGap={2} w="75%" pb={4}>

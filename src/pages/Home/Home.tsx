@@ -10,11 +10,10 @@ import Algorithm from "../../algorithms/Algorithm/Algorithm"
 
 export default function Home() {
 
-    let displayedComponent = "Form"
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [reRender, setReRender] = useState(0)
-    const [isFormComplete, setIsFormComplete] = useState(false)
+    const [formCompleted, setFormComplete] = useState(false)
     const [inputs, setInputs] = useState({
         heightFeet: "",
         heightInches: "",
@@ -83,11 +82,6 @@ export default function Home() {
         }))
     }
 
-
-    if(isFormComplete)
-        displayedComponent = "Output"
-    else
-        displayedComponent = "Form"
     const outputs = Algorithm(inputs)
 
     return(   
@@ -98,7 +92,7 @@ export default function Home() {
             backgroundPosition="60% 50%" 
             backgroundSize="145%" 
             height="100%">
-                { displayedComponent === "Form" &&
+                { !formCompleted &&
                     <Form
                         inputs={inputs}
                         imperialRider={imperialRider}
@@ -109,17 +103,18 @@ export default function Home() {
                         handleCustomComponent={handleCustomComponent}
                         handleRiderConversion={handleRiderConversion}
                         handleBikeConversion={handleBikeConversion}
-                        handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}
+                        handleFormCompletion = {() => setFormComplete( prevFormComplete => !prevFormComplete )}
                         handleReRender = {() => setReRender( () => reRender + 1 )}
                     />
                 }
-                {displayedComponent === "Output" &&
+                { formCompleted &&
                 <>
                     <Output 
                         inputs={inputs}
                         outputs={outputs}
                         imperialRider={imperialRider}
                         imperialBike={imperialBike}
+                        handleShowForm={() => setFormComplete( (prevFormComplete) => !prevFormComplete)}
                         />
                 </>  
                 }
