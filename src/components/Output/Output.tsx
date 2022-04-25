@@ -64,6 +64,10 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                             </Heading>
                             <Button
                                onClick={handleShowForm}
+                               size={'xs'}
+                               color={"brand.white"}
+                               bg={"brand.blue"} 
+                               _hover={{bg: "brand.blue", filter: "brightness(90%)"}}
                             >
                                 EDIT
                             </Button>
