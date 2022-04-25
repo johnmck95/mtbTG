@@ -107,8 +107,7 @@ export default function Home() {
                         handleReRender = {() => setReRender( () => reRender + 1 )}
                     />
                 }
-                {formCompleted &&
-                <>
+                { formCompleted &&
                     <Output 
                         inputs={inputs}
                         outputs={outputs}
@@ -116,7 +115,6 @@ export default function Home() {
                         imperialBike={imperialBike}
                         handleShowForm={() => setFormComplete( (prevFormComplete) => !prevFormComplete)}
                         />
-                </>  
                 }
         </Box>
     )
