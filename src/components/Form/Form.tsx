@@ -181,12 +181,12 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } if ( imperialRider && parseInt(weightLB) >= 80 && parseInt(weightLB) <= 240){
             criteria++
             errorCodes[10].showError = false
-        } else {
+        } else if (imperialRider){
             errorCodes[10].showError = true
         } if ( !imperialRider && parseInt(weightKG) >= 36 && parseInt(weightKG) <= 109){
             criteria++
             errorCodes[11].showError = false
-        } else {
+        } else if (!imperialRider){
             errorCodes[11].showError = true
         } if ( inputs.skillLevel !== "") {
             criteria++
