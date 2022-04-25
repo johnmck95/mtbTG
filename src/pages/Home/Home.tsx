@@ -107,7 +107,7 @@ export default function Home() {
                         handleReRender = {() => setReRender( () => reRender + 1 )}
                     />
                 }
-                { formCompleted &&
+                {formCompleted &&
                 <>
                     <Output 
                         inputs={inputs}
