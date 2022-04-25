@@ -47,19 +47,18 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                 <Stack direction={['column', 'column', 'row']} justify="center" alignItems={"center"} py={10} >
                     {showSidePanel &&
                     <VStack w={['100%', '80%', "30%"]} bg="brand.darkGrey" pr={0} borderRadius="md" alignSelf={['center', null, "flex-start",]}>
-                        <HStack position='relative' justify='center' w='100%'>
+                        <HStack display='flex' justifyContent={'space-between'} w='100%' px={'2.5'}>
                             <Icon 
                                     as={FaRegWindowClose} 
-                                    position='absolute'
-                                    left='7%'
-                                    top='70%'
-                                    transform={'translate(-50%, -50%)'}
                                     color="brand.white" 
                                     w={5} h={5} 
-                                    alignSelf={"flex-start"}
+                                    alignSelf={"flex-end"}
                                     onClick={() => setShowSidePanel(prevShowSidePanel => !prevShowSidePanel)}
                                     />
-                            <Heading fontSize="lg" pt={4}>
+                            <Heading 
+                                fontSize="lg" 
+                                pt={4} 
+                                >
                                 RIDER INFO
                             </Heading>
                             <Button
@@ -68,8 +67,9 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                                color={"brand.white"}
                                bg={"brand.blue"} 
                                _hover={{bg: "brand.blue", filter: "brightness(90%)"}}
+                               alignSelf={"flex-end"}
                             >
-                                EDIT
+                                Edit
                             </Button>
                         </HStack>
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
