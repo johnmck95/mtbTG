@@ -50,8 +50,6 @@ let formHasErrors = true
 
 export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
     const [showErrors, setShowErrors] = useState(false)
-    let criteria = 0
-    let requirements = 9
 
     // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
     useEffect(() => {
@@ -114,7 +112,9 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
 
     function handleErrors() {
         const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
-    
+        let criteria = 0;
+        let requirements;
+
         if (imperialRider) requirements = 9
         else if (!imperialRider) requirements = 7
 
