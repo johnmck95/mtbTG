@@ -50,8 +50,6 @@ let formHasErrors = true
 
 export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
     const [showErrors, setShowErrors] = useState(false)
-    let criteria = 0
-    let requirements = 7
 
     // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
     useEffect(() => {
@@ -62,10 +60,6 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
 
     function toggleRiderUnit() {
         handleImperialRider()
-        if (imperialRider)
-            requirements = 9
-        else
-            requirements = 7
         riderStateConversion()
     }
 
@@ -118,8 +112,11 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
 
     function handleErrors() {
         const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
-        if(imperialRider)
-            requirements = 9;
+        let criteria = 0;
+        let requirements;
+
+        if (imperialRider) requirements = 9
+        else if (!imperialRider) requirements = 7
 
         if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
             criteria++
@@ -134,7 +131,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             errorCodes[1].showError = true
         }
         const totalInches = parseInt(heightFeet)*12 + parseFloat(heightInches)
-        if ( totalInches >= 60 && totalInches <= 78){
+        if ( imperialRider && totalInches >= 60 && totalInches <= 78){
                 criteria++
                 errorCodes[2].showError = false
         } else if (imperialRider){
@@ -198,9 +195,9 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             errorCodes[12].showError = true
         }
 
-
-        if(criteria >= requirements)
+        if(criteria === requirements)
             formHasErrors = false
+
         handleReRender()
     }
 
