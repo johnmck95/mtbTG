@@ -40,7 +40,7 @@ interface OutputProps{
 export default function Output({inputs, outputs, imperialRider, imperialBike, handleShowForm}: OutputProps) {
     const [showSidePanel, setShowSidePanel] = useState(true)
     const [metricOutput, setMetricOutput] = useState(true)
-    
+
     return(
         <div className='outputBox'>
             <Container maxW="75rem" h="calc(100vh - 50px)">

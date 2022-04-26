@@ -55,8 +55,6 @@ export default function Home() {
         weightLBCalc: number;
     }
     function handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightKGCalc, weightLBCalc}: handleRiderConversionProps) {
-        console.log("In Home - weightLBCalc " + weightLBCalc )
-        console.log("In Home - weightKGCalc " + weightKGCalc )
         setInputs(prevInputs => ({
             ...prevInputs,
             heightCM: heightCMCalc !== -1? heightCMCalc.toFixed(4) : inputs.heightCM,
@@ -85,9 +83,6 @@ export default function Home() {
     }
 
     let outputs = Algorithm(inputs)
-
-    // console.log("In Home")
-    // console.log(inputs)
 
     return(   
         <Box 
@@ -119,7 +114,7 @@ export default function Home() {
                         imperialRider={imperialRider}
                         imperialBike={imperialBike}
                         handleShowForm={() => setFormComplete( (prevFormComplete) => !prevFormComplete)}
-                        />
+                    />
                 }
         </Box>
     )
