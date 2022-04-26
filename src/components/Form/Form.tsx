@@ -46,8 +46,6 @@ interface FormProps{
     handleReRender: () => void;
 }
 
-let formHasErrors = true
-
 export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
     // console.log("In Form")
     const [showErrors, setShowErrors] = useState(false)
@@ -111,6 +109,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
     }
 
+    let formHasErrors = true
     function handleErrors() {
         const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         let criteria = 0;
@@ -200,6 +199,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             formHasErrors = false
 
         handleReRender()
+        console.log("Criteria: " + criteria + " Requirements: " + requirements)
     }
 
     function handleSubmit() {

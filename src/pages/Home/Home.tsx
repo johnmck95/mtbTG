@@ -118,8 +118,8 @@ export default function Home() {
                         outputs={outputs}
                         imperialRider={imperialRider}
                         imperialBike={imperialBike}
-                        // handleShowForm={() => setFormComplete( (prevFormComplete) => !prevFormComplete)}
-                        handleShowForm={handleShowForm}
+                        handleShowForm={() => setFormComplete( (prevFormComplete) => !prevFormComplete)}
+                        // handleShowForm={handleShowForm}
                         />
                 }
         </Box>
