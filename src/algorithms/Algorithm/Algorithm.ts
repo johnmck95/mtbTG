@@ -1,4 +1,5 @@
-/**
+/** Inputs used for each Calculation: (To be deleted upon completion)
+ * 
  * Handlebar Width: Height(cm)
  * Handlebar Rise
  * Stem Length:
@@ -25,7 +26,6 @@ interface AlgorithmProps{
 }
 
 function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, handling, skillLevel, reachInches, reachMM, stackInches, stackMM, bikeType}: AlgorithmProps) {
-    // console.log("In Algorithms")
     const outputs = {
         barWidthMM: "",
         barWidthInch: "",

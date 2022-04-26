@@ -47,7 +47,6 @@ interface FormProps{
 }
 
 export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
-    // console.log("In Form")
     const [showErrors, setShowErrors] = useState(false)
 
     // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
@@ -67,9 +66,6 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         bikeStateConversion()
     }
 
-    // TODO: watch out for 'e' in the input - currently unhandled
-    // You need to check if it's an imperial/metric rider, or else the calculated value is updated and the next if() is executed before 
-    // React updated the state. This causes the input to recalculate the OLD value.
     function riderStateConversion() {
         let heightCMCalc = -1;
         let heightFootCalc = -1;
@@ -91,7 +87,6 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
     }
 
-    // TODO: watch out for 'e' in the input - currently unhandled
     function bikeStateConversion() {
         let reachMMCalc = -1;
         let reachInchCalc = -1;
@@ -131,14 +126,14 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else if (imperialRider) {
             errorCodes[1].showError = true
         }
-        const totalInches = parseInt(heightFeet)*12 + parseFloat(heightInches)
+        const totalInches = parseInt(heightFeet) * 12 + parseFloat(heightInches)
         if ( imperialRider && totalInches >= 60 && totalInches <= 78){
                 criteria++
                 errorCodes[2].showError = false
         } else if (imperialRider){
             errorCodes[2].showError = true
         }
-        if (!imperialRider && (parseFloat(heightCM) >= 152.4 && parseInt(heightCM) <= 198)){
+        if (!imperialRider && (parseFloat(heightCM) >= 152.4 && parseFloat(heightCM) <= 198)){
             criteria++
             errorCodes[3].showError = false
         } else if (!imperialRider){
@@ -150,7 +145,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else {
             errorCodes[4].showError = true
         }
-        if ( !imperialBike && ((parseInt(reachMM) >= 400 && parseInt(reachMM) <= 550))){
+        if ( !imperialBike && ((parseFloat(reachMM) >= 400 && parseFloat(reachMM) <= 550))){
             criteria++
             errorCodes[5].showError = false
         } else if (!imperialBike){
@@ -162,7 +157,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else if (imperialBike){
             errorCodes[6].showError = true
         }
-        if ( !imperialBike && (parseInt(stackMM) >= 550 && parseInt(stackMM) <= 680)){
+        if ( !imperialBike && (parseFloat(stackMM) >= 550 && parseFloat(stackMM) <= 680)){
                 criteria++
                 errorCodes[7].showError = false
         } else if (!imperialBike){
@@ -179,12 +174,12 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             errorCodes[9].showError = false
         } else {
             errorCodes[9].showError = true
-        } if ( imperialRider && parseInt(weightLB) >= 80 && parseInt(weightLB) <= 240){
+        } if ( imperialRider && parseFloat(weightLB) >= 80 && parseFloat(weightLB) <= 240){
             criteria++
             errorCodes[10].showError = false
         } else if (imperialRider){
             errorCodes[10].showError = true
-        } if ( !imperialRider && parseInt(weightKG) >= 36 && parseInt(weightKG) <= 109){
+        } if ( !imperialRider && parseFloat(weightKG) >= 36 && parseFloat(weightKG) <= 109){
             criteria++
             errorCodes[11].showError = false
         } else if (!imperialRider){
@@ -200,7 +195,6 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             formHasErrors = false
 
         handleReRender()
-        // console.log("Criteria: " + criteria + " Requirements: " + requirements)
     }
 
     function handleSubmit() {
@@ -249,9 +243,6 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         } else return null       
     })
-
-    console.log("In Form")
-    console.log(inputs)
 
     return(
         <div className="formBox">
