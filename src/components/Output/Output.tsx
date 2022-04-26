@@ -78,7 +78,7 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                                 <Text>Height</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialRider? parseInt(inputs.heightFeet) + '\'' + parseFloat(inputs.heightInches).toFixed(0) + "\"" : parseInt(inputs.heightCM) + 'cm'}</Text>
+                                <Text>{imperialRider? parseInt(inputs.heightFeet) + '\'' + parseFloat(inputs.heightInches).toFixed(0) + "\"" : parseFloat(inputs.heightCM).toFixed(0) + 'cm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Weight</Text>

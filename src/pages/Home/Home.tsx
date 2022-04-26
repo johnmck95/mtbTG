@@ -82,7 +82,7 @@ export default function Home() {
         }))
     }
 
-    let outputs = Algorithm(inputs)
+    const outputs = Algorithm(inputs)
 
     return(   
         <Box 
