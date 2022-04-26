@@ -77,16 +77,16 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         let weightKGCalc = -1;
         let weightLBCalc = -1;
 
-        if (imperialRider && inputs.heightFeet !== "" && inputs.heightInches !== "")
+        if (inputs.heightFeet !== "" && inputs.heightInches !== "")
              heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseFloat(inputs.heightInches) * 2.54
-        if (!imperialRider && inputs.heightCM !== ""){
+        if (inputs.heightCM !== ""){
             const totalInches = parseFloat(inputs.heightCM) / 2.54
             heightFootCalc = Math.floor(totalInches / 12)
             heightInchesCalc = totalInches % 12    
         }
-        if (imperialRider && inputs.weightLB !== "")
+        if (inputs.weightLB !== "")
             weightKGCalc = parseFloat(inputs.weightLB) / 2.205
-        if(!imperialRider && inputs.weightKG !== "")
+        if(inputs.weightKG !== "")
             weightLBCalc = parseFloat(inputs.weightKG) * 2.205
 
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
@@ -99,13 +99,13 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         let stackMMCalc = -1;
         let stackInchCalc = -1;
         
-        if (!imperialRider && inputs.reachMM !== "")
+        if (inputs.reachMM !== "")
             reachInchCalc = parseFloat(inputs.reachMM)/25.4
-        if (!imperialRider && inputs.stackMM !== "")
+        if (inputs.stackMM !== "")
             stackInchCalc = parseFloat(inputs.stackMM)/25.4
-        if (imperialRider && inputs.reachInches !== "")
+        if (inputs.reachInches !== "")
             reachMMCalc = parseFloat(inputs.reachInches)*25.4
-        if (imperialRider && inputs.stackInches !== "")
+        if (inputs.stackInches !== "")
             stackMMCalc = parseFloat(inputs.stackInches)*25.4
 
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
