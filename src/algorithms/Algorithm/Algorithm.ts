@@ -1,3 +1,15 @@
+/** Inputs used for each Calculation: (To be deleted upon completion)
+ * 
+ * Handlebar Width: Height(cm)
+ * Handlebar Rise
+ * Stem Length:
+ * Stem Spacers
+ * 
+ * Front Tire: Weight(lb), skillLevel, bikeType
+ * Rear Tire: Weight(lb), skillLevel, bikeType
+ * Inserts: Weight(lb), skillLevel
+ */
+
 interface AlgorithmProps{
         heightFeet: string,
         heightInches: string,
