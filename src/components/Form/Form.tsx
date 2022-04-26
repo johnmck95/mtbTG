@@ -49,6 +49,7 @@ interface FormProps{
 let formHasErrors = true
 
 export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
+    // console.log("In Form")
     const [showErrors, setShowErrors] = useState(false)
 
     // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
@@ -70,41 +71,41 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
 
     // TODO: watch out for 'e' in the input - currently unhandled
     function riderStateConversion() {
-        let heightCMCalc = 0
-        let heightFootCalc = 0
-        let heightInchesCalc = 0
-        let weightKGCalc = 0
-        let weightLBCalc = 0
+        let heightCMCalc = -1;
+        let heightFootCalc = -1;
+        let heightInchesCalc = -1;
+        let weightKGCalc = -1;
+        let weightLBCalc = -1;
 
-        if (inputs.heightFeet !== "" && inputs.heightInches !== "")
-             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseInt(inputs.heightInches) * 2.54
-        if (inputs.heightCM !== ""){
-            const totalInches = parseInt(inputs.heightCM) / 2.54
+        if (imperialRider && inputs.heightFeet !== "" && inputs.heightInches !== "")
+             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseFloat(inputs.heightInches) * 2.54
+        if (!imperialRider && inputs.heightCM !== ""){
+            const totalInches = parseFloat(inputs.heightCM) / 2.54
             heightFootCalc = Math.floor(totalInches / 12)
-            heightInchesCalc = (totalInches % 12)          
+            heightInchesCalc = totalInches % 12    
         }
-        if (inputs.weightLB !== "")
-            weightKGCalc = parseInt(inputs.weightLB) / 2.205
-        if(inputs.weightKG !== "")
-            weightLBCalc = parseInt(inputs.weightKG) * 2.205
+        if (imperialRider && inputs.weightLB !== "")
+            weightKGCalc = parseFloat(inputs.weightLB) / 2.205
+        if(!imperialRider && inputs.weightKG !== "")
+            weightLBCalc = parseFloat(inputs.weightKG) * 2.205
 
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
     }
 
     // TODO: watch out for 'e' in the input - currently unhandled
     function bikeStateConversion() {
-        let reachMMCalc = 0
-        let reachInchCalc = 0
-        let stackMMCalc = 0
-        let stackInchCalc = 0
+        let reachMMCalc = -1;
+        let reachInchCalc = -1;
+        let stackMMCalc = -1;
+        let stackInchCalc = -1;
         
-        if (inputs.reachMM !== "")
-            reachInchCalc = parseInt(inputs.reachMM)/25.4
-        if (inputs.stackMM !== "")
-            stackInchCalc = parseInt(inputs.stackMM)/25.4
-        if (inputs.reachInches !== "")
+        if (!imperialRider && inputs.reachMM !== "")
+            reachInchCalc = parseFloat(inputs.reachMM)/25.4
+        if (!imperialRider && inputs.stackMM !== "")
+            stackInchCalc = parseFloat(inputs.stackMM)/25.4
+        if (imperialRider && inputs.reachInches !== "")
             reachMMCalc = parseFloat(inputs.reachInches)*25.4
-        if(inputs.stackInches !== "")
+        if (imperialRider && inputs.stackInches !== "")
             stackMMCalc = parseFloat(inputs.stackInches)*25.4
 
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
@@ -137,7 +138,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else if (imperialRider){
             errorCodes[2].showError = true
         }
-        if (!imperialRider && (parseInt(heightCM) >= 152 && parseInt(heightCM) <= 198)){
+        if (!imperialRider && (parseFloat(heightCM) >= 152.4 && parseInt(heightCM) <= 198)){
             criteria++
             errorCodes[3].showError = false
         } else if (!imperialRider){

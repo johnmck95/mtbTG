@@ -1,3 +1,14 @@
+/**
+ * Handlebar Width: Height(cm)
+ * Handlebar Rise
+ * Stem Length:
+ * Stem Spacers
+ * 
+ * Front Tire: Weight(lb), skillLevel, bikeType
+ * Rear Tire: Weight(lb), skillLevel, bikeType
+ * Inserts: Weight(lb), skillLevel
+ */
+
 interface AlgorithmProps{
         heightFeet: string,
         heightInches: string,
@@ -14,6 +25,7 @@ interface AlgorithmProps{
 }
 
 function Algorithm({heightFeet, heightInches, heightCM, weightLB, weightKG, handling, skillLevel, reachInches, reachMM, stackInches, stackMM, bikeType}: AlgorithmProps) {
+    // console.log("In Algorithms")
     const outputs = {
         barWidthMM: "",
         barWidthInch: "",

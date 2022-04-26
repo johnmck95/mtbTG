@@ -17,7 +17,7 @@ const errorCodes = [
     },
     {
         errorNumber: 3,
-        errorMessage: "Please enter a Height between 152cm and 198cm",
+        errorMessage: "Please enter a Height between 152.4cm and 198cm",
         showError: false,
     },
     {

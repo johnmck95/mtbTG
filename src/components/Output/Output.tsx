@@ -38,6 +38,8 @@ interface OutputProps{
 }
 
 export default function Output({inputs, outputs, imperialRider, imperialBike, handleShowForm}: OutputProps) {
+    // console.log("In Output")
+    console.log(inputs)
     const [showSidePanel, setShowSidePanel] = useState(true)
     const [metricOutput, setMetricOutput] = useState(true)
 
@@ -78,13 +80,13 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                                 <Text>Height</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialRider? inputs.heightFeet + '\'' + inputs.heightInches + "\"" : inputs.heightCM + 'cm'}</Text>
+                                <Text>{imperialRider? parseInt(inputs.heightFeet) + '\'' + parseFloat(inputs.heightInches).toFixed(0) + "\"" : parseInt(inputs.heightCM) + 'cm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Weight</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialRider? inputs.weightLB + 'lb' : inputs.weightKG + 'kg'}</Text>
+                                <Text>{imperialRider? parseFloat(inputs.weightLB).toFixed(0) + 'lb' : parseFloat(inputs.weightKG).toFixed(0) + 'kg'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Handling</Text>
@@ -102,13 +104,13 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                                 <Text>Reach</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialBike? inputs.reachInches + '"' : inputs.reachMM + 'mm'}</Text>
+                                <Text>{imperialBike? parseFloat(inputs.reachInches).toFixed(2) + '"' : parseFloat(inputs.reachMM).toFixed(0) + 'mm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Stack</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialBike? inputs.stackInches + '"' : inputs.stackMM + 'mm'}</Text>
+                                <Text>{imperialBike? parseFloat(inputs.stackInches).toFixed(2) + '"' : parseFloat(inputs.stackMM).toFixed(0) + 'mm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Bike Type</Text>
