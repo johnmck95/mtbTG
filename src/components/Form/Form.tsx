@@ -68,6 +68,8 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
     }
 
     // TODO: watch out for 'e' in the input - currently unhandled
+    // You need to check if it's an imperial/metric rider, or else the calculated value is updated and the next if() is executed before 
+    // React updated the state. This causes the input to recalculate the OLD value.
     function riderStateConversion() {
         let heightCMCalc = -1;
         let heightFootCalc = -1;
@@ -75,18 +77,17 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         let weightKGCalc = -1;
         let weightLBCalc = -1;
 
-        if (inputs.heightFeet !== "" && inputs.heightInches !== "")
-             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseFloat(inputs.heightInches) * 2.54
-        if (inputs.heightCM !== ""){
-            const totalInches = parseFloat(inputs.heightCM) / 2.54
-            heightFootCalc = Math.floor(totalInches / 12)
-            heightInchesCalc = totalInches % 12    
-        }
-        if (inputs.weightLB !== "")
+        if (imperialRider && inputs.heightFeet !== "" && inputs.heightInches !== ""){
+             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseFloat(inputs.heightInches) * 2.54;
+        }if (!imperialRider && inputs.heightCM !== ""){
+            const totalInches = parseFloat(inputs.heightCM) / 2.54;
+            heightFootCalc = Math.floor(totalInches / 12);
+            heightInchesCalc = totalInches % 12;
+        }if (imperialRider && inputs.weightLB !== ""){
             weightKGCalc = parseFloat(inputs.weightLB) / 2.205
-        if(inputs.weightKG !== "")
+        }if (!imperialRider && inputs.weightKG !== "")
             weightLBCalc = parseFloat(inputs.weightKG) * 2.205
-
+        
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
     }
 
@@ -97,13 +98,13 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         let stackMMCalc = -1;
         let stackInchCalc = -1;
         
-        if (inputs.reachMM !== "")
+        if (!imperialBike && inputs.reachMM !== "")
             reachInchCalc = parseFloat(inputs.reachMM)/25.4
-        if (inputs.stackMM !== "")
+        if (!imperialBike && inputs.stackMM !== "")
             stackInchCalc = parseFloat(inputs.stackMM)/25.4
-        if (inputs.reachInches !== "")
+        if (imperialBike && inputs.reachInches !== "")
             reachMMCalc = parseFloat(inputs.reachInches)*25.4
-        if (inputs.stackInches !== "")
+        if (imperialBike && inputs.stackInches !== "")
             stackMMCalc = parseFloat(inputs.stackInches)*25.4
 
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
@@ -199,7 +200,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             formHasErrors = false
 
         handleReRender()
-        console.log("Criteria: " + criteria + " Requirements: " + requirements)
+        // console.log("Criteria: " + criteria + " Requirements: " + requirements)
     }
 
     function handleSubmit() {
@@ -248,6 +249,9 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
         } else return null       
     })
+
+    console.log("In Form")
+    console.log(inputs)
 
     return(
         <div className="formBox">

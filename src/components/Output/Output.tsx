@@ -43,6 +43,9 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
     const [showSidePanel, setShowSidePanel] = useState(true)
     const [metricOutput, setMetricOutput] = useState(true)
 
+    console.log("In Output")
+    console.log(inputs)
+
     return(
         <div className='outputBox'>
             <Container maxW="75rem" h="calc(100vh - 50px)">

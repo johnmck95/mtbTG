@@ -9,17 +9,17 @@ import {ChangeEvent, useState} from "react"
 import Algorithm from "../../algorithms/Algorithm/Algorithm"
 
 export default function Home() {
-    // console.log("In Home")
+
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [reRender, setReRender] = useState(0)
     const [formCompleted, setFormComplete] = useState(false)
     const [inputs, setInputs] = useState({
-        heightFeet: "", // int
-        heightInches: "", // float
-        heightCM: "", // float
-        weightLB: "", // float
-        weightKG: "", // float
+        heightFeet: "",
+        heightInches: "",
+        heightCM: "",
+        weightLB: "",
+        weightKG: "",
         handling: "",
         skillLevel: "",
         reachInches: "",
@@ -55,6 +55,8 @@ export default function Home() {
         weightLBCalc: number;
     }
     function handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightKGCalc, weightLBCalc}: handleRiderConversionProps) {
+        console.log("In Home - weightLBCalc " + weightLBCalc )
+        console.log("In Home - weightKGCalc " + weightKGCalc )
         setInputs(prevInputs => ({
             ...prevInputs,
             heightCM: heightCMCalc !== -1? heightCMCalc.toFixed(4) : inputs.heightCM,
@@ -84,10 +86,8 @@ export default function Home() {
 
     let outputs = Algorithm(inputs)
 
-    function handleShowForm(){
-        setFormComplete( (prevFormComplete) => !prevFormComplete)
-        // outputs = Algorithm(inputs)
-    }
+    // console.log("In Home")
+    // console.log(inputs)
 
     return(   
         <Box 
@@ -119,7 +119,6 @@ export default function Home() {
                         imperialRider={imperialRider}
                         imperialBike={imperialBike}
                         handleShowForm={() => setFormComplete( (prevFormComplete) => !prevFormComplete)}
-                        // handleShowForm={handleShowForm}
                         />
                 }
         </Box>
