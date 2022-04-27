@@ -307,7 +307,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                         >Height {imperialRider? "(feet)" : "(cm)"}
                                     </FormLabel>
                                     <Input 
-                                        placeholder={imperialRider? "6" : "187"}
+                                        placeholder={imperialRider? "5" : "178"}
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
                                         type="number"
@@ -334,7 +334,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                             >Height (inches)
                                         </FormLabel>
                                         <Input 
-                                            placeholder="2" 
+                                            placeholder="10" 
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             type="number"
@@ -359,7 +359,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                         >Weight {imperialRider? "(lb)" : "(kg)"}
                                     </FormLabel>
                                     <Input 
-                                        placeholder={imperialRider? "180" : "82"}
+                                        placeholder={imperialRider? "170" : "77"}
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
                                         type="number"
@@ -488,7 +488,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                                 Reach {imperialBike? "(inches)" : "(mm)"}
                                         </FormLabel>
                                         <Input 
-                                            placeholder={imperialBike? "20.08" : "510"} 
+                                            placeholder={imperialBike? "18.70" : "475"} 
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
@@ -512,7 +512,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                                 Stack {imperialBike? "(inches)" : "(mm)"}
                                         </FormLabel>
                                         <Input 
-                                            placeholder={imperialBike? "25.20" : "640"} 
+                                            placeholder={imperialBike? "24.41" : "620"} 
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             type="number"
