@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import Form from "../../../components/Form/Form"
+import { fireEvent, render, screen } from "@testing-library/react";
+import user from "@testing-library/user-event";
 import Home from "../../../pages/Home/Home"
 
 describe("The default form contains ", () => {
@@ -46,48 +46,99 @@ describe("The default form contains ", () => {
         })
     })
     describe("Skill Level ", () => {
-        test.todo("Label")
+        test("Label", () => {
+            expect(screen.getByText("Skill Level"))
+        })
+        test("Renders the skillSlider",  () => {
+            expect(screen.getByRole("slider"))
+        })
         test.todo("Slider is in position 3 and is de-selected")
+            // const slioderKnob = screen.queryByRole("input", {hidden: true})
+            // expect(sliderKnob).toHaveValue(3)
     })
     describe("Reach (mm) ", () => {
-        test.todo("Label ")
-        test.todo("Placeholder value of 475")
+        test("Label ", () => {
+            expect(screen.getByText("Reach (mm)"))
+        })
+        test("Placeholder value of 475", () => {
+            expect(screen.getByPlaceholderText("475"))
+        })
     })
     describe("Stack (mm) ", () => {
-        test.todo("Label")
-        test.todo("Placeholder value of 620")
+        test("Label ", () => {
+            expect(screen.getByText("Stack (mm)"))
+        })
+        test("Placeholder value of 620", () => {
+            expect(screen.getByPlaceholderText("620"))
+        })
     })
     describe("Bike Type ", () => {
-        test.todo("Label ")
-        test.todo("Enduro custom radio button")
-        test.todo("Trail custom radio button")
+        test("Label ", () => {
+            expect(screen.getByText("Bike Type"))
+        })
+        test("Enduro custom radio button", () => {
+            expect(screen.getByText("Enduro"))
+        })
+        test("Trail custom radio button", () => {
+            expect(screen.getByText("Trail"))
+        })
     })
-    test.todo("Rider Metrics to be imperial")
-    test.todo("Bike Metrics to be metric")
 })
 
 describe("When Rider Metrics are changed from imperial to metric ", () => {
-    test.todo("Height (feet) is no longer present ")
-    test.todo("Height (inches) is no longer present ")
+    beforeEach(() => {
+        render(<Home/>)
+        user.click(screen.getByTestId("imperialRiderButton"))
+    })
+    test("Height (feet) is no longer present", () => {
+        expect(screen.queryByLabelText("Height (feet)")).not.toBeInTheDocument();
+    })
+    test("Height (inches) is no longer present", () => {
+        expect(screen.queryByLabelText("Height (inches)")).not.toBeInTheDocument()
+    })
     describe("Height (cm) ", () => {
-        test.todo("Label appears")
-        test.todo("Placeholder value of 178 appears")
+        test("Label appears", () => {
+            expect(screen.getByLabelText("Height (cm)"))
+        })
+        test("Placeholder value of 178 appears", () => {
+            expect(screen.getByPlaceholderText("178"))
+        })
     })
     describe("Weight (kg) ", () => {
-        test.todo("Label appears")
-        test.todo("Placeholder value of 77 kg appears")
+        test("Label appears", () => {
+            expect(screen.getByLabelText("Weight (kg)"))
+        })
+        test("Placeholder value of 77 kg appears", () => {
+            expect(screen.getByPlaceholderText("77"))
+        })
     })
 })
 
 describe("When Bike Metrics are changed from metric to imperial ", () => {
-    test.todo("Reach (mm) is no longer present")
-    describe("Reach (inches) ", () => {
-        test.todo("Label appears ")
-        test.todo("Placeholder value of 18.70 appears")
+    beforeEach(() => {
+        render(<Home/>)
+        user.click(screen.getByTestId("imperialBikeButton"))
     })
-    test.todo("Stack (mm) is no longer present")
+    test("Reach (mm) is no longer present", () => {
+        expect(screen.queryByLabelText("Reach (mm)")).not.toBeInTheDocument()
+    })
+    test("Stack (mm) is no longer present", () => {
+        expect(screen.queryByLabelText("Stack (mm)")).not.toBeInTheDocument()
+    })
+    describe("Reach (inches) ", () => {
+        test("Label appears", () => {
+            expect(screen.getByLabelText("Reach (inches)"))
+        })
+        test("Placeholder value of 18.70 appears", () => {
+            expect(screen.getByPlaceholderText("18.70"))
+        })
+    })
     describe("Stack (inches) ", () => {
-        test.todo("Label appears ")
-        test.todo("Placeholder value of 24.41 appears")
+        test("Label appears", () => {
+            expect(screen.getByLabelText("Stack (inches)"))
+        })
+        test("Placeholder value of 24.41 appears", () => {
+            expect(screen.getByPlaceholderText("24.41"))
+        })
     })
 })

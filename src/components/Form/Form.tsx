@@ -291,6 +291,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                 onClick={toggleRiderUnit}
                                 _hover={ imperialRider? {bg: "brand.blue", filter: "brightness(90%)"}
                                                      : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                data-testid="imperialRiderButton"
                                 >
                                     Imperial
                             </Button>
@@ -471,6 +472,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                     onClick={toggleBikeUnit}
                                     _hover={ imperialBike? {bg: "brand.blue", filter: "brightness(90%)"}
                                                           : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                    data-testid="imperialBikeButton"
                                     >
                                         Imperial
                                 </Button>

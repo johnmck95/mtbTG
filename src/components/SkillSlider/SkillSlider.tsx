@@ -48,8 +48,8 @@ export default function SkillSlider({skillLevel, handleChange}: SkillSliderProps
             <Box>
                 <Slider defaultValue={mapSkillLevelToValue()} min={1} max={6} step={1} onChange={(val) => handleSlide(val)} data-testid="sliderValue">
                     <SliderTrack bg='brand.lightGrey'>
-                        <Box position='relative' right={10} />
-                        <SliderFilledTrack bg={sliderValue !== 0? 'brand.blue' : 'brand.white'} />
+                        <Box position='relative' right={10}/>
+                        <SliderFilledTrack bg={sliderValue !== 0? 'brand.blue' : 'brand.white'}  data-testid="knob"/>
                     </SliderTrack>
                     <SliderThumb boxSize={5} bg={sliderValue !== 0? 'brand.blue' : 'brand.white'}/>
                 </Slider>
