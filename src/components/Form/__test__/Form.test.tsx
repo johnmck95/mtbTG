@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import Home from "../../../pages/Home/Home"
 
@@ -139,6 +139,66 @@ describe("When Bike Metrics are changed from metric to imperial ", () => {
         })
         test("Placeholder value of 24.41 appears", () => {
             expect(screen.getByPlaceholderText("24.41"))
+        })
+    })
+})
+
+describe("Converting Rider Metrics from Imperial to Metic ", () => {
+    beforeEach(() => {
+        render(<Home/>)
+    })
+    test("should yield 5'0 = 152.4cm", () => {
+        user.type(screen.getByLabelText("Height (feet)"), "5")
+        user.type(screen.getByLabelText("Height (inches)"), "0")
+        user.click(screen.getByTestId("imperialRiderButton"))
+        expect(screen.getByDisplayValue("152.4000"))
+    })
+    test("should yield 5'7 = 170.18cm", () => {
+        user.type(screen.getByLabelText("Height (feet)"), "5")
+        user.type(screen.getByLabelText("Height (inches)"), "7")
+        user.click(screen.getByTestId("imperialRiderButton"))
+        expect(screen.getByDisplayValue("170.1800"))
+    })
+    test("should yield 5'7.5 = 171.45cm", () => {
+        user.type(screen.getByLabelText("Height (feet)"), "5")
+        user.type(screen.getByLabelText("Height (inches)"), "7.5")
+        user.click(screen.getByTestId("imperialRiderButton"))
+        expect(screen.getByDisplayValue("171.4500")).toBeInTheDocument();
+    })
+    test("should yield 5'11 = 180.34cm", () => {
+        user.type(screen.getByLabelText("Height (feet)"), "5")
+        user.type(screen.getByLabelText("Height (inches)"), "11")
+        user.click(screen.getByTestId("imperialRiderButton"))
+        expect(screen.getByDisplayValue("180.3400")).toBeInTheDocument();
+    })
+    test("should yield 5'11.98 = 182.8292cm", () => {
+        user.type(screen.getByLabelText("Height (feet)"), "5")
+        user.type(screen.getByLabelText("Height (inches)"), "11.98")
+        user.click(screen.getByTestId("imperialRiderButton"))
+        expect(screen.getByDisplayValue("182.8292")).toBeInTheDocument();
+    })
+    test("should yield 6'6 = 198.12cm", () => {
+        user.type(screen.getByLabelText("Height (feet)"), "6")
+        user.type(screen.getByLabelText("Height (inches)"), "6")
+        user.click(screen.getByTestId("imperialRiderButton"))
+        expect(screen.getByDisplayValue("198.1200")).toBeInTheDocument();
+    })
+
+    describe("Then converting back to Imperial from Metric should have the original result of ", () => {
+        test.each([
+            ['5', '0', '5', '0.0000'],
+            ['5', '7', '5', '7.0000'],
+            ['5', '7.5', '5', '7.5000'],
+            ['5', '11', '5', '11.0000'],
+            ['5', '11.98', '5', '11.9800'],
+            ['6', '6', '6', '6.0000']
+        ])('%f\'%f', (feetIn, inchesIn, feetOut, inchesOut) => {
+            user.type(screen.getByLabelText("Height (feet)"), feetIn)
+            user.type(screen.getByLabelText("Height (inches)"), inchesIn)
+            user.click(screen.getByTestId("imperialRiderButton"))
+            user.click(screen.getByTestId("imperialRiderButton"))
+            expect(screen.getByDisplayValue(feetOut)).toBeInTheDocument();
+            expect(screen.getByDisplayValue(inchesOut)).toBeInTheDocument();
         })
     })
 })
