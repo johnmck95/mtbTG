@@ -80,9 +80,9 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             heightFootCalc = Math.floor(totalInches / 12);
             heightInchesCalc = totalInches % 12;
         }if (imperialRider && inputs.weightLB !== ""){
-            weightKGCalc = parseFloat(inputs.weightLB) / 2.205
+            weightKGCalc = parseFloat(inputs.weightLB) * 0.45359237
         }if (!imperialRider && inputs.weightKG !== "")
-            weightLBCalc = parseFloat(inputs.weightKG) * 2.205
+            weightLBCalc = parseFloat(inputs.weightKG) * 2.2046226218
         
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
     }

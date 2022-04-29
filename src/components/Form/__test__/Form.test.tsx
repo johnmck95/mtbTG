@@ -160,8 +160,7 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
         user.click(screen.getByTestId("imperialRiderButton"))
         expect(screen.getByDisplayValue(cmOut)).toBeInTheDocument();
     })
-
-    describe("Then converting back to Imperial from Metric should have the original result of ", () => {
+   describe("Then converting back to Imperial from Metric should have the original result of ", () => {
         test.each([
             ['5', '0', '5', '0.0000'],
             ['5', '7', '5', '7.0000'],
@@ -178,8 +177,25 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
             expect(screen.getByDisplayValue(inchesOut)).toBeInTheDocument();
         })
     })
+    test.each([
+        ['80', '36.2874'],
+        ['100', '45.3592'],
+    ])('should yield %flb = %fkg', (weightLB, weightKG) => {
+        user.type(screen.getByLabelText("Weight (lb)"), weightLB)
+        user.click(screen.getByTestId("imperialRiderButton"))
+        expect(screen.getByDisplayValue(weightKG)).toBeInTheDocument();
+    })
 })
 
-describe("Converting Bike Metrics from Metic to Imperial",  () => {
-    
-})
+
+/** COMPLETE THE WEIGHT TESTS FIRST THEN COMPLETE THIS SECTION */
+// describe("Converting Bike Metrics from Metic to Imperial",  () => {
+//     beforeEach(() => {
+//         render(<Home/>)
+//     })
+//     test.each([
+//         ['475', '18.7008']
+//     ])('should yield %f = %f', (mmIn, inchesOut) => {
+
+//     })
+// })
