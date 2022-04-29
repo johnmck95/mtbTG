@@ -160,7 +160,18 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
         user.click(screen.getByTestId("imperialRiderButton"))
         expect(screen.getByDisplayValue(cmOut)).toBeInTheDocument();
     })
-   describe("Then converting back to Imperial from Metric should have the original result of ", () => {
+    test.each([
+        ['80', '36.2874'],
+        ['99.999', '45.3588'],
+        ['100', '45.3592'],
+        ['182.1', '82.5992'],
+        ['240', '108.8622']
+    ])('should yield %flb = %fkg', (weightLB, weightKG) => {
+        user.type(screen.getByLabelText("Weight (lb)"), weightLB)
+        user.click(screen.getByTestId("imperialRiderButton"))
+        expect(screen.getByDisplayValue(weightKG)).toBeInTheDocument();
+    })
+   describe("Then converting back to Imperial from Metric should have ", () => {
         test.each([
             ['5', '0', '5', '0.0000'],
             ['5', '7', '5', '7.0000'],
@@ -168,7 +179,7 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
             ['5', '11', '5', '11.0000'],
             ['5', '11.98', '5', '11.9800'],
             ['6', '6', '6', '6.0000']
-        ])('%f\'%f', (feetIn, inchesIn, feetOut, inchesOut) => {
+        ])('the original result of %f\'%f', (feetIn, inchesIn, feetOut, inchesOut) => {
             user.type(screen.getByLabelText("Height (feet)"), feetIn)
             user.type(screen.getByLabelText("Height (inches)"), inchesIn)
             user.click(screen.getByTestId("imperialRiderButton"))
@@ -176,26 +187,30 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
             expect(screen.getByDisplayValue(feetOut)).toBeInTheDocument();
             expect(screen.getByDisplayValue(inchesOut)).toBeInTheDocument();
         })
+        test.each([
+            ['80', '80.0000'],
+            ['99.999', '99.9990'],
+            ['100', '99.9999'],
+            ['182.1', '182.1001'],
+            ['240', '240.0001']
+        ])('the newly calculated (and very close) value of %f', (weightLBIn, weightLBOut) => {
+            user.type(screen.getByLabelText("Weight (lb)"), weightLBIn)
+            user.click(screen.getByTestId("imperialRiderButton"))
+            user.click(screen.getByTestId("imperialRiderButton"))
+            expect(screen.getByDisplayValue(weightLBOut)).toBeInTheDocument();
+        })
     })
-    test.each([
-        ['80', '36.2874'],
-        ['100', '45.3592'],
-    ])('should yield %flb = %fkg', (weightLB, weightKG) => {
-        user.type(screen.getByLabelText("Weight (lb)"), weightLB)
-        user.click(screen.getByTestId("imperialRiderButton"))
-        expect(screen.getByDisplayValue(weightKG)).toBeInTheDocument();
-    })
+
 })
 
 
-/** COMPLETE THE WEIGHT TESTS FIRST THEN COMPLETE THIS SECTION */
-// describe("Converting Bike Metrics from Metic to Imperial",  () => {
-//     beforeEach(() => {
-//         render(<Home/>)
-//     })
-//     test.each([
-//         ['475', '18.7008']
-//     ])('should yield %f = %f', (mmIn, inchesOut) => {
+describe("Converting Bike Metrics from Metic to Imperial",  () => {
+    beforeEach(() => {
+        render(<Home/>)
+    })
+    test.each([
+        ['475', '18.7008']
+    ])('should yield %f = %f', (mmIn, inchesOut) => {
 
-//     })
-// })
+    })
+})
