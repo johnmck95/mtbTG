@@ -426,3 +426,14 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
         expect(screen.getByText("Please enter a stack value between 21.65 - 26.77 inches"))
     })
 })
+
+/*         FUTURE TESTS 
+
+ 1. Ensure the Form & Output display the same ImperialRider and imperialBike units
+ 2. When a conversion has a slight rounding error a value may be valid for LB and invalid for KG. 
+    When the unit is toggled, the error should still be caught
+ 3. Toggling between Form and Output page should always render the same values
+ 4. Validate the correct error messages appear - This is loosely done already when testing invalid 
+    changes made after form submission do not allow the user to proceed. 
+
+*/
