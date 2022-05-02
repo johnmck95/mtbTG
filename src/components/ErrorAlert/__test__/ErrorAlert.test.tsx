@@ -9,5 +9,5 @@ test("ErrorAlert renders without error", () => {
 
 test("ErrorAlert correctly reads from ErrorCodes.ts", () =>{
     const { getByText } = render(<ErrorAlert errorMessage={errorCodes[1].errorMessage} />);
-    getByText("Please enter a postive value less than 12 for Height (inches)")
+    getByText("Please enter a non-negative value less than 12 for Height (inches)")
 })

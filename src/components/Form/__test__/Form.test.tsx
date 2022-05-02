@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import Home from "../../../pages/Home/Home"
 
@@ -261,5 +261,168 @@ describe("Converting Bike Metrics from Metic to Imperial",  () => {
             user.click(screen.getByTestId("imperialBikeButton"))
             expect(screen.getByDisplayValue(stackMMOut)).toBeInTheDocument()
         })
+    })
+})
+
+describe("After clicking the 'edit' button to return to the Form page ", () => {
+    beforeEach( () => {
+        render(<Home/>)
+        user.type(screen.getByLabelText("Height (feet)"), '5')
+        user.type(screen.getByLabelText("Height (inches)"), '10')
+        user.type(screen.getByLabelText("Weight (lb)"), '170')
+        user.click(screen.getByText("Neutral"))
+        user.click(screen.getByTestId("sliderValue"))
+        fireEvent.change(screen.getByTestId("sliderValue"), {value: "5"})
+        user.type(screen.getByLabelText("Reach (mm)"), '475')
+        user.type(screen.getByLabelText("Stack (mm)"), '620')
+        user.click(screen.getByText("Enduro"))
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        screen.getByText("YOUR SETTINGS")
+        user.click(screen.getByRole('button', {name: 'Edit'}))
+        screen.getByText("RIDER METRICS")
+    })
+
+    test.each([
+        ['-1'],
+        ['a'],
+        ['five'],
+        ['-2147483647'],
+        ['5.2'],
+        ['6.678'],
+    ])('Changing Height (feet) to an invalid value [%s] will not allow you to proceed to the Output page', (heightFeet) => {
+        user.clear(screen.getByLabelText("Height (feet)"))
+        user.type(screen.getByLabelText("Height (feet)"), heightFeet)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a valid integer for Height (feet)"))
+    })
+
+    test.each([
+        ['-1'],
+        ['12'],
+        ['-0.0000001'],
+        ['six'],
+        ['59.8'],
+    ])('Changing Height (inches) to an invalid value [%s] will not allow you to proceed to the Output page', (heightInches) => {
+        user.clear(screen.getByLabelText("Height (inches)"))
+        user.type(screen.getByLabelText("Height (inches)"), heightInches)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a non-negative value less than 12 for Height (inches)"))
+    })
+
+    test.each([
+        ['6', '6.00000001'],
+        ['6', '6.1'],
+        ['6', '11'],
+        ['6', '11.9999'],
+    ])('When Height (feet) & Height (inches) are both valid [%s\'%s\"], but Total Height is invalid, you cannot proceed to the Output page', (heightFeet, heightInches) => {
+        user.clear(screen.getByLabelText("Height (feet)"))
+        user.type(screen.getByLabelText("Height (feet)"), heightFeet)
+        user.clear(screen.getByLabelText("Height (inches)"))
+        user.type(screen.getByLabelText("Height (inches)"), heightInches)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a Height between 5'0 and 6'6"))
+    })
+
+    test.each([
+        ['150'],
+        ['152.3999'],
+        ['152'],
+        ['198.0000001'],
+        ['-155'],
+        ['One Hundered Fifty Five'],
+        ['200'],
+    ])('Changing Height (cm) to an invalid value [%s] will not allow you to proceed to the Output page', (heightCM) => {
+        user.click(screen.getByTestId("imperialRiderButton"))
+        user.clear(screen.getByLabelText("Height (cm)"))
+        user.type(screen.getByLabelText("Height (cm)"), heightCM)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a Height between 152.4cm and 198cm"))
+    })
+
+    test.each([
+        ['79.99999'],
+        ['0'],
+        ['-152'],
+        ['240.00000001'],
+        ['240.1'],
+        ['One Hundered Fifty Five'],
+    ])('Changing Weight (lb) to an invalid value [%s] will not allow you to proceed to the Output page', (weightLB) => {
+        user.clear(screen.getByLabelText("Weight (lb)"))
+        user.type(screen.getByLabelText("Weight (lb)"), weightLB)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a weight between 80 and 240 pounds"))
+    })
+
+    test.each([
+        ['35.999999'],
+        ['0'],
+        ['109.00001'],
+        ['-152'],
+        ['-89'],
+        ['sixty five'],
+    ])('Changing Weight (kg) to an invalid value [%s] will not allow you to proceed to the Output page', (weightKG) => {
+        user.click(screen.getByTestId("imperialRiderButton"))
+        user.clear(screen.getByLabelText("Weight (kg)"))
+        user.type(screen.getByLabelText("Weight (kg)"), weightKG)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a weight between 36 and 109 kilograms"))
+    })
+
+    test.each([
+        ['399.99999999'],
+        ['399'],
+        ['550.000000001'],
+        ['551'],
+        ['-475'],
+        ['five hundred'],
+    ])('Changing Reach (mm) to an invalid value [%s] will not allow you to proceed to the Output page', (reachMM) => {
+        user.clear(screen.getByLabelText("Reach (mm)"))
+        user.type(screen.getByLabelText("Reach (mm)"), reachMM)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a reach value between 400mm and 550mm"))
+    })
+
+    test.each([
+        ['15.7495'],
+        ['-16'],
+        ['seventeen'],
+        ['21.6501'],
+        ['22'],
+    ])('Changing Reach (inches) to an invalid value [%s] will not allow you to proceed to the Output page', (reachInches) => {
+        user.click(screen.getByTestId("imperialBikeButton"))
+        user.clear(screen.getByLabelText("Reach (inches)"))
+        user.type(screen.getByLabelText("Reach (inches)"), reachInches)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a reach value between 15.75 - 21.65 inches"))
+
+    })
+
+    test.each([
+        ['549'],
+        ['549.9999999'],
+        ['-565'],
+        ['580+25'],
+        ['680.001'],
+        ['700'],
+    ])('Changing Stack (mm) to an invalid value [%s] will not allow you to proceed to the Output page', (stackMM) => {
+        user.clear(screen.getByLabelText("Stack (mm)"))
+        user.type(screen.getByLabelText("Stack (mm)"), stackMM)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a stack value between 550m and 680mm"))
+    })
+
+    test.each([
+        ['21.649'],
+        ['20'],
+        ['-25'],
+        ['--25'],
+        ['26.7700001'],
+        ['twenty-five'],
+    ])('Changing Stack (inches) to an invalid value [%s] will not allow you to proceed to the Output page', (reachInches) => {
+        user.click(screen.getByTestId("imperialBikeButton"))
+        user.clear(screen.getByLabelText("Stack (inches)"))
+        user.type(screen.getByLabelText("Stack (inches)"), reachInches)
+        user.click(screen.getByRole("button", {name: "Calculate"}))
+        expect(screen.getByText("Please enter a stack value between 21.65 - 26.77 inches"))
     })
 })
