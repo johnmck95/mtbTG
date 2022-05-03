@@ -73,6 +73,8 @@ regularly deploying changes at https://mtbtg.netlify.app/.
 - Continuous Integration: test suite + ESLint(coming soon)
 - Clearly documented PRs
 
-## Software Testing (more to come soon)
-- Unit Tests
-- End-to-End Tests (coming soon)
+## Software Testing
+- Jest Test Runner
+- Unit Tests focused on speed and accessibility
+- End-to-End Tests
+- Parameterized Tests
