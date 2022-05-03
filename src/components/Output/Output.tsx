@@ -34,9 +34,10 @@ interface OutputProps{
     }
     imperialRider: boolean,
     imperialBike: boolean,
+    handleShowForm: () => void,
 }
 
-export default function Output({inputs, outputs, imperialRider, imperialBike}: OutputProps) {
+export default function Output({inputs, outputs, imperialRider, imperialBike, handleShowForm}: OutputProps) {
     const [showSidePanel, setShowSidePanel] = useState(true)
     const [metricOutput, setMetricOutput] = useState(true)
 
@@ -46,21 +47,30 @@ export default function Output({inputs, outputs, imperialRider, imperialBike}: O
                 <Stack direction={['column', 'column', 'row']} justify="center" alignItems={"center"} py={10} >
                     {showSidePanel &&
                     <VStack w={['100%', '80%', "30%"]} bg="brand.darkGrey" pr={0} borderRadius="md" alignSelf={['center', null, "flex-start",]}>
-                        <HStack position='relative' justify='center' w='100%'>
+                        <HStack display='flex' justifyContent={'space-between'} w='100%' px={'2.5'}>
                             <Icon 
                                     as={FaRegWindowClose} 
-                                    position='absolute'
-                                    left='7%'
-                                    top='70%'
-                                    transform={'translate(-50%, -50%)'}
                                     color="brand.white" 
                                     w={5} h={5} 
-                                    alignSelf={"flex-start"}
+                                    alignSelf={"flex-end"}
                                     onClick={() => setShowSidePanel(prevShowSidePanel => !prevShowSidePanel)}
                                     />
-                            <Heading fontSize="lg" pt={4}>
+                            <Heading 
+                                fontSize="lg" 
+                                pt={4} 
+                                >
                                 RIDER INFO
                             </Heading>
+                            <Button
+                               onClick={handleShowForm}
+                               size={'xs'}
+                               color={"brand.white"}
+                               bg={"brand.blue"} 
+                               _hover={{bg: "brand.blue", filter: "brightness(90%)"}}
+                               alignSelf={"flex-end"}
+                            >
+                                Edit
+                            </Button>
                         </HStack>
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                         <SimpleGrid columns={2} columnGap={2} w="75%" pb={4}>
@@ -68,13 +78,13 @@ export default function Output({inputs, outputs, imperialRider, imperialBike}: O
                                 <Text>Height</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialRider? inputs.heightFeet + '\'' + inputs.heightInches + "\"" : inputs.heightCM + 'cm'}</Text>
+                                <Text>{imperialRider? parseInt(inputs.heightFeet) + '\'' + parseFloat(inputs.heightInches).toFixed(0) + "\"" : parseFloat(inputs.heightCM).toFixed(0) + 'cm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Weight</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialRider? inputs.weightLB + 'lb' : inputs.weightKG + 'kg'}</Text>
+                                <Text>{imperialRider? parseFloat(inputs.weightLB).toFixed(0) + 'lb' : parseFloat(inputs.weightKG).toFixed(0) + 'kg'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Handling</Text>
@@ -92,13 +102,13 @@ export default function Output({inputs, outputs, imperialRider, imperialBike}: O
                                 <Text>Reach</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialBike? inputs.reachInches + '"' : inputs.reachMM + 'mm'}</Text>
+                                <Text>{imperialBike? parseFloat(inputs.reachInches).toFixed(2) + '"' : parseFloat(inputs.reachMM).toFixed(0) + 'mm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Stack</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="right">
-                                <Text>{imperialBike? inputs.stackInches + '"' : inputs.stackMM + 'mm'}</Text>
+                                <Text>{imperialBike? parseFloat(inputs.stackInches).toFixed(2) + '"' : parseFloat(inputs.stackMM).toFixed(0) + 'mm'}</Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text>Bike Type</Text>

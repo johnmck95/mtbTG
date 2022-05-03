@@ -46,8 +46,6 @@ interface FormProps{
     handleReRender: () => void;
 }
 
-let formHasErrors = true
-
 export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
     const [showErrors, setShowErrors] = useState(false)
 
@@ -68,48 +66,46 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         bikeStateConversion()
     }
 
-    // TODO: watch out for 'e' in the input - currently unhandled
     function riderStateConversion() {
-        let heightCMCalc = 0
-        let heightFootCalc = 0
-        let heightInchesCalc = 0
-        let weightKGCalc = 0
-        let weightLBCalc = 0
+        let heightCMCalc = -1;
+        let heightFootCalc = -1;
+        let heightInchesCalc = -1;
+        let weightKGCalc = -1;
+        let weightLBCalc = -1;
 
-        if (inputs.heightFeet !== "" && inputs.heightInches !== "")
-             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseInt(inputs.heightInches) * 2.54
-        if (inputs.heightCM !== ""){
-            const totalInches = parseInt(inputs.heightCM) / 2.54
-            heightFootCalc = Math.floor(totalInches / 12)
-            heightInchesCalc = (totalInches % 12)          
-        }
-        if (inputs.weightLB !== "")
-            weightKGCalc = parseInt(inputs.weightLB) / 2.205
-        if(inputs.weightKG !== "")
-            weightLBCalc = parseInt(inputs.weightKG) * 2.205
-
+        if (imperialRider && inputs.heightFeet !== "" && inputs.heightInches !== ""){
+             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseFloat(inputs.heightInches) * 2.54;
+        }if (!imperialRider && inputs.heightCM !== ""){
+            const totalInches = parseFloat(inputs.heightCM) / 2.54;
+            heightFootCalc = Math.floor(totalInches / 12);
+            heightInchesCalc = totalInches % 12;
+        }if (imperialRider && inputs.weightLB !== ""){
+            weightKGCalc = parseFloat(inputs.weightLB) * 0.45359237
+        }if (!imperialRider && inputs.weightKG !== "")
+            weightLBCalc = parseFloat(inputs.weightKG) * 2.2046226218
+        
         handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
     }
 
-    // TODO: watch out for 'e' in the input - currently unhandled
     function bikeStateConversion() {
-        let reachMMCalc = 0
-        let reachInchCalc = 0
-        let stackMMCalc = 0
-        let stackInchCalc = 0
+        let reachMMCalc = -1;
+        let reachInchCalc = -1;
+        let stackMMCalc = -1;
+        let stackInchCalc = -1;
         
-        if (inputs.reachMM !== "")
-            reachInchCalc = parseInt(inputs.reachMM)/25.4
-        if (inputs.stackMM !== "")
-            stackInchCalc = parseInt(inputs.stackMM)/25.4
-        if (inputs.reachInches !== "")
+        if (!imperialBike && inputs.reachMM !== "")
+            reachInchCalc = parseFloat(inputs.reachMM)/25.4
+        if (!imperialBike && inputs.stackMM !== "")
+            stackInchCalc = parseFloat(inputs.stackMM)/25.4
+        if (imperialBike && inputs.reachInches !== "")
             reachMMCalc = parseFloat(inputs.reachInches)*25.4
-        if(inputs.stackInches !== "")
+        if (imperialBike && inputs.stackInches !== "")
             stackMMCalc = parseFloat(inputs.stackInches)*25.4
 
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
     }
 
+    let formHasErrors = true
     function handleErrors() {
         const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
         let criteria = 0;
@@ -130,14 +126,14 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else if (imperialRider) {
             errorCodes[1].showError = true
         }
-        const totalInches = parseInt(heightFeet)*12 + parseFloat(heightInches)
+        const totalInches = parseInt(heightFeet) * 12 + parseFloat(heightInches)
         if ( imperialRider && totalInches >= 60 && totalInches <= 78){
                 criteria++
                 errorCodes[2].showError = false
         } else if (imperialRider){
             errorCodes[2].showError = true
         }
-        if (!imperialRider && (parseInt(heightCM) >= 152 && parseInt(heightCM) <= 198)){
+        if (!imperialRider && (parseFloat(heightCM) >= 152.4 && parseFloat(heightCM) <= 198)){
             criteria++
             errorCodes[3].showError = false
         } else if (!imperialRider){
@@ -149,7 +145,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else {
             errorCodes[4].showError = true
         }
-        if ( !imperialBike && ((parseInt(reachMM) >= 400 && parseInt(reachMM) <= 550))){
+        if ( !imperialBike && ((parseFloat(reachMM) >= 400 && parseFloat(reachMM) <= 550))){
             criteria++
             errorCodes[5].showError = false
         } else if (!imperialBike){
@@ -161,7 +157,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         } else if (imperialBike){
             errorCodes[6].showError = true
         }
-        if ( !imperialBike && (parseInt(stackMM) >= 550 && parseInt(stackMM) <= 680)){
+        if ( !imperialBike && (parseFloat(stackMM) >= 550 && parseFloat(stackMM) <= 680)){
                 criteria++
                 errorCodes[7].showError = false
         } else if (!imperialBike){
@@ -170,7 +166,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
         if ( imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
             criteria++
             errorCodes[8].showError = false
-        } else if ( imperialBike){
+        } else if ( imperialBike ){
             errorCodes[8].showError = true
         }
         if ( bikeType !== ""){
@@ -178,15 +174,15 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
             errorCodes[9].showError = false
         } else {
             errorCodes[9].showError = true
-        } if ( imperialRider && parseInt(weightLB) >= 80 && parseInt(weightLB) <= 240){
+        } if ( imperialRider && parseFloat(weightLB) >= 80 && parseFloat(weightLB) <= 240){
             criteria++
             errorCodes[10].showError = false
-        } else {
+        } else if (imperialRider){
             errorCodes[10].showError = true
-        } if ( !imperialRider && parseInt(weightKG) >= 36 && parseInt(weightKG) <= 109){
+        } if ( !imperialRider && parseFloat(weightKG) >= 36 && parseFloat(weightKG) <= 109){
             criteria++
             errorCodes[11].showError = false
-        } else {
+        } else if (!imperialRider){
             errorCodes[11].showError = true
         } if ( inputs.skillLevel !== "") {
             criteria++
@@ -295,6 +291,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                 onClick={toggleRiderUnit}
                                 _hover={ imperialRider? {bg: "brand.blue", filter: "brightness(90%)"}
                                                      : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                data-testid="imperialRiderButton"
                                 >
                                     Imperial
                             </Button>
@@ -311,7 +308,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                         >Height {imperialRider? "(feet)" : "(cm)"}
                                     </FormLabel>
                                     <Input 
-                                        placeholder={imperialRider? "6" : "187"}
+                                        placeholder={imperialRider? "5" : "178"}
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
                                         type="number"
@@ -338,7 +335,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                             >Height (inches)
                                         </FormLabel>
                                         <Input 
-                                            placeholder="2" 
+                                            placeholder="10" 
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             type="number"
@@ -363,7 +360,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                         >Weight {imperialRider? "(lb)" : "(kg)"}
                                     </FormLabel>
                                     <Input 
-                                        placeholder={imperialRider? "180" : "82"}
+                                        placeholder={imperialRider? "170" : "77"}
                                         maxWidth={24} 
                                         focusBorderColor='brand.blue'
                                         type="number"
@@ -428,7 +425,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                     mb="2px"
                                     >Skill Level
                                 </FormLabel>
-                                <SkillSlider handleChange={handleCustomComponent}/>
+                                <SkillSlider skillLevel={inputs.skillLevel} handleChange={handleCustomComponent}/>
                             </GridItem>
                             {skillLevelErrorAlerts}
                         </SimpleGrid>
@@ -475,6 +472,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                     onClick={toggleBikeUnit}
                                     _hover={ imperialBike? {bg: "brand.blue", filter: "brightness(90%)"}
                                                           : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                    data-testid="imperialBikeButton"
                                     >
                                         Imperial
                                 </Button>
@@ -492,7 +490,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                                 Reach {imperialBike? "(inches)" : "(mm)"}
                                         </FormLabel>
                                         <Input 
-                                            placeholder={imperialBike? "20.08" : "510"} 
+                                            placeholder={imperialBike? "18.70" : "475"} 
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             boxShadow='md'
@@ -516,7 +514,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                                 Stack {imperialBike? "(inches)" : "(mm)"}
                                         </FormLabel>
                                         <Input 
-                                            placeholder={imperialBike? "25.20" : "640"} 
+                                            placeholder={imperialBike? "24.41" : "620"} 
                                             maxWidth={24} 
                                             focusBorderColor='brand.blue'
                                             type="number"

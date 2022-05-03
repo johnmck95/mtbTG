@@ -10,11 +10,10 @@ import Algorithm from "../../algorithms/Algorithm/Algorithm"
 
 export default function Home() {
 
-    let displayedComponent = "Form"
     const [imperialRider, setImperialRider] = useState(true)
     const [imperialBike, setImperialBike] = useState(false)
     const [reRender, setReRender] = useState(0)
-    const [isFormComplete, setIsFormComplete] = useState(false)
+    const [formCompleted, setFormComplete] = useState(false)
     const [inputs, setInputs] = useState({
         heightFeet: "",
         heightInches: "",
@@ -58,11 +57,11 @@ export default function Home() {
     function handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightKGCalc, weightLBCalc}: handleRiderConversionProps) {
         setInputs(prevInputs => ({
             ...prevInputs,
-            heightCM: heightCMCalc !== 0? heightCMCalc.toFixed(0) : inputs.heightCM,
-            heightFeet: heightFootCalc !== 0? heightFootCalc.toFixed(0) : inputs.heightFeet,
-            heightInches: heightInchesCalc !== 0? heightInchesCalc.toFixed(0) : inputs.heightInches,
-            weightKG: weightKGCalc !== 0? weightKGCalc.toFixed(0) : inputs.weightKG,
-            weightLB: weightLBCalc !== 0? weightLBCalc.toFixed(0) : inputs.weightLB
+            heightCM: heightCMCalc !== -1? heightCMCalc.toFixed(4) : inputs.heightCM,
+            heightFeet: heightFootCalc !== -1? heightFootCalc.toFixed(0) : inputs.heightFeet,
+            heightInches: heightInchesCalc !== -1? heightInchesCalc.toFixed(4) : inputs.heightInches,
+            weightKG: weightKGCalc !== -1? weightKGCalc.toFixed(4) : inputs.weightKG,
+            weightLB: weightLBCalc !== -1? weightLBCalc.toFixed(4) : inputs.weightLB
         }))
     }
 
@@ -76,18 +75,13 @@ export default function Home() {
     function handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: handleBikeConversionProps){
         setInputs( prevInputs => ({
             ...prevInputs,
-            reachMM: reachMMCalc !== 0? reachMMCalc.toFixed(0) : inputs.reachMM,
-            reachInches: reachInchCalc !== 0? reachInchCalc.toFixed(2) : inputs.reachInches,
-            stackMM: stackMMCalc !== 0? stackMMCalc.toFixed(0) : inputs.stackMM,
-            stackInches: stackInchCalc !== 0? stackInchCalc.toFixed(2) : inputs.stackInches
+            reachMM: reachMMCalc !== -1? reachMMCalc.toFixed(4) : inputs.reachMM,
+            reachInches: reachInchCalc !== -1? reachInchCalc.toFixed(4) : inputs.reachInches,
+            stackMM: stackMMCalc !== -1? stackMMCalc.toFixed(4) : inputs.stackMM,
+            stackInches: stackInchCalc !== -1? stackInchCalc.toFixed(4) : inputs.stackInches
         }))
     }
 
-
-    if(isFormComplete)
-        displayedComponent = "Output"
-    else
-        displayedComponent = "Form"
     const outputs = Algorithm(inputs)
 
     return(   
@@ -98,7 +92,7 @@ export default function Home() {
             backgroundPosition="60% 50%" 
             backgroundSize="145%" 
             height="100%">
-                { displayedComponent === "Form" &&
+                { !formCompleted &&
                     <Form
                         inputs={inputs}
                         imperialRider={imperialRider}
@@ -109,19 +103,18 @@ export default function Home() {
                         handleCustomComponent={handleCustomComponent}
                         handleRiderConversion={handleRiderConversion}
                         handleBikeConversion={handleBikeConversion}
-                        handleFormCompletion = {() => setIsFormComplete( prevFormComplete => !prevFormComplete )}
+                        handleFormCompletion = {() => setFormComplete( prevFormComplete => !prevFormComplete )}
                         handleReRender = {() => setReRender( () => reRender + 1 )}
                     />
                 }
-                {displayedComponent === "Output" &&
-                <>
+                { formCompleted &&
                     <Output 
                         inputs={inputs}
                         outputs={outputs}
                         imperialRider={imperialRider}
                         imperialBike={imperialBike}
-                        />
-                </>  
+                        handleShowForm={() => setFormComplete( (prevFormComplete) => !prevFormComplete)}
+                    />
                 }
         </Box>
     )

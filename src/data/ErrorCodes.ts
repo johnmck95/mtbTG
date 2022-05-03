@@ -7,7 +7,7 @@ const errorCodes = [
     },
     {
         errorNumber: 1,
-        errorMessage: "Please enter a postive value less than 12 for Height (inches)",
+        errorMessage: "Please enter a non-negative value less than 12 for Height (inches)",
         showError: false,
     },
     {
@@ -17,7 +17,7 @@ const errorCodes = [
     },
     {
         errorNumber: 3,
-        errorMessage: "Please enter a Height between 152cm and 198cm",
+        errorMessage: "Please enter a Height between 152.4cm and 198cm",
         showError: false,
     },
     {

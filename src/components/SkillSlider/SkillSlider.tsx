@@ -2,14 +2,32 @@ import {useState} from "react"
 import {Box, Slider, SliderTrack, SliderFilledTrack, Text, SliderThumb} from "@chakra-ui/react"
 
 interface SkillSliderProps {
+    skillLevel: string,
     handleChange: (name: string, value: string) => void;
 }
-export default function SkillSlider({handleChange}: SkillSliderProps){
-        const [sliderValue, setSliderValue] = useState(0)
+export default function SkillSlider({skillLevel, handleChange}: SkillSliderProps){
+        const [sliderValue, setSliderValue] = useState(skillLevel === "" ? 0 : mapSkillLevelToValue() )
+
+        function mapSkillLevelToValue(){
+            let defaultValue = 3
+            if (skillLevel === "beginner" )
+                defaultValue = 1
+            else if (skillLevel === "novice" )
+                defaultValue = 2
+            else if (skillLevel === "intermediate" )
+                defaultValue = 3
+            else if (skillLevel === "advanced" )
+                defaultValue = 4
+            else if (skillLevel === "expert" )
+                defaultValue = 5
+            else if (skillLevel === "professional")
+                defaultValue = 6
+            return defaultValue
+        }
+        
 
         function handleSlide(newSliderValue: number){
             setSliderValue(() => newSliderValue)
-
             let value = ""
             if(newSliderValue === 1)
                 value = "beginner"
@@ -23,17 +41,17 @@ export default function SkillSlider({handleChange}: SkillSliderProps){
                 value = "expert"
             else if(newSliderValue === 6)
                 value = "professional"
-                
+
             handleChange("skillLevel", value)
         }
         return(
             <Box>
-                <Slider defaultValue={3} min={1} max={6} step={1} onChange={(val) => handleSlide(val)} data-testid="sliderValue">
+                <Slider defaultValue={mapSkillLevelToValue()} min={1} max={6} step={1} onChange={(val) => handleSlide(val)} data-testid="sliderValue">
                     <SliderTrack bg='brand.lightGrey'>
-                        <Box position='relative' right={10} />
-                        <SliderFilledTrack bg={sliderValue !== 0?'brand.blue' : 'brand.white'} />
+                        <Box position='relative' right={10}/>
+                        <SliderFilledTrack bg={sliderValue !== 0? 'brand.blue' : 'brand.white'}  data-testid="knob"/>
                     </SliderTrack>
-                    <SliderThumb boxSize={5} bg={sliderValue !== 0?'brand.blue' : 'brand.white'}/>
+                    <SliderThumb boxSize={5} bg={sliderValue !== 0? 'brand.blue' : 'brand.white'}/>
                 </Slider>
                 { sliderValue === 1 &&
                         <Text fontSize="xs"> <b>BEGINNER:</b> You're new to mountain biking, and your first priority is trying to feel
