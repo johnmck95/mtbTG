@@ -1,7 +1,7 @@
 # Project Overview
 
 This repository contains the code for my [Mountain Bike Tuning Guide](https://mtbtg.netlify.app/),
-a responsive website built with React, Typescript and ChakraUI, that
+a responsive website built with React, Typescript and ChakraUI that
 is automatically deployed via Netlify. This project is being
 actively developed, and is not a completed product at this stage.
 
@@ -37,7 +37,7 @@ Runs the app in the development mode.<br /> Open
 ### View the Latest Deployed Changes
 
 In order to share my progress before completing the Tuning Guide, I am
-regularly deploying changes at [here](https://mtbtg.netlify.app/).
+regularly deploying changes [here](https://mtbtg.netlify.app/).
 
 
 -----
