@@ -1,4 +1,4 @@
-import { Container, Heading, Input, Text, VStack, HStack, InputGroup, InputRightElement, Icon, Divider } from "@chakra-ui/react"
+import { Container, Heading, Input, Text, VStack, HStack, InputGroup, InputRightElement, Icon, Divider, Box } from "@chakra-ui/react"
 import { useState } from "react";
 import {FaSearch, FaHandsHelping, FaTools, FaBicycle, FaRegWindowClose, FaBars} from "react-icons/fa"
 
@@ -8,29 +8,25 @@ export default function Help() {
     const hipsterIpsum = "I'm baby messenger bag raw denim taxidermy copper mug 90's man braid hashtag ramps. XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland adaptogen meditation tacos. Four loko irony microdosing tilde blog enamel pin forage you probably haven't heard of them sriracha pork belly selfies organic pitchfork celiac. Selvage chambray tilde swag. Vape cray wolf keytar stumptown neutra. Everyday carry you probably haven't heard of them narwhal fixie."
     
     return(
-        <Container w='100%' maxW='64rem' my="2rem">
+        <Container w='100%' maxW='64rem' my='1rem'>
             <HStack 
-                // position='fixed'
-                // position='absolute'
-                // overflowX="hidden"
-                // overflowY='scroll'
                 // bg='red' 
-                // w='100%' 
                 h='calc(100vh - 50px)' 
                 spacing='0px'
                 align='start'
-                mx='2rem'
                 >
                 {showPanel && 
                     <VStack 
                         // bg='blue' 
+                        overflow='scroll'
+                        h='100%'
                         position='sticky'
-                        top="0px"
+                        top="2rem"
                         w='100%'
                         maxW='315px'
                         alignItems='flex-start'
                         >
-                        <HStack justifyContent={"space-between"}>
+                        <HStack justifyContent={"space-between"} position='sticky' top="0rem" overflow='clipped' bg='brand.flatBlack'>
                             <InputGroup maxW='70%'>
                                 <Input
                                     placeholder='Search'
@@ -74,11 +70,12 @@ export default function Help() {
                         <Heading as='h4' fontSize={"sm"} pl='2rem'>Stem Spacers</Heading>
                         <Heading as='h4' fontSize={"sm"} pl='2rem'>Tire Pressures</Heading>
                         <Heading as='h4' fontSize={"sm"} pl='2rem'>Tire Inserts</Heading>
-
                     </VStack>
                 }
                 {!showPanel && 
                     <Icon 
+                        position='sticky'
+                        top="2rem"
                         onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel )}
                         as={FaBars} 
                         w={5} h={5} mr='2rem'
@@ -89,6 +86,7 @@ export default function Help() {
                     alignItems={"flex-start"}
                     height='100%'
                     w='100%'
+                    overflow='scroll'
                     >
                         <Heading as='h1' fontSize={"4xl"} >Using The Tuning Guide</Heading>
                         <Divider />

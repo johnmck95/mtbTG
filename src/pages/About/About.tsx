@@ -1,11 +1,11 @@
-import {Divider, Image, Text, Stack, VStack, Heading, AspectRatio, Container, List, ListItem, ListIcon} from "@chakra-ui/react"
+import {Divider, Image, Text, Stack, VStack, Heading, AspectRatio, Container, List, ListItem, ListIcon, Box} from "@chakra-ui/react"
 import headshot from "../../images/headshot.png"
 import {MdOutlineDirectionsBike} from "react-icons/md";
 import {FaLaptopCode} from "react-icons/fa"
 
 export default function About() {
     return(
-        <>
+        <Box h='calc(100vh - 50px)' overflow='scroll'>
             <Container maxW="50rem" bg="brand.flatBlack">
                 <Stack direction={['column', 'row']} spacing="2rem" alignItems="flex-start" my="3rem">
                     <Image src={headshot} w={["20rem", "14rem"]} maxW={["80%","50%"]} borderRadius="6px" m="10px" alignSelf="center"/>
@@ -47,6 +47,6 @@ export default function About() {
                         />
                     </AspectRatio>
             </Container>
-        </>
+        </Box>
     )
 }
