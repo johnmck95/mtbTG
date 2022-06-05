@@ -37,6 +37,7 @@ export default function Help() {
                         position='sticky'
                         top="2rem"
                         w='100%'
+                        // w={width < 600? '100vw' : '50%'}  // TODO: Make the side panel take up the entire screen when expanded on screen 600px or less
                         css={{
                              // Chrome, Safari, Opera
                             '&::-webkit-scrollbar': {
@@ -46,10 +47,7 @@ export default function Help() {
                             'overflowStyle': 'none', // 
                             'scrollbarWidth': 'none',
                         }}
-                        // FIX ME: width is only updated after render, need to be making an state variable check/update here
-                        maxW={width >= 600 ? '315px' : '90vw'}
-                        // FIX ME
-
+                        maxW={width > 600 ? '290px' : '320px'}
                         alignItems='flex-start'
                         >
                         <HStack justifyContent={"space-between"} position='sticky' top="0rem" overflow='clipped' bg='brand.flatBlack'>
@@ -108,7 +106,7 @@ export default function Help() {
                     />
                 }
                 <VStack 
-                    //  bg='green'
+                    // bg='green'
                     alignItems={"flex-start"}
                     height='100%'
                     w='100%'
