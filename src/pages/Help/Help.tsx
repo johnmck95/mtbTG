@@ -11,12 +11,15 @@ export default function Help() {
         useEffect(() => {
           const handleWindowResize = () => setWidth(window.innerWidth);
           window.addEventListener("resize", handleWindowResize);
+          if(width < 600)
+            setShowPanel(() => false)
+          else
+            setShowPanel(() => true)
           return () => window.removeEventListener("resize", handleWindowResize);
-        }, []);
+        }, [width]);
         return { width };
     }
     const { width } = useViewport()
-
 
     return(
         <Container w='100%' maxW='64rem' my='1rem'>
@@ -40,8 +43,8 @@ export default function Help() {
                                 display: 'none',
                             },
                             // IE, Edge, Firefox
-                            '-ms-overflow-style': 'none', // 
-                            'scrollbar-width': 'none',
+                            'overflowStyle': 'none', // 
+                            'scrollbarWidth': 'none',
                         }}
                         // FIX ME: width is only updated after render, need to be making an state variable check/update here
                         maxW={width >= 600 ? '315px' : '90vw'}
@@ -116,8 +119,8 @@ export default function Help() {
                            display: 'none',
                        },
                        // IE, Edge, Firefox
-                       '-ms-overflow-style': 'none', // 
-                       'scrollbar-width': 'none',
+                       'overfloStyle': 'none', // 
+                       'scrollbarWidth': 'none',
                    }}
                     >
                         <Heading as='h1' fontSize={"4xl"} >Using The Tuning Guide</Heading>
