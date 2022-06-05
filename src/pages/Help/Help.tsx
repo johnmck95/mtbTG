@@ -34,7 +34,15 @@ export default function Help() {
                         position='sticky'
                         top="2rem"
                         w='100%'
-
+                        css={{
+                             // Chrome, Safari, Opera
+                            '&::-webkit-scrollbar': {
+                                display: 'none',
+                            },
+                            // IE, Edge, Firefox
+                            '-ms-overflow-style': 'none', // 
+                            'scrollbar-width': 'none',
+                        }}
                         // FIX ME: width is only updated after render, need to be making an state variable check/update here
                         maxW={width >= 600 ? '315px' : '90vw'}
                         // FIX ME
@@ -102,6 +110,15 @@ export default function Help() {
                     height='100%'
                     w='100%'
                     overflow='scroll'
+                    css={{
+                        // Chrome, Safari, Opera
+                       '&::-webkit-scrollbar': {
+                           display: 'none',
+                       },
+                       // IE, Edge, Firefox
+                       '-ms-overflow-style': 'none', // 
+                       'scrollbar-width': 'none',
+                   }}
                     >
                         <Heading as='h1' fontSize={"4xl"} >Using The Tuning Guide</Heading>
                         <Divider />
