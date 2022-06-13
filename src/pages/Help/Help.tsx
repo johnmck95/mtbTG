@@ -6,8 +6,7 @@ import {FaSearch, FaHandsHelping, FaTools, FaBicycle, FaRegWindowClose, FaBars} 
  * BUGS:
  * 
  * 1. When the screen is narrow, clicking a link on the panel doesn't scroll the main page to the cporrect location
- * 
- * 2. Clicking on nay of the bottom 3 items in the panel shifts the whole page up anf cuts off part of the Search box (hidden under the header)
+ *    - Somf of the links (like the bottom 3, and the top in the panel) seems to work. Needs to be investigated.
  * 
  */
 
@@ -32,10 +31,11 @@ export default function Help() {
     const { width } = useViewport()
 
     return(
-        <Container w='100%' maxW='64rem' my='1rem'>
+        <Container w='100%' maxW='64rem'>
             <HStack 
                 // bg='red' 
                 h='calc(100vh - 50px)' 
+                py='1rem'
                 spacing='0px'
                 align='start'
                 >
