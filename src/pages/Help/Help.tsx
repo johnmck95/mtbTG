@@ -1,6 +1,16 @@
-import { Container, Heading, Input, Text, VStack, HStack, InputGroup, InputRightElement, Icon, Divider } from "@chakra-ui/react"
+import { Container, Heading, Input, Text, VStack, HStack, InputGroup, InputRightElement, Icon, Divider, Link } from "@chakra-ui/react"
 import { useState, useEffect } from "react";
 import {FaSearch, FaHandsHelping, FaTools, FaBicycle, FaRegWindowClose, FaBars} from "react-icons/fa"
+
+/**
+ * BUGS:
+ * 
+ * 1. When the screen is narrow, clicking a link on the panel doesn't scroll the main page to the cporrect location
+ * 
+ * 2. Clicking on nay of the bottom 3 items in the panel shifts the whole page up anf cuts off part of the Search box (hidden under the header)
+ * 
+ */
+
 
 export default function Help() {
     const [showPanel, setShowPanel] = useState(true);
@@ -37,7 +47,7 @@ export default function Help() {
                         position='sticky'
                         w={width < 768 ? '100vw' : '50%'}
                         h='100%'
-                        top="2rem"
+                        // top="2rem"
                         mr="1rem"
                         css={{
                             '&::-webkit-scrollbar': {
@@ -65,60 +75,60 @@ export default function Help() {
                             />
                         </HStack>
 
-                        <a href="#usingTheTuningGuide">
+                        <Link href="#usingTheTuningGuide">
                             <Heading as='h3' fontSize={"md"}>
                                 <Icon as={FaHandsHelping} w={4} h={4} mr="0.75rem"/>
                                 Using The Tuning Guide
                             </Heading>
-                        </a>
-                        <a href='#understandingInputs'>
+                        </Link>
+                        <Link href='#understandingInputs'>
                             <Heading as='h3' fontSize={"md"}>
                                 <Icon as={FaTools} w={4} h={4} mr="0.75rem"/>
                                 Understanding Inputs
                             </Heading>
-                        </a>
-                        <a href="#riderSize">
+                        </Link>
+                        <Link href="#riderSize">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Rider Size</Heading>
-                        </a>
-                        <a href="#handling">
+                        </Link>
+                        <Link href="#handling">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Handling</Heading>
-                        </a>
-                        <a href="#skillLevel">
+                        </Link>
+                        <Link href="#skillLevel">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Skill Level</Heading>
-                        </a>
-                        <a href="#reach">
+                        </Link>
+                        <Link href="#reach">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Reach</Heading>
-                        </a>
-                        <a href="#stack">
+                        </Link>
+                        <Link href="#stack">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Stack</Heading>
-                        </a>
-                        <a href="#bikeType">
+                        </Link>
+                        <Link href="#bikeType">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Bike Type</Heading>
-                        </a>
-                        <a href="#yourSettings">
+                        </Link>
+                        <Link href="#yourSettings">
                             <Heading as='h3' fontSize={"md"}>
                                 <Icon as={FaBicycle} w={4} h={4} mr="0.75rem"/>
                                 Your Setting
                             </Heading>
-                        </a>
-                        <a href="#handlebarWidth">
+                        </Link>
+                        <Link href="#handlebarWidth">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Handlebar Width</Heading>
-                        </a>
-                        <a href="#handlebarRise">
+                        </Link>
+                        <Link href="#handlebarRise">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Handlebar Rise</Heading>
-                        </a>
-                        <a href="#stemLength">
+                        </Link>
+                        <Link href="#stemLength">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Stem Length</Heading>
-                        </a>
-                        <a href="#stemSpacers">
+                        </Link>
+                        <Link href="#stemSpacers">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Stem Spacers</Heading>
-                        </a>
-                        <a href="#tirePressures">
+                        </Link>
+                        <Link href="#tirePressures">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Tire Pressures</Heading>
-                        </a>
-                        <a href="#tireInserts">
+                        </Link>
+                        <Link href="#tireInserts">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Tire Inserts</Heading>
-                        </a>
+                        </Link>
                     </VStack>
                 }
                 {!showPanel && 
@@ -144,66 +154,37 @@ export default function Help() {
                        'scrollbarWidth': 'none',
                    }}
                     >
-                        <a id="usingTheTuningGuide">
-                            <Heading as='h1' fontSize={"4xl"} >Using The Tuning Guide</Heading>
-                        </a>
+                        <Heading as='h1' fontSize={"4xl"} id="usingTheTuningGuide">Using The Tuning Guide</Heading>
                         <Divider />
                         <Text>{hipsterIpsum}</Text>
-                        <a id="understandingInputs">
-                            <Heading as='h1' fontSize={"4xl"} >Understanding Inputs</Heading>
-                        </a>
+                        <Heading as='h1' fontSize={"4xl"} id="understandingInputs">Understanding Inputs</Heading>
                         <Divider />
-                        <a id="riderSize">
-                            <Heading as='h2' fontSize={"2xl"} >Rider Size</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="riderSize">Rider Size</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="handling">
-                            <Heading as='h2' fontSize={"2xl"} >Handling</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="handling">Handling</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="skillLevel">
-                            <Heading as='h2' fontSize={"2xl"} >Skill Level</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="skillLevel">Skill Level</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="reach">
-                            <Heading as='h2' fontSize={"2xl"} >Reach</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="reach">Reach</Heading>
+
                         <Text>{hipsterIpsum}</Text>
-                        <a id="stack">
-                            <Heading as='h2' fontSize={"2xl"} >Stack</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="stack">Stack</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="bikeType">
-                            <Heading as='h2' fontSize={"2xl"} >Bike Type</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="bikeType">Bike Type</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="yourSettings">
-                            <Heading as='h1' fontSize={"4xl"} >Your Settings</Heading>
-                        </a>
+                        <Heading as='h1' fontSize={"4xl"} id="yourSettings">Your Settings</Heading>
                         <Divider />
-                        <a id="handlebarWidth">
-                            <Heading as='h2' fontSize={"2xl"} >HandleBar Width</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="handlebarWidth">HandleBar Width</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="handlebarRise">
-                            <Heading as='h2' fontSize={"2xl"} >Handlebar Rise</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="handlebarRise">Handlebar Rise</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="stemLength">
-                            <Heading as='h2' fontSize={"2xl"} >Stem Length</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="stemLength">Stem Length</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="stemSpacers">
-                            <Heading as='h2' fontSize={"2xl"} >Stem Spacers</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="stemSpacers">Stem Spacers</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="tirePressures">
-                            <Heading as='h2' fontSize={"2xl"} >Tire Pressures</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="tirePressures">Tire Pressures</Heading>
                         <Text>{hipsterIpsum}</Text>
-                        <a id="tireInserts">
-                            <Heading as='h2' fontSize={"2xl"} >Tire Inserts</Heading>
-                        </a>
+                        <Heading as='h2' fontSize={"2xl"} id="tireInserts">Tire Inserts</Heading>
                         <Text>{hipsterIpsum}</Text>
                 </VStack>
             </HStack>
