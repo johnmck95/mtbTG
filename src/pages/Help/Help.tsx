@@ -11,7 +11,7 @@ export default function Help() {
         useEffect(() => {
           const handleWindowResize = () => setWidth(window.innerWidth);
           window.addEventListener("resize", handleWindowResize);
-          if(width < 600)
+          if(width < 768)
             setShowPanel(() => false)
           else
             setShowPanel(() => true)
@@ -31,24 +31,21 @@ export default function Help() {
                 >
                 {showPanel && 
                     <VStack 
-                        // bg='blue' 
+                        // bg='blue'
+                        alignItems='flex-start'
                         overflow='scroll'
-                        h='100%'
                         position='sticky'
+                        w={width < 768 ? '100vw' : '50%'}
+                        h='100%'
                         top="2rem"
-                        w='100%'
-                        // w={width < 600? '100vw' : '50%'}  // TODO: Make the side panel take up the entire screen when expanded on screen 600px or less
+                        mr="1rem"
                         css={{
-                             // Chrome, Safari, Opera
                             '&::-webkit-scrollbar': {
                                 display: 'none',
                             },
-                            // IE, Edge, Firefox
-                            'overflowStyle': 'none', // 
+                            'overflowStyle': 'none',
                             'scrollbarWidth': 'none',
                         }}
-                        maxW={width > 600 ? '290px' : '320px'}
-                        alignItems='flex-start'
                         >
                         <HStack justifyContent={"space-between"} position='sticky' top="0rem" overflow='clipped' bg='brand.flatBlack'>
                             <InputGroup maxW='70%'>
@@ -58,13 +55,13 @@ export default function Help() {
                                     borderColor='brand.white'
                                 />
                                 <InputRightElement>
-                                    <Icon as={FaSearch}  w={5} h={5} />
+                                    <Icon as={FaSearch} w={5} h={5}/>
                                 </InputRightElement>
                             </InputGroup>
                             <Icon 
                                 onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel )}
                                 as={FaRegWindowClose} 
-                                w={5} h={5} 
+                                w={5} h={5}
                             />
                         </HStack>
 
@@ -108,16 +105,14 @@ export default function Help() {
                 <VStack 
                     // bg='green'
                     alignItems={"flex-start"}
-                    height='100%'
-                    w='100%'
                     overflow='scroll'
+                    w={width < 768 ? (showPanel? '0vw' : '100vw') : '100%'}
+                    h='100%'
                     css={{
-                        // Chrome, Safari, Opera
                        '&::-webkit-scrollbar': {
                            display: 'none',
                        },
-                       // IE, Edge, Firefox
-                       'overfloStyle': 'none', // 
+                       'overfloStyle': 'none',
                        'scrollbarWidth': 'none',
                    }}
                     >
