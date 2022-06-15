@@ -2,16 +2,8 @@ import { Container, Heading, Input, Text, VStack, HStack, InputGroup, InputRight
 import { useState, useEffect } from "react";
 import {FaSearch, FaHandsHelping, FaTools, FaBicycle, FaRegWindowClose, FaBars} from "react-icons/fa"
 
-/**
- * BUGS:
- * 
- * 1. When the screen is narrow, clicking a link on the panel doesn't scroll the main page to the cporrect location
- *    - Somf of the links (like the bottom 3, and the top in the panel) seems to work. Needs to be investigated.
- * 
- */
-
-
 export default function Help() {
+    const smallScreen = 768;
     const [showPanel, setShowPanel] = useState(true);
     const hipsterIpsum = "I'm baby messenger bag raw denim taxidermy copper mug 90's man braid hashtag ramps. XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland adaptogen meditation tacos. Four loko irony microdosing tilde blog enamel pin forage you probably haven't heard of them sriracha pork belly selfies organic pitchfork celiac. Selvage chambray tilde swag. Vape cray wolf keytar stumptown neutra. Everyday carry you probably haven't heard of them narwhal fixie."
     
@@ -20,7 +12,7 @@ export default function Help() {
         useEffect(() => {
           const handleWindowResize = () => setWidth(window.innerWidth);
           window.addEventListener("resize", handleWindowResize);
-          if(width < 768)
+          if(width < smallScreen)
             setShowPanel(() => false)
           else
             setShowPanel(() => true)
@@ -30,6 +22,10 @@ export default function Help() {
     }
     const { width } = useViewport()
 
+    function closePanelForSmallScreen(){
+        if ( width < smallScreen)
+            setShowPanel(prevShowPanel => !prevShowPanel)
+    }
     return(
         <Container w='100%' maxW='64rem'>
             <HStack 
@@ -45,9 +41,8 @@ export default function Help() {
                         alignItems='flex-start'
                         overflow='scroll'
                         position='sticky'
-                        w={width < 768 ? '100vw' : '50%'}
+                        w={width < smallScreen ? '100vw' : '50%'}
                         h='100%'
-                        // top="2rem"
                         mr="1rem"
                         css={{
                             '&::-webkit-scrollbar': {
@@ -75,58 +70,58 @@ export default function Help() {
                             />
                         </HStack>
 
-                        <Link href="#usingTheTuningGuide">
+                        <Link onClick={closePanelForSmallScreen} href="#usingTheTuningGuide">
                             <Heading as='h3' fontSize={"md"}>
                                 <Icon as={FaHandsHelping} w={4} h={4} mr="0.75rem"/>
                                 Using The Tuning Guide
                             </Heading>
                         </Link>
-                        <Link href='#understandingInputs'>
+                        <Link onClick={closePanelForSmallScreen} href='#understandingInputs'>
                             <Heading as='h3' fontSize={"md"}>
                                 <Icon as={FaTools} w={4} h={4} mr="0.75rem"/>
                                 Understanding Inputs
                             </Heading>
                         </Link>
-                        <Link href="#riderSize">
+                        <Link onClick={closePanelForSmallScreen} href="#riderSize">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Rider Size</Heading>
                         </Link>
-                        <Link href="#handling">
+                        <Link onClick={closePanelForSmallScreen} href="#handling">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Handling</Heading>
                         </Link>
-                        <Link href="#skillLevel">
+                        <Link onClick={closePanelForSmallScreen} href="#skillLevel">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Skill Level</Heading>
                         </Link>
-                        <Link href="#reach">
+                        <Link onClick={closePanelForSmallScreen} href="#reach">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Reach</Heading>
                         </Link>
-                        <Link href="#stack">
+                        <Link onClick={closePanelForSmallScreen} href="#stack">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Stack</Heading>
                         </Link>
-                        <Link href="#bikeType">
+                        <Link onClick={closePanelForSmallScreen} href="#bikeType">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Bike Type</Heading>
                         </Link>
-                        <Link href="#yourSettings">
+                        <Link onClick={closePanelForSmallScreen} href="#yourSettings">
                             <Heading as='h3' fontSize={"md"}>
                                 <Icon as={FaBicycle} w={4} h={4} mr="0.75rem"/>
                                 Your Setting
                             </Heading>
                         </Link>
-                        <Link href="#handlebarWidth">
+                        <Link onClick={closePanelForSmallScreen} href="#handlebarWidth">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Handlebar Width</Heading>
                         </Link>
-                        <Link href="#handlebarRise">
+                        <Link onClick={closePanelForSmallScreen} href="#handlebarRise">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Handlebar Rise</Heading>
                         </Link>
-                        <Link href="#stemLength">
+                        <Link onClick={closePanelForSmallScreen} href="#stemLength">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Stem Length</Heading>
                         </Link>
-                        <Link href="#stemSpacers">
+                        <Link onClick={closePanelForSmallScreen} href="#stemSpacers">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Stem Spacers</Heading>
                         </Link>
-                        <Link href="#tirePressures">
+                        <Link onClick={closePanelForSmallScreen} href="#tirePressures">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Tire Pressures</Heading>
                         </Link>
-                        <Link href="#tireInserts">
+                        <Link onClick={closePanelForSmallScreen} href="#tireInserts">
                             <Heading as='h4' fontSize={"sm"} pl='2rem'>Tire Inserts</Heading>
                         </Link>
                     </VStack>
@@ -144,7 +139,7 @@ export default function Help() {
                     // bg='green'
                     alignItems={"flex-start"}
                     overflow='scroll'
-                    w={width < 768 ? (showPanel? '0vw' : '100vw') : '100%'}
+                    w={width < smallScreen ? (showPanel? '0vw' : '100vw') : '100%'}
                     h='100%'
                     css={{
                        '&::-webkit-scrollbar': {
