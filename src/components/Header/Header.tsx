@@ -21,8 +21,8 @@ export default function Header() {
     const breakpoint = 520;
 
     return(
-        <Box as="header" w="100%"  position="fixed" top="0" bg="brand.black" color="brand.white" zIndex="200">
-            <Container bg="black" maxW="50rem" p="0px">
+        <Box as="header" w="100%"  position="fixed" top="0" bg="brand.headerGradient" color="brand.white" zIndex="200">
+            <Container maxW="50rem" p="0px">
                 <Flex justify="space-between" alignItems="center" px="8px" h='50px'>
                     <Link href="/">
                         <Image src={MtbTG} h={["30px", "40px"]} />

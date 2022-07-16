@@ -5,8 +5,12 @@ import {FaSearch, FaHandsHelping, FaTools, FaBicycle, FaRegWindowClose, FaBars} 
 export default function Help() {
     const smallScreen = 768;
     const [showPanel, setShowPanel] = useState(true);
-    const hipsterIpsum = "I'm baby messenger bag raw denim taxidermy copper mug 90's man braid hashtag ramps. XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland adaptogen meditation tacos. Four loko irony microdosing tilde blog enamel pin forage you probably haven't heard of them sriracha pork belly selfies organic pitchfork celiac. Selvage chambray tilde swag. Vape cray wolf keytar stumptown neutra. Everyday carry you probably haven't heard of them narwhal fixie."
-    
+    const hipsterIpsum = `I'm baby messenger bag raw denim taxidermy copper mug 90's man braid hashtag ramps. 
+        XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland adaptogen meditation tacos. 
+        Four loko irony microdosing tilde blog enamel pin forage you probably haven't heard of them sriracha 
+        pork belly selfies organic pitchfork celiac. Selvage chambray tilde swag. Vape cray wolf keytar stumptown 
+        neutra. Everyday carry you probably haven't heard of them narwhal fixie.`
+
     const useViewport = () => {
         const [width, setWidth] = useState(window.innerWidth);
         useEffect(() => {
@@ -26,18 +30,17 @@ export default function Help() {
         if ( width < smallScreen)
             setShowPanel(prevShowPanel => !prevShowPanel)
     }
+
     return(
         <Container w='100%' maxW='64rem'>
-            <HStack 
-                // bg='red' 
+            <HStack  
                 h='calc(100vh - 50px)' 
                 py='1rem'
                 spacing='0px'
                 align='start'
                 >
                 {showPanel && 
-                    <VStack 
-                        // bg='blue'
+                    <VStack
                         alignItems='flex-start'
                         overflow='scroll'
                         position='sticky'
@@ -136,7 +139,6 @@ export default function Help() {
                     />
                 }
                 <VStack 
-                    // bg='green'
                     alignItems={"flex-start"}
                     overflow='scroll'
                     w={width < smallScreen ? (showPanel? '0vw' : '100vw') : '100%'}

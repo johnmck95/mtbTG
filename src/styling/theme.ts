@@ -9,7 +9,9 @@ export const theme = extendTheme({
             white: "#FFFDFA",
             black: "black",
             lightBlack: "#222222",
-            flatBlack: "#262626",
+            // flatBlack: "#262626", // Original choice
+            flatBlack: "rgba(0, 0, 0, 0.80)", // Testing this colour
+            headerGradient: "linear-gradient(to top, #222222, black 15%)",
             error: "#d5798a",
             placeholder: '#7E7E7E'
         }
