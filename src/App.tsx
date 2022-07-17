@@ -16,7 +16,7 @@ export const App = () => (
       as="main" 
       w="100%" 
       mt="50px" 
-      backgroundColor="brand.flatBlack" 
+      bg="brand.flatBlack" 
       color="brand.white"
       height="calc(100vh - 50px)"
       overflow="hidden"
