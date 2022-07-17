@@ -12,11 +12,11 @@ import {theme} from "./styling/theme"
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Header />
-    <Box 
+    <Box
       as="main" 
       w="100%" 
       mt="50px" 
-      bg="brand.flatBlack" 
+      backgroundColor="brand.flatBlack" 
       color="brand.white"
       height="calc(100vh - 50px)"
       overflow="hidden"
