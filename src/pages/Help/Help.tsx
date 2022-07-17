@@ -1,15 +1,33 @@
-import { Container, Heading, Input, Text, VStack, HStack, InputGroup, InputRightElement, Icon, Divider, Link } from "@chakra-ui/react"
+import { 
+    Container, 
+    Heading, 
+    Input, 
+    Text, 
+    VStack, 
+    HStack, 
+    InputGroup, 
+    InputRightElement, 
+    Icon, 
+    Divider, 
+    Link } 
+    from "@chakra-ui/react"
 import { useState, useEffect } from "react";
-import {FaSearch, FaHandsHelping, FaTools, FaBicycle, FaRegWindowClose, FaBars} from "react-icons/fa"
+import {FaSearch, 
+    FaHandsHelping, 
+    FaTools, 
+    FaBicycle, 
+    FaRegWindowClose, 
+    FaBars} from "react-icons/fa"
 
 export default function Help() {
     const smallScreen = 768;
     const [showPanel, setShowPanel] = useState(true);
-    const hipsterIpsum = `I'm baby messenger bag raw denim taxidermy copper mug 90's man braid hashtag ramps. 
-        XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland adaptogen meditation tacos. 
-        Four loko irony microdosing tilde blog enamel pin forage you probably haven't heard of them sriracha 
-        pork belly selfies organic pitchfork celiac. Selvage chambray tilde swag. Vape cray wolf keytar stumptown 
-        neutra. Everyday carry you probably haven't heard of them narwhal fixie.`
+    const hipsterIpsum = `I'm baby messenger bag raw denim taxidermy copper mug 90's man braid 
+        hashtag ramps. XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland 
+        adaptogen meditation tacos. Four loko irony microdosing tilde blog enamel pin forage you 
+        probably haven't heard of them sriracha pork belly selfies organic pitchfork celiac. 
+        Selvage chambray tilde swag. Vape cray wolf keytar stumptown neutra. Everyday carry you 
+        probably haven't heard of them narwhal fixie.`
 
     const useViewport = () => {
         const [width, setWidth] = useState(window.innerWidth);
