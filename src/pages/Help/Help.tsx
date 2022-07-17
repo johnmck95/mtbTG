@@ -33,8 +33,8 @@ export default function Help() {
 
     return(
         <Container w='100%' maxW='64rem'>
-            <HStack  
-                h='calc(100vh - 50px)' 
+            <HStack 
+                h='calc(100vh - 50px)'
                 py='1rem'
                 spacing='0px'
                 align='start'
@@ -55,12 +55,22 @@ export default function Help() {
                             'scrollbarWidth': 'none',
                         }}
                         >
-                        <HStack justifyContent={"space-between"} position='sticky' top="0rem" overflow='clipped' bg='brand.flatBlack'>
+                        <HStack 
+                            justifyContent={"space-between"} 
+                            position='sticky' 
+                            top="0rem" 
+                            overflow='clipped' 
+                            bg='brand.flatBlack' 
+                            opacity={1}
+                            w='100%'
+                            >
                             <InputGroup maxW='70%'>
                                 <Input
                                     placeholder='Search'
                                     _placeholder={{ opacity: 1, color: 'brand.white' }}
                                     borderColor='brand.white'
+                                    bg='brand.flatBlack'
+                                    mb='0.5rem'
                                 />
                                 <InputRightElement>
                                     <Icon as={FaSearch} w={5} h={5}/>

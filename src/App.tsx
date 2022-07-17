@@ -19,7 +19,7 @@ export const App = () => (
       bg="brand.flatBlack" 
       color="brand.white"
       height="calc(100vh - 50px)"
-      overflow='hidden'
+      overflow="hidden"
       >
       <Router>
           <Routes>
