@@ -24,7 +24,7 @@ export default function LearnMoreModal({id}: LeanMoreModalProps) {
                 > learn more 
             </Button>
         
-            <Modal isOpen={isOpen} onClose={onClose} isCentered>
+            <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="outside">
                 <ModalOverlay />
                 <ModalContent bg='brand.darkGrey'>
                     <ModalHeader textDecoration="underline" color="brand.white">{data.title}</ModalHeader>
