@@ -12,7 +12,7 @@ import {theme} from "./styling/theme"
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Header />
-    <Box 
+    <Box
       as="main" 
       w="100%" 
       mt="50px" 
