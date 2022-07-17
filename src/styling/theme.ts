@@ -9,8 +9,7 @@ export const theme = extendTheme({
             white: "#FFFDFA",
             black: "black",
             lightBlack: "#222222",
-            // flatBlack: "#262626", // Original choice
-            flatBlack: "#000000cc", // Testing this colour
+            flatBlack: "#262626", // Original choice
             headerGradient: "linear-gradient(to top, #222222, black 15%)",
             error: "#d5798a",
             placeholder: '#7E7E7E'
