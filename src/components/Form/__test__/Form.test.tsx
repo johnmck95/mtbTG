@@ -427,13 +427,143 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
     })
 })
 
+describe("Error Handling ", () => {
+    xdescribe("For Height (feet): ", () => {
+        xit("Displays error[0] when value is not an integer (#.#)")
+        xit("Does not display error[0] when value is an integer followed by a decimal (#.)")
+        xit("Displays error[0] when value is negative")
+        xit("Displays error[0] when value includes the letter 'e'")
+        xit("Displays error[0] when value includes the symbol '-'")
+        xit("Displays error[0] when value includes the symbol '+'")
+        xit("Does not display error[0] when value is 0")
+        xit("Does not display error[0] when value is less than 5")
+        xit("Does not display error[0] when value is greater than 6")
+    })
+    xdescribe("For Height (inches): ", () => {
+        xit("Does not display error[1] when value is 0")
+        xit("Does not display error[1] when decimals are provided (#.#)")
+        xit("Displays error[1] when value is 12")
+        xit("Displays error[1] when value is larger than 12")
+        xit("Displays error[1] when value is negative")
+        xit("Displays error[1] when value includes the letter 'e'")
+        xit("Displays error[1] when value includes the symbol '-'")
+        xit("Displays error[1] when value includes the symbol '+'")
+    })
+    xdescribe("For Imperial Height: ", () => {
+        xit("Displays error[2] for 4'11.999999")
+        xit("Displays error[2] for 6'6.0000001")
+        xit("Does not display error[2] for 5'0")
+        xit("Does not display error[2] for 5'11.9999")
+        xit("Does not display error[2] for 6'6")
+    })
+    xdescribe("For Metric Height: ", () => {
+        xit("Displays error[3] when value is negative")
+        xit("Displays error[3] when value is 0")
+        xit("Displays error[3] when value is 152.3999999")
+        xit("Displays error[3] when value is 198.0000001")
+        xit("Displays error[3] when value includes the letter 'e'")
+        xit("Displays error[3] when value includes the symbol '-'")
+        xit("Displays error[3] when value includes the symbol '+'")
+        xit("Does not display error[3] when value is valid (parameterized)")
+    })
+    xdescribe("For Imperial Weight: ", () => {
+        xit("Displays error[10] when value is 79.999999")
+        xit("Displays error[10] when value is 240.00001")
+        xit("Displays error[10] when value is 0")
+        xit("Displays error[10] when value includes the letter 'e'")
+        xit("Displays error[10] when value includes the symbol '-'")
+        xit("Displays error[10] when value includes the symbol '+'")
+        xit("Does not display error[10] for valid weights (parameterized)")
+    })
+    xdescribe("For Metric Weight: ", () => {
+        xit("Does not display error[11] for valid weights (parameterized)")
+        xit("Displays error[11] when value is 35.99999")
+        xit("Displays error[11] when value is 109.0000001")
+        xit("Displays error[11] when value is 0")
+        xit("Displays error[11] when value includes the letter 'e'")
+        xit("Displays error[11] when value includes the symbol '-'")
+        xit("Displays error[11] when value includes the symbol '+'")
+    })
+    xdescribe("For Handling Preference: ", () => {
+        xit("Displays error[4] when no handling preference is selected")
+        xit("Does not display error[4] when each value is selected (parameterized)")
+    })
+    xdescribe("For Skill Level: ", () => {
+        xit("Displays error[12] when no skill level is selected")
+        xit("Does not display error[12] when each skill level is selected (parameterized)")
+    })
+    
+    xdescribe("For Metric Reach Value: ", () => {
+        xit("Does not display error[5] for valid reache values (parameterized)")
+        xit("Displays error[5] when value is 399.99999")
+        xit("Displays error[5] when value is 550.0000001")
+        xit("Displays error[5] when value is 0")
+        xit("Displays error[5] when value includes the letter 'e'")
+        xit("Displays error[5] when value includes the symbol '-'")
+        xit("Displays error[5] when value includes the symbol '+'")
+    })
+    xdescribe("For Imperial Reach Value: ", () => {
+        xit("Does not display error[6] for valid reache values (parameterized)")
+        xit("Displays error[6] when value is 15.7499999")
+        xit("Displays error[6] when value is 21.6500001")
+        xit("Displays error[6] when value is 0")
+        xit("Displays error[6] when value includes the letter 'e'")
+        xit("Displays error[6] when value includes the symbol '-'")
+        xit("Displays error[6] when value includes the symbol '+'")
+    })
+    xdescribe("For Metric Stack Value: ", () => {
+        xit("Does not display error[7] for valid stack values (parameterized)")
+        xit("Displays error[7] when value is 549.9999")
+        xit("Displays error[7] when value is 680.0000001")
+        xit("Displays error[7] when value is 0")
+        xit("Displays error[7] when value includes the letter 'e'")
+        xit("Displays error[7] when value includes the symbol '-'")
+        xit("Displays error[7] when value includes the symbol '+'")
+    })
+    xdescribe("For Imperial Stack Value: ", () => {
+        xit("Does not display error[8] for valid stack values (parameterized)")
+        xit("Displays error[8] when value is 21.6499999")
+        xit("Displays error[8] when value is 26.7700001")
+        xit("Displays error[8] when value is 0")
+        xit("Displays error[8] when value includes the letter 'e'")
+        xit("Displays error[8] when value includes the symbol '-'")
+        xit("Displays error[8] when value includes the symbol '+'")
+    })
+    xdescribe("For Bike Type: ", () => {
+        xit("Displays error[9] when no bike type is selected")
+        xit("Does not display error[9] when each bike types are selected (parameterized)")
+    })
+
+
+    xdescribe("Submitting an empty form as a Metric Rider ", () => {
+        xit("Does not show any imperial rider errors")
+        xit("Shows all metric rider errors")
+        xit("Then toggling to imperial rider converts all metric rider errors to imperial rider errors")
+    })
+    xdescribe("Submitting an empty form as an Imperial Rider: ", () => {
+        xit("Does not show any metric rider errors")
+        xit("Shows all imperial rider errors")
+        xit("Then toggling to metric rider converts all imperial rider errors to metric rider errors")
+
+    })
+    xdescribe("Submitting an empty form as a Metric Bike: ", () => {
+        xit("Does not show any imperial bike errors")
+        xit("Shows all metric bike errors")
+        xit("Then toggling to imperial bike converts all metric bike errors to imperial bike errors")
+    })
+    xdescribe("Submitting an empty form as an Imperial Bike: ", () => {
+        xit("Does not show any metric bike errors")
+        xit("Shows all imperial bike errors")
+        xit("Then toggling to metric bike converts all imperial bike errors to metric bike errors")
+
+    })
+})
+
 /*         FUTURE TESTS 
 
  1. Ensure the Form & Output display the same ImperialRider and imperialBike units
  2. When a conversion has a slight rounding error a value may be valid for LB and invalid for KG. 
     When the unit is toggled, the error should still be caught
  3. Toggling between Form and Output page should always render the same values
- 4. Validate the correct error messages appear - This is loosely done already when testing invalid 
-    changes made after form submission do not allow the user to proceed. 
 
 */
