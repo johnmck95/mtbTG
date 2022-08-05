@@ -1,6 +1,7 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen} from "@testing-library/react";
 import user from "@testing-library/user-event";
 import Home from "../../../pages/Home/Home"
+import {enterHeightFeetValue} from "./FormHelpers"
 
 describe("The default form contains ", () => {
     beforeEach(() => {
@@ -428,133 +429,139 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 })
 
 describe("Error Handling ", () => {
-    xdescribe("For Height (feet): ", () => {
-        xit("Displays error[0] when value is not an integer (#.#)")
-        xit("Does not display error[0] when value is an integer followed by a decimal (#.)")
-        xit("Displays error[0] when value is negative")
-        xit("Displays error[0] when value includes the letter 'e'")
-        xit("Displays error[0] when value includes the symbol '-'")
-        xit("Displays error[0] when value includes the symbol '+'")
-        xit("Does not display error[0] when value is 0")
-        xit("Does not display error[0] when value is less than 5")
-        xit("Does not display error[0] when value is greater than 6")
+    beforeEach(() => {
+        render(<Home/>);
     })
-    xdescribe("For Height (inches): ", () => {
-        xit("Does not display error[1] when value is 0")
-        xit("Does not display error[1] when decimals are provided (#.#)")
-        xit("Displays error[1] when value is 12")
-        xit("Displays error[1] when value is larger than 12")
-        xit("Displays error[1] when value is negative")
-        xit("Displays error[1] when value includes the letter 'e'")
-        xit("Displays error[1] when value includes the symbol '-'")
-        xit("Displays error[1] when value includes the symbol '+'")
+    describe("For Height (feet): ", () => {
+        test.only("Displays error[0] when value is not an integer (#.#)", () => {
+            enterHeightFeetValue("5.1");
+            expect(true)
+        })
+        test.todo("Does not display error[0] when value is an integer followed by a decimal (#.)")
+        test.todo("Displays error[0] when value is negative")
+        test.todo("Displays error[0] when value includes the letter 'e'")
+        test.todo("Displays error[0] when value includes the symbol '-'")
+        test.todo("Displays error[0] when value includes the symbol '+'")
+        test.todo("Does not display error[0] when value is 0")
+        test.todo("Does not display error[0] when value is less than 5")
+        test.todo("Does not display error[0] when value is greater than 6")
     })
-    xdescribe("For Imperial Height: ", () => {
-        xit("Displays error[2] for 4'11.999999")
-        xit("Displays error[2] for 6'6.0000001")
-        xit("Does not display error[2] for 5'0")
-        xit("Does not display error[2] for 5'11.9999")
-        xit("Does not display error[2] for 6'6")
+    describe("For Height (inches): ", () => {
+        test.todo("Does not display error[1] when value is 0")
+        test.todo("Does not display error[1] when decimals are provided (#.#)")
+        test.todo("Displays error[1] when value is 12")
+        test.todo("Displays error[1] when value is larger than 12")
+        test.todo("Displays error[1] when value is negative")
+        test.todo("Displays error[1] when value includes the letter 'e'")
+        test.todo("Displays error[1] when value includes the symbol '-'")
+        test.todo("Displays error[1] when value includes the symbol '+'")
     })
-    xdescribe("For Metric Height: ", () => {
-        xit("Displays error[3] when value is negative")
-        xit("Displays error[3] when value is 0")
-        xit("Displays error[3] when value is 152.3999999")
-        xit("Displays error[3] when value is 198.0000001")
-        xit("Displays error[3] when value includes the letter 'e'")
-        xit("Displays error[3] when value includes the symbol '-'")
-        xit("Displays error[3] when value includes the symbol '+'")
-        xit("Does not display error[3] when value is valid (parameterized)")
+    describe("For Imperial Height: ", () => {
+        test.todo("Displays error[2] for 4'11.999999")
+        test.todo("Displays error[2] for 6'6.0000001")
+        test.todo("Does not display error[2] for 5'0")
+        test.todo("Does not display error[2] for 5'11.9999")
+        test.todo("Does not display error[2] for 6'6")
     })
-    xdescribe("For Imperial Weight: ", () => {
-        xit("Displays error[10] when value is 79.999999")
-        xit("Displays error[10] when value is 240.00001")
-        xit("Displays error[10] when value is 0")
-        xit("Displays error[10] when value includes the letter 'e'")
-        xit("Displays error[10] when value includes the symbol '-'")
-        xit("Displays error[10] when value includes the symbol '+'")
-        xit("Does not display error[10] for valid weights (parameterized)")
+    describe("For Metric Height: ", () => {
+        test.todo("Displays error[3] when value is negative")
+        test.todo("Displays error[3] when value is 0")
+        test.todo("Displays error[3] when value is 152.3999999")
+        test.todo("Displays error[3] when value is 198.0000001")
+        test.todo("Displays error[3] when value includes the letter 'e'")
+        test.todo("Displays error[3] when value includes the symbol '-'")
+        test.todo("Displays error[3] when value includes the symbol '+'")
+        test.todo("Does not display error[3] when value is valid (parameterized)")
     })
-    xdescribe("For Metric Weight: ", () => {
-        xit("Does not display error[11] for valid weights (parameterized)")
-        xit("Displays error[11] when value is 35.99999")
-        xit("Displays error[11] when value is 109.0000001")
-        xit("Displays error[11] when value is 0")
-        xit("Displays error[11] when value includes the letter 'e'")
-        xit("Displays error[11] when value includes the symbol '-'")
-        xit("Displays error[11] when value includes the symbol '+'")
+    describe("For Imperial Weight: ", () => {
+        test.todo("Displays error[10] when value is 79.999999")
+        test.todo("Displays error[10] when value is 240.00001")
+        test.todo("Displays error[10] when value is 0")
+        test.todo("Displays error[10] when value includes the letter 'e'")
+        test.todo("Displays error[10] when value includes the symbol '-'")
+        test.todo("Displays error[10] when value includes the symbol '+'")
+        test.todo("Does not display error[10] for valid weights (parameterized)")
     })
-    xdescribe("For Handling Preference: ", () => {
-        xit("Displays error[4] when no handling preference is selected")
-        xit("Does not display error[4] when each value is selected (parameterized)")
+    describe("For Metric Weight: ", () => {
+        test.todo("Does not display error[11] for valid weights (parameterized)")
+        test.todo("Displays error[11] when value is 35.99999")
+        test.todo("Displays error[11] when value is 109.0000001")
+        test.todo("Displays error[11] when value is 0")
+        test.todo("Displays error[11] when value includes the letter 'e'")
+        test.todo("Displays error[11] when value includes the symbol '-'")
+        test.todo("Displays error[11] when value includes the symbol '+'")
     })
-    xdescribe("For Skill Level: ", () => {
-        xit("Displays error[12] when no skill level is selected")
-        xit("Does not display error[12] when each skill level is selected (parameterized)")
+    describe("For Handling Preference: ", () => {
+        test.todo("Displays error[4] when no handling preference is selected")
+        test.todo("Does not display error[4] when each value is selected (parameterized)")
+    })
+    describe("For Skill Level: ", () => {
+        test.todo("Displays error[12] when no skill level is selected")
+        test.todo("Does not display error[12] when each skill level is selected (parameterized)")
     })
     
-    xdescribe("For Metric Reach Value: ", () => {
-        xit("Does not display error[5] for valid reache values (parameterized)")
-        xit("Displays error[5] when value is 399.99999")
-        xit("Displays error[5] when value is 550.0000001")
-        xit("Displays error[5] when value is 0")
-        xit("Displays error[5] when value includes the letter 'e'")
-        xit("Displays error[5] when value includes the symbol '-'")
-        xit("Displays error[5] when value includes the symbol '+'")
+    describe("For Metric Reach Value: ", () => {
+        test.todo("Does not display error[5] for valid reache values (parameterized)")
+        test.todo("Displays error[5] when value is 399.99999")
+        test.todo("Displays error[5] when value is 550.0000001")
+        test.todo("Displays error[5] when value is 0")
+        test.todo("Displays error[5] when value includes the letter 'e'")
+        test.todo("Displays error[5] when value includes the symbol '-'")
+        test.todo("Displays error[5] when value includes the symbol '+'")
     })
-    xdescribe("For Imperial Reach Value: ", () => {
-        xit("Does not display error[6] for valid reache values (parameterized)")
-        xit("Displays error[6] when value is 15.7499999")
-        xit("Displays error[6] when value is 21.6500001")
-        xit("Displays error[6] when value is 0")
-        xit("Displays error[6] when value includes the letter 'e'")
-        xit("Displays error[6] when value includes the symbol '-'")
-        xit("Displays error[6] when value includes the symbol '+'")
+    describe("For Imperial Reach Value: ", () => {
+        test.todo("Does not display error[6] for valid reache values (parameterized)")
+        test.todo("Displays error[6] when value is 15.7499999")
+        test.todo("Displays error[6] when value is 21.6500001")
+        test.todo("Displays error[6] when value is 0")
+        test.todo("Displays error[6] when value includes the letter 'e'")
+        test.todo("Displays error[6] when value includes the symbol '-'")
+        test.todo("Displays error[6] when value includes the symbol '+'")
     })
-    xdescribe("For Metric Stack Value: ", () => {
-        xit("Does not display error[7] for valid stack values (parameterized)")
-        xit("Displays error[7] when value is 549.9999")
-        xit("Displays error[7] when value is 680.0000001")
-        xit("Displays error[7] when value is 0")
-        xit("Displays error[7] when value includes the letter 'e'")
-        xit("Displays error[7] when value includes the symbol '-'")
-        xit("Displays error[7] when value includes the symbol '+'")
+    describe("For Metric Stack Value: ", () => {
+        test.todo("Does not display error[7] for valid stack values (parameterized)")
+        test.todo("Displays error[7] when value is 549.9999")
+        test.todo("Displays error[7] when value is 680.0000001")
+        test.todo("Displays error[7] when value is 0")
+        test.todo("Displays error[7] when value includes the letter 'e'")
+        test.todo("Displays error[7] when value includes the symbol '-'")
+        test.todo("Displays error[7] when value includes the symbol '+'")
     })
-    xdescribe("For Imperial Stack Value: ", () => {
-        xit("Does not display error[8] for valid stack values (parameterized)")
-        xit("Displays error[8] when value is 21.6499999")
-        xit("Displays error[8] when value is 26.7700001")
-        xit("Displays error[8] when value is 0")
-        xit("Displays error[8] when value includes the letter 'e'")
-        xit("Displays error[8] when value includes the symbol '-'")
-        xit("Displays error[8] when value includes the symbol '+'")
+    describe("For Imperial Stack Value: ", () => {
+        test.todo("Does not display error[8] for valid stack values (parameterized)")
+        test.todo("Displays error[8] when value is 21.6499999")
+        test.todo("Displays error[8] when value is 26.7700001")
+        test.todo("Displays error[8] when value is 0")
+        test.todo("Displays error[8] when value includes the letter 'e'")
+        test.todo("Displays error[8] when value includes the symbol '-'")
+        test.todo("Displays error[8] when value includes the symbol '+'")
     })
-    xdescribe("For Bike Type: ", () => {
-        xit("Displays error[9] when no bike type is selected")
-        xit("Does not display error[9] when each bike types are selected (parameterized)")
+    describe("For Bike Type: ", () => {
+        test.todo("Displays error[9] when no bike type is selected")
+        test.todo("Does not display error[9] when each bike types are selected (parameterized)")
     })
 
 
-    xdescribe("Submitting an empty form as a Metric Rider ", () => {
-        xit("Does not show any imperial rider errors")
-        xit("Shows all metric rider errors")
-        xit("Then toggling to imperial rider converts all metric rider errors to imperial rider errors")
+    describe("Submitting an empty form as a Metric Rider ", () => {
+        test.todo("Does not show any imperial rider errors")
+        test.todo("Shows all metric rider errors")
+        test.todo("Then toggling to imperial rider converts all metric rider errors to imperial rider errors")
     })
-    xdescribe("Submitting an empty form as an Imperial Rider: ", () => {
-        xit("Does not show any metric rider errors")
-        xit("Shows all imperial rider errors")
-        xit("Then toggling to metric rider converts all imperial rider errors to metric rider errors")
+    describe("Submitting an empty form as an Imperial Rider: ", () => {
+        test.todo("Does not show any metric rider errors")
+        test.todo("Shows all imperial rider errors")
+        test.todo("Then toggling to metric rider converts all imperial rider errors to metric rider errors")
 
     })
-    xdescribe("Submitting an empty form as a Metric Bike: ", () => {
-        xit("Does not show any imperial bike errors")
-        xit("Shows all metric bike errors")
-        xit("Then toggling to imperial bike converts all metric bike errors to imperial bike errors")
+    describe("Submitting an empty form as a Metric Bike: ", () => {
+        test.todo("Does not show any imperial bike errors")
+        test.todo("Shows all metric bike errors")
+        test.todo("Then toggling to imperial bike converts all metric bike errors to imperial bike errors")
     })
-    xdescribe("Submitting an empty form as an Imperial Bike: ", () => {
-        xit("Does not show any metric bike errors")
-        xit("Shows all imperial bike errors")
-        xit("Then toggling to metric bike converts all imperial bike errors to metric bike errors")
+    describe("Submitting an empty form as an Imperial Bike: ", () => {
+        test.todo("Does not show any metric bike errors")
+        test.todo("Shows all imperial bike errors")
+        test.todo("Then toggling to metric bike converts all imperial bike errors to metric bike errors")
 
     })
 })
