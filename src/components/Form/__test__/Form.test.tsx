@@ -1,9 +1,11 @@
 import { fireEvent, render, screen} from "@testing-library/react";
 import user from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
+import { errorCodes } from "../../../data/ErrorCodes";
 import Home from "../../../pages/Home/Home"
-import {enterHeightFeetValue} from "./FormHelpers"
+import {clickCalculateButton, enterHeightFeetValue, expectErrorMessageToBePresent, expectErrorMessageNotToBePresent, isErrorMessageDisplayed, enterHeightInchesValue, enterHeightCMValue, toggleImperialMetricRider, enterWeightLBValue, enterWeightKGValue, clickBikeTypeRadio, clickHandlingRadio, slideSkillLevelHandle, enterReachMMValue, enterReachInchesValue, toggleImperialMetricBike, enterStackMMValue, enterStackInchesValue, expectErrorMessagesNotToBePresent, expectErrorMessagesToBePresent} from "./FormHelpers"
 
-describe("The default form contains ", () => {
+xdescribe("The default form contains ", () => {
     beforeEach(() => {
         render(<Home/>)
     })
@@ -53,9 +55,10 @@ describe("The default form contains ", () => {
         test("Renders the skillSlider",  () => {
             expect(screen.getByRole("slider"))
         })
-        test.todo("Slider is in position 3 and is de-selected")
-            // const slioderKnob = screen.queryByRole("input", {hidden: true})
-            // expect(sliderKnob).toHaveValue(3)
+        test("Slider is in position 3 by default", () => {
+            const sliderVal = screen.queryByRole("slider")?.getAttribute("aria-valuenow")
+            expect(sliderVal).toEqual("3")
+        })
     })
     describe("Reach (mm) ", () => {
         test("Label ", () => {
@@ -86,7 +89,7 @@ describe("The default form contains ", () => {
     })
 })
 
-describe("When Rider Metrics are changed from imperial to metric ", () => {
+xdescribe("When Rider Metrics are changed from imperial to metric ", () => {
     beforeEach(() => {
         render(<Home/>)
         user.click(screen.getByTestId("imperialRiderButton"))
@@ -115,7 +118,7 @@ describe("When Rider Metrics are changed from imperial to metric ", () => {
     })
 })
 
-describe("When Bike Metrics are changed from metric to imperial ", () => {
+xdescribe("When Bike Metrics are changed from metric to imperial ", () => {
     beforeEach(() => {
         render(<Home/>)
         user.click(screen.getByTestId("imperialBikeButton"))
@@ -144,7 +147,7 @@ describe("When Bike Metrics are changed from metric to imperial ", () => {
     })
 })
 
-describe("Converting Rider Metrics from Imperial to Metic ", () => {
+xdescribe("Converting Rider Metrics from Imperial to Metic ", () => {
     beforeEach(() => {
         render(<Home/>)
     })
@@ -204,8 +207,7 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
 
 })
 
-
-describe("Converting Bike Metrics from Metic to Imperial",  () => {
+xdescribe("Converting Bike Metrics from Metic to Imperial",  () => {
     beforeEach(() => {
         render(<Home/>)
     })
@@ -265,7 +267,7 @@ describe("Converting Bike Metrics from Metic to Imperial",  () => {
     })
 })
 
-describe("After clicking the 'edit' button to return to the Form page ", () => {
+xdescribe("After clicking the 'edit' button to return to the Form page ", () => {
     beforeEach( () => {
         render(<Home/>)
         user.type(screen.getByLabelText("Height (feet)"), '5')
@@ -433,135 +435,581 @@ describe("Error Handling ", () => {
         render(<Home/>);
     })
     describe("For Height (feet): ", () => {
-        test.only("Displays error[0] when value is not an integer (#.#)", () => {
-            enterHeightFeetValue("5.1");
-            expect(true)
+        test("Displays error[0] when value is not an integer (5.01)", async () => {
+            enterHeightFeetValue("5.01");
+            clickCalculateButton(); 
+            expectErrorMessageToBePresent(0); 
         })
-        test.todo("Does not display error[0] when value is an integer followed by a decimal (#.)")
-        test.todo("Displays error[0] when value is negative")
-        test.todo("Displays error[0] when value includes the letter 'e'")
-        test.todo("Displays error[0] when value includes the symbol '-'")
-        test.todo("Displays error[0] when value includes the symbol '+'")
-        test.todo("Does not display error[0] when value is 0")
-        test.todo("Does not display error[0] when value is less than 5")
-        test.todo("Does not display error[0] when value is greater than 6")
+        test("Does not display error[0] when value is an integer with precision (5.00)", async () => {
+            enterHeightFeetValue("5.00");
+            clickCalculateButton(); 
+            expectErrorMessageNotToBePresent(0); 
+        })
+        // TODO: Form doesn't properly handle this yet.
+        xtest("Does not display error[0] when value is negative (-6)", () => {
+            enterHeightFeetValue("-6");
+            clickCalculateButton(); 
+            expectErrorMessageNotToBePresent(5);
+        })
+        test("Displays error[0] when value includes the letter 'e'", () => {
+            enterHeightFeetValue("e");
+            clickCalculateButton(); 
+            expectErrorMessageToBePresent(0); 
+        })
+        test("Displays error[0] when value includes the symbol '-'", () => {
+            enterHeightFeetValue("-");
+            clickCalculateButton(); 
+            expectErrorMessageToBePresent(0); 
+        })
+        test("Displays error[0] when value includes the symbol '+'", () => {
+            enterHeightFeetValue("+");
+            clickCalculateButton(); 
+            expectErrorMessageToBePresent(0); 
+        })
+        test("Does not display error[0] when value is 0", () => {
+            enterHeightFeetValue("0");
+            clickCalculateButton(); 
+            expectErrorMessageNotToBePresent(0); 
+        })
+        test("Does not display error[0] for integer value less than 5", () => {
+            enterHeightFeetValue("4");
+            clickCalculateButton(); 
+            expectErrorMessageNotToBePresent(0);   
+        })
+        test("Does not display error[0] for integer value greater than 6", () => {
+            enterHeightFeetValue("7");
+            clickCalculateButton(); 
+            expectErrorMessageNotToBePresent(0); 
+        })
     })
     describe("For Height (inches): ", () => {
-        test.todo("Does not display error[1] when value is 0")
-        test.todo("Does not display error[1] when decimals are provided (#.#)")
-        test.todo("Displays error[1] when value is 12")
-        test.todo("Displays error[1] when value is larger than 12")
-        test.todo("Displays error[1] when value is negative")
-        test.todo("Displays error[1] when value includes the letter 'e'")
-        test.todo("Displays error[1] when value includes the symbol '-'")
-        test.todo("Displays error[1] when value includes the symbol '+'")
+        test("Does not display error[1] when value is 0", () => {
+            enterHeightInchesValue("0");
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(1)
+        })
+        test("Does not display error[1] when decimals are provided (1.23)", () => {
+            enterHeightInchesValue("1.23");
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(1)
+        })
+        test("Displays error[1] when value is 12", () => {
+            enterHeightInchesValue("12");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(1)
+        })
+        test("Displays error[1] when value is larger than 12 (12.0001)", () => {
+            enterHeightInchesValue("12.0001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(1)
+        })
+        test("Displays error[1] when value is negative (-0.89)", () => {
+            enterHeightInchesValue("-0.89");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(1)
+        })
+        test("Displays error[1] when value includes the letter 'e'", () => {
+            enterHeightInchesValue("e");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(1)
+        })
+        test("Displays error[1] when value includes the symbol '-'", () => {
+            enterHeightInchesValue("-");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(1)
+        })
+        test("Displays error[1] when value includes the symbol '+'", () => {
+            enterHeightInchesValue("+");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(1)
+        })
     })
     describe("For Imperial Height: ", () => {
-        test.todo("Displays error[2] for 4'11.999999")
-        test.todo("Displays error[2] for 6'6.0000001")
-        test.todo("Does not display error[2] for 5'0")
-        test.todo("Does not display error[2] for 5'11.9999")
-        test.todo("Does not display error[2] for 6'6")
+        test("Displays error[2] for 4'11.999999", () => {
+            enterHeightFeetValue("4");
+            enterHeightInchesValue("11.999999");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(2);
+        })
+        test("Displays error[2] for 6'6.0000001", () => {
+            enterHeightFeetValue("6");
+            enterHeightInchesValue("6.0000001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(2);
+        })
+        test("Does not display error[2] for 5'0", () => {
+            enterHeightFeetValue("5");
+            enterHeightInchesValue("0");
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(2);
+        })
+        test("Does not display error[2] for 5'11.9999", () => {
+            enterHeightFeetValue("5");
+            enterHeightInchesValue("11.9999");
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(2);
+        })
+        test("Does not display error[2] for 6'6", () => {
+            enterHeightFeetValue("6");
+            enterHeightInchesValue("6");
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(2);
+        })
     })
     describe("For Metric Height: ", () => {
-        test.todo("Displays error[3] when value is negative")
-        test.todo("Displays error[3] when value is 0")
-        test.todo("Displays error[3] when value is 152.3999999")
-        test.todo("Displays error[3] when value is 198.0000001")
-        test.todo("Displays error[3] when value includes the letter 'e'")
-        test.todo("Displays error[3] when value includes the symbol '-'")
-        test.todo("Displays error[3] when value includes the symbol '+'")
-        test.todo("Does not display error[3] when value is valid (parameterized)")
+        test("Displays error[3] when value is negative (-176)", () => {
+            toggleImperialMetricRider();
+            enterHeightCMValue("-176");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(3);
+        })
+        test("Displays error[3] when value is 0", () => {
+            toggleImperialMetricRider();
+            enterHeightCMValue("0");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(3);
+        })
+        test("Displays error[3] when value is 152.3999999", () => {
+            toggleImperialMetricRider();
+            enterHeightCMValue("152.3999999");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(3);
+        })
+        test("Displays error[3] when value is 198.0000001", () => {
+            toggleImperialMetricRider();
+            enterHeightCMValue("198.0000001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(3);
+        })
+        test("Displays error[3] when value includes the letter 'e'", () => {
+            toggleImperialMetricRider();
+            enterHeightCMValue("e");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(3);
+        })
+        test("Displays error[3] when value includes the symbol '-'", () => {
+            toggleImperialMetricRider();
+            enterHeightCMValue("-");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(3);
+        })
+        test("Displays error[3] when value includes the symbol '+'", () => {
+            toggleImperialMetricRider();
+            enterHeightCMValue("+");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(3);
+        })
+        test.each([
+            ['153'],
+            ['176.009'],
+            ['189'],
+            ['198.00'],
+            ['166'],
+        ])("Does not display error[3] when value is valid [%s]", (heightCM) => {
+            toggleImperialMetricRider();
+            enterHeightCMValue(heightCM);
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(3);
+        })
     })
     describe("For Imperial Weight: ", () => {
-        test.todo("Displays error[10] when value is 79.999999")
-        test.todo("Displays error[10] when value is 240.00001")
-        test.todo("Displays error[10] when value is 0")
-        test.todo("Displays error[10] when value includes the letter 'e'")
-        test.todo("Displays error[10] when value includes the symbol '-'")
-        test.todo("Displays error[10] when value includes the symbol '+'")
-        test.todo("Does not display error[10] for valid weights (parameterized)")
+        test("Displays error[10] when value is 79.999999", () => {
+            enterWeightLBValue("79.999999");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(10);
+        })
+        test("Displays error[10] when value is 240.00001", () => {
+            enterWeightLBValue("240.00001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(10);
+        })
+        test("Displays error[10] when value is 0", () => {
+            enterWeightLBValue("0");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(10);
+        })
+        test("Displays error[10] when value includes the letter 'e'", () => {
+            enterWeightLBValue("e");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(10);
+        })
+        test("Displays error[10] when value includes the symbol '-'", () => {
+            enterWeightLBValue("-");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(10);
+        })
+        test("Displays error[10] when value includes the symbol '+'", () => {
+            enterWeightLBValue("+");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(10);
+        })
+        test.each([
+            ['80'],
+            ['240'],
+            ['199.9999901'],
+            ['200.000'],
+            ['83.5'],
+        ])("Does not display error[10] for valid weights (%s)", (weightLB) => {
+            enterWeightLBValue(weightLB);
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(10);
+        })
     })
     describe("For Metric Weight: ", () => {
-        test.todo("Does not display error[11] for valid weights (parameterized)")
-        test.todo("Displays error[11] when value is 35.99999")
-        test.todo("Displays error[11] when value is 109.0000001")
-        test.todo("Displays error[11] when value is 0")
-        test.todo("Displays error[11] when value includes the letter 'e'")
-        test.todo("Displays error[11] when value includes the symbol '-'")
-        test.todo("Displays error[11] when value includes the symbol '+'")
+        test("Displays error[11] when value is 35.99999", () => {
+            toggleImperialMetricRider();
+            enterWeightKGValue("35.99999");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(11);
+        })
+        test("Displays error[11] when value is 109.0000001", () => {
+            toggleImperialMetricRider();
+            enterWeightKGValue("109.0000001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(11);
+        })
+        test("Displays error[11] when value is 0", () => {
+            toggleImperialMetricRider();
+            enterWeightKGValue("0");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(11);
+        })
+        test("Displays error[11] when value includes the letter 'e'", () => {
+            toggleImperialMetricRider();
+            enterWeightKGValue("e");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(11);
+        })
+        test("Displays error[11] when value includes the symbol '-'", () => {
+            toggleImperialMetricRider();
+            enterWeightKGValue("-");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(11);
+        })
+        test("Displays error[11] when value includes the symbol '+'", () => {
+            toggleImperialMetricRider();
+            enterWeightKGValue("+");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(11);
+        })
+        test.each([
+            ['36'],
+            ['109'],
+            ['88.2'],
+            ['67.0000897'],
+            ['99.999'],
+        ])("Does not display error[11] for valid weights [%s]", (weightKG) => {
+            toggleImperialMetricRider();
+            enterWeightKGValue(weightKG);
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(11);
+        })
     })
     describe("For Handling Preference: ", () => {
-        test.todo("Displays error[4] when no handling preference is selected")
-        test.todo("Does not display error[4] when each value is selected (parameterized)")
+        test("Displays error[4] when no handling preference is selected", () => {
+            clickCalculateButton();
+            expectErrorMessageToBePresent(4);
+        })
+        test.each([
+            ['Stable'],
+            ['Neutral'],
+            ['Agile'],
+        ])("Does not display error[4] when each value is selected [%s])", (radio) => {
+            if(radio === 'Stable' || radio === 'Neutral' || radio === 'Agile')
+                clickHandlingRadio(radio); 
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(4);
+        })
     })
     describe("For Skill Level: ", () => {
-        test.todo("Displays error[12] when no skill level is selected")
-        test.todo("Does not display error[12] when each skill level is selected (parameterized)")
+        test("Displays error[12] when no skill level is selected", () => {
+            clickCalculateButton();
+            expectErrorMessageToBePresent(12);
+        })
+        test.each([
+            ['1'],
+            ['2'],
+            ['3'],
+            ['4'],
+            ['5'],
+            ['6'],
+        ])("Does not display error[12] when each skill level is selected [%s]", (val) => {
+            if(val === "1" || val === "2" || val === "3" || val === "4" || val === "5" || val === "6")
+                slideSkillLevelHandle(val)
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(12);
+        })
     })
-    
     describe("For Metric Reach Value: ", () => {
-        test.todo("Does not display error[5] for valid reache values (parameterized)")
-        test.todo("Displays error[5] when value is 399.99999")
-        test.todo("Displays error[5] when value is 550.0000001")
-        test.todo("Displays error[5] when value is 0")
-        test.todo("Displays error[5] when value includes the letter 'e'")
-        test.todo("Displays error[5] when value includes the symbol '-'")
-        test.todo("Displays error[5] when value includes the symbol '+'")
+        test.each([
+            ['400'],
+            ['550'],
+            ['500.0000001'],
+            ['499.99999'],
+            ['485'],
+        ])("Does not display error[5] for valid reach value: [%s]", (reach) => {
+            enterReachMMValue(reach);
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(5)
+        })
+        test("Displays error[5] when value is 399.99999", () => {
+            enterReachMMValue("399.99999");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(5)
+        })
+        test("Displays error[5] when value is 550.0000001", () => {
+            enterReachMMValue("550.0000001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(5)
+        })
+        test("Displays error[5] when value is 0", () => {
+            enterReachMMValue("0");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(5)
+        })
+        test("Displays error[5] when value includes the letter 'e'", () => {
+            enterReachMMValue("e");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(5)
+        })
+        test("Displays error[5] when value includes the symbol '-'", () => {
+            enterReachMMValue("-");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(5)
+        })
+        test("Displays error[5] when value includes the symbol '+'", () => {
+            enterReachMMValue("+");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(5)
+        })
     })
     describe("For Imperial Reach Value: ", () => {
-        test.todo("Does not display error[6] for valid reache values (parameterized)")
-        test.todo("Displays error[6] when value is 15.7499999")
-        test.todo("Displays error[6] when value is 21.6500001")
-        test.todo("Displays error[6] when value is 0")
-        test.todo("Displays error[6] when value includes the letter 'e'")
-        test.todo("Displays error[6] when value includes the symbol '-'")
-        test.todo("Displays error[6] when value includes the symbol '+'")
+        test.each([
+            ['15.75'],
+            ['21.65'],
+            ['17'],
+            ['17.0000000'],
+            ['21.64999999'],
+        ])("Does not display error[6] for valid reach value: [%s]", (reach) => {
+            toggleImperialMetricBike();
+            enterReachInchesValue(reach);
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(6);
+        })
+        test("Displays error[6] when value is 15.7499999", () => {
+            toggleImperialMetricBike();
+            enterReachInchesValue("15.7499999");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(6);
+        })
+        test("Displays error[6] when value is 21.6500001", () => {
+            toggleImperialMetricBike();
+            enterReachInchesValue("21.6500001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(6);
+        })
+        test("Displays error[6] when value is 0", () => {
+            toggleImperialMetricBike();
+            enterReachInchesValue("0");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(6);
+        })
+        test("Displays error[6] when value includes the letter 'e'", () => {
+            toggleImperialMetricBike();
+            enterReachInchesValue("e");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(6);
+        })
+        test("Displays error[6] when value includes the symbol '-'", () => {
+            toggleImperialMetricBike();
+            enterReachInchesValue("-");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(6);
+        })
+        test("Displays error[6] when value includes the symbol '+'", () => {
+            toggleImperialMetricBike();
+            enterReachInchesValue("+");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(6);
+        })
     })
     describe("For Metric Stack Value: ", () => {
-        test.todo("Does not display error[7] for valid stack values (parameterized)")
-        test.todo("Displays error[7] when value is 549.9999")
-        test.todo("Displays error[7] when value is 680.0000001")
-        test.todo("Displays error[7] when value is 0")
-        test.todo("Displays error[7] when value includes the letter 'e'")
-        test.todo("Displays error[7] when value includes the symbol '-'")
-        test.todo("Displays error[7] when value includes the symbol '+'")
+        test.each([
+            ['550'],
+            ['680'],
+            ['550.0000001'],
+            ['675'],
+            ['632.16'],
+        ])("Does not display error[7] for valid stack values (parameterized)", (stack) => {
+            enterStackMMValue(stack);
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(7);
+        })
+        test("Displays error[7] when value is 549.9999", () => {
+            enterStackMMValue("549.9999");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(7);
+        })
+        test("Displays error[7] when value is 680.0000001", () => {
+            enterStackMMValue("680.0000001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(7);
+        })
+        test("Displays error[7] when value is 0", () => {
+            enterStackMMValue("0");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(7);
+        })
+        test("Displays error[7] when value includes the letter 'e'", () => {
+            enterStackMMValue("e");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(7);
+        })
+        test("Displays error[7] when value includes the symbol '-'", () => {
+            enterStackMMValue("-");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(7);
+        })
+        test("Displays error[7] when value includes the symbol '+'", () => {
+            enterStackMMValue("+");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(7);
+        })
     })
     describe("For Imperial Stack Value: ", () => {
-        test.todo("Does not display error[8] for valid stack values (parameterized)")
-        test.todo("Displays error[8] when value is 21.6499999")
-        test.todo("Displays error[8] when value is 26.7700001")
-        test.todo("Displays error[8] when value is 0")
-        test.todo("Displays error[8] when value includes the letter 'e'")
-        test.todo("Displays error[8] when value includes the symbol '-'")
-        test.todo("Displays error[8] when value includes the symbol '+'")
+        test.each([
+            ['21.65'],
+            ['26.77'],
+            ['22'],
+            ['25'],
+            ['24.20000000'],
+        ])("Does not display error[8] for valid stack values (parameterized)", (stack) => {
+            toggleImperialMetricBike();
+            enterStackInchesValue(stack);
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(8);          
+        })
+        test("Displays error[8] when value is 21.6499999", () => {
+            toggleImperialMetricBike();
+            enterStackInchesValue("21.6499999");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(8);          
+        })
+        test("Displays error[8] when value is 26.7700001", () => {
+            toggleImperialMetricBike();
+            enterStackInchesValue("26.7700001");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(8);          
+        })
+        test("Displays error[8] when value is 0", () => {
+            toggleImperialMetricBike();
+            enterStackInchesValue("0");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(8);          
+        })
+        test("Displays error[8] when value includes the letter 'e'", () => {
+            toggleImperialMetricBike();
+            enterStackInchesValue("e");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(8);          
+        })
+        test("Displays error[8] when value includes the symbol '-'", () => {
+            toggleImperialMetricBike();
+            enterStackInchesValue("-");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(8);          
+        })
+        test("Displays error[8] when value includes the symbol '+'", () => {
+            toggleImperialMetricBike();
+            enterStackInchesValue("+");
+            clickCalculateButton();
+            expectErrorMessageToBePresent(8);          
+        })
     })
     describe("For Bike Type: ", () => {
-        test.todo("Displays error[9] when no bike type is selected")
-        test.todo("Does not display error[9] when each bike types are selected (parameterized)")
+        test("Displays error[9] when no bike type is selected", () => {
+            clickCalculateButton();
+            expectErrorMessageToBePresent(9);
+        })
+        test.each([
+            ['Enduro'],
+            ['Trail'],
+        ])("Does not display error[9] when each bike types are selected (parameterized)", (bikeType) => {
+            if(bikeType === "Enduro" || bikeType === "Trail")
+                clickBikeTypeRadio(bikeType);
+            clickCalculateButton();
+            expectErrorMessageNotToBePresent(9);
+        })
     })
-
-
     describe("Submitting an empty form as a Metric Rider ", () => {
-        test.todo("Does not show any imperial rider errors")
-        test.todo("Shows all metric rider errors")
-        test.todo("Then toggling to imperial rider converts all metric rider errors to imperial rider errors")
+        test("Does not show any imperial rider errors", () => {
+            toggleImperialMetricRider();
+            clickCalculateButton();
+            expectErrorMessagesNotToBePresent([0, 1, 2, 10]);            
+        })
+        test("Shows all metric rider errors", () => {
+            toggleImperialMetricRider();
+            clickCalculateButton();
+            expectErrorMessagesToBePresent([3, 11]);
+        })
+        test("Then toggling to imperial rider converts all metric rider errors to imperial rider errors", () => {
+            toggleImperialMetricRider();
+            clickCalculateButton();
+            toggleImperialMetricRider();
+            expectErrorMessagesToBePresent([0, 1, 2, 10]);
+            expectErrorMessagesNotToBePresent([3, 11]);
+        })
     })
     describe("Submitting an empty form as an Imperial Rider: ", () => {
-        test.todo("Does not show any metric rider errors")
-        test.todo("Shows all imperial rider errors")
-        test.todo("Then toggling to metric rider converts all imperial rider errors to metric rider errors")
-
+        test("Does not show any metric rider errors", () => {
+            clickCalculateButton();
+            expectErrorMessagesNotToBePresent([3, 11]);         
+        })
+        test("Shows all imperial rider errors", () => {
+            clickCalculateButton();
+            expectErrorMessagesToBePresent([0, 1, 2, 10]);       
+        })
+        test("Then toggling to metric rider converts all imperial rider errors to metric rider errors", () => {
+            clickCalculateButton();
+            toggleImperialMetricRider();
+            expectErrorMessagesToBePresent([3, 11]);
+            expectErrorMessagesNotToBePresent([0, 1, 2, 10]);
+        })
     })
     describe("Submitting an empty form as a Metric Bike: ", () => {
-        test.todo("Does not show any imperial bike errors")
-        test.todo("Shows all metric bike errors")
-        test.todo("Then toggling to imperial bike converts all metric bike errors to imperial bike errors")
+        test("Does not show any imperial bike errors", () => {
+            clickCalculateButton();
+            expectErrorMessagesNotToBePresent([6, 8]);
+        })
+        test("Shows all metric bike errors", () => {
+            clickCalculateButton();
+            expectErrorMessagesToBePresent([5, 7]);
+        })
+        test("Then toggling to imperial bike converts all metric bike errors to imperial bike errors", () => {
+            clickCalculateButton();
+            toggleImperialMetricBike();
+            expectErrorMessagesToBePresent([6, 8]);
+            expectErrorMessagesNotToBePresent([5, 7]);
+        })
     })
     describe("Submitting an empty form as an Imperial Bike: ", () => {
-        test.todo("Does not show any metric bike errors")
-        test.todo("Shows all imperial bike errors")
-        test.todo("Then toggling to metric bike converts all imperial bike errors to metric bike errors")
+        test("Does not show any metric bike errors", () => {
+            toggleImperialMetricBike();
+            clickCalculateButton();
+            expectErrorMessagesNotToBePresent([5, 7]);
+        })
+        test("Shows all imperial bike errors", () => {
+            toggleImperialMetricBike();
+            clickCalculateButton();
+            expectErrorMessagesToBePresent([6, 8]);
+        })
+        test("Then toggling to metric bike converts all imperial bike errors to metric bike errors", () => {
+            toggleImperialMetricBike();
+            clickCalculateButton();
+            toggleImperialMetricBike();
+            expectErrorMessagesToBePresent([5, 7]);
+            expectErrorMessagesNotToBePresent([6, 8]);
+        })
 
     })
 })
@@ -572,5 +1020,4 @@ describe("Error Handling ", () => {
  2. When a conversion has a slight rounding error a value may be valid for LB and invalid for KG. 
     When the unit is toggled, the error should still be caught
  3. Toggling between Form and Output page should always render the same values
-
 */

@@ -107,7 +107,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
 
     let formHasErrors = true
     function handleErrors() {
-        const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs
+        const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs;
         let criteria = 0;
         let requirements;
 
@@ -228,19 +228,19 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
     })
     const skillLevelErrorAlerts = errorCodes.map(error => {
         if (error.showError && error.errorNumber === 12)
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         else return null
     })
     const reachStackErrorAlerts = errorCodes.map(error => {
         if (!imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
-            return <ErrorAlert  key={error.errorNumber} errorMessage={error.errorMessage} />
+            return <ErrorAlert  key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else if (imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else return null
     })
     const bikeTypeErrorAlerts = errorCodes.map(error => {
         if (error.showError && error.errorNumber === 9){
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage} />
+            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
         } else return null       
     })
 
