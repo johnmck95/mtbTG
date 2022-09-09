@@ -1,4 +1,3 @@
-/* The array is a const, not the objects inside it */
 const errorCodes = [
     {
         errorNumber: 0,
@@ -7,17 +6,17 @@ const errorCodes = [
     },
     {
         errorNumber: 1,
-        errorMessage: "Please enter a non-negative value less than 12 for Height (inches)",
+        errorMessage: "Please enter a non-negative numeric value less than 12 for Height (inches)",
         showError: false,
     },
     {
         errorNumber: 2,
-        errorMessage: "Please enter a Height between 5'0 and 6'6",
+        errorMessage: "Please enter a numeric Height between 5'0 and 6'6",
         showError: false,
     },
     {
         errorNumber: 3,
-        errorMessage: "Please enter a Height between 152.4cm and 198cm",
+        errorMessage: "Please enter a numeric Height between 152.4cm and 198cm",
         showError: false,
     },
     {
@@ -27,22 +26,22 @@ const errorCodes = [
     },
     {
         errorNumber: 5,
-        errorMessage: "Please enter a reach value between 400mm and 550mm",
+        errorMessage: "Please enter a numeric reach value between 400mm and 550mm",
         showError: false,
     },
     {
         errorNumber: 6,
-        errorMessage: "Please enter a reach value between 15.75 - 21.65 inches",
+        errorMessage: "Please enter a numeric reach value between 15.75 - 21.65 inches",
         showError: false,
     },
     {
         errorNumber: 7,
-        errorMessage: "Please enter a stack value between 550m and 680mm",
+        errorMessage: "Please enter a numeric stack value between 550m and 680mm",
         showError: false,
     },
     {
         errorNumber: 8,
-        errorMessage: "Please enter a stack value between 21.65 - 26.77 inches",
+        errorMessage: "Please enter a numeric stack value between 21.65 - 26.77 inches",
         showError: false,
     },
     {
@@ -52,12 +51,12 @@ const errorCodes = [
     },
     {
         errorNumber: 10,
-        errorMessage: "Please enter a weight between 80 and 240 pounds",
+        errorMessage: "Please enter a numeric weight between 80 and 240 pounds",
         showError: false,
     },
     {
         errorNumber: 11,
-        errorMessage: "Please enter a weight between 36 and 109 kilograms",
+        errorMessage: "Please enter a numeric weight between 36 and 109 kilograms",
         showError: false,
     },
     {
