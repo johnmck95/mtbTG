@@ -1,8 +1,7 @@
-/* The array is a const, not the objects inside it */
 const errorCodes = [
     {
         errorNumber: 0,
-        errorMessage: "Please enter a valid integer for Height (feet)", // may need to update this description to exclude - numbers
+        errorMessage: "Please enter a valid integer for Height (feet)",
         showError: false,
     },
     {

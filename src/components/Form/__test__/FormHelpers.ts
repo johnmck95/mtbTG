@@ -19,7 +19,7 @@ export enum FormLabels {
 
 export class FormElements {
     static get heightFeet(): HTMLElement {
-        return screen.getByLabelText(FormLabels.heightFeet)
+        return screen.getByLabelText(FormLabels.heightFeet);
     }
     static get heightInches(): HTMLElement {
         return screen.getByLabelText(FormLabels.heightInches);
@@ -90,7 +90,7 @@ type SkillSliderValues = "1" | "2" | "3" | "4" | "5" | "6";
 export function slideSkillLevelHandle(skillLevel: SkillSliderValues): void {
     const handle = FormElements.skillSliderHandle;
     user.click(handle);
-    handle?.setAttribute("aria-valuenow", skillLevel)
+    handle?.setAttribute("aria-valuenow", skillLevel);
 }
 
 export function enterReachMMValue(text: string): void {
@@ -114,7 +114,7 @@ export function clickBikeTypeRadio(radio: ("Enduro" | "Trail")): void {
 }
 
 export function clickCalculateButton(): void {
-    user.click(screen.getByRole("button", {name: "Calculate"}))
+    user.click(screen.getByRole("button", {name: "Calculate"}));
 }
 
 export function expectErrorMessagesToBePresent(errorIDs: number[]){
@@ -142,13 +142,13 @@ export function isErrorMessageDisplayed(errorID: number): boolean {
 }
 
 export function toggleRiderUnits(): void {
-    user.click(screen.getByTestId("imperialRiderButton"))
+    user.click(screen.getByTestId("imperialRiderButton"));
 }
 
 export function toggleBikeUnits(): void {
-    user.click(screen.getByTestId("imperialBikeButton"))
+    user.click(screen.getByTestId("imperialBikeButton"));
 }
 
 export function clickEditFormButton(): void {
-    user.click(screen.getByRole('button', {name: 'Edit'}))
+    user.click(screen.getByRole('button', {name: 'Edit'}));
 }
