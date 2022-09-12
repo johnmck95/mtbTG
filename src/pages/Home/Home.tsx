@@ -70,7 +70,7 @@ export default function Home(): JSX.Element {
         reachInchCalc, 
         stackMMCalc, 
         stackInchCalc
-    }: HandleBikeConversionProps){
+    }: HandleBikeConversionProps): void {
         setInputs( prevInputs => ({
             ...prevInputs,
             reachMM: reachMMCalc !== -1? reachMMCalc.toFixed(4) : inputs.reachMM,
@@ -80,7 +80,7 @@ export default function Home(): JSX.Element {
         }));
     };
 
-    const outputs = Algorithm(inputs);
+    const outputs = Algorithm(inputs);  
 
     return(   
         <Box 
