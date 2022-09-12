@@ -61,8 +61,9 @@ export default function Form({
 }: FormProps) {
     const [showErrors, setShowErrors] = useState(false);
     const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, skillLevel, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs;
-
-    // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
+    const metricRider = !imperialRider;
+    const metricBike = !imperialBike;
+    // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect.
     useEffect(() => {
         if(showErrors)
             handleErrors();
@@ -151,7 +152,6 @@ export default function Form({
 
     function checkForErrorThree(): number {
         let criteria = 0;
-        const metricRider = !imperialRider;
         const height: number = parseFloat(heightCM);
         if (metricRider && height >= 152.4 && height <= 198){
             criteria++;
@@ -174,7 +174,6 @@ export default function Form({
     function checkForErrorFive(): number {
         let criteria = 0;
         const reach: number = parseFloat(reachMM);
-        const metricBike = !imperialBike;
         if (metricBike && reach >= 400 && reach <= 550){
             criteria++;
             errorCodes[5].showError = false;
@@ -196,7 +195,6 @@ export default function Form({
 
     function checkForErrorSeven(): number {
         let criteria = 0;
-        const metricBike = !imperialBike;
         const stack: number = parseFloat(stackMM);
         if (metricBike && stack >= 550 && stack <= 680){
             criteria++;
@@ -240,7 +238,6 @@ export default function Form({
 
     function checkForErrorEleven(): number {
         let criteria = 0;
-        const metricRider = !imperialRider;
         const weight: number = parseFloat(weightKG);
         if (metricRider && weight >= 36 && weight <= 109){
             criteria++;
@@ -297,7 +294,6 @@ export default function Form({
 
     const heightErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
         const {errorNumber, errorMessage, showError} = error;
-        const metricRider = !imperialRider;
         if (imperialRider && showError && errorNumber < 3){
             return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
         } else if (metricRider && showError && errorNumber === 3){
@@ -307,7 +303,6 @@ export default function Form({
 
     const weightErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
         const {errorNumber, errorMessage, showError} = error;
-        const metricRider = !imperialRider;
         if (imperialRider && showError && errorNumber === 10){
             return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
         } else if(metricRider && showError && errorNumber === 11){
@@ -331,7 +326,6 @@ export default function Form({
 
     const reachStackErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
         const {errorNumber, errorMessage, showError} = error;
-        const metricBike = !imperialBike;
         if (metricBike && showError && (errorNumber === 5 || errorNumber === 7)){
             return <ErrorAlert  key={errorNumber} errorMessage={errorMessage}/>;
         } else if (imperialBike && showError && (errorNumber === 6 || errorNumber === 8)){
