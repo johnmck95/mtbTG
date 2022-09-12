@@ -12,13 +12,13 @@ interface RiderConversionProps{
     heightInchesCalc: number;
     weightLBCalc: number;
     weightKGCalc: number;
-}
+};
 interface BikeConversionProps{
     reachMMCalc: number;
     reachInchCalc: number;
     stackMMCalc: number;
     stackInchCalc: number;
-}
+};
 interface FormProps{
     inputs: {
         heightFeet: string,
@@ -46,203 +46,299 @@ interface FormProps{
     handleReRender: () => void;
 }
 
-export default function Form({inputs, imperialRider, imperialBike, handleImperialRider, handleImperialBike, handleChange, handleCustomComponent, handleRiderConversion, handleBikeConversion, handleFormCompletion, handleReRender}: FormProps) {
-    const [showErrors, setShowErrors] = useState(false)
-
-    // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect. (Currently disabled warning)
+export default function Form({
+    inputs, 
+    imperialRider, 
+    imperialBike, 
+    handleImperialRider, 
+    handleImperialBike, 
+    handleChange, 
+    handleCustomComponent, 
+    handleRiderConversion, 
+    handleBikeConversion, 
+    handleFormCompletion, 
+    handleReRender
+}: FormProps) {
+    const [showErrors, setShowErrors] = useState(false);
+    const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, skillLevel, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs;
+    const metricRider = !imperialRider;
+    const metricBike = !imperialBike;
+    // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect.
     useEffect(() => {
         if(showErrors)
-            handleErrors()
+            handleErrors();
             // eslint-disable-next-line
-    }, [imperialRider, imperialBike, inputs])
+    }, [imperialRider, imperialBike, inputs]);
 
-    function toggleRiderUnit() {
-        handleImperialRider()
-        riderStateConversion()
-    }
+    function toggleRiderUnit(): void {
+        handleImperialRider();
+        riderStateConversion();
+    };
 
-    function toggleBikeUnit(){
-        handleImperialBike()
-        bikeStateConversion()
-    }
+    function toggleBikeUnit(): void {
+        handleImperialBike();
+        bikeStateConversion();
+    };
 
-    function riderStateConversion() {
+    function riderStateConversion(): void {
         let heightCMCalc = -1;
         let heightFootCalc = -1;
         let heightInchesCalc = -1;
         let weightKGCalc = -1;
         let weightLBCalc = -1;
 
-        if (imperialRider && inputs.heightFeet !== "" && inputs.heightInches !== ""){
-             heightCMCalc = parseInt(inputs.heightFeet) * 30.48 + parseFloat(inputs.heightInches) * 2.54;
-        }if (!imperialRider && inputs.heightCM !== ""){
-            const totalInches = parseFloat(inputs.heightCM) / 2.54;
+        if (imperialRider && heightFeet && heightInches){
+             heightCMCalc = parseInt(heightFeet) * 30.48 + parseFloat(heightInches) * 2.54;
+        } if (!imperialRider && heightCM){
+            const totalInches = parseFloat(heightCM) / 2.54;
             heightFootCalc = Math.floor(totalInches / 12);
             heightInchesCalc = totalInches % 12;
-        }if (imperialRider && inputs.weightLB !== ""){
-            weightKGCalc = parseFloat(inputs.weightLB) * 0.45359237
-        }if (!imperialRider && inputs.weightKG !== "")
-            weightLBCalc = parseFloat(inputs.weightKG) * 2.2046226218
-        
-        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc})
-    }
+        } if (imperialRider && weightLB){
+            weightKGCalc = parseFloat(weightLB) * 0.45359237;
+        } if (!imperialRider && weightKG )
+            weightLBCalc = parseFloat(weightKG) * 2.2046226218;
+        handleRiderConversion({heightCMCalc, heightFootCalc, heightInchesCalc, weightLBCalc, weightKGCalc});
+    };
 
-    function bikeStateConversion() {
+    function bikeStateConversion(): void {
         let reachMMCalc = -1;
         let reachInchCalc = -1;
         let stackMMCalc = -1;
         let stackInchCalc = -1;
         
-        if (!imperialBike && inputs.reachMM !== "")
-            reachInchCalc = parseFloat(inputs.reachMM)/25.4
-        if (!imperialBike && inputs.stackMM !== "")
-            stackInchCalc = parseFloat(inputs.stackMM)/25.4
-        if (imperialBike && inputs.reachInches !== "")
-            reachMMCalc = parseFloat(inputs.reachInches)*25.4
-        if (imperialBike && inputs.stackInches !== "")
-            stackMMCalc = parseFloat(inputs.stackInches)*25.4
+        if (!imperialBike && reachMM)
+            reachInchCalc = parseFloat(reachMM)/25.4;
+        if (!imperialBike && stackMM)
+            stackInchCalc = parseFloat(stackMM)/25.4;
+        if (imperialBike && reachInches)
+            reachMMCalc = parseFloat(reachInches)*25.4;
+        if (imperialBike && stackInches)
+            stackMMCalc = parseFloat(stackInches)*25.4;
+        handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc});
+    };
 
-        handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc})
-    }
+    function checkErrorZero(): number {
+        let criteria = 0;
+        const heightFt: number = parseFloat(heightFeet);
+        if (imperialRider && Number.isInteger(heightFt) && heightFt >= 0) {
+            criteria++;
+            errorCodes[0].showError = false;
+        } else if (imperialRider)
+            errorCodes[0].showError = true;
+        return criteria;
+    };
 
-    let formHasErrors = true
+    function checkErrorOne(): number {
+        let criteria = 0;
+        const heightIn: number = parseFloat(heightInches);
+        if (imperialRider && heightIn >= 0 && heightIn < 12){
+            criteria++;
+            errorCodes[1].showError = false;
+        } else if (imperialRider)
+            errorCodes[1].showError = true;
+        return criteria;
+    };
+
+    function checkErrorTwo(): number {
+        let criteria = 0;
+        const totalInches: number = parseInt(heightFeet) * 12 + parseFloat(heightInches);
+        if (imperialRider && totalInches >= 60 && totalInches <= 78){
+                criteria++;
+                errorCodes[2].showError = false;
+        } else if (imperialRider)
+            errorCodes[2].showError = true;
+        return criteria;
+    };
+
+    function checkErrorThree(): number {
+        let criteria = 0;
+        const height: number = parseFloat(heightCM);
+        if (metricRider && height >= 152.4 && height <= 198){
+            criteria++;
+            errorCodes[3].showError = false;
+        } else if (metricRider)
+            errorCodes[3].showError = true;
+        return criteria;
+    };
+
+    function checkErrorFour(): number {
+        let criteria = 0;
+        if (handling){
+            criteria++;
+            errorCodes[4].showError = false;
+        } else
+            errorCodes[4].showError = true;
+        return criteria;
+    };
+
+    function checkErrorFive(): number {
+        let criteria = 0;
+        const reach: number = parseFloat(reachMM);
+        if (metricBike && reach >= 400 && reach <= 550){
+            criteria++;
+            errorCodes[5].showError = false;
+        } else if (metricBike)
+            errorCodes[5].showError = true;
+        return criteria;
+    };
+
+    function checkErrorSix(): number {
+        let criteria = 0;
+        const reach: number = parseFloat(reachInches);
+        if (imperialBike && reach >= 15.75 && reach <= 21.65){
+            criteria++;
+            errorCodes[6].showError = false;
+        } else if (imperialBike)
+            errorCodes[6].showError = true;
+        return criteria;
+    };
+
+    function checkErrorSeven(): number {
+        let criteria = 0;
+        const stack: number = parseFloat(stackMM);
+        if (metricBike && stack >= 550 && stack <= 680){
+            criteria++;
+            errorCodes[7].showError = false;
+        } else if (metricBike)
+            errorCodes[7].showError = true;
+        return criteria;
+    };
+
+    function checkErrorEight(): number {
+        let criteria = 0;
+        const stack: number = parseFloat(stackInches);
+        if (imperialBike && stack >= 21.65 && stack <= 26.77){
+            criteria++;
+            errorCodes[8].showError = false;
+        } else if (imperialBike)
+            errorCodes[8].showError = true;
+        return criteria;
+    };
+
+    function checkErrorNine(): number {
+        let criteria = 0;
+        if (bikeType){
+            criteria++;
+            errorCodes[9].showError = false;
+        } else
+            errorCodes[9].showError = true;
+        return criteria;
+    };
+
+    function checkErrorTen(): number {
+        let criteria = 0;
+        const weight: number = parseFloat(weightLB);
+        if (imperialRider && weight >= 80 && weight <= 240){
+            criteria++;
+            errorCodes[10].showError = false;
+        } else if (imperialRider)
+            errorCodes[10].showError = true;
+        return criteria;
+    };
+
+    function checkErrorEleven(): number {
+        let criteria = 0;
+        const weight: number = parseFloat(weightKG);
+        if (metricRider && weight >= 36 && weight <= 109){
+            criteria++;
+            errorCodes[11].showError = false;
+        } else if (metricRider)
+            errorCodes[11].showError = true;
+        return criteria;
+    };
+
+    function checkErrorTwelve(): number {
+        let criteria = 0;
+        if (skillLevel) {
+            criteria++;
+            errorCodes[12].showError = false;
+        } else
+            errorCodes[12].showError = true;
+        return criteria;
+    };
+
+    let formHasErrors = true;
     function handleErrors() {
-        const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs;
         let criteria = 0;
         let requirements;
+        imperialRider? requirements = 9 : requirements = 7;
 
-        if (imperialRider) requirements = 9
-        else if (!imperialRider) requirements = 7
-
-        if (imperialRider && Number.isInteger(parseFloat(heightFeet)) && parseFloat(heightFeet) >= 0) {
-            criteria++
-            errorCodes[0].showError = false
-        } else if (imperialRider){
-            errorCodes[0].showError = true
-        }
-        if ( imperialRider && parseFloat(heightInches) >= 0 && parseFloat(heightInches) < 12){
-            criteria++
-            errorCodes[1].showError = false
-        } else if (imperialRider) {
-            errorCodes[1].showError = true
-        }
-        const totalInches = parseInt(heightFeet) * 12 + parseFloat(heightInches)
-        if ( imperialRider && totalInches >= 60 && totalInches <= 78){
-                criteria++
-                errorCodes[2].showError = false
-        } else if (imperialRider){
-            errorCodes[2].showError = true
-        }
-        if (!imperialRider && (parseFloat(heightCM) >= 152.4 && parseFloat(heightCM) <= 198)){
-            criteria++
-            errorCodes[3].showError = false
-        } else if (!imperialRider){
-            errorCodes[3].showError = true
-        }
-        if (handling !== ""){
-            criteria++
-            errorCodes[4].showError = false
-        } else {
-            errorCodes[4].showError = true
-        }
-        if ( !imperialBike && ((parseFloat(reachMM) >= 400 && parseFloat(reachMM) <= 550))){
-            criteria++
-            errorCodes[5].showError = false
-        } else if (!imperialBike){
-            errorCodes[5].showError = true
-        }
-        if (imperialBike && (parseFloat(reachInches) >= 15.75 && parseFloat(reachInches) <= 21.65)){
-            criteria++
-            errorCodes[6].showError = false
-        } else if (imperialBike){
-            errorCodes[6].showError = true
-        }
-        if ( !imperialBike && (parseFloat(stackMM) >= 550 && parseFloat(stackMM) <= 680)){
-                criteria++
-                errorCodes[7].showError = false
-        } else if (!imperialBike){
-            errorCodes[7].showError = true
-        }
-        if ( imperialBike && (parseFloat(stackInches) >= 21.65 && parseFloat(stackInches) <= 26.77)){
-            criteria++
-            errorCodes[8].showError = false
-        } else if ( imperialBike ){
-            errorCodes[8].showError = true
-        }
-        if ( bikeType !== ""){
-            criteria++
-            errorCodes[9].showError = false
-        } else {
-            errorCodes[9].showError = true
-        } if ( imperialRider && parseFloat(weightLB) >= 80 && parseFloat(weightLB) <= 240){
-            criteria++
-            errorCodes[10].showError = false
-        } else if (imperialRider){
-            errorCodes[10].showError = true
-        } if ( !imperialRider && parseFloat(weightKG) >= 36 && parseFloat(weightKG) <= 109){
-            criteria++
-            errorCodes[11].showError = false
-        } else if (!imperialRider){
-            errorCodes[11].showError = true
-        } if ( inputs.skillLevel !== "") {
-            criteria++
-            errorCodes[12].showError = false
-        } else {
-            errorCodes[12].showError = true
-        }
+        criteria += checkErrorZero();
+        criteria += checkErrorOne();
+        criteria += checkErrorTwo();
+        criteria += checkErrorThree();
+        criteria += checkErrorFour();
+        criteria += checkErrorFive();
+        criteria += checkErrorSix();
+        criteria += checkErrorSeven();
+        criteria += checkErrorEight();
+        criteria += checkErrorNine();
+        criteria += checkErrorTen();
+        criteria += checkErrorEleven();
+        criteria += checkErrorTwelve();
 
         if(criteria === requirements)
-            formHasErrors = false
-
-        handleReRender()
-    }
+            formHasErrors = false;
+        handleReRender();
+    };
 
     function handleSubmit() {
-        setShowErrors(() => true)
-        handleErrors()
+        setShowErrors(() => true);
+        handleErrors();
         if(!formHasErrors){
-            riderStateConversion()
-            bikeStateConversion()
-            handleFormCompletion()
-        }
-    }
+            riderStateConversion();
+            bikeStateConversion();
+            handleFormCompletion();
+        };
+    };
 
-    const heightErrorAlerts = errorCodes.map(error => {
-        if (imperialRider && error.showError && error.errorNumber < 3){
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else if (!imperialRider && error.showError && error.errorNumber === 3){
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else return null
-    })
-    const weightErrorAlerts = errorCodes.map(error => {
-        if (imperialRider && error.showError && error.errorNumber === 10){
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else if(!imperialRider && error.showError && error.errorNumber === 11){
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else return null
-    })
-    const handlingErrorAlerts = errorCodes.map(error => {
-        if (error.showError && error.errorNumber === 4)
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        else return null
-    })
-    const skillLevelErrorAlerts = errorCodes.map(error => {
-        if (error.showError && error.errorNumber === 12)
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        else return null
-    })
-    const reachStackErrorAlerts = errorCodes.map(error => {
-        if (!imperialBike && error.showError && (error.errorNumber === 5 || error.errorNumber === 7)){
-            return <ErrorAlert  key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else if (imperialBike && error.showError && (error.errorNumber === 6 || error.errorNumber === 8)){
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else return null
-    })
-    const bikeTypeErrorAlerts = errorCodes.map(error => {
-        if (error.showError && error.errorNumber === 9){
-            return <ErrorAlert key={error.errorNumber} errorMessage={error.errorMessage}/>
-        } else return null       
-    })
+    const heightErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
+        const {errorNumber, errorMessage, showError} = error;
+        if (imperialRider && showError && errorNumber < 3){
+            return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
+        } else if (metricRider && showError && errorNumber === 3){
+            return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
+        } else return null;
+    });
+
+    const weightErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
+        const {errorNumber, errorMessage, showError} = error;
+        if (imperialRider && showError && errorNumber === 10){
+            return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
+        } else if(metricRider && showError && errorNumber === 11){
+            return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
+        } else return null;
+    });
+
+    const handlingErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
+        const {errorNumber, errorMessage, showError} = error;
+        if (showError && errorNumber === 4)
+            return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
+        else return null;
+    });
+
+    const skillLevelErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
+        const {errorNumber, errorMessage, showError} = error;
+        if (showError && errorNumber === 12)
+            return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
+        else return null;
+    });
+
+    const reachStackErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
+        const {errorNumber, errorMessage, showError} = error;
+        if (metricBike && showError && (errorNumber === 5 || errorNumber === 7)){
+            return <ErrorAlert  key={errorNumber} errorMessage={errorMessage}/>;
+        } else if (imperialBike && showError && (errorNumber === 6 || errorNumber === 8)){
+            return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
+        } else return null;
+    });
+
+    const bikeTypeErrorAlerts: (JSX.Element | null)[] = errorCodes.map(error => {
+        const {errorNumber, errorMessage, showError} = error;
+        if (showError && errorNumber === 9){
+            return <ErrorAlert key={errorNumber} errorMessage={errorMessage}/>;
+        } else return null;   
+    });
 
     return(
         <div className="formBox">
@@ -319,7 +415,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                         }
                                         autoComplete="off"
                                         onChange={handleChange}
-                                        value={imperialRider? inputs.heightFeet : inputs.heightCM}
+                                        value={imperialRider? heightFeet : heightCM}
                                         name={imperialRider? "heightFeet" : "heightCM"}
                                         _placeholder={{ color: 'brand.placeholder' }}
                                         />
@@ -342,7 +438,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                             boxShadow='md'
                                             borderColor={(errorCodes[1].showError || errorCodes[2].showError)? "brand.error" : "brand.lightGrey"}
                                             autoComplete="off"
-                                            value={inputs.heightInches}
+                                            value={heightInches}
                                             name={"heightInches"}
                                             onChange={handleChange}
                                             _placeholder={{ color: 'brand.placeholder' }}
@@ -350,8 +446,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                     </FormControl>
                                 </GridItem>
                             }
-                            {heightErrorAlerts}
-                           
+                            {heightErrorAlerts}   
                             <GridItem colSpan={1} pb={1}>
                                 <FormControl autoComplete="none">
                                     <FormLabel 
@@ -371,7 +466,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                         }
                                         autoComplete="off"
                                         onChange={handleChange}
-                                        value={imperialRider? inputs.weightLB : inputs.weightKG}
+                                        value={imperialRider? weightLB : weightKG}
                                         name={imperialRider? "weightLB" : "weightKG"}
                                         _placeholder={{ color: 'brand.placeholder' }}
                                         />
@@ -389,7 +484,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                                 title="Stable" 
                                                 name="handling" 
                                                 value="stable" 
-                                                isChecked={inputs.handling === "stable" ? true : false} 
+                                                isChecked={handling === "stable" ? true : false} 
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomComponent}
                                                 />
@@ -399,7 +494,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                                 title="Neutral" 
                                                 name="handling" 
                                                 value="neutral" 
-                                                isChecked={inputs.handling === "neutral" ? true : false} 
+                                                isChecked={handling === "neutral" ? true : false} 
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomComponent}
                                                 />
@@ -409,7 +504,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                                 title="Agile" 
                                                 name="handling" 
                                                 value="agile" 
-                                                isChecked={inputs.handling === "agile" ? true : false}
+                                                isChecked={handling === "agile" ? true : false}
                                                 isError={errorCodes[4].showError}
                                                 handleCustomRadio={handleCustomComponent}
                                                 />
@@ -425,7 +520,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                     mb="2px"
                                     >Skill Level
                                 </FormLabel>
-                                <SkillSlider skillLevel={inputs.skillLevel} handleChange={handleCustomComponent}/>
+                                <SkillSlider skillLevel={skillLevel} handleChange={handleCustomComponent}/>
                             </GridItem>
                             {skillLevelErrorAlerts}
                         </SimpleGrid>
@@ -439,7 +534,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                 maxW="80%" ml={[-4, 0]} 
                                 mt={["1rem", "1.25rem"]} 
                                 > 
-                                BIKE METRICS 
+                                    BIKE METRICS 
                             </Heading>
                             <Box >
                                 <Button 
@@ -498,7 +593,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                                                      : (errorCodes[5].showError? "brand.error" : "brand.lightGrey")}
                                             autoComplete="off"
                                             type="number"
-                                            value={imperialBike? inputs.reachInches : inputs.reachMM}
+                                            value={imperialBike? reachInches : reachMM}
                                             name={imperialBike? "reachInches" : "reachMM"}
                                             onChange={handleChange}
                                             _placeholder={{ color: 'brand.placeholder' }}
@@ -522,7 +617,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                             borderColor={imperialBike? (errorCodes[8].showError? "brand.error" : "brand.lightGrey") 
                                                                      : (errorCodes[7].showError? "brand.error" : "brand.lightGrey")}
                                             autoComplete="off"
-                                            value={imperialBike? inputs.stackInches : inputs.stackMM}
+                                            value={imperialBike? stackInches : stackMM}
                                             name={imperialBike? "stackInches" : "stackMM"}
                                             onChange={handleChange}
                                             _placeholder={{ color: 'brand.placeholder' }}
@@ -543,7 +638,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                             title="Enduro" 
                                             name="bikeType" 
                                             value="enduro" 
-                                            isChecked={inputs.bikeType === "enduro" ? true : false} 
+                                            isChecked={bikeType === "enduro" ? true : false} 
                                             isError={errorCodes[9].showError}
                                             handleCustomRadio={handleCustomComponent}
                                             />
@@ -553,7 +648,7 @@ export default function Form({inputs, imperialRider, imperialBike, handleImperia
                                             title="Trail" 
                                             name="bikeType" 
                                             value="trail" 
-                                            isChecked={inputs.bikeType === "trail" ? true : false} 
+                                            isChecked={bikeType === "trail" ? true : false} 
                                             isError={errorCodes[9].showError}
                                             handleCustomRadio={handleCustomComponent}
                                             />
