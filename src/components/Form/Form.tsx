@@ -1,50 +1,24 @@
-import {ChangeEvent, useState, useEffect} from "react"
-import {Button, Flex, VStack, Input, Container, SimpleGrid, GridItem, FormControl, FormLabel, Heading, Divider, Box} from "@chakra-ui/react"
+import {useState, useEffect} from "react"
+import {
+    Button, 
+    Flex, 
+    VStack, 
+    Input, 
+    Container, 
+    SimpleGrid, 
+    GridItem, 
+    FormControl, 
+    FormLabel, 
+    Heading, 
+    Divider, 
+    Box
+} from "@chakra-ui/react"
 import CustomRadio from "../CustomRadio/CustomRadio"
 import "../../styling/form.css"
 import {errorCodes} from "../../data/ErrorCodes"
 import ErrorAlert from "../ErrorAlert/ErrorAlert"
 import SkillSlider from "../SkillSlider/SkillSlider"
-
-interface RiderConversionProps{
-    heightCMCalc: number;
-    heightFootCalc: number;
-    heightInchesCalc: number;
-    weightLBCalc: number;
-    weightKGCalc: number;
-};
-interface BikeConversionProps{
-    reachMMCalc: number;
-    reachInchCalc: number;
-    stackMMCalc: number;
-    stackInchCalc: number;
-};
-interface FormProps{
-    inputs: {
-        heightFeet: string,
-        heightInches: string,
-        heightCM: string,
-        weightLB: string,
-        weightKG: string,
-        handling: string,
-        skillLevel: string,
-        reachInches: string,
-        reachMM: string,
-        stackInches: string,
-        stackMM: string,
-        bikeType: string
-    };
-    imperialRider: boolean,
-    imperialBike: boolean,
-    handleImperialRider: () => void,
-    handleImperialBike: () => void,
-    handleChange: (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => void;
-    handleCustomComponent: (name: string, value: string) => void;
-    handleRiderConversion: ({heightCMCalc, heightFootCalc, heightInchesCalc}: RiderConversionProps) => void;
-    handleBikeConversion: ({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc}: BikeConversionProps) => void;
-    handleFormCompletion: () => void;
-    handleReRender: () => void;
-}
+import {FormProps} from "../../interfaces/interfaces";
 
 export default function Form({
     inputs, 
@@ -58,11 +32,13 @@ export default function Form({
     handleBikeConversion, 
     handleFormCompletion, 
     handleReRender
-}: FormProps) {
+}: FormProps): JSX.Element {
     const [showErrors, setShowErrors] = useState(false);
     const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, skillLevel, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs;
     const metricRider = !imperialRider;
     const metricBike = !imperialBike;
+    let formHasErrors = true;
+    
     // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect.
     useEffect(() => {
         if(showErrors)
@@ -257,8 +233,7 @@ export default function Form({
         return criteria;
     };
 
-    let formHasErrors = true;
-    function handleErrors() {
+    function handleErrors(): void {
         let criteria = 0;
         let requirements;
         imperialRider? requirements = 9 : requirements = 7;
@@ -282,7 +257,7 @@ export default function Form({
         handleReRender();
     };
 
-    function handleSubmit() {
+    function handleSubmit(): void {
         setShowErrors(() => true);
         handleErrors();
         if(!formHasErrors){

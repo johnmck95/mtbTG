@@ -10,16 +10,17 @@ import {
     Icon, 
     Divider, 
     Link } 
-    from "@chakra-ui/react"
+    from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import {FaSearch, 
     FaHandsHelping, 
     FaTools, 
     FaBicycle, 
     FaRegWindowClose, 
-    FaBars} from "react-icons/fa"
+    FaBars
+} from "react-icons/fa";
 
-export default function Help() {
+export default function Help(): JSX.Element {
     const smallScreen = 768;
     const [showPanel, setShowPanel] = useState(true);
     const hipsterIpsum = `I'm baby messenger bag raw denim taxidermy copper mug 90's man braid 
@@ -27,7 +28,7 @@ export default function Help() {
         adaptogen meditation tacos. Four loko irony microdosing tilde blog enamel pin forage you 
         probably haven't heard of them sriracha pork belly selfies organic pitchfork celiac. 
         Selvage chambray tilde swag. Vape cray wolf keytar stumptown neutra. Everyday carry you 
-        probably haven't heard of them narwhal fixie.`
+        probably haven't heard of them narwhal fixie.`;
 
     const useViewport = () => {
         const [width, setWidth] = useState(window.innerWidth);
@@ -35,19 +36,19 @@ export default function Help() {
           const handleWindowResize = () => setWidth(window.innerWidth);
           window.addEventListener("resize", handleWindowResize);
           if(width < smallScreen)
-            setShowPanel(() => false)
+            setShowPanel(() => false);
           else
-            setShowPanel(() => true)
+            setShowPanel(() => true);
           return () => window.removeEventListener("resize", handleWindowResize);
         }, [width]);
         return { width };
     }
-    const { width } = useViewport()
+    const { width } = useViewport();
 
-    function closePanelForSmallScreen(){
-        if ( width < smallScreen)
-            setShowPanel(prevShowPanel => !prevShowPanel)
-    }
+    function closePanelForSmallScreen(): void {
+        if (width < smallScreen)
+            setShowPanel(prevShowPanel => !prevShowPanel);
+    };
 
     return(
         <Container w='100%' maxW='64rem'>
@@ -214,6 +215,5 @@ export default function Help() {
                 </VStack>
             </HStack>
         </Container>
-
-    )
-}
+    );
+};

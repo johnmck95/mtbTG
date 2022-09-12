@@ -16,7 +16,7 @@ describe("Initialize the inputs", () => {
         stackInches: "",
         stackMM: "",
         bikeType: ""
-    }
+    };
     // Start with a clean set of inputs for each test
     beforeEach(() => {
         inputs = {
@@ -32,8 +32,8 @@ describe("Initialize the inputs", () => {
             stackInches: "",
             stackMM: "",
             bikeType: ""
-        }
-    })
+        };
+    });
 
 
     /* Handlebar width should be rounded to nearest mm */
@@ -70,11 +70,11 @@ describe("Initialize the inputs", () => {
 
     // **** BEGINNERS **** //
     test("80lb beginnner rider on trail bike: No inserts, 15psi front & 16psi rear", () => {
-        inputs.skillLevel = 'beginner'
-        inputs.weightLB = '80'
-        inputs.bikeType = 'trail'
-        const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        inputs.skillLevel = 'beginner';
+        inputs.weightLB = '80';
+        inputs.bikeType = 'trail';
+        const outputs = Algorithm(inputs);
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("15psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("16psi")
     })
@@ -84,7 +84,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi")
     })
@@ -94,7 +94,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
     })
@@ -104,7 +104,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
     })
@@ -115,7 +115,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("15psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("16psi")
     })
@@ -125,7 +125,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi")
     })
@@ -135,7 +135,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("27psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi")
     })
@@ -145,7 +145,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("28psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi")
     })
@@ -156,7 +156,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi")
     })
@@ -166,7 +166,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("18psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("19psi")
     })
@@ -176,7 +176,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '199.99'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi")
     })
@@ -186,7 +186,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '199.99'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("28psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("30psi")
     })
@@ -196,7 +196,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '200'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("22psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("24psi")
     })
@@ -206,7 +206,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '200'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
     })
@@ -216,7 +216,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
     })
@@ -226,7 +226,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi")
     })
@@ -237,7 +237,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("17psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("18psi")
     })
@@ -247,7 +247,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("18psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("19psi")
     })
@@ -257,7 +257,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '154.99'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("23psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi")
     })
@@ -267,7 +267,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '154.99'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
     })
@@ -277,7 +277,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '155'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("19psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("21psi")
     })
@@ -287,7 +287,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '155'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("20psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("22psi")
     })
@@ -297,7 +297,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
     })
@@ -307,7 +307,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
     })
@@ -318,7 +318,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("18psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("19psi")
     })
@@ -328,7 +328,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("19psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("21psi")
     })
@@ -338,7 +338,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '139.99'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("23psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi")
     })
@@ -348,7 +348,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '139.99'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
     })
@@ -358,7 +358,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '140'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("20psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("23psi")
     })
@@ -368,7 +368,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '140'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("21psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("24psi")
     })
@@ -378,7 +378,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '185'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("21psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("24psi")
     })
@@ -388,7 +388,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '185'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("22psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi")
     })
@@ -398,7 +398,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
     })
@@ -408,7 +408,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
     })
@@ -419,7 +419,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("20psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("21psi")
     })
@@ -429,7 +429,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '80'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("21psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("23psi")
     })
@@ -439,7 +439,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '139.99'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi")
     })
@@ -449,7 +449,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '139.99'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi")
     })
@@ -459,7 +459,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '140'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("22psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi")
     })
@@ -469,7 +469,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '140'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("23psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi")
     })
@@ -479,7 +479,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'trail'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi")
     })
@@ -489,7 +489,7 @@ describe("Initialize the inputs", () => {
         inputs.weightLB = '240'
         inputs.bikeType = 'enduro'
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("27psi")
         expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi")
     })
@@ -505,14 +505,14 @@ describe("Initialize the inputs", () => {
     test("NO inserts for beginner riders", () => {
         inputs.skillLevel="beginner"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
-        expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
+       expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
     test("NO inserts for novice riders", () => {
         inputs.skillLevel="novice"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
@@ -520,7 +520,7 @@ describe("Initialize the inputs", () => {
         inputs.skillLevel="intermediate"
         inputs.weightLB = "200"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes")
     })
 
@@ -528,7 +528,7 @@ describe("Initialize the inputs", () => {
         inputs.skillLevel="intermediate"
         inputs.weightLB = "199.9"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
@@ -536,7 +536,7 @@ describe("Initialize the inputs", () => {
         inputs.skillLevel="advanced"
         inputs.weightLB = "155"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes")
     })
 
@@ -544,7 +544,7 @@ describe("Initialize the inputs", () => {
         inputs.skillLevel="advanced"
         inputs.weightLB = "154"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
@@ -552,7 +552,7 @@ describe("Initialize the inputs", () => {
         inputs.skillLevel="expert"
         inputs.weightLB = "140"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes")
     })
     
@@ -560,7 +560,7 @@ describe("Initialize the inputs", () => {
         inputs.skillLevel="expert"
         inputs.weightLB = "139.999"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
 
@@ -568,14 +568,14 @@ describe("Initialize the inputs", () => {
         inputs.skillLevel="professional"
         inputs.weightLB = "140"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes")
     })
     test("NO inserts for professional riders < 140 lbs", () => {
         inputs.skillLevel="professional"
         inputs.weightLB = "139.999"
         const outputs = Algorithm(inputs)
-        render(<Output inputs={inputs} outputs={outputs}/>)
+        render(<Output inputs={inputs} outputs={outputs} imperialRider={true} imperialBike={true} handleShowForm={() => false}/>);
         expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No")
     })
     //----------------------------//

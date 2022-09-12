@@ -1,49 +1,53 @@
-import {useState} from "react"
-import {Box, Slider, SliderTrack, SliderFilledTrack, Text, SliderThumb} from "@chakra-ui/react"
+import {useState} from "react";
+import {
+    Box, 
+    Slider, 
+    SliderTrack, 
+    SliderFilledTrack, 
+    Text, 
+    SliderThumb
+} from "@chakra-ui/react";
+import {SkillSliderProps} from "../../interfaces/interfaces";
 
-interface SkillSliderProps {
-    skillLevel: string,
-    handleChange: (name: string, value: string) => void;
-}
-export default function SkillSlider({skillLevel, handleChange}: SkillSliderProps){
-        const [sliderValue, setSliderValue] = useState(skillLevel === "" ? 0 : mapSkillLevelToValue() )
+export default function SkillSlider({skillLevel, handleChange}: SkillSliderProps): JSX.Element {
+        const [sliderValue, setSliderValue] = useState(skillLevel === "" ? 0 : mapSkillLevelToValue());
 
-        function mapSkillLevelToValue(){
-            let defaultValue = 3
+        function mapSkillLevelToValue(): number {
+            let defaultValue = 3;
             if (skillLevel === "beginner" )
-                defaultValue = 1
+                defaultValue = 1;
             else if (skillLevel === "novice" )
-                defaultValue = 2
+                defaultValue = 2;
             else if (skillLevel === "intermediate" )
-                defaultValue = 3
+                defaultValue = 3;
             else if (skillLevel === "advanced" )
-                defaultValue = 4
+                defaultValue = 4;
             else if (skillLevel === "expert" )
-                defaultValue = 5
+                defaultValue = 5;
             else if (skillLevel === "professional")
-                defaultValue = 6
-            return defaultValue
-        }
+                defaultValue = 6;
+            return defaultValue;
+        };
         
-
-        function handleSlide(newSliderValue: number){
-            setSliderValue(() => newSliderValue)
-            let value = ""
+        function handleSlide(newSliderValue: number): void {
+            setSliderValue(() => newSliderValue);
+            let value = "";
             if(newSliderValue === 1)
-                value = "beginner"
+                value = "beginner";
             else if(newSliderValue === 2)
-                value = "novice"
+                value = "novice";
             else if(newSliderValue === 3)
-                value = "intermediate"
+                value = "intermediate";
             else if(newSliderValue === 4)
-                value = "advanced"
+                value = "advanced";
             else if(newSliderValue === 5)
-                value = "expert"
+                value = "expert";
             else if(newSliderValue === 6)
-                value = "professional"
+                value = "professional";
 
-            handleChange("skillLevel", value)
-        }
+            handleChange("skillLevel", value);
+        };
+
         return(
             <Box>
                 <Slider defaultValue={mapSkillLevelToValue()} min={1} max={6} step={1} onChange={(val) => handleSlide(val)} data-testid="sliderValue">
@@ -78,5 +82,5 @@ export default function SkillSlider({skillLevel, handleChange}: SkillSliderProps
                      You can achieve great results nationally and hold your own at an international event. </Text>
                 }
             </Box>
-        )
-}
+        );
+};
