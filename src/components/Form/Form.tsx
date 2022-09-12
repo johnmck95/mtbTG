@@ -63,6 +63,8 @@ export default function Form({
     const {heightFeet, heightInches, weightKG, weightLB, heightCM, handling, skillLevel, reachInches, reachMM, stackInches, stackMM, bikeType} = inputs;
     const metricRider = !imperialRider;
     const metricBike = !imperialBike;
+    let formHasErrors = true;
+    
     // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect.
     useEffect(() => {
         if(showErrors)
@@ -257,8 +259,7 @@ export default function Form({
         return criteria;
     };
 
-    let formHasErrors = true;
-    function handleErrors() {
+    function handleErrors(): void {
         let criteria = 0;
         let requirements;
         imperialRider? requirements = 9 : requirements = 7;
@@ -282,7 +283,7 @@ export default function Form({
         handleReRender();
     };
 
-    function handleSubmit() {
+    function handleSubmit(): void {
         setShowErrors(() => true);
         handleErrors();
         if(!formHasErrors){
