@@ -1,9 +1,22 @@
-import {Divider, Image, Text, Stack, VStack, Heading, AspectRatio, Container, List, ListItem, ListIcon, Box} from "@chakra-ui/react"
-import headshot from "../../images/headshot.png"
+import {
+    Divider, 
+    Image, 
+    Text, 
+    Stack, 
+    VStack, 
+    Heading, 
+    AspectRatio, 
+    Container, 
+    List, 
+    ListItem, 
+    ListIcon, 
+    Box
+} from "@chakra-ui/react";
+import headshot from "../../images/headshot.png";
 import {MdOutlineDirectionsBike} from "react-icons/md";
-import {FaLaptopCode} from "react-icons/fa"
+import {FaLaptopCode} from "react-icons/fa";
 
-export default function About() {
+export default function About(): JSX.Element {
     return(
         <Box h='calc(100vh - 50px)' overflow='scroll'>
             <Container maxW="50rem" bg="brand.flatBlack">
@@ -48,5 +61,5 @@ export default function About() {
                     </AspectRatio>
             </Container>
         </Box>
-    )
-}
+    );
+};

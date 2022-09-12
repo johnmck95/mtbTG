@@ -64,6 +64,6 @@ const errorCodes = [
         errorMessage: "Please select a Skill Level",
         showError: false,
     }
-]
+];
 
-export {errorCodes}
+export {errorCodes};

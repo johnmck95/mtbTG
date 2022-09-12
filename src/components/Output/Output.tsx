@@ -1,45 +1,26 @@
-import {Text, Divider, Button, GridItem, Heading, Stack, HStack, SimpleGrid, VStack, Container, Icon, Box} from "@chakra-ui/react"
-import {useState} from "react"
-import {FaRegWindowClose, FaBars} from "react-icons/fa"
-import '../../styling/output.css'
-import LearnMoreModal from "../LearnMoreModal/LearnMoreModal"
+import {
+    Text, 
+    Divider, 
+    Button, 
+    GridItem, 
+    Heading, 
+    Stack, 
+    HStack, 
+    SimpleGrid, 
+    VStack, 
+    Container, 
+    Icon, 
+    Box
+} from "@chakra-ui/react";
+import {useState} from "react";
+import {FaRegWindowClose, FaBars} from "react-icons/fa";
+import '../../styling/output.css';
+import LearnMoreModal from "../LearnMoreModal/LearnMoreModal";
+import {OutputProps} from "../../interfaces/interfaces";
 
-interface OutputProps{
-    inputs: {
-        heightFeet: string,
-        heightInches: string,
-        heightCM: string,
-        weightLB: string,
-        weightKG: string,
-        handling: string,
-        skillLevel: string,
-        reachInches: string,
-        reachMM: string,
-        stackInches: string,
-        stackMM: string,
-        bikeType: string
-    };
-    outputs: {
-        barWidthMM: string,
-        barWidthInch: string,
-        barRiseMM: string,
-        barRiseInch: string,
-        stemLengthMM: string,
-        stemLengthInch: string,
-        spacersMM: string,
-        spacersInch: string,
-        frontTirePSI: string,
-        rearTirePSI: string,
-        inserts: string,
-    }
-    imperialRider: boolean,
-    imperialBike: boolean,
-    handleShowForm: () => void,
-}
-
-export default function Output({inputs, outputs, imperialRider, imperialBike, handleShowForm}: OutputProps) {
-    const [showSidePanel, setShowSidePanel] = useState(true)
-    const [metricOutput, setMetricOutput] = useState(true)
+export default function Output({inputs, outputs, imperialRider, imperialBike, handleShowForm}: OutputProps): JSX.Element {
+    const [showSidePanel, setShowSidePanel] = useState(true);
+    const [metricOutput, setMetricOutput] = useState(true);
 
     return(
         <div className='outputBox'>
@@ -174,7 +155,9 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                         <Divider orientation='horizontal' borderColor="brand.white" size="xl" maxW="95%" mb="8rem"/>
                         <SimpleGrid columns={3} columnGap={2} w={['85%', '80%', '75%']} pb={4}>
                             <GridItem colSpan={3}>
-                                <Text color='red.300' textAlign='justify'> <b>IMPORTANT: The Tuning Guide is under active development and is NOT FUNCTIONAL at this time.</b></Text>
+                                <Text color='red.300' textAlign='justify'> 
+                                    <b>IMPORTANT: The Tuning Guide is under active development and is NOT FUNCTIONAL at this time.</b>
+                                </Text>
                             </GridItem>
                             <GridItem colSpan={1} w="100%" textAlign="left">
                                 <Text textDecoration={"underline"}>Handlebar Width</Text>
@@ -244,5 +227,5 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                 </Stack>
             </Container>
         </div>
-    )
-}
+    );
+};

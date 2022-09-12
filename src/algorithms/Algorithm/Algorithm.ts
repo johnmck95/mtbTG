@@ -1,19 +1,6 @@
-interface AlgorithmProps{
-        heightFeet: string,
-        heightInches: string,
-        heightCM: string,
-        weightLB: string,
-        weightKG: string,
-        handling: string,
-        skillLevel: string,
-        reachInches: string,
-        reachMM: string,
-        stackInches: string,
-        stackMM: string,
-        bikeType: string
-}
+import {AlgorithmProps, Output} from "../../interfaces/interfaces";
 
-function Algorithm({heightCM, weightLB, skillLevel, bikeType}: AlgorithmProps) {
+function Algorithm({heightCM, weightLB, skillLevel, bikeType}: AlgorithmProps): Output {
     const outputs = {
         barWidthMM: "",
         barWidthInch: "",
@@ -165,12 +152,12 @@ function Algorithm({heightCM, weightLB, skillLevel, bikeType}: AlgorithmProps) {
     };
 
     function tirePressureCalc(): void {
-        if( skillLevel === "beginner") beginnerTirePressure();
-        else if( skillLevel === "novice") noviceTirePressure();
-        else if( skillLevel === "intermediate") intermediateTirePressure();
-        else if( skillLevel === "advanced") advancedTirePressure();
-        else if( skillLevel === "expert") expertTirePressure();
-        else if( skillLevel === "professional") professionalTirePressure();
+        if (skillLevel === "beginner") beginnerTirePressure();
+        else if (skillLevel === "novice") noviceTirePressure();
+        else if (skillLevel === "intermediate") intermediateTirePressure();
+        else if (skillLevel === "advanced") advancedTirePressure();
+        else if (skillLevel === "expert") expertTirePressure();
+        else if (skillLevel === "professional") professionalTirePressure();
     };
 
     barWidthCalc();

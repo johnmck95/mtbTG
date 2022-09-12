@@ -1,23 +1,33 @@
-import {Flex, Box, ButtonGroup, Link, Text, HStack, Container, Image, Icon, IconButton} from "@chakra-ui/react"
-import {FaBars, FaRegWindowClose, FaUser, FaQuestionCircle} from "react-icons/fa"
-import MtbTG from "../../images/mtbTG-logo.png"
-import React from "react"
-import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
+import {
+    Flex, 
+    Box, 
+    ButtonGroup, 
+    Link, 
+    Text, 
+    HStack, 
+    Container, 
+    Image, 
+    Icon, 
+    IconButton
+} from "@chakra-ui/react";
+import {FaBars, FaRegWindowClose, FaUser, FaQuestionCircle} from "react-icons/fa";
+import MtbTG from "../../images/mtbTG-logo.png";
+import {useState, useEffect} from "react";
+import {Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react';
 
-export default function Header() {
-
+export default function Header(): JSX.Element {
     // useViewport from: https://blog.logrocket.com/developing-responsive-layouts-with-react-hooks/
     const useViewport = () => {
-        const [width, setWidth] = React.useState(window.innerWidth);    // creates state to store window width
-        React.useEffect(() => {                                         // useEffect called to handle events outside of Reacts core functionality
-          const handleWindowResize = () => setWidth(window.innerWidth); // the callback function to update state
-          window.addEventListener("resize", handleWindowResize);        // create a event listener that listens for window resizes
-          return () => window.removeEventListener("resize", handleWindowResize);   // cleanup browser event listener when component not rendered
-        }, []);                                                         // Only occurs on first render (since the resize listener triggers state updates)
-        return { width };                                               // The state variable that is always up to date
-    }
+        const [width, setWidth] = useState(window.innerWidth);
+        useEffect(() => {
+          const handleWindowResize = () => setWidth(window.innerWidth);
+          window.addEventListener("resize", handleWindowResize);
+          return () => window.removeEventListener("resize", handleWindowResize);
+        }, []);
+        return { width };
+    };
 
-    const { width } = useViewport()                                     // Array destructuring to easily use the window width
+    const { width } = useViewport();
     const breakpoint = 520;
 
     return(

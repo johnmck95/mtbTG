@@ -58,6 +58,6 @@ const learnMoreModal= [
             a plethora of tire inserts to choose from, some of which will not provide both benefits. 
             CushCore is our recommendation, but please consult your local bike shop if in doubt.`,
     },
-]
+];
 
-export {learnMoreModal}
+export {learnMoreModal};

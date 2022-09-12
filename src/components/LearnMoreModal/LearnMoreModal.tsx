@@ -1,15 +1,23 @@
-import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure, Link, Image} from '@chakra-ui/react'
-import {learnMoreModal as modalData} from "../../data/LearnMoreModal"
-import placeholderImage from "../../images/placeholder-SM,300x150.png"
+import {
+    Modal, 
+    ModalOverlay, 
+    ModalContent, 
+    ModalHeader, 
+    ModalFooter, 
+    ModalBody, 
+    ModalCloseButton, 
+    Button, 
+    useDisclosure, 
+    Link, 
+    Image
+} from '@chakra-ui/react';
+import {learnMoreModal as modalData} from "../../data/LearnMoreModal";
+import placeholderImage from "../../images/placeholder-SM,300x150.png";
+import {LeanMoreModalProps} from "../../interfaces/interfaces";
 
-interface LeanMoreModalProps{
-    id: number
-}
-export default function LearnMoreModal({id}: LeanMoreModalProps) {  
+export default function LearnMoreModal({id}: LeanMoreModalProps): JSX.Element {  
     const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const data = modalData[id]
-
+    const data = modalData[id];
 
     return (
         <>
@@ -39,6 +47,6 @@ export default function LearnMoreModal({id}: LeanMoreModalProps) {
                 </ModalContent>
             </Modal>
         </>
-    )
-}
+    );
+};
 

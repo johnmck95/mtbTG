@@ -1,27 +1,20 @@
-import { Box } from "@chakra-ui/react"
-import { KeyboardEvent } from "react"
+import { Box } from "@chakra-ui/react";
+import { KeyboardEvent } from "react";
+import { CustomRadioProps } from "../../interfaces/interfaces";
 
-interface CustomRadioProps{
-    title: string;
-    name: string;
-    value: string;
-    isChecked: boolean;
-    isError: boolean;
-    handleCustomRadio: (name: string, value: string) => void;
-}
-export default function CustomRadio(props: CustomRadioProps) {
-    const {title, name, value, isChecked, isError, handleCustomRadio} = props
+export default function CustomRadio(props: CustomRadioProps): JSX.Element {
+    const {title, name, value, isChecked, isError, handleCustomRadio} = props;
 
-    let borderColor = "brand.placeholder"
+    let borderColor = "brand.placeholder";
     if(isChecked)
-        borderColor = "brand.white"
+        borderColor = "brand.white";
     if(isError)
-        borderColor = "brand.error"
+        borderColor = "brand.error";
         
-    function handleKeyPress(event: KeyboardEvent<HTMLImageElement>){
+    function handleKeyPress(event: KeyboardEvent<HTMLImageElement>): void {
         if (event.key === 'Enter')
-            handleCustomRadio(name, value)
-    }
+            handleCustomRadio(name, value);
+    };
 
     return(
         <Box as='label' title={title}>
@@ -43,5 +36,5 @@ export default function CustomRadio(props: CustomRadioProps) {
                 {title}
             </Box>
         </Box>
-    )
-}
+    );
+};
