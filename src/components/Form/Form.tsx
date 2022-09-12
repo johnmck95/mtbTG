@@ -117,7 +117,7 @@ export default function Form({
         handleBikeConversion({reachMMCalc, reachInchCalc, stackMMCalc, stackInchCalc});
     };
 
-    function checkForErrorZero(): number {
+    function checkErrorZero(): number {
         let criteria = 0;
         const heightFt: number = parseFloat(heightFeet);
         if (imperialRider && Number.isInteger(heightFt) && heightFt >= 0) {
@@ -128,7 +128,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorOne(): number {
+    function checkErrorOne(): number {
         let criteria = 0;
         const heightIn: number = parseFloat(heightInches);
         if (imperialRider && heightIn >= 0 && heightIn < 12){
@@ -139,7 +139,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorTwo(): number {
+    function checkErrorTwo(): number {
         let criteria = 0;
         const totalInches: number = parseInt(heightFeet) * 12 + parseFloat(heightInches);
         if (imperialRider && totalInches >= 60 && totalInches <= 78){
@@ -150,7 +150,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorThree(): number {
+    function checkErrorThree(): number {
         let criteria = 0;
         const height: number = parseFloat(heightCM);
         if (metricRider && height >= 152.4 && height <= 198){
@@ -161,7 +161,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorFour(): number {
+    function checkErrorFour(): number {
         let criteria = 0;
         if (handling){
             criteria++;
@@ -171,7 +171,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorFive(): number {
+    function checkErrorFive(): number {
         let criteria = 0;
         const reach: number = parseFloat(reachMM);
         if (metricBike && reach >= 400 && reach <= 550){
@@ -182,7 +182,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorSix(): number {
+    function checkErrorSix(): number {
         let criteria = 0;
         const reach: number = parseFloat(reachInches);
         if (imperialBike && reach >= 15.75 && reach <= 21.65){
@@ -193,7 +193,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorSeven(): number {
+    function checkErrorSeven(): number {
         let criteria = 0;
         const stack: number = parseFloat(stackMM);
         if (metricBike && stack >= 550 && stack <= 680){
@@ -204,7 +204,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorEight(): number {
+    function checkErrorEight(): number {
         let criteria = 0;
         const stack: number = parseFloat(stackInches);
         if (imperialBike && stack >= 21.65 && stack <= 26.77){
@@ -215,7 +215,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorNine(): number {
+    function checkErrorNine(): number {
         let criteria = 0;
         if (bikeType){
             criteria++;
@@ -225,7 +225,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorTen(): number {
+    function checkErrorTen(): number {
         let criteria = 0;
         const weight: number = parseFloat(weightLB);
         if (imperialRider && weight >= 80 && weight <= 240){
@@ -236,7 +236,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorEleven(): number {
+    function checkErrorEleven(): number {
         let criteria = 0;
         const weight: number = parseFloat(weightKG);
         if (metricRider && weight >= 36 && weight <= 109){
@@ -247,7 +247,7 @@ export default function Form({
         return criteria;
     };
 
-    function checkForErrorTwelve(): number {
+    function checkErrorTwelve(): number {
         let criteria = 0;
         if (skillLevel) {
             criteria++;
@@ -263,19 +263,19 @@ export default function Form({
         let requirements;
         imperialRider? requirements = 9 : requirements = 7;
 
-        criteria += checkForErrorZero();
-        criteria += checkForErrorOne();
-        criteria += checkForErrorTwo();
-        criteria += checkForErrorThree();
-        criteria += checkForErrorFour();
-        criteria += checkForErrorFive();
-        criteria += checkForErrorSix();
-        criteria += checkForErrorSeven();
-        criteria += checkForErrorEight();
-        criteria += checkForErrorNine();
-        criteria += checkForErrorTen();
-        criteria += checkForErrorEleven();
-        criteria += checkForErrorTwelve();
+        criteria += checkErrorZero();
+        criteria += checkErrorOne();
+        criteria += checkErrorTwo();
+        criteria += checkErrorThree();
+        criteria += checkErrorFour();
+        criteria += checkErrorFive();
+        criteria += checkErrorSix();
+        criteria += checkErrorSeven();
+        criteria += checkErrorEight();
+        criteria += checkErrorNine();
+        criteria += checkErrorTen();
+        criteria += checkErrorEleven();
+        criteria += checkErrorTwelve();
 
         if(criteria === requirements)
             formHasErrors = false;
