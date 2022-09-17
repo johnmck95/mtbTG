@@ -19,7 +19,7 @@ module.exports = {
         "no-console": "warn",
         "no-unused-vars": "warn",
         "quotes": ["warn", "double"],
-        "react/react-in-jsx-scope": "off",
+        "react/react-in-jsx-scope": "off"
     },
     overrides: [
         {
