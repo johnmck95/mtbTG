@@ -78,7 +78,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("15psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("16psi");
@@ -96,7 +96,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi");
@@ -114,7 +114,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi");
@@ -132,7 +132,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi");
@@ -151,7 +151,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("15psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("16psi");
@@ -169,7 +169,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi");
@@ -187,7 +187,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("27psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi");
@@ -205,7 +205,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("28psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi");
@@ -224,7 +224,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("16psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("17psi");
@@ -242,7 +242,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("18psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("19psi");
@@ -260,7 +260,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi");
@@ -278,7 +278,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("28psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("30psi");
@@ -296,7 +296,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("22psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("24psi");
@@ -314,7 +314,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi");
@@ -332,7 +332,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi");
@@ -350,7 +350,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi");
@@ -369,7 +369,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("17psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("18psi");
@@ -387,7 +387,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("18psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("19psi");
@@ -405,7 +405,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("23psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi");
@@ -423,7 +423,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi");
@@ -441,7 +441,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("19psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("21psi");
@@ -459,7 +459,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("20psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("22psi");
@@ -477,7 +477,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi");
@@ -495,7 +495,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi");
@@ -514,7 +514,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("18psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("19psi");
@@ -532,7 +532,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("19psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("21psi");
@@ -550,7 +550,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("23psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi");
@@ -568,7 +568,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi");
@@ -586,7 +586,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("20psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("23psi");
@@ -604,7 +604,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("21psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("24psi");
@@ -622,7 +622,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("21psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("24psi");
@@ -640,7 +640,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("22psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi");
@@ -658,7 +658,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("24psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi");
@@ -676,7 +676,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi");
@@ -695,7 +695,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("20psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("21psi");
@@ -713,7 +713,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("21psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("23psi");
@@ -731,7 +731,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("25psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("27psi");
@@ -749,7 +749,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi");
@@ -767,7 +767,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("22psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("25psi");
@@ -785,7 +785,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("23psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("26psi");
@@ -803,7 +803,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("26psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("28psi");
@@ -821,7 +821,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("frontTireOutput")).toHaveTextContent("27psi");
     expect(screen.getByTestId("rearTireOutput")).toHaveTextContent("29psi");
@@ -844,7 +844,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No");
   });
@@ -859,7 +859,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No");
   });
@@ -875,7 +875,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes");
   });
@@ -891,7 +891,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No");
   });
@@ -907,7 +907,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes");
   });
@@ -923,7 +923,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No");
   });
@@ -939,7 +939,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes");
   });
@@ -955,7 +955,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No");
   });
@@ -971,7 +971,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("Yes");
   });
@@ -986,7 +986,7 @@ describe("Initialize the inputs", () => {
         imperialRider={true}
         imperialBike={true}
         handleShowForm={() => false}
-      />
+      />,
     );
     expect(screen.getByTestId("insertsOutput")).toHaveTextContent("No");
   });

@@ -46,7 +46,7 @@ describe("The default form contains ", () => {
     });
     test("Placeholder value of 10", () => {
       expect(FormElements.heightInches.getAttribute("placeholder")).toEqual(
-        "10"
+        "10",
       );
     });
   });
@@ -127,12 +127,12 @@ describe("When Rider Metrics are changed from imperial to metric ", () => {
   });
   test("Height (feet) is no longer present", () => {
     expect(
-      screen.queryByLabelText(FormLabels.heightFeet)
+      screen.queryByLabelText(FormLabels.heightFeet),
     ).not.toBeInTheDocument();
   });
   test("Height (inches) is no longer present", () => {
     expect(
-      screen.queryByLabelText(FormLabels.heightFeet)
+      screen.queryByLabelText(FormLabels.heightFeet),
     ).not.toBeInTheDocument();
   });
 
@@ -173,7 +173,7 @@ describe("When Bike Metrics are changed from metric to imperial ", () => {
     });
     test("Placeholder value of 18.70 appears", () => {
       expect(FormElements.reachInches.getAttribute("placeholder")).toEqual(
-        "18.70"
+        "18.70",
       );
     });
   });
@@ -184,7 +184,7 @@ describe("When Bike Metrics are changed from metric to imperial ", () => {
     });
     test("Placeholder value of 24.41 appears", () => {
       expect(FormElements.stackInches.getAttribute("placeholder")).toEqual(
-        "24.41"
+        "24.41",
       );
     });
   });
@@ -236,7 +236,7 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
         toggleRiderUnits();
         expect(screen.getByDisplayValue(feetOut)).toBeInTheDocument();
         expect(screen.getByDisplayValue(inchesOut)).toBeInTheDocument();
-      }
+      },
     );
     test.each([
       ["80", "80.0000"],
@@ -297,7 +297,7 @@ describe("Converting Bike Metrics from Metic to Imperial", () => {
         toggleBikeUnits();
         toggleBikeUnits();
         expect(screen.getByDisplayValue(reachMMOut)).toBeInTheDocument();
-      }
+      },
     );
     test.each([
       ["500", "499.9990"],
@@ -313,7 +313,7 @@ describe("Converting Bike Metrics from Metic to Imperial", () => {
         toggleBikeUnits();
         toggleBikeUnits();
         expect(screen.getByDisplayValue(stackMMOut)).toBeInTheDocument();
-      }
+      },
     );
   });
 });
@@ -342,7 +342,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expect(screen.getByText("RIDER METRICS")).toBeVisible();
-    }
+    },
   );
   test.each([["-1"], ["12"], ["-0.0000001"], ["six"], ["59.8"]])(
     "Changing Height (inches) to an invalid value [%s] will not allow you to proceed to the Output page",
@@ -352,7 +352,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(1);
-    }
+    },
   );
   test.each([
     ["6", "6.00000001"],
@@ -369,7 +369,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(2);
-    }
+    },
   );
 
   test.each([
@@ -389,7 +389,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(3);
-    }
+    },
   );
 
   test.each([
@@ -407,7 +407,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(10);
-    }
+    },
   );
   test.each([
     ["35.999999"],
@@ -425,7 +425,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(11);
-    }
+    },
   );
   test.each([
     ["399.99999999"],
@@ -442,7 +442,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(5);
-    }
+    },
   );
   test.each([["15.7495"], ["-16"], ["seventeen"], ["21.6501"], ["22"]])(
     "Changing Reach (inches) to an invalid value [%s] will not allow you to proceed to the Output page",
@@ -453,7 +453,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(6);
-    }
+    },
   );
   test.each([
     ["549"],
@@ -470,7 +470,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(7);
-    }
+    },
   );
   test.each([
     ["21.649"],
@@ -488,7 +488,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
       clickCalculateButton();
       expect(screen.queryByText("YOUR SETTINGS")).not.toBeInTheDocument();
       expectErrorMessageToBePresent(8);
-    }
+    },
   );
 });
 
@@ -671,7 +671,7 @@ describe("Error Handling ", () => {
         enterHeightCMValue(heightCM);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(3);
-      }
+      },
     );
   });
 
@@ -712,7 +712,7 @@ describe("Error Handling ", () => {
         enterWeightLBValue(weightLB);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(10);
-      }
+      },
     );
   });
 
@@ -760,7 +760,7 @@ describe("Error Handling ", () => {
         enterWeightKGValue(weightKG);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(11);
-      }
+      },
     );
   });
 
@@ -776,7 +776,7 @@ describe("Error Handling ", () => {
           clickHandlingRadio(radio);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(4);
-      }
+      },
     );
   });
 
@@ -799,7 +799,7 @@ describe("Error Handling ", () => {
           slideSkillLevelHandle(val);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(12);
-      }
+      },
     );
   });
 
@@ -810,7 +810,7 @@ describe("Error Handling ", () => {
         enterReachMMValue(reach);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(5);
-      }
+      },
     );
     test("Displays error[5] when value is 399.99999", () => {
       enterReachMMValue("399.99999");
@@ -852,7 +852,7 @@ describe("Error Handling ", () => {
         enterReachInchesValue(reach);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(6);
-      }
+      },
     );
     test("Displays error[6] when value is 15.7499999", () => {
       toggleBikeUnits();
@@ -899,7 +899,7 @@ describe("Error Handling ", () => {
         enterStackMMValue(stack);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(7);
-      }
+      },
     );
     test("Displays error[7] when value is 549.9999", () => {
       enterStackMMValue("549.9999");
@@ -941,7 +941,7 @@ describe("Error Handling ", () => {
         enterStackInchesValue(stack);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(8);
-      }
+      },
     );
     test("Displays error[8] when value is 21.6499999", () => {
       toggleBikeUnits();
@@ -993,7 +993,7 @@ describe("Error Handling ", () => {
           clickBikeTypeRadio(bikeType);
         clickCalculateButton();
         expectErrorMessageNotToBePresent(9);
-      }
+      },
     );
   });
 

@@ -40,7 +40,9 @@ export default function Help(): JSX.Element {
       else setShowPanel(() => true);
       return () => window.removeEventListener("resize", handleWindowResize);
     }, [width]);
-    return { width };
+    return {
+      width,
+    };
   };
   const { width } = useViewport();
 
@@ -79,7 +81,10 @@ export default function Help(): JSX.Element {
               <InputGroup maxW="70%">
                 <Input
                   placeholder="Search"
-                  _placeholder={{ opacity: 1, color: "brand.white" }}
+                  _placeholder={{
+                    opacity: 1,
+                    color: "brand.white",
+                  }}
                   borderColor="brand.white"
                   bg="brand.flatBlack"
                   mb="0.5rem"

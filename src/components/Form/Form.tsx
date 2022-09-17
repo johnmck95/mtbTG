@@ -303,7 +303,7 @@ export default function Form({
       if (showError && errorNumber === 4)
         return <ErrorAlert key={errorNumber} errorMessage={errorMessage} />;
       else return null;
-    }
+    },
   );
 
   const skillLevelErrorAlerts: (JSX.Element | null)[] = errorCodes.map(
@@ -312,7 +312,7 @@ export default function Form({
       if (showError && errorNumber === 12)
         return <ErrorAlert key={errorNumber} errorMessage={errorMessage} />;
       else return null;
-    }
+    },
   );
 
   const reachStackErrorAlerts: (JSX.Element | null)[] = errorCodes.map(
@@ -327,7 +327,7 @@ export default function Form({
       ) {
         return <ErrorAlert key={errorNumber} errorMessage={errorMessage} />;
       } else return null;
-    }
+    },
   );
 
   const bikeTypeErrorAlerts: (JSX.Element | null)[] = errorCodes.map(
@@ -336,7 +336,7 @@ export default function Form({
       if (showError && errorNumber === 9) {
         return <ErrorAlert key={errorNumber} errorMessage={errorMessage} />;
       } else return null;
-    }
+    },
   );
 
   return (
@@ -379,8 +379,14 @@ export default function Form({
                 onClick={toggleRiderUnit}
                 _hover={
                   imperialRider
-                    ? { bg: "brand.lightGrey", filter: "brightness(110%)" }
-                    : { bg: "brand.blue", filter: "brightness(90%)" }
+                    ? {
+                        bg: "brand.lightGrey",
+                        filter: "brightness(110%)",
+                      }
+                    : {
+                        bg: "brand.blue",
+                        filter: "brightness(90%)",
+                      }
                 }
               >
                 Metric
@@ -399,8 +405,14 @@ export default function Form({
                 onClick={toggleRiderUnit}
                 _hover={
                   imperialRider
-                    ? { bg: "brand.blue", filter: "brightness(90%)" }
-                    : { bg: "brand.lightGrey", filter: "brightness(110%)" }
+                    ? {
+                        bg: "brand.blue",
+                        filter: "brightness(90%)",
+                      }
+                    : {
+                        bg: "brand.lightGrey",
+                        filter: "brightness(110%)",
+                      }
                 }
                 data-testid="imperialRiderButton"
               >
@@ -441,7 +453,9 @@ export default function Form({
                     onChange={handleChange}
                     value={imperialRider ? heightFeet : heightCM}
                     name={imperialRider ? "heightFeet" : "heightCM"}
-                    _placeholder={{ color: "brand.placeholder" }}
+                    _placeholder={{
+                      color: "brand.placeholder",
+                    }}
                   />
                 </FormControl>
               </GridItem>
@@ -466,7 +480,9 @@ export default function Form({
                       value={heightInches}
                       name={"heightInches"}
                       onChange={handleChange}
-                      _placeholder={{ color: "brand.placeholder" }}
+                      _placeholder={{
+                        color: "brand.placeholder",
+                      }}
                     />
                   </FormControl>
                 </GridItem>
@@ -496,7 +512,9 @@ export default function Form({
                     onChange={handleChange}
                     value={imperialRider ? weightLB : weightKG}
                     name={imperialRider ? "weightLB" : "weightKG"}
-                    _placeholder={{ color: "brand.placeholder" }}
+                    _placeholder={{
+                      color: "brand.placeholder",
+                    }}
                   />
                 </FormControl>
               </GridItem>
@@ -585,8 +603,14 @@ export default function Form({
                 onClick={toggleBikeUnit}
                 _hover={
                   imperialBike
-                    ? { bg: "brand.lightGrey", filter: "brightness(110%)" }
-                    : { bg: "brand.blue", filter: "brightness(90%)" }
+                    ? {
+                        bg: "brand.lightGrey",
+                        filter: "brightness(110%)",
+                      }
+                    : {
+                        bg: "brand.blue",
+                        filter: "brightness(90%)",
+                      }
                 }
               >
                 Metric
@@ -605,8 +629,14 @@ export default function Form({
                 onClick={toggleBikeUnit}
                 _hover={
                   imperialBike
-                    ? { bg: "brand.blue", filter: "brightness(90%)" }
-                    : { bg: "brand.lightGrey", filter: "brightness(110%)" }
+                    ? {
+                        bg: "brand.blue",
+                        filter: "brightness(90%)",
+                      }
+                    : {
+                        bg: "brand.lightGrey",
+                        filter: "brightness(110%)",
+                      }
                 }
                 data-testid="imperialBikeButton"
               >
@@ -647,7 +677,9 @@ export default function Form({
                     value={imperialBike ? reachInches : reachMM}
                     name={imperialBike ? "reachInches" : "reachMM"}
                     onChange={handleChange}
-                    _placeholder={{ color: "brand.placeholder" }}
+                    _placeholder={{
+                      color: "brand.placeholder",
+                    }}
                   />
                 </FormControl>
               </GridItem>
@@ -675,7 +707,9 @@ export default function Form({
                     value={imperialBike ? stackInches : stackMM}
                     name={imperialBike ? "stackInches" : "stackMM"}
                     onChange={handleChange}
-                    _placeholder={{ color: "brand.placeholder" }}
+                    _placeholder={{
+                      color: "brand.placeholder",
+                    }}
                   />
                 </FormControl>
               </GridItem>
@@ -713,7 +747,10 @@ export default function Form({
             bg="brand.blue"
             borderRadius="50px"
             onClick={handleSubmit}
-            _hover={{ bg: "brand.blue", filter: "brightness(90%)" }}
+            _hover={{
+              bg: "brand.blue",
+              filter: "brightness(90%)",
+            }}
           >
             Calculate
           </Button>

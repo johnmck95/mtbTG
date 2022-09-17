@@ -30,7 +30,9 @@ export default function LearnMoreModal({
         filter="brightness(120%)"
         color="brand.white"
         my={2}
-        _hover={{ bg: "brand.blue" }}
+        _hover={{
+          bg: "brand.blue",
+        }}
       >
         {" "}
         learn more

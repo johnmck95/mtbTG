@@ -14,7 +14,7 @@ export default function SkillSlider({
   handleChange,
 }: SkillSliderProps): JSX.Element {
   const [sliderValue, setSliderValue] = useState(
-    skillLevel === "" ? 0 : mapSkillLevelToValue()
+    skillLevel === "" ? 0 : mapSkillLevelToValue(),
   );
 
   function mapSkillLevelToValue(): number {
@@ -74,25 +74,28 @@ export default function SkillSlider({
       {sliderValue === 2 && (
         <Text fontSize="xs">
           {" "}
-          <b>NOVICE: </b>You're starting to get comfortable on the bike and
-          challenging yourself by tackling terrain you previously found too
-          difficult. Trails are getting rougher, and your speed is increasing.{" "}
+          <b>NOVICE: </b>
+          You're starting to get comfortable on the bike and challenging
+          yourself by tackling terrain you previously found too difficult.
+          Trails are getting rougher, and your speed is increasing.{" "}
         </Text>
       )}
       {sliderValue === 3 && (
         <Text fontSize="xs">
           {" "}
-          <b>INTERMEDIATE: </b>You're riding steeper terrain with roots and
-          rocks in all weather conditions. You feel more confident on the bike,
-          and may be learning how to jump and drop small features.
+          <b>INTERMEDIATE: </b>
+          You're riding steeper terrain with roots and rocks in all weather
+          conditions. You feel more confident on the bike, and may be learning
+          how to jump and drop small features.
         </Text>
       )}
       {sliderValue === 4 && (
         <Text fontSize="xs">
           {" "}
-          <b>ADVANCED: </b>You're a serious mountain biker that is confident
-          riding most trails. You'll glady ride medium sized jumps and drops, as
-          well as steep rolls where proper braking is critical.
+          <b>ADVANCED: </b>
+          You're a serious mountain biker that is confident riding most trails.
+          You'll glady ride medium sized jumps and drops, as well as steep rolls
+          where proper braking is critical.
         </Text>
       )}
       {sliderValue === 5 && (
@@ -108,9 +111,10 @@ export default function SkillSlider({
       {sliderValue === 6 && (
         <Text fontSize="xs">
           {" "}
-          <b>PROFESSIONAL: </b>An exceptionally skilled rider who makes the
-          local heros scratch their heads. You can achieve great results
-          nationally and hold your own at an international event.{" "}
+          <b>PROFESSIONAL: </b>
+          An exceptionally skilled rider who makes the local heros scratch their
+          heads. You can achieve great results nationally and hold your own at
+          an international event.{" "}
         </Text>
       )}
     </Box>

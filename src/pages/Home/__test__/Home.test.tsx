@@ -4,8 +4,12 @@ import Home from "../Home";
 
 test("Renders the Form by default", () => {
   render(<Home />);
-  screen.getByRole("heading", { name: "RIDER METRICS" });
-  screen.getByRole("heading", { name: "BIKE METRICS" });
+  screen.getByRole("heading", {
+    name: "RIDER METRICS",
+  });
+  screen.getByRole("heading", {
+    name: "BIKE METRICS",
+  });
 });
 
 test("Renders Output Page after successful form completion", async () => {
@@ -15,11 +19,17 @@ test("Renders Output Page after successful form completion", async () => {
   user.type(screen.getByLabelText("Weight (lb)"), "180");
   user.click(screen.getByText("Neutral"));
   user.click(screen.getByTestId("sliderValue"));
-  fireEvent.change(screen.getByTestId("sliderValue"), { value: "5" });
+  fireEvent.change(screen.getByTestId("sliderValue"), {
+    value: "5",
+  });
   user.type(screen.getByLabelText("Reach (mm)"), "510");
   user.type(screen.getByLabelText("Stack (mm)"), "640");
   user.click(screen.getByText("Enduro"));
-  user.click(screen.getByRole("button", { name: "Calculate" }));
+  user.click(
+    screen.getByRole("button", {
+      name: "Calculate",
+    }),
+  );
 
   await waitFor(() => {
     expect(screen.getByText("YOUR SETTINGS")).toBeInTheDocument();

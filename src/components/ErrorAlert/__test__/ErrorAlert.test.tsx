@@ -9,9 +9,9 @@ test("ErrorAlert renders without error", () => {
 
 test("ErrorAlert correctly reads from ErrorCodes.ts", () => {
   const { getByText } = render(
-    <ErrorAlert errorMessage={errorCodes[1].errorMessage} />
+    <ErrorAlert errorMessage={errorCodes[1].errorMessage} />,
   );
   getByText(
-    "Please enter a non-negative numeric value less than 12 for Height (inches)"
+    "Please enter a non-negative numeric value less than 12 for Height (inches)",
   );
 });

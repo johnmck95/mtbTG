@@ -63,6 +63,12 @@
       }
     ]
   },
+  "prettier": {
+    "printWidth": 80,
+    "trailingComma": "all",
+    "bracketSpacing": true
+
+  },
   "browserslist": {
     "production": [
       ">0.2%",

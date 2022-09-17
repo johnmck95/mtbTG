@@ -29,7 +29,9 @@ export default function Header(): JSX.Element {
       window.addEventListener("resize", handleWindowResize);
       return () => window.removeEventListener("resize", handleWindowResize);
     }, []);
-    return { width };
+    return {
+      width,
+    };
   };
 
   const { width } = useViewport();
@@ -79,7 +81,9 @@ export default function Header(): JSX.Element {
                     }
                     ml="5px"
                     bg="brand.lightBlack"
-                    _expanded={{ bg: "brand.lightBlack" }}
+                    _expanded={{
+                      bg: "brand.lightBlack",
+                    }}
                   />
                   <MenuList
                     minWidth="8rem"
@@ -94,7 +98,9 @@ export default function Header(): JSX.Element {
                       <MenuItem
                         icon={<Icon as={FaUser} />}
                         bg="brand.flatBlack"
-                        _hover={{ bg: "brand.darkGrey" }}
+                        _hover={{
+                          bg: "brand.darkGrey",
+                        }}
                       >
                         About
                       </MenuItem>
@@ -103,7 +109,9 @@ export default function Header(): JSX.Element {
                       <MenuItem
                         icon={<Icon as={FaQuestionCircle} />}
                         bg="brand.flatBlack"
-                        _hover={{ bg: "brand.darkGrey" }}
+                        _hover={{
+                          bg: "brand.darkGrey",
+                        }}
                       >
                         Help
                       </MenuItem>

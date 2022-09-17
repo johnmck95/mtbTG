@@ -50,7 +50,7 @@ export interface FormProps {
   handleImperialRider: () => void;
   handleImperialBike: () => void;
   handleChange: (
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>,
   ) => void;
   handleCustomComponent: (name: string, value: string) => void;
   handleRiderConversion: ({

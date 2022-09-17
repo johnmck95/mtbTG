@@ -69,7 +69,10 @@ export default function Output({
                   size={"xs"}
                   color={"brand.white"}
                   bg={"brand.blue"}
-                  _hover={{ bg: "brand.blue", filter: "brightness(90%)" }}
+                  _hover={{
+                    bg: "brand.blue",
+                    filter: "brightness(90%)",
+                  }}
                   alignSelf={"flex-end"}
                 >
                   Edit
@@ -184,8 +187,14 @@ export default function Output({
                   }
                   _hover={
                     metricOutput
-                      ? { bg: "brand.blue", filter: "brightness(90%)" }
-                      : { bg: "brand.lightGrey", filter: "brightness(110%)" }
+                      ? {
+                          bg: "brand.blue",
+                          filter: "brightness(90%)",
+                        }
+                      : {
+                          bg: "brand.lightGrey",
+                          filter: "brightness(110%)",
+                        }
                   }
                 >
                   Metric
@@ -205,8 +214,14 @@ export default function Output({
                   }
                   _hover={
                     metricOutput
-                      ? { bg: "brand.lightGrey", filter: "brightness(110%)" }
-                      : { bg: "brand.blue", filter: "brightness(90%)" }
+                      ? {
+                          bg: "brand.lightGrey",
+                          filter: "brightness(110%)",
+                        }
+                      : {
+                          bg: "brand.blue",
+                          filter: "brightness(90%)",
+                        }
                   }
                 >
                   Imperial
@@ -287,7 +302,8 @@ export default function Output({
               </GridItem>
               <GridItem colSpan={1} w="100%" textAlign="right">
                 <Text data-testid="frontTireOutput">
-                  {outputs.frontTirePSI}psi
+                  {outputs.frontTirePSI}
+                  psi
                 </Text>
               </GridItem>
               <GridItem colSpan={1} w="100%" textAlign="right">
@@ -298,7 +314,8 @@ export default function Output({
               </GridItem>
               <GridItem colSpan={1} w="100%" textAlign="right">
                 <Text data-testid="rearTireOutput">
-                  {outputs.rearTirePSI}psi
+                  {outputs.rearTirePSI}
+                  psi
                 </Text>
               </GridItem>
               <GridItem colSpan={1} w="100%" textAlign="right">

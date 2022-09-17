@@ -83,7 +83,7 @@ export function enterWeightKGValue(text: string): void {
 }
 
 export function clickHandlingRadio(
-  radio: "Stable" | "Neutral" | "Agile"
+  radio: "Stable" | "Neutral" | "Agile",
 ): void {
   user.click(screen.getByText(radio));
 }
@@ -116,7 +116,11 @@ export function clickBikeTypeRadio(radio: "Enduro" | "Trail"): void {
 }
 
 export function clickCalculateButton(): void {
-  user.click(screen.getByRole("button", { name: "Calculate" }));
+  user.click(
+    screen.getByRole("button", {
+      name: "Calculate",
+    }),
+  );
 }
 
 export function expectErrorMessagesToBePresent(errorIDs: number[]) {
@@ -149,5 +153,9 @@ export function toggleBikeUnits(): void {
 }
 
 export function clickEditFormButton(): void {
-  user.click(screen.getByRole("button", { name: "Edit" }));
+  user.click(
+    screen.getByRole("button", {
+      name: "Edit",
+    }),
+  );
 }

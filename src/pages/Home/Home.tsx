@@ -34,7 +34,7 @@ export default function Home(): JSX.Element {
 
   /* Updates state from an <input> change from Form.tsx */
   function handleChange(
-    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>,
   ): void {
     const { name, value } = event.target;
     setInputs((prevInputs) => ({
