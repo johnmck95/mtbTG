@@ -2,7 +2,11 @@ const learnMoreModal = [
   {
     id: 0,
     title: "Handlebar Width",
-    description: `Remove the grips and meausure between the widest points of the bar (with your preferred bar roll). Handlebar width will vary based on a persons height and wingspan. This adjustment assumes an average ape index. Handlebar width is strongly correlated to getting the tires onto side knobs while cornering, adjusting your effective reach, and general stability in a straight line.`,
+    description: `Remove the grips and meausure between the widest points of the 
+            bar (with your preferred bar roll). Handlebar width will vary based on a persons 
+            height and wingspan. This adjustment assumes an average ape index. Handlebar 
+            width is strongly correlated to getting the tires onto side knobs while cornering, 
+            adjusting your effective reach, and general stability in a straight line.`,
   },
   {
     id: 1,
