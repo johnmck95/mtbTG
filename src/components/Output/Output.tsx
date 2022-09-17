@@ -95,7 +95,7 @@ export default function Output({
                       ? parseInt(inputs.heightFeet) +
                         "'" +
                         parseFloat(inputs.heightInches).toFixed(0) +
-                        "\""
+                        '"'
                       : parseFloat(inputs.heightCM).toFixed(0) + "cm"}
                   </Text>
                 </GridItem>
@@ -127,7 +127,7 @@ export default function Output({
                 <GridItem colSpan={1} w="100%" textAlign="right">
                   <Text>
                     {imperialBike
-                      ? parseFloat(inputs.reachInches).toFixed(2) + "\""
+                      ? parseFloat(inputs.reachInches).toFixed(2) + '"'
                       : parseFloat(inputs.reachMM).toFixed(0) + "mm"}
                   </Text>
                 </GridItem>
@@ -137,7 +137,7 @@ export default function Output({
                 <GridItem colSpan={1} w="100%" textAlign="right">
                   <Text>
                     {imperialBike
-                      ? parseFloat(inputs.stackInches).toFixed(2) + "\""
+                      ? parseFloat(inputs.stackInches).toFixed(2) + '"'
                       : parseFloat(inputs.stackMM).toFixed(0) + "mm"}
                   </Text>
                 </GridItem>
@@ -255,7 +255,7 @@ export default function Output({
               <GridItem colSpan={1} w="100%" textAlign="right">
                 <Text>
                   {metricOutput ? outputs.barWidthMM : outputs.barWidthInch}
-                  {metricOutput ? "mm" : "\""}
+                  {metricOutput ? "mm" : '"'}
                 </Text>
               </GridItem>
               <GridItem colSpan={1} w="100%" textAlign="right">
@@ -267,7 +267,7 @@ export default function Output({
               <GridItem colSpan={1} w="100%" textAlign="right">
                 <Text>
                   {metricOutput ? outputs.barRiseMM : outputs.barRiseInch}
-                  {metricOutput ? "mm" : "\""}
+                  {metricOutput ? "mm" : '"'}
                 </Text>
               </GridItem>
               <GridItem colSpan={1} w="100%" textAlign="right">
@@ -279,7 +279,7 @@ export default function Output({
               <GridItem colSpan={1} w="100%" textAlign="right">
                 <Text>
                   {metricOutput ? outputs.stemLengthMM : outputs.stemLengthInch}
-                  {metricOutput ? "mm" : "\""}
+                  {metricOutput ? "mm" : '"'}
                 </Text>
               </GridItem>
               <GridItem colSpan={1} w="100%" textAlign="right">
@@ -291,7 +291,7 @@ export default function Output({
               <GridItem colSpan={1} w="100%" textAlign="right">
                 <Text>
                   {metricOutput ? outputs.spacersMM : outputs.spacersInch}
-                  {metricOutput ? "mm" : "\""}
+                  {metricOutput ? "mm" : '"'}
                 </Text>
               </GridItem>
               <GridItem colSpan={1} w="100%" textAlign="right" mb={8}>

@@ -264,7 +264,7 @@ describe("Converting Bike Metrics from Metic to Imperial", () => {
     ["499.9999", "19.6850"],
     ["549.67", "21.6406"],
     ["550", "21.6535"],
-  ])("should yield Reach values %fmm = %f\"", (reachMMIn, reachInchesOut) => {
+  ])('should yield Reach values %fmm = %f"', (reachMMIn, reachInchesOut) => {
     enterReachMMValue(reachMMIn);
     toggleBikeUnits();
     expect(screen.getByDisplayValue(reachInchesOut)).toBeInTheDocument();
@@ -276,7 +276,7 @@ describe("Converting Bike Metrics from Metic to Imperial", () => {
     ["640", "25.1969"],
     ["679.99", "26.7713"],
     ["680", "26.7717"],
-  ])("should yield Stack values %fmm = %f\"", (stackMMIn, stackInchesOut) => {
+  ])('should yield Stack values %fmm = %f"', (stackMMIn, stackInchesOut) => {
     enterStackMMValue(stackMMIn);
     toggleBikeUnits();
     expect(screen.getByDisplayValue(stackInchesOut)).toBeInTheDocument();
