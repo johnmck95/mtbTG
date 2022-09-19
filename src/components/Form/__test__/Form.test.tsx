@@ -77,7 +77,7 @@ describe("The default form contains", () => {
 
   describe("Skill Level", () => {
     test("Label", () => {
-      expect(screen.getByText(FormLabels.skillLevel));
+      expect(screen.getByText(FormLabels.skillLevel)).toBeVisible();
     });
     test("Renders the skillSlider", () => {
       expect(FormElements.skillSliderHandle).toBeVisible();
@@ -264,7 +264,7 @@ describe("Converting Bike Metrics from Metic to Imperial", () => {
     ["499.9999", "19.6850"],
     ["549.67", "21.6406"],
     ["550", "21.6535"],
-  ])('should yield Reach values %fmm = %f"', (reachMMIn, reachInchesOut) => {
+  ])("should yield Reach values %fmm = %f\"", (reachMMIn, reachInchesOut) => {
     enterReachMMValue(reachMMIn);
     toggleBikeUnits();
     expect(screen.getByDisplayValue(reachInchesOut)).toBeInTheDocument();
@@ -276,7 +276,7 @@ describe("Converting Bike Metrics from Metic to Imperial", () => {
     ["640", "25.1969"],
     ["679.99", "26.7713"],
     ["680", "26.7717"],
-  ])('should yield Stack values %fmm = %f"', (stackMMIn, stackInchesOut) => {
+  ])("should yield Stack values %fmm = %f\"", (stackMMIn, stackInchesOut) => {
     enterStackMMValue(stackMMIn);
     toggleBikeUnits();
     expect(screen.getByDisplayValue(stackInchesOut)).toBeInTheDocument();
@@ -330,9 +330,7 @@ describe("After clicking the 'edit' button to return to the Form page", () => {
     enterStackMMValue("620");
     clickBikeTypeRadio("Enduro");
     clickCalculateButton();
-    expect(screen.getByText("YOUR SETTINGS")).toBeVisible();
     clickEditFormButton();
-    expect(screen.getByText("RIDER METRICS")).toBeVisible();
   });
   test.each([["-1"], ["a"], ["five"], ["-2147483647"], ["5.2"], ["6.678"]])(
     "Changing Height (feet) to an invalid value [%s] will not allow you to proceed to the Output page",
