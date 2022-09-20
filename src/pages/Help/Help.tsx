@@ -10,8 +10,8 @@ import {
   Icon,
   Divider,
   Link,
-} from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+} from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
 import {
   FaSearch,
   FaHandsHelping,
@@ -19,7 +19,7 @@ import {
   FaBicycle,
   FaRegWindowClose,
   FaBars,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 
 export default function Help(): JSX.Element {
   const smallScreen = 768;
@@ -35,10 +35,10 @@ export default function Help(): JSX.Element {
     const [width, setWidth] = useState(window.innerWidth);
     useEffect(() => {
       const handleWindowResize = () => setWidth(window.innerWidth);
-      window.addEventListener("resize", handleWindowResize);
+      window.addEventListener('resize', handleWindowResize);
       if (width < smallScreen) setShowPanel(() => false);
       else setShowPanel(() => true);
-      return () => window.removeEventListener("resize", handleWindowResize);
+      return () => window.removeEventListener('resize', handleWindowResize);
     }, [width]);
     return {
       width,
@@ -51,43 +51,43 @@ export default function Help(): JSX.Element {
   }
 
   return (
-    <Container w="100%" maxW="64rem">
-      <HStack h="calc(100vh - 50px)" py="1rem" spacing="0px" align="start">
+    <Container w='100%' maxW='64rem'>
+      <HStack h='calc(100vh - 50px)' py='1rem' spacing='0px' align='start'>
         {showPanel && (
           <VStack
-            alignItems="flex-start"
-            overflow="scroll"
-            position="sticky"
-            w={width < smallScreen ? "100vw" : "50%"}
-            h="100%"
-            mr="1rem"
+            alignItems='flex-start'
+            overflow='scroll'
+            position='sticky'
+            w={width < smallScreen ? '100vw' : '50%'}
+            h='100%'
+            mr='1rem'
             css={{
-              "&::-webkit-scrollbar": {
-                display: "none",
+              '&::-webkit-scrollbar': {
+                display: 'none',
               },
-              overflowStyle: "none",
-              scrollbarWidth: "none",
+              overflowStyle: 'none',
+              scrollbarWidth: 'none',
             }}
           >
             <HStack
-              justifyContent={"space-between"}
-              position="sticky"
-              top="0rem"
-              overflow="clipped"
-              bg="brand.flatBlack"
+              justifyContent={'space-between'}
+              position='sticky'
+              top='0rem'
+              overflow='clipped'
+              bg='brand.flatBlack'
               opacity={1}
-              w="100%"
+              w='100%'
             >
-              <InputGroup maxW="70%">
+              <InputGroup maxW='70%'>
                 <Input
-                  placeholder="Search"
+                  placeholder='Search'
                   _placeholder={{
                     opacity: 1,
-                    color: "brand.white",
+                    color: 'brand.white',
                   }}
-                  borderColor="brand.white"
-                  bg="brand.flatBlack"
-                  mb="0.5rem"
+                  borderColor='brand.white'
+                  bg='brand.flatBlack'
+                  mb='0.5rem'
                 />
                 <InputRightElement>
                   <Icon as={FaSearch} w={5} h={5} />
@@ -103,85 +103,85 @@ export default function Help(): JSX.Element {
 
             <Link
               onClick={closePanelForSmallScreen}
-              href="#usingTheTuningGuide"
+              href='#usingTheTuningGuide'
             >
-              <Heading as="h3" fontSize={"md"}>
-                <Icon as={FaHandsHelping} w={4} h={4} mr="0.75rem" />
+              <Heading as='h3' fontSize={'md'}>
+                <Icon as={FaHandsHelping} w={4} h={4} mr='0.75rem' />
                 Using The Tuning Guide
               </Heading>
             </Link>
             <Link
               onClick={closePanelForSmallScreen}
-              href="#understandingInputs"
+              href='#understandingInputs'
             >
-              <Heading as="h3" fontSize={"md"}>
-                <Icon as={FaTools} w={4} h={4} mr="0.75rem" />
+              <Heading as='h3' fontSize={'md'}>
+                <Icon as={FaTools} w={4} h={4} mr='0.75rem' />
                 Understanding Inputs
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#riderSize">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#riderSize'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Rider Size
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#handling">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#handling'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Handling
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#skillLevel">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#skillLevel'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Skill Level
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#reach">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#reach'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Reach
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#stack">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#stack'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Stack
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#bikeType">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#bikeType'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Bike Type
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#yourSettings">
-              <Heading as="h3" fontSize={"md"}>
-                <Icon as={FaBicycle} w={4} h={4} mr="0.75rem" />
+            <Link onClick={closePanelForSmallScreen} href='#yourSettings'>
+              <Heading as='h3' fontSize={'md'}>
+                <Icon as={FaBicycle} w={4} h={4} mr='0.75rem' />
                 Your Setting
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#handlebarWidth">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#handlebarWidth'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Handlebar Width
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#handlebarRise">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#handlebarRise'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Handlebar Rise
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#stemLength">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#stemLength'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Stem Length
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#stemSpacers">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#stemSpacers'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Stem Spacers
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#tirePressures">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#tirePressures'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Tire Pressures
               </Heading>
             </Link>
-            <Link onClick={closePanelForSmallScreen} href="#tireInserts">
-              <Heading as="h4" fontSize={"sm"} pl="2rem">
+            <Link onClick={closePanelForSmallScreen} href='#tireInserts'>
+              <Heading as='h4' fontSize={'sm'} pl='2rem'>
                 Tire Inserts
               </Heading>
             </Link>
@@ -189,87 +189,87 @@ export default function Help(): JSX.Element {
         )}
         {!showPanel && (
           <Icon
-            position="sticky"
-            top="0.5rem"
+            position='sticky'
+            top='0.5rem'
             onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
             as={FaBars}
             w={5}
             h={5}
-            mr="2rem"
+            mr='2rem'
           />
         )}
         <VStack
-          alignItems={"flex-start"}
-          overflow="scroll"
-          w={width < smallScreen ? (showPanel ? "0vw" : "100vw") : "100%"}
-          h="100%"
+          alignItems={'flex-start'}
+          overflow='scroll'
+          w={width < smallScreen ? (showPanel ? '0vw' : '100vw') : '100%'}
+          h='100%'
           css={{
-            "&::-webkit-scrollbar": {
-              display: "none",
+            '&::-webkit-scrollbar': {
+              display: 'none',
             },
-            overfloStyle: "none",
-            scrollbarWidth: "none",
+            overfloStyle: 'none',
+            scrollbarWidth: 'none',
           }}
         >
-          <Heading as="h1" fontSize={"4xl"} id="usingTheTuningGuide">
+          <Heading as='h1' fontSize={'4xl'} id='usingTheTuningGuide'>
             Using The Tuning Guide
           </Heading>
           <Divider />
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h1" fontSize={"4xl"} id="understandingInputs">
+          <Heading as='h1' fontSize={'4xl'} id='understandingInputs'>
             Understanding Inputs
           </Heading>
           <Divider />
-          <Heading as="h2" fontSize={"2xl"} id="riderSize">
+          <Heading as='h2' fontSize={'2xl'} id='riderSize'>
             Rider Size
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="handling">
+          <Heading as='h2' fontSize={'2xl'} id='handling'>
             Handling
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="skillLevel">
+          <Heading as='h2' fontSize={'2xl'} id='skillLevel'>
             Skill Level
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="reach">
+          <Heading as='h2' fontSize={'2xl'} id='reach'>
             Reach
           </Heading>
 
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="stack">
+          <Heading as='h2' fontSize={'2xl'} id='stack'>
             Stack
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="bikeType">
+          <Heading as='h2' fontSize={'2xl'} id='bikeType'>
             Bike Type
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h1" fontSize={"4xl"} id="yourSettings">
+          <Heading as='h1' fontSize={'4xl'} id='yourSettings'>
             Your Settings
           </Heading>
           <Divider />
-          <Heading as="h2" fontSize={"2xl"} id="handlebarWidth">
+          <Heading as='h2' fontSize={'2xl'} id='handlebarWidth'>
             HandleBar Width
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="handlebarRise">
+          <Heading as='h2' fontSize={'2xl'} id='handlebarRise'>
             Handlebar Rise
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="stemLength">
+          <Heading as='h2' fontSize={'2xl'} id='stemLength'>
             Stem Length
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="stemSpacers">
+          <Heading as='h2' fontSize={'2xl'} id='stemSpacers'>
             Stem Spacers
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="tirePressures">
+          <Heading as='h2' fontSize={'2xl'} id='tirePressures'>
             Tire Pressures
           </Heading>
           <Text>{hipsterIpsum}</Text>
-          <Heading as="h2" fontSize={"2xl"} id="tireInserts">
+          <Heading as='h2' fontSize={'2xl'} id='tireInserts'>
             Tire Inserts
           </Heading>
           <Text>{hipsterIpsum}</Text>

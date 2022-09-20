@@ -1,16 +1,16 @@
-import Output from "../../components/Output/Output";
-import Form from "../../components/Form/Form";
-import { Box } from "@chakra-ui/react";
-import HomePhotoSm from "../../images/hartland-enduro-SM,414x620.jpg";
-import HomePhotoMd from "../../images/hartland-enduro-MD,768x1150.jpg";
-import HomePhotoLg from "../../images/hartland-enduro-LG,1080x1618.jpg";
-import HomePhotoXl from "../../images/hartland-enduro-XL,1280x1917.jpg";
-import { ChangeEvent, useState } from "react";
-import Algorithm from "../../algorithms/Algorithm/Algorithm";
+import Output from '../../components/Output/Output';
+import Form from '../../components/Form/Form';
+import { Box } from '@chakra-ui/react';
+import HomePhotoSm from '../../images/hartland-enduro-SM,414x620.jpg';
+import HomePhotoMd from '../../images/hartland-enduro-MD,768x1150.jpg';
+import HomePhotoLg from '../../images/hartland-enduro-LG,1080x1618.jpg';
+import HomePhotoXl from '../../images/hartland-enduro-XL,1280x1917.jpg';
+import { ChangeEvent, useState } from 'react';
+import Algorithm from '../../algorithms/Algorithm/Algorithm';
 import {
   HandleRiderConversionProps,
   HandleBikeConversionProps,
-} from "../../interfaces/interfaces";
+} from '../../data/interfaces/interfaces';
 
 export default function Home(): JSX.Element {
   const [imperialRider, setImperialRider] = useState(true);
@@ -18,18 +18,18 @@ export default function Home(): JSX.Element {
   const [reRender, setReRender] = useState(0);
   const [formCompleted, setFormComplete] = useState(false);
   const [inputs, setInputs] = useState({
-    heightFeet: "",
-    heightInches: "",
-    heightCM: "",
-    weightLB: "",
-    weightKG: "",
-    handling: "",
-    skillLevel: "",
-    reachInches: "",
-    reachMM: "",
-    stackInches: "",
-    stackMM: "",
-    bikeType: "",
+    heightFeet: '',
+    heightInches: '',
+    heightCM: '',
+    weightLB: '',
+    weightKG: '',
+    handling: '',
+    skillLevel: '',
+    reachInches: '',
+    reachMM: '',
+    stackInches: '',
+    stackMM: '',
+    bikeType: '',
   });
 
   /* Updates state from an <input> change from Form.tsx */
@@ -95,12 +95,12 @@ export default function Home(): JSX.Element {
 
   return (
     <Box
-      w="100%"
+      w='100%'
       backgroundImage={[HomePhotoSm, HomePhotoMd, HomePhotoLg, HomePhotoXl]}
-      backgroundRepeat="no-repeat"
-      backgroundPosition="60% 50%"
-      backgroundSize="145%"
-      height="100%"
+      backgroundRepeat='no-repeat'
+      backgroundPosition='60% 50%'
+      backgroundSize='145%'
+      height='100%'
     >
       {!formCompleted && (
         <Form

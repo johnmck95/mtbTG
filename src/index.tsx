@@ -1,20 +1,20 @@
 // mtbTG - A React application that helps Mountain Bikers quickly setup their bikes.
 // Copyright (C) 2022 John McKinnon
 
-import { ColorModeScript } from "@chakra-ui/react";
-import * as React from "react";
-import ReactDOM from "react-dom";
-import { App } from "./App";
-import reportWebVitals from "./reportWebVitals";
-import * as serviceWorker from "./serviceWorker";
-import "./style.css";
+import { ColorModeScript } from '@chakra-ui/react';
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+import { App } from './App';
+import reportWebVitals from './reportWebVitals';
+import * as serviceWorker from './serviceWorker';
+import './style.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <ColorModeScript />
     <App />
   </React.StrictMode>,
-  document.getElementById("root"),
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

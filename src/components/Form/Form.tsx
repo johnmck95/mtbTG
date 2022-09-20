@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import {
   Button,
   Flex,
@@ -12,13 +12,13 @@ import {
   Heading,
   Divider,
   Box,
-} from "@chakra-ui/react";
-import CustomRadio from "../CustomRadio/CustomRadio";
-import "../../styling/form.css";
-import { errorCodes } from "../../data/ErrorCodes";
-import ErrorAlert from "../ErrorAlert/ErrorAlert";
-import SkillSlider from "../SkillSlider/SkillSlider";
-import { FormProps } from "../../interfaces/interfaces";
+} from '@chakra-ui/react';
+import CustomRadio from '../CustomRadio/CustomRadio';
+import '../../styling/form.css';
+import { errorCodes } from '../../data/ErrorCodes';
+import ErrorAlert from '../ErrorAlert/ErrorAlert';
+import SkillSlider from '../SkillSlider/SkillSlider';
+import { FormProps } from '../../data/interfaces/interfaces';
 
 export default function Form({
   inputs,
@@ -52,7 +52,7 @@ export default function Form({
   const metricBike = !imperialBike;
   let formHasErrors = true;
 
-  // TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect.
+  // TODO: Fix the "missing dependencies" warning. Dangerous useEffect.
   useEffect(() => {
     if (showErrors) handleErrors();
     // eslint-disable-next-line
@@ -340,52 +340,52 @@ export default function Form({
   );
 
   return (
-    <div className="formBox">
-      <Container maxW="37.5rem" py={4}>
+    <div className='formBox'>
+      <Container maxW='37.5rem' py={4}>
         <VStack
-          bg="brand.darkGrey"
-          borderRadius="16px"
+          bg='brand.darkGrey'
+          borderRadius='16px'
           pb={4}
           my={10}
-          boxShadow="2xl"
+          boxShadow='2xl'
         >
           <Flex
-            position="relative"
-            justifyContent={["space-around", "center"]}
-            w="100%"
+            position='relative'
+            justifyContent={['space-around', 'center']}
+            w='100%'
           >
             <Heading
-              as="h2"
-              textAlign="center"
-              fontSize={["xl", "2xl"]}
-              color="brand.white"
-              maxW="80%"
+              as='h2'
+              textAlign='center'
+              fontSize={['xl', '2xl']}
+              color='brand.white'
+              maxW='80%'
               ml={[-4, 0]}
-              mt={["1rem", "1.25rem"]}
+              mt={['1rem', '1.25rem']}
             >
               RIDER METRICS
             </Heading>
             <Box>
               <Button
                 tabIndex={-1}
-                position="absolute"
-                right="65px"
-                bottom="2px"
-                size="xs"
-                marginTop={["1rem", "1.5rem", "2rem"]}
+                position='absolute'
+                right='65px'
+                bottom='2px'
+                size='xs'
+                marginTop={['1rem', '1.5rem', '2rem']}
                 zIndex={imperialRider ? 0 : 1}
-                color={imperialRider ? "brand.black" : "brand.white"}
-                bg={imperialRider ? "brand.lightGrey" : "brand.blue"}
+                color={imperialRider ? 'brand.black' : 'brand.white'}
+                bg={imperialRider ? 'brand.lightGrey' : 'brand.blue'}
                 onClick={toggleRiderUnit}
                 _hover={
                   imperialRider
                     ? {
-                        bg: "brand.lightGrey",
-                        filter: "brightness(110%)",
+                        bg: 'brand.lightGrey',
+                        filter: 'brightness(110%)',
                       }
                     : {
-                        bg: "brand.blue",
-                        filter: "brightness(90%)",
+                        bg: 'brand.blue',
+                        filter: 'brightness(90%)',
                       }
                 }
               >
@@ -393,68 +393,68 @@ export default function Form({
               </Button>
               <Button
                 tabIndex={-1}
-                position="absolute"
-                right="10px"
-                bottom="2px"
-                size="xs"
-                variant="ghost"
-                marginTop={["1rem", "1.5rem", "2rem"]}
+                position='absolute'
+                right='10px'
+                bottom='2px'
+                size='xs'
+                variant='ghost'
+                marginTop={['1rem', '1.5rem', '2rem']}
                 zIndex={imperialRider ? 1 : 0}
-                bg={imperialRider ? "brand.blue" : "brand.lightGrey"}
-                color={imperialRider ? "brand.white" : "brand.black"}
+                bg={imperialRider ? 'brand.blue' : 'brand.lightGrey'}
+                color={imperialRider ? 'brand.white' : 'brand.black'}
                 onClick={toggleRiderUnit}
                 _hover={
                   imperialRider
                     ? {
-                        bg: "brand.blue",
-                        filter: "brightness(90%)",
+                        bg: 'brand.blue',
+                        filter: 'brightness(90%)',
                       }
                     : {
-                        bg: "brand.lightGrey",
-                        filter: "brightness(110%)",
+                        bg: 'brand.lightGrey',
+                        filter: 'brightness(110%)',
                       }
                 }
-                data-testid="imperialRiderButton"
+                data-testid='imperialRiderButton'
               >
                 Imperial
               </Button>
             </Box>
           </Flex>
           <Divider
-            orientation="horizontal"
-            borderColor="brand.white"
-            size="xl"
-            maxW="95%"
-            mb="8rem"
+            orientation='horizontal'
+            borderColor='brand.white'
+            size='xl'
+            maxW='95%'
+            mb='8rem'
           />
-          <Container maxW={["85%", "75%"]}>
+          <Container maxW={['85%', '75%']}>
             <SimpleGrid columns={2} columnGap={2}>
               <GridItem colSpan={1} pb={1}>
-                <FormControl autoComplete="none">
-                  <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">
-                    Height {imperialRider ? "(feet)" : "(cm)"}
+                <FormControl autoComplete='none'>
+                  <FormLabel fontSize={['sm', 'md']} mx={0} mb='2px'>
+                    Height {imperialRider ? '(feet)' : '(cm)'}
                   </FormLabel>
                   <Input
-                    placeholder={imperialRider ? "5" : "178"}
+                    placeholder={imperialRider ? '5' : '178'}
                     maxWidth={24}
-                    focusBorderColor="brand.blue"
-                    type="number"
-                    boxShadow="md"
+                    focusBorderColor='brand.blue'
+                    type='number'
+                    boxShadow='md'
                     borderColor={
                       imperialRider
                         ? errorCodes[0].showError || errorCodes[2].showError
-                          ? "brand.error"
-                          : "brand.lightGrey"
+                          ? 'brand.error'
+                          : 'brand.lightGrey'
                         : errorCodes[3].showError
-                        ? "brand.error"
-                        : "brand.lightGrey"
+                        ? 'brand.error'
+                        : 'brand.lightGrey'
                     }
-                    autoComplete="off"
+                    autoComplete='off'
                     onChange={handleChange}
                     value={imperialRider ? heightFeet : heightCM}
-                    name={imperialRider ? "heightFeet" : "heightCM"}
+                    name={imperialRider ? 'heightFeet' : 'heightCM'}
                     _placeholder={{
-                      color: "brand.placeholder",
+                      color: 'brand.placeholder',
                     }}
                   />
                 </FormControl>
@@ -462,26 +462,26 @@ export default function Form({
               {imperialRider && (
                 <GridItem colSpan={1} pb={1}>
                   <FormControl>
-                    <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">
+                    <FormLabel fontSize={['sm', 'md']} mx={0} mb='2px'>
                       Height (inches)
                     </FormLabel>
                     <Input
-                      placeholder="10"
+                      placeholder='10'
                       maxWidth={24}
-                      focusBorderColor="brand.blue"
-                      type="number"
-                      boxShadow="md"
+                      focusBorderColor='brand.blue'
+                      type='number'
+                      boxShadow='md'
                       borderColor={
                         errorCodes[1].showError || errorCodes[2].showError
-                          ? "brand.error"
-                          : "brand.lightGrey"
+                          ? 'brand.error'
+                          : 'brand.lightGrey'
                       }
-                      autoComplete="off"
+                      autoComplete='off'
                       value={heightInches}
-                      name={"heightInches"}
+                      name={'heightInches'}
                       onChange={handleChange}
                       _placeholder={{
-                        color: "brand.placeholder",
+                        color: 'brand.placeholder',
                       }}
                     />
                   </FormControl>
@@ -489,31 +489,31 @@ export default function Form({
               )}
               {heightErrorAlerts}
               <GridItem colSpan={1} pb={1}>
-                <FormControl autoComplete="none">
-                  <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">
-                    Weight {imperialRider ? "(lb)" : "(kg)"}
+                <FormControl autoComplete='none'>
+                  <FormLabel fontSize={['sm', 'md']} mx={0} mb='2px'>
+                    Weight {imperialRider ? '(lb)' : '(kg)'}
                   </FormLabel>
                   <Input
-                    placeholder={imperialRider ? "170" : "77"}
+                    placeholder={imperialRider ? '170' : '77'}
                     maxWidth={24}
-                    focusBorderColor="brand.blue"
-                    type="number"
-                    boxShadow="md"
+                    focusBorderColor='brand.blue'
+                    type='number'
+                    boxShadow='md'
                     borderColor={
                       imperialRider
                         ? errorCodes[10].showError
-                          ? "brand.error"
-                          : "brand.lightGrey"
+                          ? 'brand.error'
+                          : 'brand.lightGrey'
                         : errorCodes[11].showError
-                        ? "brand.error"
-                        : "brand.lightGrey"
+                        ? 'brand.error'
+                        : 'brand.lightGrey'
                     }
-                    autoComplete="off"
+                    autoComplete='off'
                     onChange={handleChange}
                     value={imperialRider ? weightLB : weightKG}
-                    name={imperialRider ? "weightLB" : "weightKG"}
+                    name={imperialRider ? 'weightLB' : 'weightKG'}
                     _placeholder={{
-                      color: "brand.placeholder",
+                      color: 'brand.placeholder',
                     }}
                   />
                 </FormControl>
@@ -523,36 +523,36 @@ export default function Form({
             <SimpleGrid columns={1}>
               <GridItem colSpan={3}>
                 <FormControl>
-                  <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">
+                  <FormLabel fontSize={['sm', 'md']} mx={0} mb='2px'>
                     Handling
                   </FormLabel>
-                  <Flex justify="space-between" spacing={[2, 4, 6]} mb={2}>
-                    <Box mr={[2, 6]} w="100%">
+                  <Flex justify='space-between' spacing={[2, 4, 6]} mb={2}>
+                    <Box mr={[2, 6]} w='100%'>
                       <CustomRadio
-                        title="Stable"
-                        name="handling"
-                        value="stable"
-                        isChecked={handling === "stable" ? true : false}
+                        title='Stable'
+                        name='handling'
+                        value='stable'
+                        isChecked={handling === 'stable' ? true : false}
                         isError={errorCodes[4].showError}
                         handleCustomRadio={handleCustomComponent}
                       />
                     </Box>
-                    <Box w="100%">
+                    <Box w='100%'>
                       <CustomRadio
-                        title="Neutral"
-                        name="handling"
-                        value="neutral"
-                        isChecked={handling === "neutral" ? true : false}
+                        title='Neutral'
+                        name='handling'
+                        value='neutral'
+                        isChecked={handling === 'neutral' ? true : false}
                         isError={errorCodes[4].showError}
                         handleCustomRadio={handleCustomComponent}
                       />
                     </Box>
-                    <Box w="100%" ml={[2, 6]}>
+                    <Box w='100%' ml={[2, 6]}>
                       <CustomRadio
-                        title="Agile"
-                        name="handling"
-                        value="agile"
-                        isChecked={handling === "agile" ? true : false}
+                        title='Agile'
+                        name='handling'
+                        value='agile'
+                        isChecked={handling === 'agile' ? true : false}
                         isError={errorCodes[4].showError}
                         handleCustomRadio={handleCustomComponent}
                       />
@@ -562,7 +562,7 @@ export default function Form({
               </GridItem>
               {handlingErrorAlerts}
               <GridItem colSpan={3}>
-                <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">
+                <FormLabel fontSize={['sm', 'md']} mx={0} mb='2px'>
                   Skill Level
                 </FormLabel>
                 <SkillSlider
@@ -574,42 +574,42 @@ export default function Form({
             </SimpleGrid>
           </Container>
           <Flex
-            position="relative"
-            justifyContent={["space-around", "center"]}
-            w="100%"
+            position='relative'
+            justifyContent={['space-around', 'center']}
+            w='100%'
           >
             <Heading
-              as="h2"
-              textAlign="center"
-              fontSize={["xl", "2xl"]}
-              color="brand.white"
-              maxW="80%"
+              as='h2'
+              textAlign='center'
+              fontSize={['xl', '2xl']}
+              color='brand.white'
+              maxW='80%'
               ml={[-4, 0]}
-              mt={["1rem", "1.25rem"]}
+              mt={['1rem', '1.25rem']}
             >
               BIKE METRICS
             </Heading>
             <Box>
               <Button
                 tabIndex={-1}
-                position="absolute"
-                right="65px"
-                bottom="2px"
-                size="xs"
-                marginTop={["1rem", "1.5rem", "2rem"]}
+                position='absolute'
+                right='65px'
+                bottom='2px'
+                size='xs'
+                marginTop={['1rem', '1.5rem', '2rem']}
                 zIndex={imperialBike ? 0 : 1}
-                color={imperialBike ? "brand.black" : "brand.white"}
-                bg={imperialBike ? "brand.lightGrey" : "brand.blue"}
+                color={imperialBike ? 'brand.black' : 'brand.white'}
+                bg={imperialBike ? 'brand.lightGrey' : 'brand.blue'}
                 onClick={toggleBikeUnit}
                 _hover={
                   imperialBike
                     ? {
-                        bg: "brand.lightGrey",
-                        filter: "brightness(110%)",
+                        bg: 'brand.lightGrey',
+                        filter: 'brightness(110%)',
                       }
                     : {
-                        bg: "brand.blue",
-                        filter: "brightness(90%)",
+                        bg: 'brand.blue',
+                        filter: 'brightness(90%)',
                       }
                 }
               >
@@ -617,124 +617,124 @@ export default function Form({
               </Button>
               <Button
                 tabIndex={-1}
-                position="absolute"
-                right="10px"
-                bottom="2px"
-                size="xs"
-                variant="ghost"
-                marginTop={["1rem", "1.5rem", "2rem"]}
+                position='absolute'
+                right='10px'
+                bottom='2px'
+                size='xs'
+                variant='ghost'
+                marginTop={['1rem', '1.5rem', '2rem']}
                 zIndex={imperialBike ? 1 : 0}
-                color={imperialBike ? "brand.white" : "brand.black"}
-                bg={imperialBike ? "brand.blue" : "brand.lightGrey"}
+                color={imperialBike ? 'brand.white' : 'brand.black'}
+                bg={imperialBike ? 'brand.blue' : 'brand.lightGrey'}
                 onClick={toggleBikeUnit}
                 _hover={
                   imperialBike
                     ? {
-                        bg: "brand.blue",
-                        filter: "brightness(90%)",
+                        bg: 'brand.blue',
+                        filter: 'brightness(90%)',
                       }
                     : {
-                        bg: "brand.lightGrey",
-                        filter: "brightness(110%)",
+                        bg: 'brand.lightGrey',
+                        filter: 'brightness(110%)',
                       }
                 }
-                data-testid="imperialBikeButton"
+                data-testid='imperialBikeButton'
               >
                 Imperial
               </Button>
             </Box>
           </Flex>
           <Divider
-            orientation="horizontal"
-            borderColor="brand.white"
-            size="xl"
-            maxW="95%"
-            marginBottom="8rem"
+            orientation='horizontal'
+            borderColor='brand.white'
+            size='xl'
+            maxW='95%'
+            marginBottom='8rem'
           />
-          <Container maxW={["85%", "75%"]}>
+          <Container maxW={['85%', '75%']}>
             <SimpleGrid columns={2} columnGap={4} pb={3}>
               <GridItem colSpan={1}>
                 <FormControl>
-                  <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">
-                    Reach {imperialBike ? "(inches)" : "(mm)"}
+                  <FormLabel fontSize={['sm', 'md']} mx={0} mb='2px'>
+                    Reach {imperialBike ? '(inches)' : '(mm)'}
                   </FormLabel>
                   <Input
-                    placeholder={imperialBike ? "18.70" : "475"}
+                    placeholder={imperialBike ? '18.70' : '475'}
                     maxWidth={24}
-                    focusBorderColor="brand.blue"
-                    boxShadow="md"
+                    focusBorderColor='brand.blue'
+                    boxShadow='md'
                     borderColor={
                       imperialBike
                         ? errorCodes[6].showError
-                          ? "brand.error"
-                          : "brand.lightGrey"
+                          ? 'brand.error'
+                          : 'brand.lightGrey'
                         : errorCodes[5].showError
-                        ? "brand.error"
-                        : "brand.lightGrey"
+                        ? 'brand.error'
+                        : 'brand.lightGrey'
                     }
-                    autoComplete="off"
-                    type="number"
+                    autoComplete='off'
+                    type='number'
                     value={imperialBike ? reachInches : reachMM}
-                    name={imperialBike ? "reachInches" : "reachMM"}
+                    name={imperialBike ? 'reachInches' : 'reachMM'}
                     onChange={handleChange}
                     _placeholder={{
-                      color: "brand.placeholder",
+                      color: 'brand.placeholder',
                     }}
                   />
                 </FormControl>
               </GridItem>
               <GridItem colSpan={1}>
                 <FormControl>
-                  <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">
-                    Stack {imperialBike ? "(inches)" : "(mm)"}
+                  <FormLabel fontSize={['sm', 'md']} mx={0} mb='2px'>
+                    Stack {imperialBike ? '(inches)' : '(mm)'}
                   </FormLabel>
                   <Input
-                    placeholder={imperialBike ? "24.41" : "620"}
+                    placeholder={imperialBike ? '24.41' : '620'}
                     maxWidth={24}
-                    focusBorderColor="brand.blue"
-                    type="number"
-                    boxShadow="md"
+                    focusBorderColor='brand.blue'
+                    type='number'
+                    boxShadow='md'
                     borderColor={
                       imperialBike
                         ? errorCodes[8].showError
-                          ? "brand.error"
-                          : "brand.lightGrey"
+                          ? 'brand.error'
+                          : 'brand.lightGrey'
                         : errorCodes[7].showError
-                        ? "brand.error"
-                        : "brand.lightGrey"
+                        ? 'brand.error'
+                        : 'brand.lightGrey'
                     }
-                    autoComplete="off"
+                    autoComplete='off'
                     value={imperialBike ? stackInches : stackMM}
-                    name={imperialBike ? "stackInches" : "stackMM"}
+                    name={imperialBike ? 'stackInches' : 'stackMM'}
                     onChange={handleChange}
                     _placeholder={{
-                      color: "brand.placeholder",
+                      color: 'brand.placeholder',
                     }}
                   />
                 </FormControl>
               </GridItem>
               {reachStackErrorAlerts}
             </SimpleGrid>
-            <FormLabel fontSize={["sm", "md"]} mx={0} mb="2px">
+            <FormLabel fontSize={['sm', 'md']} mx={0} mb='2px'>
               Bike Type
             </FormLabel>
             <SimpleGrid columns={[2]} columnGap={[6, 6, 14]} mb={3}>
               <GridItem colSpan={1}>
                 <CustomRadio
-                  title="Enduro"
-                  name="bikeType"
-                  value="enduro"
-                  isChecked={bikeType === "enduro" ? true : false}
+                  title='Enduro'
+                  name='bikeType'
+                  value='enduro'
+                  isChecked={bikeType === 'enduro' ? true : false}
                   isError={errorCodes[9].showError}
                   handleCustomRadio={handleCustomComponent}
                 />
               </GridItem>
               <GridItem colSpan={1}>
                 <CustomRadio
-                  title="Trail"
-                  name="bikeType"
-                  value="trail"
-                  isChecked={bikeType === "trail" ? true : false}
+                  title='Trail'
+                  name='bikeType'
+                  value='trail'
+                  isChecked={bikeType === 'trail' ? true : false}
                   isError={errorCodes[9].showError}
                   handleCustomRadio={handleCustomComponent}
                 />
@@ -744,12 +744,12 @@ export default function Form({
           </Container>
           <Button
             w={36}
-            bg="brand.blue"
-            borderRadius="50px"
+            bg='brand.blue'
+            borderRadius='50px'
             onClick={handleSubmit}
             _hover={{
-              bg: "brand.blue",
-              filter: "brightness(90%)",
+              bg: 'brand.blue',
+              filter: 'brightness(90%)',
             }}
           >
             Calculate
