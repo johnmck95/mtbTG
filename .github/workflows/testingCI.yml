@@ -24,5 +24,6 @@ jobs:
         cache: 'yarn'
     - run: rm -rf node_modules
     - run: yarn install
-    - run: yarn test
+    - run: yarn prettier
     - run: yarn lint
+    - run: yarn test
