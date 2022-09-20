@@ -29,6 +29,7 @@
   "devDependencies": {
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.7.1"
   },
   "scripts": {
@@ -99,7 +100,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      ["prettier --write", "git add"]
+      "prettier --write"
     ]
   }
 }
