@@ -7,13 +7,14 @@ import HomePhotoLg from "../../images/hartland-enduro-LG,1080x1618.jpg";
 import HomePhotoXl from "../../images/hartland-enduro-XL,1280x1917.jpg";
 import {ChangeEvent, useEffect, useState} from "react";
 import Algorithm from "../../algorithms/Algorithm/Algorithm";
-import {HandleRiderConversionProps, HandleBikeConversionProps} from "../../interfaces/interfaces";
+import {HandleRiderConversionProps, HandleBikeConversionProps} from "../../types/interfaces";
+import { SessionStorageKeys } from "../../types/enums";
 
 export default function Home(): JSX.Element {
-    const [imperialRider, setImperialRider] = useState(true);
-    const [imperialBike, setImperialBike] = useState(false);
+    const [imperialRider, setImperialRider] = useState(typeSafeImperialRider());
+    const [imperialBike, setImperialBike] = useState(typeSafeImperialBike());
     const [reRender, setReRender] = useState(0);
-    const [formCompleted, setFormComplete] = useState(false);
+    const [formCompleted, setFormComplete] = useState(typeSafeFormCompleted());
     const [inputs, setInputs] = useState(typeSafeInputs());
 
     function typeSafeInputs() {
@@ -31,16 +32,51 @@ export default function Home(): JSX.Element {
             stackMM: "",
             bikeType: ""
         }
-        const sessionStor = sessionStorage.getItem('inputs');
-        if ( sessionStor !== null ) {
+        const sessionStor = sessionStorage.getItem(SessionStorageKeys.inputs);
+        if ( sessionStor !== null )
             input = JSON.parse(sessionStor)
-        } 
         return input;
     }
 
+    function typeSafeImperialRider() {
+        let impRider = true;
+        const sessionStor = sessionStorage.getItem(SessionStorageKeys.impRider);
+        if ( sessionStor !== null )
+            impRider = JSON.parse(sessionStor);
+        return impRider;
+    }
+
+    function typeSafeImperialBike() {
+        let impBike = false;
+        const sessionStor = sessionStorage.getItem(SessionStorageKeys.impBike);
+        if ( sessionStor !== null )
+            impBike = JSON.parse(sessionStor);
+        return impBike;
+    }
+
+    function typeSafeFormCompleted() {
+        let formComp = false;
+        const sessionStor = sessionStorage.getItem(SessionStorageKeys.formComp);
+        if ( sessionStor !== null )
+            formComp = JSON.parse(sessionStor);
+        return formComp;
+    }
+
     useEffect(() => {
-        sessionStorage.setItem('inputs', JSON.stringify(inputs))
+        sessionStorage.setItem(SessionStorageKeys.inputs, JSON.stringify(inputs))
     }, [inputs])
+
+    useEffect(() => {
+        sessionStorage.setItem(SessionStorageKeys.impRider, JSON.stringify(imperialRider))
+    }, [imperialRider])
+
+    useEffect(() => {
+        sessionStorage.setItem(SessionStorageKeys.impBike, JSON.stringify(imperialBike))
+    }, [imperialBike])
+
+    useEffect(() => {
+        sessionStorage.setItem(SessionStorageKeys.formComp, JSON.stringify(formCompleted))
+    }, [formCompleted])
 
 
     /* Updates state from an <input> change from Form.tsx */

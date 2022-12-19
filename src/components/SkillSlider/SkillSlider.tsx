@@ -7,7 +7,7 @@ import {
     Text, 
     SliderThumb
 } from "@chakra-ui/react";
-import {SkillSliderProps} from "../../interfaces/interfaces";
+import {SkillSliderProps} from "../../types/interfaces";
 
 export default function SkillSlider({skillLevel, handleChange}: SkillSliderProps): JSX.Element {
         const [sliderValue, setSliderValue] = useState(skillLevel === "" ? 0 : mapSkillLevelToValue());

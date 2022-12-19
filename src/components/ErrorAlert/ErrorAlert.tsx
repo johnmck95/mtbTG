@@ -1,6 +1,6 @@
 import {BsExclamationTriangle} from "react-icons/bs";
 import {HStack, Text, Icon, GridItem} from "@chakra-ui/react";
-import {ErrorAlertProps} from "../../interfaces/interfaces";
+import {ErrorAlertProps} from "../../types/interfaces";
 
 export default function ErrorAlert({errorMessage}: ErrorAlertProps) {
     return(

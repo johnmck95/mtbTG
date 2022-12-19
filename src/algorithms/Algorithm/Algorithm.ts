@@ -1,4 +1,4 @@
-import {AlgorithmProps, Output} from "../../interfaces/interfaces";
+import {AlgorithmProps, Output} from "../../types/interfaces";
 
 function Algorithm({heightCM, weightLB, skillLevel, bikeType}: AlgorithmProps): Output {
     const outputs = {

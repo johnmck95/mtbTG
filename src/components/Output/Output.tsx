@@ -12,15 +12,28 @@ import {
     Icon, 
     Box
 } from "@chakra-ui/react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {FaRegWindowClose, FaBars} from "react-icons/fa";
 import '../../styling/output.css';
 import LearnMoreModal from "../LearnMoreModal/LearnMoreModal";
-import {OutputProps} from "../../interfaces/interfaces";
+import {OutputProps} from "../../types/interfaces";
+import { SessionStorageKeys } from "../../types/enums";
 
 export default function Output({inputs, outputs, imperialRider, imperialBike, handleShowForm}: OutputProps): JSX.Element {
     const [showSidePanel, setShowSidePanel] = useState(true);
-    const [metricOutput, setMetricOutput] = useState(true);
+    const [metricOutput, setMetricOutput] = useState(typeSafeUnits());
+
+    function typeSafeUnits() {
+        let metricUnits = true;
+        const sessionStor = sessionStorage.getItem(SessionStorageKeys.outputUnit);
+        if ( sessionStor !== null )
+            metricUnits = JSON.parse(sessionStor);
+        return metricUnits;
+    }
+
+    useEffect(() => {
+        sessionStorage.setItem(SessionStorageKeys.outputUnit, JSON.stringify(metricOutput))
+    }, [metricOutput])
 
     return(
         <div className='outputBox'>
