@@ -22,7 +22,7 @@ export default function CustomRadio(props: CustomRadioProps): JSX.Element {
                 tabIndex={0}
                 onClick={() => handleCustomRadio(name, value)} 
                 onKeyPress={handleKeyPress}
-                _hover={{borderColor: "#CBD5E0"}}
+                _hover={{borderColor: "brand.hoverGrey"}}
                 _focus={{borderColor: "brand.blue"}}
                 bg="brand.darkGrey"
                 color={isChecked? "brand.white" : "brand.lightGrey"}
