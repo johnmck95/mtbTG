@@ -29,6 +29,7 @@ export default function LearnMoreModal({id}: LeanMoreModalProps): JSX.Element {
                 color="brand.white" 
                 my={2}
                 _hover={{bg: "brand.blue"}}
+                _active={{bg: "brand.blue"}}
                 > learn more 
             </Button>
         
