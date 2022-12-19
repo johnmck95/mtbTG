@@ -97,7 +97,7 @@ export default function Help(): JSX.Element {
                             </InputGroup>
                             <Icon 
                                 onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel )}
-                                as={FaChevronCircleRight}  
+                                as={FaChevronCircleLeft}  
                                 w={5} h={5}
                                 cursor='pointer'
                             />
@@ -164,7 +164,7 @@ export default function Help(): JSX.Element {
                         position='sticky'
                         top="0.5rem"
                         onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel )}
-                        as={FaChevronCircleLeft} 
+                        as={FaChevronCircleRight} 
                         w={5} h={5} mr='2rem'
                         cursor='pointer'
                     />
