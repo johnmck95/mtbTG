@@ -5,7 +5,7 @@ import HomePhotoSm from "../../images/hartland-enduro-SM,414x620.jpg";
 import HomePhotoMd from "../../images/hartland-enduro-MD,768x1150.jpg";
 import HomePhotoLg from "../../images/hartland-enduro-LG,1080x1618.jpg";
 import HomePhotoXl from "../../images/hartland-enduro-XL,1280x1917.jpg";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import Algorithm from "../../algorithms/Algorithm/Algorithm";
 import {HandleRiderConversionProps, HandleBikeConversionProps} from "../../interfaces/interfaces";
 
@@ -14,20 +14,34 @@ export default function Home(): JSX.Element {
     const [imperialBike, setImperialBike] = useState(false);
     const [reRender, setReRender] = useState(0);
     const [formCompleted, setFormComplete] = useState(false);
-    const [inputs, setInputs] = useState({
-        heightFeet: "",
-        heightInches: "",
-        heightCM: "",
-        weightLB: "",
-        weightKG: "",
-        handling: "",
-        skillLevel: "",
-        reachInches: "",
-        reachMM: "",
-        stackInches: "",
-        stackMM: "",
-        bikeType: ""
-    });
+    const [inputs, setInputs] = useState(typeSafeInputs());
+
+    function typeSafeInputs() {
+        let input = {
+            heightFeet: "",
+            heightInches: "",
+            heightCM: "",
+            weightLB: "",
+            weightKG: "",
+            handling: "",
+            skillLevel: "",
+            reachInches: "",
+            reachMM: "",
+            stackInches: "",
+            stackMM: "",
+            bikeType: ""
+        }
+        const sessionStor = sessionStorage.getItem('inputs');
+        if ( sessionStor !== null ) {
+            input = JSON.parse(sessionStor)
+        } 
+        return input;
+    }
+
+    useEffect(() => {
+        sessionStorage.setItem('inputs', JSON.stringify(inputs))
+    }, [inputs])
+
 
     /* Updates state from an <input> change from Form.tsx */
     function handleChange(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>): void {
