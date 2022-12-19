@@ -48,6 +48,7 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                                color={"brand.white"}
                                bg={"brand.blue"} 
                                _hover={{bg: "brand.blue", filter: "brightness(90%)"}}
+                               _active={{bg: "brand.blue", filter: "brightness(90%)"}}
                                alignSelf={"flex-end"}
                             >
                                 Edit
@@ -128,8 +129,12 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                                     color={metricOutput? "brand.white" : "brand.black"}
                                     bg={metricOutput? "brand.blue" : "brand.lightGrey"} 
                                     onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
-                                    _hover={metricOutput? {bg: "brand.blue", filter: "brightness(90%)"}
-                                                        : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
+                                    _hover={ metricOutput? {bg: "brand.blue", filter: "brightness(90%)"}
+                                                        : { bg: "brand.lightGrey", filter: "brightness(110%)"} 
+                                        }
+                                    _active={{ bg: metricOutput? "brand.lightGrey" : "brand.blue",
+                                        color: metricOutput? "brand.black" : "brand.white",
+                                    }} 
                                     >
                                         Metric
                                 </Button>
@@ -144,8 +149,12 @@ export default function Output({inputs, outputs, imperialRider, imperialBike, ha
                                     bg={metricOutput? "brand.lightGrey" : "brand.blue"} 
                                     color={metricOutput? "brand.black" : "brand.white"}
                                     onClick={() => setMetricOutput(prevMetricOutput => !prevMetricOutput)}
-                                    _hover={metricOutput? { bg: "brand.lightGrey", filter: "brightness(110%)"}
-                                                        : {bg: "brand.blue", filter: "brightness(90%)"} }
+                                    _hover={ metricOutput? { bg: "brand.lightGrey", filter: "brightness(110%)"}
+                                                        : {bg: "brand.blue", filter: "brightness(90%)"} 
+                                    }
+                                    _active={{ bg: metricOutput? "brand.blue" : "brand.lightGrey",
+                                        color: metricOutput? "brand.white" : "brand.black",
+                                    }} 
                                     >
                                         Imperial
                                 </Button>

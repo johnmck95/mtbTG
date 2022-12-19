@@ -16,8 +16,8 @@ import {FaSearch,
     FaHandsHelping, 
     FaTools, 
     FaBicycle, 
-    FaRegWindowClose, 
-    FaBars
+    FaChevronCircleLeft,
+    FaChevronCircleRight
 } from "react-icons/fa";
 
 export default function Help(): JSX.Element {
@@ -92,13 +92,14 @@ export default function Help(): JSX.Element {
                                     mb='0.5rem'
                                 />
                                 <InputRightElement>
-                                    <Icon as={FaSearch} w={5} h={5}/>
+                                    <Icon as={FaSearch} w={5} h={5} cursor='pointer'/>
                                 </InputRightElement>
                             </InputGroup>
                             <Icon 
                                 onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel )}
-                                as={FaRegWindowClose} 
+                                as={FaChevronCircleLeft}  
                                 w={5} h={5}
+                                cursor='pointer'
                             />
                         </HStack>
 
@@ -163,8 +164,9 @@ export default function Help(): JSX.Element {
                         position='sticky'
                         top="0.5rem"
                         onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel )}
-                        as={FaBars} 
+                        as={FaChevronCircleRight} 
                         w={5} h={5} mr='2rem'
+                        cursor='pointer'
                     />
                 }
                 <VStack 

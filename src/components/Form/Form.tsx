@@ -333,7 +333,6 @@ export default function Form({
                         </Heading>
                         <Box >
                             <Button
-                                tabIndex={-1}
                                 position="absolute" 
                                 right="65px"
                                 bottom="2px"
@@ -345,11 +344,13 @@ export default function Form({
                                 onClick={toggleRiderUnit}
                                 _hover={ imperialRider? { bg: "brand.lightGrey", filter: "brightness(110%)"}
                                                       : {bg: "brand.blue", filter: "brightness(90%)"} }
+                                _active={{ bg: imperialRider? "brand.blue" : "brand.lightGrey",
+                                    color: imperialRider? "brand.white" : "brand.black",
+                                }}
                                 >
                                     Metric
                             </Button>
                             <Button 
-                                tabIndex={-1}
                                 position="absolute" 
                                 right="10px" 
                                 bottom="2px"
@@ -360,9 +361,12 @@ export default function Form({
                                 bg={imperialRider? "brand.blue": "brand.lightGrey"} 
                                 color={imperialRider? "brand.white": "brand.black"}
                                 onClick={toggleRiderUnit}
+                                data-testid="imperialRiderButton"
                                 _hover={ imperialRider? {bg: "brand.blue", filter: "brightness(90%)"}
                                                      : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
-                                data-testid="imperialRiderButton"
+                                _active={{ bg: imperialRider? "brand.lightGrey" : "brand.blue",
+                                    color: imperialRider? "brand.black" : "brand.white",
+                                }}  
                                 >
                                     Imperial
                             </Button>
@@ -513,7 +517,6 @@ export default function Form({
                             </Heading>
                             <Box >
                                 <Button 
-                                    tabIndex={-1}
                                     position="absolute" 
                                     right="65px" 
                                     bottom="2px"
@@ -525,11 +528,13 @@ export default function Form({
                                     onClick={toggleBikeUnit}
                                     _hover={ imperialBike? { bg: "brand.lightGrey", filter: "brightness(110%)" }
                                     : {bg: "brand.blue", filter: "brightness(90%)"} }
+                                    _active={{ bg: imperialBike? "brand.blue" : "brand.lightGrey",
+                                        color: imperialBike? "brand.white" : "brand.black",
+                                    }}                                    
                                     >
                                         Metric
                                 </Button>
                                 <Button 
-                                    tabIndex={-1}
                                     position="absolute" 
                                     right="10px" 
                                     bottom="2px"    
@@ -540,9 +545,12 @@ export default function Form({
                                     color={imperialBike? "brand.white": "brand.black"}
                                     bg={imperialBike? "brand.blue": "brand.lightGrey"} 
                                     onClick={toggleBikeUnit}
+                                    data-testid="imperialBikeButton"
                                     _hover={ imperialBike? {bg: "brand.blue", filter: "brightness(90%)"}
                                                           : { bg: "brand.lightGrey", filter: "brightness(110%)"} }
-                                    data-testid="imperialBikeButton"
+                                    _active={{ bg: imperialBike? "brand.lightGrey" : "brand.blue",
+                                        color: imperialBike? "brand.black" : "brand.white",
+                                    }}  
                                     >
                                         Imperial
                                 </Button>
@@ -637,6 +645,7 @@ export default function Form({
                             borderRadius='50px'
                             onClick={handleSubmit}
                             _hover={{bg: "brand.blue", filter: "brightness(90%)"}}
+                            _active={{ bg: "brand.blue"}}
                             > 
                                 Calculate 
                         </Button>
