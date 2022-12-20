@@ -28,6 +28,7 @@ import {
 
 describe("The default form contains ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>);
     })
 
@@ -119,6 +120,7 @@ describe("The default form contains ", () => {
 
 describe("When Rider Metrics are changed from imperial to metric ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>);
         toggleRiderUnits();
     })
@@ -150,6 +152,7 @@ describe("When Rider Metrics are changed from imperial to metric ", () => {
 
 describe("When Bike Metrics are changed from metric to imperial ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>);
         toggleBikeUnits();
     })
@@ -181,6 +184,7 @@ describe("When Bike Metrics are changed from metric to imperial ", () => {
 
 describe("Converting Rider Metrics from Imperial to Metic ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>)
     })
     test.each([
@@ -242,6 +246,7 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
 
 describe("Converting Bike Metrics from Metic to Imperial",  () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>)
     })
     test.each([
@@ -301,6 +306,7 @@ describe("Converting Bike Metrics from Metic to Imperial",  () => {
 
 describe("After clicking the 'edit' button to return to the Form page ", () => {
     beforeEach( () => {
+        window.sessionStorage.clear();
         render(<Home/>);
         enterHeightFeetValue("5");
         enterHeightInchesValue("10");
@@ -464,6 +470,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 
 describe("Error Handling ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>);
     })
 
