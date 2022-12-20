@@ -1,4 +1,4 @@
-import { AlgorithmProps, Output } from '../../data/interfaces/interfaces';
+import { AlgorithmProps, Output } from '../../types/interfaces';
 
 function Algorithm({
   heightCM,

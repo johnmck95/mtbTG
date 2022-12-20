@@ -17,19 +17,19 @@ import {
   FaHandsHelping,
   FaTools,
   FaBicycle,
-  FaRegWindowClose,
-  FaBars,
+  FaChevronCircleLeft,
+  FaChevronCircleRight,
 } from 'react-icons/fa';
 
 export default function Help(): JSX.Element {
   const smallScreen = 768;
   const [showPanel, setShowPanel] = useState(true);
   const hipsterIpsum = `I'm baby messenger bag raw denim taxidermy copper mug 90's man braid 
-        hashtag ramps. XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland 
-        adaptogen meditation tacos. Four loko irony microdosing tilde blog enamel pin forage you 
-        probably haven't heard of them sriracha pork belly selfies organic pitchfork celiac. 
-        Selvage chambray tilde swag. Vape cray wolf keytar stumptown neutra. Everyday carry you 
-        probably haven't heard of them narwhal fixie.`;
+      hashtag ramps. XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland 
+      adaptogen meditation tacos. Four loko irony microdosing tilde blog enamel pin forage you 
+      probably haven't heard of them sriracha pork belly selfies organic pitchfork celiac. 
+      Selvage chambray tilde swag. Vape cray wolf keytar stumptown neutra. Everyday carry you 
+      probably haven't heard of them narwhal fixie.`;
 
   const useViewport = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -40,9 +40,7 @@ export default function Help(): JSX.Element {
       else setShowPanel(() => true);
       return () => window.removeEventListener('resize', handleWindowResize);
     }, [width]);
-    return {
-      width,
-    };
+    return { width };
   };
   const { width } = useViewport();
 
@@ -81,23 +79,21 @@ export default function Help(): JSX.Element {
               <InputGroup maxW='70%'>
                 <Input
                   placeholder='Search'
-                  _placeholder={{
-                    opacity: 1,
-                    color: 'brand.white',
-                  }}
+                  _placeholder={{ opacity: 1, color: 'brand.white' }}
                   borderColor='brand.white'
                   bg='brand.flatBlack'
                   mb='0.5rem'
                 />
                 <InputRightElement>
-                  <Icon as={FaSearch} w={5} h={5} />
+                  <Icon as={FaSearch} w={5} h={5} cursor='pointer' />
                 </InputRightElement>
               </InputGroup>
               <Icon
                 onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
-                as={FaRegWindowClose}
+                as={FaChevronCircleLeft}
                 w={5}
                 h={5}
+                cursor='pointer'
               />
             </HStack>
 
@@ -192,10 +188,11 @@ export default function Help(): JSX.Element {
             position='sticky'
             top='0.5rem'
             onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
-            as={FaBars}
+            as={FaChevronCircleRight}
             w={5}
             h={5}
             mr='2rem'
+            cursor='pointer'
           />
         )}
         <VStack
