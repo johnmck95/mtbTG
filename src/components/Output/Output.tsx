@@ -12,11 +12,11 @@ import {
     Icon, 
     Box
 } from "@chakra-ui/react";
-import {useEffect, useState} from "react";
-import {FaRegWindowClose, FaBars} from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaRegWindowClose, FaBars } from "react-icons/fa";
 import '../../styling/output.css';
 import LearnMoreModal from "../LearnMoreModal/LearnMoreModal";
-import {OutputProps} from "../../types/interfaces";
+import { OutputProps } from "../../types/interfaces";
 import { SessionStorageKeys } from "../../types/enums";
 
 export default function Output({inputs, outputs, imperialRider, imperialBike, handleShowForm}: OutputProps): JSX.Element {
