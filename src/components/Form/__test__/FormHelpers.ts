@@ -152,3 +152,7 @@ export function toggleBikeUnits(): void {
 export function clickEditFormButton(): void {
     user.click(screen.getByRole('button', {name: 'Edit'}));
 };
+
+export function expectHeightFeetValueToBe(val: string): void {
+    expect(FormElements.heightFeet.getAttribute("value")).toEqual(val);
+}
