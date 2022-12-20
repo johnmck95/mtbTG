@@ -78,7 +78,7 @@ export default function Help(): JSX.Element {
                             justifyContent={"space-between"} 
                             position='sticky' 
                             top="0rem" 
-                            overflow='clipped' 
+                            // overflow='clipped' 
                             bg='brand.flatBlack' 
                             opacity={1}
                             w='100%'
