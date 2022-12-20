@@ -1,4 +1,4 @@
-import { render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import Home from "../../../pages/Home/Home"
 import {
@@ -23,11 +23,13 @@ import {
     expectErrorMessagesToBePresent,
     clickEditFormButton,
     FormElements,
-    FormLabels
+    FormLabels,
+    expectHeightFeetValueToBe
 } from "./FormHelpers"
 
 describe("The default form contains ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>);
     })
 
@@ -119,6 +121,7 @@ describe("The default form contains ", () => {
 
 describe("When Rider Metrics are changed from imperial to metric ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>);
         toggleRiderUnits();
     })
@@ -150,6 +153,7 @@ describe("When Rider Metrics are changed from imperial to metric ", () => {
 
 describe("When Bike Metrics are changed from metric to imperial ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>);
         toggleBikeUnits();
     })
@@ -181,6 +185,7 @@ describe("When Bike Metrics are changed from metric to imperial ", () => {
 
 describe("Converting Rider Metrics from Imperial to Metic ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>)
     })
     test.each([
@@ -242,6 +247,7 @@ describe("Converting Rider Metrics from Imperial to Metic ", () => {
 
 describe("Converting Bike Metrics from Metic to Imperial",  () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>)
     })
     test.each([
@@ -301,6 +307,7 @@ describe("Converting Bike Metrics from Metic to Imperial",  () => {
 
 describe("After clicking the 'edit' button to return to the Form page ", () => {
     beforeEach( () => {
+        window.sessionStorage.clear();
         render(<Home/>);
         enterHeightFeetValue("5");
         enterHeightInchesValue("10");
@@ -464,6 +471,7 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 
 describe("Error Handling ", () => {
     beforeEach(() => {
+        window.sessionStorage.clear();
         render(<Home/>);
     })
 
@@ -1060,6 +1068,40 @@ describe("Error Handling ", () => {
         })
 
     })
+})
+
+/* TODO: These tests are inheriently challenging to create in JEST since we are rendering
+individual components. Session storage likely better tested in Selenium functional testing.*/
+describe("Session Storage is respected for ", () => {
+    beforeEach(() => {
+        window.sessionStorage.clear();
+        render(<Home/>);
+    })
+
+    // Check the default selection, enter a value, reload the page, check the value persists
+    xtest("Height (feet) user input", () => {
+        expectHeightFeetValueToBe("");
+        enterHeightFeetValue("6");
+        // TODO: RELOAD PAGE
+        expectHeightFeetValueToBe("6")
+    })
+    test.todo("Height (inches) user input")
+    test.todo("Height (cm) user input")
+    test.todo("Weight (lb) user input")
+    test.todo("Weight (kg) user input")
+    test.todo("Handling user input")
+    test.todo("Skill Level user input")
+    test.todo("Reach (mm) user input")
+    test.todo("Stack (mm) user input")
+    test.todo("Reach (inches) user input")
+    test.todo("Stack (inches) user input")
+    test.todo("Bike Type user input")
+
+    test.todo("Rider Metrics preference")
+    test.todo("Bike Metrics preference")
+    test.todo("Form vs Output selected")
+    test.todo("Output page units")
+    
 })
 
 /*         FUTURE TESTS 

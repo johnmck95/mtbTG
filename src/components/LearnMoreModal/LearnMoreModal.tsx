@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import {learnMoreModal as modalData} from "../../data/LearnMoreModal";
 import placeholderImage from "../../images/placeholder-SM,300x150.png";
-import {LeanMoreModalProps} from "../../interfaces/interfaces";
+import {LeanMoreModalProps} from "../../types/interfaces";
 
 export default function LearnMoreModal({id}: LeanMoreModalProps): JSX.Element {  
     const { isOpen, onOpen, onClose } = useDisclosure()

@@ -18,7 +18,7 @@ import "../../styling/form.css"
 import {errorCodes} from "../../data/ErrorCodes"
 import ErrorAlert from "../ErrorAlert/ErrorAlert"
 import SkillSlider from "../SkillSlider/SkillSlider"
-import {FormProps} from "../../interfaces/interfaces";
+import {FormProps} from "../../types/interfaces";
 
 export default function Form({
     inputs, 
