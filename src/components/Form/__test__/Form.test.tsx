@@ -79,7 +79,7 @@ describe('The default form contains', () => {
 
   describe('Skill Level', () => {
     test('Label', () => {
-      expect(screen.getByText(FormLabels.skillLevel));
+      expect(screen.getByText(FormLabels.skillLevel)).toBeVisible();
     });
     test('Renders the skillSlider', () => {
       expect(FormElements.skillSliderHandle).toBeVisible();
@@ -337,8 +337,10 @@ describe("After clicking the 'edit' button to return to the Form page", () => {
     enterStackMMValue('620');
     clickBikeTypeRadio('Enduro');
     clickCalculateButton();
+    // eslint-disable-next-line jest/no-standalone-expect
     expect(screen.getByText('YOUR SETTINGS')).toBeVisible();
     clickEditFormButton();
+    // eslint-disable-next-line jest/no-standalone-expect
     expect(screen.getByText('RIDER METRICS')).toBeVisible();
   });
   test.each([['-1'], ['a'], ['five'], ['-2147483647'], ['5.2'], ['6.678']])(
@@ -367,7 +369,8 @@ describe("After clicking the 'edit' button to return to the Form page", () => {
     ['6', '11'],
     ['6', '11.9999'],
   ])(
-    'When Height (feet) & Height (inches) are both valid [%s\'%s"], but Total Height is invalid, you cannot proceed to the Output page',
+    `When Height (feet) & Height (inches) are both valid [%s'%s"], but Total Height is invalid, 
+    you cannot proceed to the Output page`,
     (heightFeet, heightInches) => {
       user.clear(FormElements.heightFeet);
       enterHeightFeetValue(heightFeet);
