@@ -5,6 +5,7 @@ export const theme = extendTheme({
     brand: {
       lightGrey: '#BDBDBD',
       darkGrey: '#303638',
+      hoverGrey: '#CBD5E0',
       blue: '#5B7BC0',
       white: '#FFFDFA',
       black: 'black',

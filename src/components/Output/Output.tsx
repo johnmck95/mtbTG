@@ -12,11 +12,12 @@ import {
   Icon,
   Box,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaRegWindowClose, FaBars } from 'react-icons/fa';
 import '../../styling/output.css';
 import LearnMoreModal from '../LearnMoreModal/LearnMoreModal';
-import { OutputProps } from '../../data/interfaces/interfaces';
+import { OutputProps } from '../../types/interfaces';
+import { SessionStorageKeys } from '../../types/enums';
 
 export default function Output({
   inputs,
@@ -26,7 +27,21 @@ export default function Output({
   handleShowForm,
 }: OutputProps): JSX.Element {
   const [showSidePanel, setShowSidePanel] = useState(true);
-  const [metricOutput, setMetricOutput] = useState(true);
+  const [metricOutput, setMetricOutput] = useState(typeSafeUnits());
+
+  function typeSafeUnits() {
+    let metricUnits = true;
+    const sessionStor = sessionStorage.getItem(SessionStorageKeys.outputUnit);
+    if (sessionStor !== null) metricUnits = JSON.parse(sessionStor);
+    return metricUnits;
+  }
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      SessionStorageKeys.outputUnit,
+      JSON.stringify(metricOutput),
+    );
+  }, [metricOutput]);
 
   return (
     <div className='outputBox'>
@@ -69,10 +84,8 @@ export default function Output({
                   size={'xs'}
                   color={'brand.white'}
                   bg={'brand.blue'}
-                  _hover={{
-                    bg: 'brand.blue',
-                    filter: 'brightness(90%)',
-                  }}
+                  _hover={{ bg: 'brand.blue', filter: 'brightness(90%)' }}
+                  _active={{ bg: 'brand.blue', filter: 'brightness(90%)' }}
                   alignSelf={'flex-end'}
                 >
                   Edit
@@ -187,15 +200,13 @@ export default function Output({
                   }
                   _hover={
                     metricOutput
-                      ? {
-                          bg: 'brand.blue',
-                          filter: 'brightness(90%)',
-                        }
-                      : {
-                          bg: 'brand.lightGrey',
-                          filter: 'brightness(110%)',
-                        }
+                      ? { bg: 'brand.blue', filter: 'brightness(90%)' }
+                      : { bg: 'brand.lightGrey', filter: 'brightness(110%)' }
                   }
+                  _active={{
+                    bg: metricOutput ? 'brand.lightGrey' : 'brand.blue',
+                    color: metricOutput ? 'brand.black' : 'brand.white',
+                  }}
                 >
                   Metric
                 </Button>
@@ -214,15 +225,13 @@ export default function Output({
                   }
                   _hover={
                     metricOutput
-                      ? {
-                          bg: 'brand.lightGrey',
-                          filter: 'brightness(110%)',
-                        }
-                      : {
-                          bg: 'brand.blue',
-                          filter: 'brightness(90%)',
-                        }
+                      ? { bg: 'brand.lightGrey', filter: 'brightness(110%)' }
+                      : { bg: 'brand.blue', filter: 'brightness(90%)' }
                   }
+                  _active={{
+                    bg: metricOutput ? 'brand.blue' : 'brand.lightGrey',
+                    color: metricOutput ? 'brand.white' : 'brand.black',
+                  }}
                 >
                   Imperial
                 </Button>
@@ -302,8 +311,7 @@ export default function Output({
               </GridItem>
               <GridItem colSpan={1} w='100%' textAlign='right'>
                 <Text data-testid='frontTireOutput'>
-                  {outputs.frontTirePSI}
-                  psi
+                  {outputs.frontTirePSI}psi
                 </Text>
               </GridItem>
               <GridItem colSpan={1} w='100%' textAlign='right'>
@@ -314,8 +322,7 @@ export default function Output({
               </GridItem>
               <GridItem colSpan={1} w='100%' textAlign='right'>
                 <Text data-testid='rearTireOutput'>
-                  {outputs.rearTirePSI}
-                  psi
+                  {outputs.rearTirePSI}psi
                 </Text>
               </GridItem>
               <GridItem colSpan={1} w='100%' textAlign='right'>

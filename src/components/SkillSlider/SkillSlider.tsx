@@ -7,7 +7,7 @@ import {
   Text,
   SliderThumb,
 } from '@chakra-ui/react';
-import { SkillSliderProps } from '../../data/interfaces/interfaces';
+import { SkillSliderProps } from '../../types/interfaces';
 
 export default function SkillSlider({
   skillLevel,

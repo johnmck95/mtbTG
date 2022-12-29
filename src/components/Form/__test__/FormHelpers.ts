@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { errorCodes } from '../../../data/ErrorCodes';
-import { FormLabels } from '../../../data/enums/enums';
+import { FormLabels } from '../../../types/enums';
 
 export class FormElements {
   static get heightFeet(): HTMLElement {
@@ -139,9 +139,9 @@ export function toggleBikeUnits(): void {
 }
 
 export function clickEditFormButton(): void {
-  user.click(
-    screen.getByRole('button', {
-      name: 'Edit',
-    }),
-  );
+  user.click(screen.getByRole('button', { name: 'Edit' }));
+}
+
+export function expectHeightFeetValueToBe(val: string): void {
+  expect(FormElements.heightFeet.getAttribute('value')).toEqual(val);
 }

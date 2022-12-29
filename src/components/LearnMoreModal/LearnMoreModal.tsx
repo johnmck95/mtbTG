@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { learnMoreModal as modalData } from '../../data/LearnMoreModal';
 import placeholderImage from '../../images/placeholder-SM,300x150.png';
-import { LeanMoreModalProps } from '../../data/interfaces/interfaces';
+import { LeanMoreModalProps } from '../../types/interfaces';
 
 export default function LearnMoreModal({
   id,
@@ -30,9 +30,8 @@ export default function LearnMoreModal({
         filter='brightness(120%)'
         color='brand.white'
         my={2}
-        _hover={{
-          bg: 'brand.blue',
-        }}
+        _hover={{ bg: 'brand.blue' }}
+        _active={{ bg: 'brand.blue' }}
       >
         {' '}
         learn more
