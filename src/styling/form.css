@@ -1,14 +1,14 @@
 .formBox {
-	overflow: auto;
-	height: 100%;
-	display: flex;
-	align-items: flex-start;
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
 }
 
 @media screen and (min-height: 1050px) {
-	.formBox {
-		height: calc(100vh - 50px);
-		display: flex;
-		align-items: center;
-	}
+  .formBox {
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+  }
 }
