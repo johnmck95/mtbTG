@@ -1,0 +1,33 @@
+{
+    "extends": [
+      "react-app",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:jest/recommended",
+      "plugin:testing-library/react"
+    ],
+    "rules": {
+      "comma-dangle": "warn",
+      "max-len": [
+        "warn",
+        80
+      ],
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "quotes": [
+        "warn",
+        "double"
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {
+          "additional-typescript-only-rule": "warn"
+        }
+      }
+    ]
+  }
