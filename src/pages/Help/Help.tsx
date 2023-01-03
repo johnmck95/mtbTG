@@ -76,9 +76,10 @@ export default function Help(): JSX.Element {
                         >
                         <HStack 
                             justifyContent={"space-between"} 
-                            position='sticky' 
-                            top="0rem" 
-                            overflow='clipped' 
+                            // position='sticky' 
+                            // top="0rem" 
+                            // overflow='clipped'
+                            
                             bg='brand.flatBlack' 
                             opacity={1}
                             w='100%'
@@ -100,6 +101,10 @@ export default function Help(): JSX.Element {
                                 as={FaChevronCircleLeft}  
                                 w={5} h={5}
                                 cursor='pointer'
+
+                                position='sticky'
+                                // top='4rem'
+                                // right='5rem'
                             />
                         </HStack>
 
