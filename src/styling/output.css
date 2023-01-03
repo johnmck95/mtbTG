@@ -1,14 +1,14 @@
-.outputBox{
-    overflow: auto;
-    height: 100%;
-    display: flex;
-    align-items: flex-start; 
+.outputBox {
+	overflow: auto;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
 }
 
 @media screen and (min-height: 1050px) {
-    .outputBox{
-        height: calc(100vh - 50px);
-        display: flex;
-        align-items: center;
-    }
+	.outputBox {
+		height: calc(100vh - 50px);
+		display: flex;
+		align-items: center;
+	}
 }

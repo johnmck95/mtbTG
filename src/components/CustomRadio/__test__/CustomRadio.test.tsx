@@ -1,3 +1,3 @@
-import { render } from "@testing-library/react";
+import { render } from '@testing-library/react';
 
-test.todo("Basic CustomRadio tests")
+test.todo('Basic CustomRadio tests');
