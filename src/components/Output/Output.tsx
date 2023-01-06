@@ -271,7 +271,7 @@ export default function Output({
 								</Text>
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='left'>
-								<Text textDecoration={'underline'}>Handlebar Width</Text>
+								<Text fontWeight={'bold'}>Handlebar Width</Text>
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='right'>
 								<Text>
@@ -283,7 +283,7 @@ export default function Output({
 								<LearnMoreModal id={0} />
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='left'>
-								<Text textDecoration={'underline'}>Handlebar Rise</Text>
+								<Text fontWeight={'bold'}>Handlebar Rise</Text>
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='right'>
 								<Text>
@@ -295,7 +295,7 @@ export default function Output({
 								<LearnMoreModal id={1} />
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='left'>
-								<Text textDecoration={'underline'}>Stem Length</Text>
+								<Text fontWeight={'bold'}>Stem Length</Text>
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='right'>
 								<Text>
@@ -307,7 +307,7 @@ export default function Output({
 								<LearnMoreModal id={2} />
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='left'>
-								<Text textDecoration={'underline'}>Stem Spacers</Text>
+								<Text fontWeight={'bold'}>Stem Spacers</Text>
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='right'>
 								<Text>
@@ -319,7 +319,7 @@ export default function Output({
 								<LearnMoreModal id={3} />
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='left'>
-								<Text textDecoration={'underline'}>Front Tire</Text>
+								<Text fontWeight={'bold'}>Front Tire</Text>
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='right'>
 								<Text data-testid='frontTireOutput'>
@@ -330,7 +330,7 @@ export default function Output({
 								<LearnMoreModal id={4} />
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='left'>
-								<Text textDecoration={'underline'}>Rear Tire</Text>
+								<Text fontWeight={'bold'}>Rear Tire</Text>
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='right'>
 								<Text data-testid='rearTireOutput'>
@@ -341,7 +341,7 @@ export default function Output({
 								<LearnMoreModal id={5} />
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='left'>
-								<Text textDecoration={'underline'}>Inserts</Text>
+								<Text fontWeight={'bold'}>Inserts</Text>
 							</GridItem>
 							<GridItem colSpan={1} w='100%' textAlign='right'>
 								<Text data-testid='insertsOutput'>{outputs.inserts}</Text>
