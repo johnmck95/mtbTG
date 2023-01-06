@@ -9,24 +9,26 @@ import About from './pages/About/About';
 import Help from './pages/Help/Help';
 import { theme } from './styling/theme';
 
-export const App = () => (
-	<ChakraProvider theme={theme}>
-		<Header />
-		<Box
-			as='main'
-			w='100%'
-			mt='50px'
-			bg='brand.flatBlack'
-			color='brand.white'
-			height='calc(100vh - 50px)'
-			overflow='hidden'>
-			<Router>
-				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/about' element={<About />} />
-					<Route path='/help' element={<Help />} />
-				</Routes>
-			</Router>
-		</Box>
-	</ChakraProvider>
-);
+export default function App(): JSX.Element {
+	return (
+		<ChakraProvider theme={theme}>
+			<Header />
+			<Box
+				as='main'
+				w='100%'
+				mt='50px'
+				bg='brand.flatBlack'
+				color='brand.white'
+				height='calc(100vh - 50px)'
+				overflow='hidden'>
+				<Router>
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='/about' element={<About />} />
+						<Route path='/help' element={<Help />} />
+					</Routes>
+				</Router>
+			</Box>
+		</ChakraProvider>
+	);
+}

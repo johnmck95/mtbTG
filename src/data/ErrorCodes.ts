@@ -12,7 +12,7 @@ const errorCodes = [
 	},
 	{
 		errorNumber: 2,
-		errorMessage: "Please enter a numeric Height between 5'0 and 6'6",
+		errorMessage: 'Please enter a numeric Height between 5`0 and 6`6',
 		showError: false,
 	},
 	{

@@ -1,0 +1,25 @@
+{
+	"extends": [
+		"react-app",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:jest/recommended",
+		"plugin:testing-library/react"
+	],
+	"rules": {
+		"max-len": ["warn", 100],
+		"no-console": "warn",
+		"no-unused-vars": "warn",
+		"quotes": ["warn", "single"],
+		"react/react-in-jsx-scope": "off"
+	},
+	"overrides": [
+		{
+			"files": ["**/*.ts?(x)"]
+			// "rules": {
+			//   "additional-typescript-only-rule": "warn"
+			// }
+		}
+	]
+}

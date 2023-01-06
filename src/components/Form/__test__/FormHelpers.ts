@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { errorCodes } from '../../../data/ErrorCodes';
@@ -119,11 +120,11 @@ export function clickCalculateButton(): void {
 	user.click(screen.getByRole('button', { name: 'Calculate' }));
 }
 
-export function expectErrorMessagesToBePresent(errorIDs: number[]) {
+export function expectErrorMessagesToBePresent(errorIDs: number[]): void {
 	for (const id of errorIDs) expectErrorMessageToBePresent(id);
 }
 
-export function expectErrorMessagesNotToBePresent(errorIDs: number[]) {
+export function expectErrorMessagesNotToBePresent(errorIDs: number[]): void {
 	for (const id of errorIDs) expectErrorMessageNotToBePresent(id);
 }
 
