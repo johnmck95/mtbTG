@@ -108,6 +108,7 @@ export default function Output({
 									<Text>
 										{imperialRider
 											? parseInt(inputs.heightFeet) +
+											  // eslint-disable-next-line quotes
 											  "'" +
 											  parseFloat(inputs.heightInches).toFixed(0) +
 											  '"'

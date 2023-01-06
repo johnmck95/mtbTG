@@ -52,7 +52,7 @@ export default function Form({
 	const metricBike = !imperialBike;
 	let formHasErrors = true;
 
-	// TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning. This is a dangerous useEffect.
+	// TODO: Fix the "missing dependencies: 'handleErrors' and 'showErrors' " warning.
 	useEffect(() => {
 		if (showErrors) handleErrors();
 		// eslint-disable-next-line

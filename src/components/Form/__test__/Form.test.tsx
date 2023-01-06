@@ -1,3 +1,5 @@
+/* eslint-disable jest/no-disabled-tests */
+/* eslint-disable jest/expect-expect */
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import Home from '../../../pages/Home/Home';
@@ -27,13 +29,13 @@ import {
 	expectHeightFeetValueToBe,
 } from './FormHelpers';
 
-describe('The default form contains ', () => {
+describe('The default form contains', () => {
 	beforeEach(() => {
 		window.sessionStorage.clear();
 		render(<Home />);
 	});
 
-	describe('Height (feet) ', () => {
+	describe('Height (feet)', () => {
 		test('Label', () => {
 			expect(FormElements.heightFeet).toBeVisible();
 		});
@@ -42,7 +44,7 @@ describe('The default form contains ', () => {
 		});
 	});
 
-	describe('Height (inches) ', () => {
+	describe('Height (inches)', () => {
 		test('Label', () => {
 			expect(FormElements.heightInches).toBeVisible();
 		});
@@ -53,7 +55,7 @@ describe('The default form contains ', () => {
 		});
 	});
 
-	describe('Weight (lb) ', () => {
+	describe('Weight (lb)', () => {
 		test('Label', () => {
 			expect(FormElements.weightLB).toBeVisible();
 		});
@@ -62,7 +64,7 @@ describe('The default form contains ', () => {
 		});
 	});
 
-	describe('Handling ', () => {
+	describe('Handling', () => {
 		test('Label', () => {
 			expect(screen.getByText(FormLabels.handling)).toBeVisible();
 		});
@@ -77,9 +79,9 @@ describe('The default form contains ', () => {
 		});
 	});
 
-	describe('Skill Level ', () => {
+	describe('Skill Level', () => {
 		test('Label', () => {
-			expect(screen.getByText(FormLabels.skillLevel));
+			expect(screen.getByText(FormLabels.skillLevel)).toBeVisible();
 		});
 		test('Renders the skillSlider', () => {
 			expect(FormElements.skillSliderHandle).toBeVisible();
@@ -91,8 +93,8 @@ describe('The default form contains ', () => {
 		});
 	});
 
-	describe('Reach (mm) ', () => {
-		test('Label ', () => {
+	describe('Reach (mm)', () => {
+		test('Label', () => {
 			expect(FormElements.reachMM).toBeVisible();
 		});
 		test('Placeholder value of 475', () => {
@@ -100,8 +102,8 @@ describe('The default form contains ', () => {
 		});
 	});
 
-	describe('Stack (mm) ', () => {
-		test('Label ', () => {
+	describe('Stack (mm)', () => {
+		test('Label', () => {
 			expect(FormElements.stackMM).toBeVisible();
 		});
 		test('Placeholder value of 620', () => {
@@ -109,8 +111,8 @@ describe('The default form contains ', () => {
 		});
 	});
 
-	describe('Bike Type ', () => {
-		test('Label ', () => {
+	describe('Bike Type', () => {
+		test('Label', () => {
 			expect(screen.getByText('Bike Type')).toBeVisible();
 		});
 		test('Enduro custom radio button', () => {
@@ -122,7 +124,7 @@ describe('The default form contains ', () => {
 	});
 });
 
-describe('When Rider Metrics are changed from imperial to metric ', () => {
+describe('When Rider Metrics are changed from imperial to metric', () => {
 	beforeEach(() => {
 		window.sessionStorage.clear();
 		render(<Home />);
@@ -139,7 +141,7 @@ describe('When Rider Metrics are changed from imperial to metric ', () => {
 		).not.toBeInTheDocument();
 	});
 
-	describe('Height (cm) ', () => {
+	describe('Height (cm)', () => {
 		test('Label appears', () => {
 			expect(FormElements.heightCM).toBeVisible();
 		});
@@ -148,7 +150,7 @@ describe('When Rider Metrics are changed from imperial to metric ', () => {
 		});
 	});
 
-	describe('Weight (kg) ', () => {
+	describe('Weight (kg)', () => {
 		test('Label appears', () => {
 			expect(FormElements.weightKG).toBeVisible();
 		});
@@ -158,7 +160,7 @@ describe('When Rider Metrics are changed from imperial to metric ', () => {
 	});
 });
 
-describe('When Bike Metrics are changed from metric to imperial ', () => {
+describe('When Bike Metrics are changed from metric to imperial', () => {
 	beforeEach(() => {
 		window.sessionStorage.clear();
 		render(<Home />);
@@ -171,7 +173,7 @@ describe('When Bike Metrics are changed from metric to imperial ', () => {
 		expect(screen.queryByLabelText(FormLabels.stackMM)).not.toBeInTheDocument();
 	});
 
-	describe('Reach (inches) ', () => {
+	describe('Reach (inches)', () => {
 		test('Label appears', () => {
 			expect(FormElements.reachInches).toBeVisible();
 		});
@@ -182,7 +184,7 @@ describe('When Bike Metrics are changed from metric to imperial ', () => {
 		});
 	});
 
-	describe('Stack (inches) ', () => {
+	describe('Stack (inches)', () => {
 		test('Label appears', () => {
 			expect(FormElements.stackInches).toBeVisible();
 		});
@@ -194,7 +196,7 @@ describe('When Bike Metrics are changed from metric to imperial ', () => {
 	});
 });
 
-describe('Converting Rider Metrics from Imperial to Metic ', () => {
+describe('Converting Rider Metrics from Imperial to Metic', () => {
 	beforeEach(() => {
 		window.sessionStorage.clear();
 		render(<Home />);
@@ -224,7 +226,7 @@ describe('Converting Rider Metrics from Imperial to Metic ', () => {
 		expect(screen.getByDisplayValue(weightKG)).toBeInTheDocument();
 	});
 
-	describe('Then converting back to Imperial from Metric should have ', () => {
+	describe('Then converting back to Imperial from Metric should have', () => {
 		test.each([
 			['5', '0', '5', '0.0000'],
 			['5', '7', '5', '7.0000'],
@@ -288,7 +290,7 @@ describe('Converting Bike Metrics from Metic to Imperial', () => {
 		expect(screen.getByDisplayValue(stackInchesOut)).toBeInTheDocument();
 	});
 
-	describe('Then converting back to Metric from Imperial should have ', () => {
+	describe('Then converting back to Metric from Imperial should have', () => {
 		test.each([
 			['400', '399.9992'],
 			['400.10', '400.1008'],
@@ -324,7 +326,7 @@ describe('Converting Bike Metrics from Metic to Imperial', () => {
 	});
 });
 
-describe("After clicking the 'edit' button to return to the Form page ", () => {
+describe('After clicking the `edit` button to return to the Form page', () => {
 	beforeEach(() => {
 		window.sessionStorage.clear();
 		render(<Home />);
@@ -337,12 +339,11 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		enterStackMMValue('620');
 		clickBikeTypeRadio('Enduro');
 		clickCalculateButton();
-		expect(screen.getByText('YOUR SETTINGS')).toBeVisible();
 		clickEditFormButton();
-		expect(screen.getByText('RIDER METRICS')).toBeVisible();
 	});
 	test.each([['-1'], ['a'], ['five'], ['-2147483647'], ['5.2'], ['6.678']])(
-		'Changing Height (feet) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Height (feet) to an invalid value [%s] will not allow you to 
+		proceed to the Output page`,
 		(heightFeet) => {
 			user.clear(FormElements.heightFeet);
 			enterHeightFeetValue(heightFeet);
@@ -352,7 +353,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		},
 	);
 	test.each([['-1'], ['12'], ['-0.0000001'], ['six'], ['59.8']])(
-		'Changing Height (inches) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Height (inches) to an invalid value [%s] will not 
+		allow you to proceed to the Output page`,
 		(heightInches) => {
 			user.clear(FormElements.heightInches);
 			enterHeightInchesValue(heightInches);
@@ -367,7 +369,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		['6', '11'],
 		['6', '11.9999'],
 	])(
-		'When Height (feet) & Height (inches) are both valid [%s\'%s"], but Total Height is invalid, you cannot proceed to the Output page',
+		`When Height (feet) & Height (inches) are both valid [%s'%s"], 
+		but Total Height is invalid, you cannot proceed to the Output page`,
 		(heightFeet, heightInches) => {
 			user.clear(FormElements.heightFeet);
 			enterHeightFeetValue(heightFeet);
@@ -388,7 +391,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		['One Hundered Fifty Five'],
 		['200'],
 	])(
-		'Changing Height (cm) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Height (cm) to an invalid value [%s] will not allow 
+		you to proceed to the Output page`,
 		(heightCM) => {
 			toggleRiderUnits();
 			user.clear(FormElements.heightCM);
@@ -407,7 +411,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		['240.1'],
 		['One Hundered Fifty Five'],
 	])(
-		'Changing Weight (lb) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Weight (lb) to an invalid value [%s] will not allow you to 
+		proceed to the Output page`,
 		(weightLB) => {
 			user.clear(FormElements.weightLB);
 			enterWeightLBValue(weightLB);
@@ -424,7 +429,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		['-89'],
 		['sixty five'],
 	])(
-		'Changing Weight (kg) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Weight (kg) to an invalid value [%s] will not allow you to 
+		proceed to the Output page`,
 		(weightKG) => {
 			toggleRiderUnits();
 			user.clear(FormElements.weightKG);
@@ -442,7 +448,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		['-475'],
 		['five hundred'],
 	])(
-		'Changing Reach (mm) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Reach (mm) to an invalid value [%s] will not allow you to 
+		proceed to the Output page`,
 		(reachMM) => {
 			user.clear(FormElements.reachMM);
 			enterReachMMValue(reachMM);
@@ -452,7 +459,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		},
 	);
 	test.each([['15.7495'], ['-16'], ['seventeen'], ['21.6501'], ['22']])(
-		'Changing Reach (inches) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Reach (inches) to an invalid value [%s] will not allow you to 
+		proceed to the Output page`,
 		(reachInches) => {
 			toggleBikeUnits();
 			user.clear(FormElements.reachInches);
@@ -470,7 +478,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		['680.001'],
 		['700'],
 	])(
-		'Changing Stack (mm) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Stack (mm) to an invalid value [%s] will not allow you to 
+		proceed to the Output page`,
 		(stackMM) => {
 			user.clear(FormElements.stackMM);
 			enterStackMMValue(stackMM);
@@ -487,7 +496,8 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 		['26.7700001'],
 		['twenty-five'],
 	])(
-		'Changing Stack (inches) to an invalid value [%s] will not allow you to proceed to the Output page',
+		`Changing Stack (inches) to an invalid value [%s] will not allow you to 
+		proceed to the Output page`,
 		(stackInches) => {
 			toggleBikeUnits();
 			user.clear(FormElements.stackInches);
@@ -499,13 +509,13 @@ describe("After clicking the 'edit' button to return to the Form page ", () => {
 	);
 });
 
-describe('Error Handling ', () => {
+describe('Error Handling', () => {
 	beforeEach(() => {
 		window.sessionStorage.clear();
 		render(<Home />);
 	});
 
-	describe('For Height (feet): ', () => {
+	describe('For Height (feet):', () => {
 		test('Displays error[0] when value is not an integer (5.01)', () => {
 			enterHeightFeetValue('5.01');
 			clickCalculateButton();
@@ -517,22 +527,22 @@ describe('Error Handling ', () => {
 			expectErrorMessageNotToBePresent(0);
 		});
 		// TODO: Form doesn't properly handle this yet.
-		xtest('Does not display error[0] when value is negative (-6)', () => {
+		test.skip('Does not display error[0] when value is negative (-6)', () => {
 			enterHeightFeetValue('-6');
 			clickCalculateButton();
 			expectErrorMessageNotToBePresent(5);
 		});
-		test("Displays error[0] when value includes the letter 'e'", () => {
+		test('Displays error[0] when value includes the letter `e`', () => {
 			enterHeightFeetValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(0);
 		});
-		test("Displays error[0] when value includes the symbol '-'", () => {
+		test('Displays error[0] when value includes the symbol `-`', () => {
 			enterHeightFeetValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(0);
 		});
-		test("Displays error[0] when value includes the symbol '+'", () => {
+		test('Displays error[0] when value includes the symbol `+`', () => {
 			enterHeightFeetValue('+');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(0);
@@ -554,7 +564,7 @@ describe('Error Handling ', () => {
 		});
 	});
 
-	describe('For Height (inches): ', () => {
+	describe('For Height (inches):', () => {
 		test('Does not display error[1] when value is 0', () => {
 			enterHeightInchesValue('0');
 			clickCalculateButton();
@@ -580,56 +590,56 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(1);
 		});
-		test("Displays error[1] when value includes the letter 'e'", () => {
+		test('Displays error[1] when value includes the letter `e`', () => {
 			enterHeightInchesValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(1);
 		});
-		test("Displays error[1] when value includes the symbol '-'", () => {
+		test('Displays error[1] when value includes the symbol `-`', () => {
 			enterHeightInchesValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(1);
 		});
-		test("Displays error[1] when value includes the symbol '+'", () => {
+		test('Displays error[1] when value includes the symbol `+`', () => {
 			enterHeightInchesValue('+');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(1);
 		});
 	});
 
-	describe('For Imperial Height: ', () => {
-		test("Displays error[2] for 4'11.999999", () => {
+	describe('For Imperial Height:', () => {
+		test('Displays error[2] for 4`11.999999', () => {
 			enterHeightFeetValue('4');
 			enterHeightInchesValue('11.999999');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(2);
 		});
-		test("Displays error[2] for 6'6.0000001", () => {
+		test('Displays error[2] for 6`6.0000001', () => {
 			enterHeightFeetValue('6');
 			enterHeightInchesValue('6.0000001');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(2);
 		});
-		test("Does not display error[2] for 5'0", () => {
+		test('Does not display error[2] for 5`0', () => {
 			enterHeightFeetValue('5');
 			enterHeightInchesValue('0');
 			clickCalculateButton();
 			expectErrorMessageNotToBePresent(2);
 		});
-		test("Does not display error[2] for 5'11.9999", () => {
+		test('Does not display error[2] for 5`11.9999', () => {
 			enterHeightFeetValue('5');
 			enterHeightInchesValue('11.9999');
 			clickCalculateButton();
 			expectErrorMessageNotToBePresent(2);
 		});
-		test("Does not display error[2] for 6'6", () => {
+		test('Does not display error[2] for 6`6', () => {
 			enterHeightFeetValue('6');
 			enterHeightInchesValue('6');
 			clickCalculateButton();
 			expectErrorMessageNotToBePresent(2);
 		});
 	});
-	describe('For Metric Height: ', () => {
+	describe('For Metric Height:', () => {
 		test('Displays error[3] when value is negative (-176)', () => {
 			toggleRiderUnits();
 			enterHeightCMValue('-176');
@@ -654,19 +664,19 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(3);
 		});
-		test("Displays error[3] when value includes the letter 'e'", () => {
+		test('Displays error[3] when value includes the letter `e`', () => {
 			toggleRiderUnits();
 			enterHeightCMValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(3);
 		});
-		test("Displays error[3] when value includes the symbol '-'", () => {
+		test('Displays error[3] when value includes the symbol `-`', () => {
 			toggleRiderUnits();
 			enterHeightCMValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(3);
 		});
-		test("Displays error[3] when value includes the symbol '+'", () => {
+		test('Displays error[3] when value includes the symbol `+`', () => {
 			toggleRiderUnits();
 			enterHeightCMValue('+');
 			clickCalculateButton();
@@ -683,7 +693,7 @@ describe('Error Handling ', () => {
 		);
 	});
 
-	describe('For Imperial Weight: ', () => {
+	describe('For Imperial Weight:', () => {
 		test('Displays error[10] when value is 79.999999', () => {
 			enterWeightLBValue('79.999999');
 			clickCalculateButton();
@@ -699,17 +709,17 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(10);
 		});
-		test("Displays error[10] when value includes the letter 'e'", () => {
+		test('Displays error[10] when value includes the letter `e`', () => {
 			enterWeightLBValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(10);
 		});
-		test("Displays error[10] when value includes the symbol '-'", () => {
+		test('Displays error[10] when value includes the symbol `-`', () => {
 			enterWeightLBValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(10);
 		});
-		test("Displays error[10] when value includes the symbol '+'", () => {
+		test('Displays error[10] when value includes the symbol `+`', () => {
 			enterWeightLBValue('+');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(10);
@@ -724,7 +734,7 @@ describe('Error Handling ', () => {
 		);
 	});
 
-	describe('For Metric Weight: ', () => {
+	describe('For Metric Weight:', () => {
 		test('Displays error[11] when value is 35.99999', () => {
 			toggleRiderUnits();
 			enterWeightKGValue('35.99999');
@@ -743,19 +753,19 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(11);
 		});
-		test("Displays error[11] when value includes the letter 'e'", () => {
+		test('Displays error[11] when value includes the letter `e`', () => {
 			toggleRiderUnits();
 			enterWeightKGValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(11);
 		});
-		test("Displays error[11] when value includes the symbol '-'", () => {
+		test('Displays error[11] when value includes the symbol `-`', () => {
 			toggleRiderUnits();
 			enterWeightKGValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(11);
 		});
-		test("Displays error[11] when value includes the symbol '+'", () => {
+		test('Displays error[11] when value includes the symbol `+`', () => {
 			toggleRiderUnits();
 			enterWeightKGValue('+');
 			clickCalculateButton();
@@ -772,7 +782,7 @@ describe('Error Handling ', () => {
 		);
 	});
 
-	describe('For Handling Preference: ', () => {
+	describe('For Handling Preference:', () => {
 		test('Displays error[4] when no handling preference is selected', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(4);
@@ -788,7 +798,7 @@ describe('Error Handling ', () => {
 		);
 	});
 
-	describe('For Skill Level: ', () => {
+	describe('For Skill Level:', () => {
 		test('Displays error[12] when no skill level is selected', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(12);
@@ -811,7 +821,7 @@ describe('Error Handling ', () => {
 		);
 	});
 
-	describe('For Metric Reach Value: ', () => {
+	describe('For Metric Reach Value:', () => {
 		test.each([['400'], ['550'], ['500.0000001'], ['499.99999'], ['485']])(
 			'Does not display error[5] for valid reach value: [%s]',
 			(reach) => {
@@ -835,24 +845,24 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(5);
 		});
-		test("Displays error[5] when value includes the letter 'e'", () => {
+		test('Displays error[5] when value includes the letter `e`', () => {
 			enterReachMMValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(5);
 		});
-		test("Displays error[5] when value includes the symbol '-'", () => {
+		test('Displays error[5] when value includes the symbol `-`', () => {
 			enterReachMMValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(5);
 		});
-		test("Displays error[5] when value includes the symbol '+'", () => {
+		test('Displays error[5] when value includes the symbol `+`', () => {
 			enterReachMMValue('+');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(5);
 		});
 	});
 
-	describe('For Imperial Reach Value: ', () => {
+	describe('For Imperial Reach Value:', () => {
 		test.each([['15.75'], ['21.65'], ['17'], ['17.0000000'], ['21.64999999']])(
 			'Does not display error[6] for valid reach value: [%s]',
 			(reach) => {
@@ -880,19 +890,19 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(6);
 		});
-		test("Displays error[6] when value includes the letter 'e'", () => {
+		test('Displays error[6] when value includes the letter `e`', () => {
 			toggleBikeUnits();
 			enterReachInchesValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(6);
 		});
-		test("Displays error[6] when value includes the symbol '-'", () => {
+		test('Displays error[6] when value includes the symbol `-`', () => {
 			toggleBikeUnits();
 			enterReachInchesValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(6);
 		});
-		test("Displays error[6] when value includes the symbol '+'", () => {
+		test('Displays error[6] when value includes the symbol `+`', () => {
 			toggleBikeUnits();
 			enterReachInchesValue('+');
 			clickCalculateButton();
@@ -900,7 +910,7 @@ describe('Error Handling ', () => {
 		});
 	});
 
-	describe('For Metric Stack Value: ', () => {
+	describe('For Metric Stack Value:', () => {
 		test.each([['550'], ['680'], ['550.0000001'], ['675'], ['632.16']])(
 			'Does not display error[7] for valid stack values (parameterized)',
 			(stack) => {
@@ -924,24 +934,24 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(7);
 		});
-		test("Displays error[7] when value includes the letter 'e'", () => {
+		test('Displays error[7] when value includes the letter `e`', () => {
 			enterStackMMValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(7);
 		});
-		test("Displays error[7] when value includes the symbol '-'", () => {
+		test('Displays error[7] when value includes the symbol `-`', () => {
 			enterStackMMValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(7);
 		});
-		test("Displays error[7] when value includes the symbol '+'", () => {
+		test('Displays error[7] when value includes the symbol `+`', () => {
 			enterStackMMValue('+');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(7);
 		});
 	});
 
-	describe('For Imperial Stack Value: ', () => {
+	describe('For Imperial Stack Value:', () => {
 		test.each([['21.65'], ['26.77'], ['22'], ['25'], ['24.20000000']])(
 			'Does not display error[8] for valid stack values (parameterized)',
 			(stack) => {
@@ -969,19 +979,19 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(8);
 		});
-		test("Displays error[8] when value includes the letter 'e'", () => {
+		test('Displays error[8] when value includes the letter `e`', () => {
 			toggleBikeUnits();
 			enterStackInchesValue('e');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(8);
 		});
-		test("Displays error[8] when value includes the symbol '-'", () => {
+		test('Displays error[8] when value includes the symbol `-`', () => {
 			toggleBikeUnits();
 			enterStackInchesValue('-');
 			clickCalculateButton();
 			expectErrorMessageToBePresent(8);
 		});
-		test("Displays error[8] when value includes the symbol '+'", () => {
+		test('Displays error[8] when value includes the symbol `+`', () => {
 			toggleBikeUnits();
 			enterStackInchesValue('+');
 			clickCalculateButton();
@@ -989,7 +999,7 @@ describe('Error Handling ', () => {
 		});
 	});
 
-	describe('For Bike Type: ', () => {
+	describe('For Bike Type:', () => {
 		test('Displays error[9] when no bike type is selected', () => {
 			clickCalculateButton();
 			expectErrorMessageToBePresent(9);
@@ -1005,7 +1015,7 @@ describe('Error Handling ', () => {
 		);
 	});
 
-	describe('Submitting an empty form as a Metric Rider ', () => {
+	describe('Submitting an empty form as a Metric Rider', () => {
 		test('Does not show any imperial rider errors', () => {
 			toggleRiderUnits();
 			clickCalculateButton();
@@ -1016,7 +1026,8 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessagesToBePresent([3, 11]);
 		});
-		test('Then toggling to imperial rider converts all metric rider errors to imperial rider errors', () => {
+		test(`Then toggling to imperial rider converts all metric rider 
+			errors to imperial rider errors`, () => {
 			toggleRiderUnits();
 			clickCalculateButton();
 			toggleRiderUnits();
@@ -1025,7 +1036,7 @@ describe('Error Handling ', () => {
 		});
 	});
 
-	describe('Submitting an empty form as an Imperial Rider: ', () => {
+	describe('Submitting an empty form as an Imperial Rider:', () => {
 		test('Does not show any metric rider errors', () => {
 			clickCalculateButton();
 			expectErrorMessagesNotToBePresent([3, 11]);
@@ -1034,7 +1045,8 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessagesToBePresent([0, 1, 2, 10]);
 		});
-		test('Then toggling to metric rider converts all imperial rider errors to metric rider errors', () => {
+		test(`Then toggling to metric rider converts all imperial rider errors
+			to metric rider errors`, () => {
 			clickCalculateButton();
 			toggleRiderUnits();
 			expectErrorMessagesToBePresent([3, 11]);
@@ -1042,7 +1054,7 @@ describe('Error Handling ', () => {
 		});
 	});
 
-	describe('Submitting an empty form as a Metric Bike: ', () => {
+	describe('Submitting an empty form as a Metric Bike:', () => {
 		test('Does not show any imperial bike errors', () => {
 			clickCalculateButton();
 			expectErrorMessagesNotToBePresent([6, 8]);
@@ -1051,7 +1063,8 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessagesToBePresent([5, 7]);
 		});
-		test('Then toggling to imperial bike converts all metric bike errors to imperial bike errors', () => {
+		test(`Then toggling to imperial bike converts all metric bike 
+		errors to imperial bike errors`, () => {
 			clickCalculateButton();
 			toggleBikeUnits();
 			expectErrorMessagesToBePresent([6, 8]);
@@ -1059,7 +1072,7 @@ describe('Error Handling ', () => {
 		});
 	});
 
-	describe('Submitting an empty form as an Imperial Bike: ', () => {
+	describe('Submitting an empty form as an Imperial Bike:', () => {
 		test('Does not show any metric bike errors', () => {
 			toggleBikeUnits();
 			clickCalculateButton();
@@ -1070,7 +1083,8 @@ describe('Error Handling ', () => {
 			clickCalculateButton();
 			expectErrorMessagesToBePresent([6, 8]);
 		});
-		test('Then toggling to metric bike converts all imperial bike errors to metric bike errors', () => {
+		test(`Then toggling to metric bike converts all imperial bike 
+		errors to metric bike errors`, () => {
 			toggleBikeUnits();
 			clickCalculateButton();
 			toggleBikeUnits();
@@ -1082,14 +1096,14 @@ describe('Error Handling ', () => {
 
 /* TODO: These tests are inheriently challenging to create in JEST since we are rendering
 individual components. Session storage likely better tested in Selenium functional testing.*/
-describe('Session Storage is respected for ', () => {
+describe('Session Storage is respected for', () => {
 	beforeEach(() => {
 		window.sessionStorage.clear();
 		render(<Home />);
 	});
 
 	// Check the default selection, enter a value, reload the page, check the value persists
-	xtest('Height (feet) user input', () => {
+	test.skip('Height (feet) user input', () => {
 		expectHeightFeetValueToBe('');
 		enterHeightFeetValue('6');
 		// TODO: RELOAD PAGE

@@ -39,15 +39,15 @@ describe('Initialize the inputs', () => {
 	//-------------------------------//
 	//** START HANDLEBAR WIDTH TESTS */
 	//-------------------------------//
-	test.todo("Bar width for person 5'0 is 743mm");
+	test.todo('Bar width for person 5`0 is 743mm');
 
-	test.todo("Bar width for person 5'11 is ___");
+	test.todo('Bar width for person 5`11 is ___');
 
-	test.todo("Bar width for person 6'0 is ___");
+	test.todo('Bar width for person 6`0 is ___');
 
-	test.todo("Bar width for person 6'2 is ___");
+	test.todo('Bar width for person 6`2 is ___');
 
-	test.todo("Bar width for person 6'6 is ___");
+	test.todo('Bar width for person 6`6 is ___');
 
 	//------------------//
 	//** HANDLEBAR RISE */
