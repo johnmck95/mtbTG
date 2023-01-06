@@ -110,7 +110,7 @@ export default function SkillSlider({
 					{' '}
 					<b>PROFESSIONAL: </b>An exceptionally skilled rider who makes the
 					local heros scratch their heads. You can achieve great results
-					nationally and hold your own at an international event.{' '}
+					nationally and hold your own at international events.{' '}
 				</Text>
 			)}
 		</Box>
