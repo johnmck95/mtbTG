@@ -1,8 +1,6 @@
 {
-    "editor.formatOnSave": true,
-    "cSpell.words": [
-        "Chakra",
-        "Flexbox",
-        "testid"
-    ]
+	"editor.formatOnSave": true,
+	"cSpell.words": ["Chakra", "Flexbox", "testid"],
+	"[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+	"[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
 }
