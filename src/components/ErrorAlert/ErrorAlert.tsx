@@ -2,7 +2,9 @@ import { BsExclamationTriangle } from 'react-icons/bs';
 import { HStack, Text, Icon, GridItem } from '@chakra-ui/react';
 import { ErrorAlertProps } from '../../types/interfaces';
 
-export default function ErrorAlert({ errorMessage }: ErrorAlertProps) {
+export default function ErrorAlert({
+	errorMessage,
+}: ErrorAlertProps): JSX.Element {
 	return (
 		<GridItem colSpan={2} my={1} mr={-6}>
 			<HStack>

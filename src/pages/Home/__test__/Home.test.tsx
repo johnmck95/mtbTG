@@ -1,11 +1,12 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import Home from '../Home';
+import React from 'react';
 
 test('Renders the Form by default', () => {
 	render(<Home />);
-	screen.getByRole('heading', { name: 'RIDER METRICS' });
-	screen.getByRole('heading', { name: 'BIKE METRICS' });
+	expect(screen.getByRole('heading', { name: 'RIDER METRICS' })).toBeVisible();
+	expect(screen.getByRole('heading', { name: 'BIKE METRICS' })).toBeVisible();
 });
 
 test('Renders Output Page after successful form completion', async () => {

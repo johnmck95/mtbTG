@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
@@ -25,6 +26,7 @@ type Config = {
 	onUpdate?: (registration: ServiceWorkerRegistration) => void;
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function register(config?: Config) {
 	if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
 		// The URL constructor is available in all browsers that support SW.
@@ -40,7 +42,7 @@ export function register(config?: Config) {
 			const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
 			if (isLocalhost) {
-				// This is running on localhost. Let's check if a service worker still exists or not.
+				// This is running on localhost. Let's check if a service worker still exists or not
 				checkValidServiceWorker(swUrl, config);
 
 				// Add some additional logging to localhost, pointing developers to the
@@ -133,6 +135,7 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
 		});
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function unregister() {
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.ready

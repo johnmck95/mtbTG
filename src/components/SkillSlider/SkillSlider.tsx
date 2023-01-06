@@ -65,7 +65,7 @@ export default function SkillSlider({
 			{sliderValue === 1 && (
 				<Text fontSize='xs'>
 					{' '}
-					<b>BEGINNER:</b> You're new to mountain biking, and your first
+					<b>BEGINNER:</b> You&apos;re new to mountain biking, and your first
 					priority is trying to feel comfortable on the bike. Trails are fairly
 					smooth, and speeds are kept low.
 				</Text>
@@ -73,7 +73,7 @@ export default function SkillSlider({
 			{sliderValue === 2 && (
 				<Text fontSize='xs'>
 					{' '}
-					<b>NOVICE: </b>You're starting to get comfortable on the bike and
+					<b>NOVICE: </b>You&apos;re starting to get comfortable on the bike and
 					challenging yourself by tackling terrain you previously found too
 					difficult. Trails are getting rougher, and your speed is increasing.{' '}
 				</Text>
@@ -81,7 +81,7 @@ export default function SkillSlider({
 			{sliderValue === 3 && (
 				<Text fontSize='xs'>
 					{' '}
-					<b>INTERMEDIATE: </b>You're riding steeper terrain with roots and
+					<b>INTERMEDIATE: </b>You&apos;re riding steeper terrain with roots and
 					rocks in all weather conditions. You feel more confident on the bike,
 					and may be learning how to jump and drop small features.
 				</Text>
@@ -89,19 +89,20 @@ export default function SkillSlider({
 			{sliderValue === 4 && (
 				<Text fontSize='xs'>
 					{' '}
-					<b>ADVANCED: </b>You're a serious mountain biker that is confident
-					riding most trails. You'll glady ride medium sized jumps and drops, as
-					well as steep rolls where proper braking is critical.
+					<b>ADVANCED: </b>You&apos;re a serious mountain biker that is
+					confident riding most trails. You&apos;ll glady ride medium sized
+					jumps and drops, as well as steep rolls where proper braking is
+					critical.
 				</Text>
 			)}
 			{sliderValue === 5 && (
 				<Text fontSize='xs'>
 					{' '}
 					<b>EXPERT: </b>
-					<i>Regional fast person.</i> There's very little terrain you shy away
-					from, and you ride it aggressively. You're actively pumping and
-					scrubbing the terrain to carry speed, or riding the most challenging
-					features with precision.
+					<i>Regional fast person.</i> There&apos;s very little terrain you shy
+					away from, and you ride it aggressively. You&apos;re actively pumping
+					and scrubbing the terrain to carry speed, or riding the most
+					challenging features with precision.
 				</Text>
 			)}
 			{sliderValue === 6 && (

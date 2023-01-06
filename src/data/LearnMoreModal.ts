@@ -54,8 +54,8 @@ const learnMoreModal = [
 		title: 'Inserts',
 		description: `Tire inserts can help increase traction by dampening the air chamber in the 
             tire and allowing you to run lower pressures from the added rim protection. There are 
-            a plethora of tire inserts to choose from, some of which will not provide both benefits. 
-            CushCore is our recommendation, but please consult your local bike shop if in doubt.`,
+            a plethora of tire inserts to choose from, some of which will not provide both benefits.
+             CushCore is our recommendation, but please consult your local bike shop if in doubt.`,
 	},
 ];
 
