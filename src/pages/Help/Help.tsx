@@ -24,12 +24,18 @@ import {
 export default function Help(): JSX.Element {
 	const smallScreen = 768;
 	const [showPanel, setShowPanel] = useState(true);
-	const hipsterIpsum = `I'm baby messenger bag raw denim taxidermy copper mug 90's man braid 
-        hashtag ramps. XOXO hoodie art party, microdosing pok pok blog aesthetic. Affogato iceland 
-        adaptogen meditation tacos. Four loko irony microdosing tilde blog enamel pin forage you 
-        probably haven't heard of them sriracha pork belly selfies organic pitchfork celiac. 
-        Selvage chambray tilde swag. Vape cray wolf keytar stumptown neutra. Everyday carry you 
-        probably haven't heard of them narwhal fixie.`;
+	const loremIpsum = `Lorem ipsum dolor sit amet, consectetur adipiscing 
+		elit. Vestibulum ac felis sit amet tellus feugiat malesuada. Maecenas 
+		lacus nunc, fermentum id purus vel, ornare sodales nulla. Suspendisse 
+		congue arcu at dignissim porttitor. Vivamus tincidunt dui iaculis augue 
+		aliquam, eleifend vulputate odio accumsan. Pellentesque nec sem congue, 
+		varius magna vitae, mollis arcu. Aliquam ut tincidunt mauris, convallis 
+		placerat orci. Maecenas lectus velit, laoreet nec risus vitae, mattis 
+		lobortis nisi. Phasellus quis tempor leo. Ut dictum lacinia libero. 
+		Praesent commodo sem sit amet sodales ultrices. Ut at metus et nisi 
+		tincidunt consequat a a justo. Fusce nec pulvinar felis. Aenean nec 
+		metus sodales, commodo nibh nec, auctor nisl. Etiam iaculis mi arcu, 
+		sed sagittis dui congue quis.`;
 
 	const useViewport = () => {
 		const [width, setWidth] = useState(window.innerWidth);
@@ -210,7 +216,7 @@ export default function Help(): JSX.Element {
 						Using The Tuning Guide
 					</Heading>
 					<Divider />
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h1' fontSize={'4xl'} id='understandingInputs'>
 						Understanding Inputs
 					</Heading>
@@ -218,28 +224,28 @@ export default function Help(): JSX.Element {
 					<Heading as='h2' fontSize={'2xl'} id='riderSize'>
 						Rider Size
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='handling'>
 						Handling
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='skillLevel'>
 						Skill Level
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='reach'>
 						Reach
 					</Heading>
 
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='stack'>
 						Stack
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='bikeType'>
 						Bike Type
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h1' fontSize={'4xl'} id='yourSettings'>
 						Your Settings
 					</Heading>
@@ -247,27 +253,27 @@ export default function Help(): JSX.Element {
 					<Heading as='h2' fontSize={'2xl'} id='handlebarWidth'>
 						HandleBar Width
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='handlebarRise'>
 						Handlebar Rise
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='stemLength'>
 						Stem Length
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='stemSpacers'>
 						Stem Spacers
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='tirePressures'>
 						Tire Pressures
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 					<Heading as='h2' fontSize={'2xl'} id='tireInserts'>
 						Tire Inserts
 					</Heading>
-					<Text>{hipsterIpsum}</Text>
+					<Text>{loremIpsum}</Text>
 				</VStack>
 			</HStack>
 		</Container>
