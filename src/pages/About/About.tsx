@@ -40,7 +40,7 @@ export default function About(): JSX.Element {
 						</Heading>
 						<Divider borderColor='brand.white' />
 						<Heading as='h4' size='l' textAlign='center'>
-							3<sup>rd</sup> year Software Engineering Student at the University
+							4<sup>th</sup> year Software Engineering Student at the University
 							of Victoria
 						</Heading>
 						<Text
@@ -48,16 +48,16 @@ export default function About(): JSX.Element {
 							alignSelf='center'
 							textAlign='center'
 							textDecoration='underline'>
-							The Tuning Guide was built for two reasons.
+							The Tuning Guide was built for two reasons
 						</Text>
 						<List>
 							<ListItem mb='5px'>
 								<ListIcon as={MdOutlineDirectionsBike} color='brand.blue' />
-								To help mountain bikers get the most out of their products
+								To help mountain bikers have the best experience possible
 							</ListItem>
 							<ListItem>
 								<ListIcon as={FaLaptopCode} color='brand.blue' />
-								To build a portoflio to show future employers
+								To build a portfolio to show future employers
 							</ListItem>
 						</List>
 					</VStack>
@@ -66,13 +66,16 @@ export default function About(): JSX.Element {
 				<Text textAlign='justify' textJustify='inter-word' paddingTop='2rem'>
 					Growing up on Vancouver Island, I have been mountain biking for as
 					long as I can remember. I raced downhill in my teenage years, then
-					moved to Whister the day after graduating high school. Since then, I
+					moved to Whistler the day after graduating high school. Since then, I
 					have lived in Squamish, Vancouver, Victoria and New Zealand working in
 					the Bike Industry as an Instructor, Service Advisor, Bike Mechanic,
-					and Trail Builder. In 2019, I began racing Enduro and won the Island
-					Cup Elite Championship, and the Hornby Island Bike Festival. These
-					days, I am part of the Oak Bay Bikes Racing Team, and living full time
-					in Victoria completing my Software Engineering degree.
+					and Trail Builder. Nowadays, I am focussed on completing my Software
+					Engineering degree at the University of Victoria, but I am still
+					actively involved in the mountain bike community. I am a member of the
+					Oak Bay Bikes Racing Team, where I won the Island Cup Enduro Elite
+					Championship in 2019, and placed third in 2022. In my free time, I
+					love to go for long trail rides, session the pump track with friends,
+					and push my limits on the enduro bike.
 				</Text>
 				<AspectRatio my='3rem' maxW='768px'>
 					<iframe
