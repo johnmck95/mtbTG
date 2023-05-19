@@ -199,14 +199,14 @@ export default function Help(): JSX.Element {
 						'&::-webkit-scrollbar': {
 							display: 'none',
 						},
-						overfloStyle: 'none',
+						overflowStyle: 'none',
 						scrollbarWidth: 'none',
 					}}>
 					<Heading as='h1' fontSize={'4xl'} id='usingTheTuningGuide'>
 						Using The Tuning Guide
 					</Heading>
 					<Divider />
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						The MTB Tuning Guide cannot give you a perfect bike fit. Stating it
 						does, would be an ignorant claim. Your perfect mountain bike fit
 						will constantly evolve as your skills, personal preferences,
@@ -223,10 +223,17 @@ export default function Help(): JSX.Element {
 						Understanding Inputs
 					</Heading>
 					<Divider />
-					<Heading as='h2' fontSize={'2xl'} id='riderSize'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='riderSize'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Rider Size
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						A riders height and weight are the most critical components of a
 						bike fit. The MTB Tuning Guide uses your height to approximate if
 						your bike is too big, too small or just right, then recommends
@@ -242,10 +249,16 @@ export default function Help(): JSX.Element {
 						every aspect of the bike, some of the most important being
 						suspension, brakes and tires.
 					</Text>
-					<Heading as='h3' fontSize={'xl'}>
+					<Heading
+						as='h3'
+						fontSize={'xl'}
+						fontWeight={'450'}
+						textDecoration='underline'
+						textDecorationThickness={'.08rem'}
+						pb='.25rem'>
 						Accommodating a bike that is too small
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						For riders who are too large for their bike, the MtbTG recommends a
 						setup that involves fewer stem spacers and a riser bar. This
 						maximizes the reach of the bike while ensuring the handlebars are at
@@ -253,10 +266,16 @@ export default function Help(): JSX.Element {
 						considered when deciding how long the bike feels, and how easily it
 						can be cornered.
 					</Text>
-					<Heading as='h3' fontSize={'xl'}>
+					<Heading
+						as='h3'
+						fontSize={'xl'}
+						fontWeight={'450'}
+						textDecoration='underline'
+						textDecorationThickness={'.08rem'}
+						pb='.25rem'>
 						Accommodating a bike that is too large
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						For riders who are too small for their bike, the MtbTG recommends a
 						setup that involves additional stem spacers and a low-rise
 						handlebar. This reduces the reach of the bike while ensuring the
@@ -264,10 +283,17 @@ export default function Help(): JSX.Element {
 						handlebar must be considered when deciding how long the bike feels,
 						and how easily it can be cornered.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='handling'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='handling'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Handling
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						Different riding styles require different setups. Look at
 						professional athletes competing at Red Bull Rampage versus a Cross
 						Country Olympic track race versus a Downhill World Cup. Even amongst
@@ -280,10 +306,17 @@ export default function Help(): JSX.Element {
 						of the MtbTG, the handling preference is only used to aid in
 						recommending a handlebar width and rise.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='skillLevel'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='skillLevel'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Skill Level
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						The skill level of a rider will dictate most of the setting on your
 						bike. New mountain bikers ride at much lower speeds, with much less
 						aggression and control. As skill and confidence increases, the
@@ -297,10 +330,17 @@ export default function Help(): JSX.Element {
 						adjusted to keep the rider and bike aligned as a single harmonized
 						system.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='reach'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='reach'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Reach
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						Reach is a measurement used to give the rider a rough idea of how
 						far the handlebars feel in front of them while in a standing
 						position. Reach is the horizontal distance between an imaginary
@@ -314,10 +354,17 @@ export default function Help(): JSX.Element {
 						fails, you can take out a tape measure and measure it to the best of
 						your abilities.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='stack'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='stack'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Stack
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						Stack is the vertical height between a horizontal line through the
 						center of the bottom bracket and the top of the head tube. It is
 						commonly used the get a sense of how high your handlebars feel. You
@@ -326,10 +373,17 @@ export default function Help(): JSX.Element {
 						If that fails, you can always use a measuring tape to the best of
 						your abilities.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='bikeType'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='bikeType'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Bike Type
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						There are many types of mountain bikes with narrower
 						classifications, but the MtbTG currently only handles trail and
 						enduro bikes. For the purposes of the MtbTG, and enduro bike is
@@ -346,7 +400,7 @@ export default function Help(): JSX.Element {
 						Your Settings
 					</Heading>
 					<Divider />
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						Like all recommendations, it is best to slowly transition towards a
 						result and constantly ask yourself this: <b>Better, Worse, Same?</b>{' '}
 						Radical changes in bike fit can be jarring, and require an
@@ -357,10 +411,17 @@ export default function Help(): JSX.Element {
 						adjustments, always <b>record your current settings</b> so you can
 						revert back if need be.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='handlebarWidth'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='handlebarWidth'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						HandleBar Width
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem' as='div'>
 						Handlebar width is measured with the grips removed, from end to end.
 						Many handlebars will come with markings to inform you where to cut,
 						but even these are sometimes erroneously labelled. Always mark and
@@ -405,10 +466,17 @@ export default function Help(): JSX.Element {
 							</ListItem>
 						</UnorderedList>
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='handlebarRise'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='handlebarRise'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Handlebar Rise
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						To adjust handlebar rise, the handlebars need to be replaced. The
 						reason handlebar rise is so important, is that it allows you to
 						alter the height of your cockpit without impacting the reach of the
@@ -422,10 +490,17 @@ export default function Help(): JSX.Element {
 						are selling frames in 10mm reach increments to better match the size
 						of the bike to the rider.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='stemLength'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='stemLength'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Stem Length
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						Stem length is important for two reasons. The first is to fine tune
 						the length of your bike, and the second is to adjust the amount of
 						weight on the front wheel. In my opinion, the latter is by far the
@@ -442,10 +517,17 @@ export default function Help(): JSX.Element {
 						recommend riders consider the handling implications before changing
 						stem length to adjust the reach of the bike.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='stemSpacers'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='stemSpacers'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Stem Spacers
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						For the purposes on the MtbTG, stem spacers refer to the total
 						diagonal distance (in 2D space) between the top of the head tube,
 						and the bottom of the stem. This means a spacer that sits 10mm tall
@@ -474,10 +556,17 @@ export default function Help(): JSX.Element {
 						closer to the ground, and more weight is placed on the front tire.
 						<br />
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='tirePressures'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='tirePressures'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Tire Pressures
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem'>
 						All tire pressures are recommended under the assumption that riders
 						are using appropriate tire casings for their weight, skill and
 						terrain. For most enduro riders, a Maxxis Double Down or Downhill
@@ -489,10 +578,17 @@ export default function Help(): JSX.Element {
 						aggressive riders should consider categorizing their bike type as
 						<i>Enduro</i> for the purposes of this tuning guide.
 					</Text>
-					<Heading as='h2' fontSize={'2xl'} id='tireInserts'>
+					<Heading
+						as='h2'
+						fontSize={'2xl'}
+						id='tireInserts'
+						fontWeight={'500'}
+						textDecoration='underline'
+						textDecorationThickness={'.1rem'}
+						pb='.25rem'>
 						Tire Inserts
 					</Heading>
-					<Text>
+					<Text fontWeight={'350'} pb='1rem' as='div'>
 						Not all tire inserts are designed to provide the same ride
 						characteristics. This tuning guide is referencing inserts that offer
 						both rim protection, and support for the tire. Cush Core and Rimpact
