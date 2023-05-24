@@ -1,10 +1,7 @@
 import Output from '../../components/Output/Output';
 import Form from '../../components/Form/Form';
 import { Box } from '@chakra-ui/react';
-import HomePhotoSm from '../../images/hartland-enduro-SM,414x620.jpg';
-import HomePhotoMd from '../../images/hartland-enduro-MD,768x1150.jpg';
-import HomePhotoLg from '../../images/hartland-enduro-LG,1080x1618.jpg';
-import HomePhotoXl from '../../images/hartland-enduro-XL,1280x1917.jpg';
+import TzouPhoto from '../../images/tzouhaleum_high_res.jpg';
 import { ChangeEvent, useEffect, useState } from 'react';
 import Algorithm from '../../algorithms/Algorithm/Algorithm';
 import {
@@ -149,12 +146,14 @@ export default function Home(): JSX.Element {
 
 	return (
 		<Box
-			w='100%'
-			backgroundImage={[HomePhotoSm, HomePhotoMd, HomePhotoLg, HomePhotoXl]}
-			backgroundRepeat='no-repeat'
-			backgroundPosition='60% 50%'
-			backgroundSize='145%'
-			height='100%'>
+			width='100%'
+			height='100vh'
+			justifyContent='center'
+			alignItems='center'
+			backgroundImage={TzouPhoto}
+			backgroundSize='cover'
+			backgroundPosition='center'
+			backgroundRepeat='no-repeat'>
 			{!formCompleted && (
 				<Form
 					inputs={inputs}
