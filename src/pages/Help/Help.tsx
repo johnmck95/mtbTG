@@ -1,12 +1,9 @@
 import {
 	Container,
 	Heading,
-	Input,
 	Text,
 	VStack,
 	HStack,
-	InputGroup,
-	InputRightElement,
 	Icon,
 	Divider,
 	Link,
@@ -15,7 +12,6 @@ import {
 } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import {
-	FaSearch,
 	FaHandsHelping,
 	FaTools,
 	FaBicycle,
@@ -45,16 +41,16 @@ export default function Help(): JSX.Element {
 	}
 
 	return (
-		<Container w='100%' maxW='64rem'>
+		<Container w='100%' maxW='64rem' pr='2rem'>
 			<HStack h='calc(100vh - 50px)' py='1rem' spacing='0px' align='start'>
 				{showPanel && (
 					<VStack
 						alignItems='flex-start'
 						overflow='scroll'
-						position='sticky'
+						spacing='0.6rem'
 						w={width < smallScreen ? '100vw' : '50%'}
 						h='100%'
-						mr='1rem'
+						pr={width < smallScreen ? '0rem' : '1.5rem'}
 						css={{
 							'&::-webkit-scrollbar': {
 								display: 'none',
@@ -64,27 +60,18 @@ export default function Help(): JSX.Element {
 						}}>
 						<HStack
 							justifyContent={'space-between'}
-							position='sticky'
 							top='0rem'
 							overflow='clipped'
-							bg='brand.flatBlack'
 							opacity={1}
 							w='100%'>
-							<InputGroup maxW='70%'>
-								<Input
-									placeholder='Search'
-									_placeholder={{
-										opacity: 1,
-										color: 'brand.white',
-									}}
-									borderColor='brand.white'
-									bg='brand.flatBlack'
-									mb='0.5rem'
-								/>
-								<InputRightElement>
-									<Icon as={FaSearch} w={5} h={5} cursor='pointer' />
-								</InputRightElement>
-							</InputGroup>
+							<Link
+								onClick={closePanelForSmallScreen}
+								href='#usingTheTuningGuide'>
+								<Heading as='h3' fontSize={'md'}>
+									<Icon as={FaHandsHelping} w={4} h={4} mr='0.75rem' />
+									Using The Tuning Guide
+								</Heading>
+							</Link>
 							<Icon
 								onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
 								as={FaChevronCircleLeft}
@@ -94,14 +81,6 @@ export default function Help(): JSX.Element {
 							/>
 						</HStack>
 
-						<Link
-							onClick={closePanelForSmallScreen}
-							href='#usingTheTuningGuide'>
-							<Heading as='h3' fontSize={'md'}>
-								<Icon as={FaHandsHelping} w={4} h={4} mr='0.75rem' />
-								Using The Tuning Guide
-							</Heading>
-						</Link>
 						<Link
 							onClick={closePanelForSmallScreen}
 							href='#understandingInputs'>
@@ -180,7 +159,6 @@ export default function Help(): JSX.Element {
 				)}
 				{!showPanel && (
 					<Icon
-						position='sticky'
 						top='0.5rem'
 						onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
 						as={FaChevronCircleRight}
@@ -193,7 +171,7 @@ export default function Help(): JSX.Element {
 				<VStack
 					alignItems={'flex-start'}
 					overflow='scroll'
-					w={width < smallScreen ? (showPanel ? '0vw' : '100vw') : '100%'}
+					w={width < smallScreen ? (showPanel ? '0vw' : '100vw') : '90%'}
 					h='100%'
 					css={{
 						'&::-webkit-scrollbar': {
@@ -626,8 +604,8 @@ export default function Help(): JSX.Element {
 							<ListItem>Additional tire sealant required</ListItem>
 						</UnorderedList>
 					</Text>
-					<br />
-					<i>
+					<Divider orientation='horizontal' pt='1.5rem' />
+					<Text fontStyle={'italic'} py='3rem'>
 						* Technically, reach is measured between the top of the head tube
 						and an imaginary vertical line through your bottom bracket, which
 						means it cannot be changed with stem and spacers alone. Rather, you
@@ -637,9 +615,8 @@ export default function Help(): JSX.Element {
 						distance between your hands and feet, this ideology will be used
 						throughout the MTB Tuning Guide. While technically incorrect, it
 						does effectively convey how large the bike feels.
-					</i>
-					<br />
-					<i>
+					</Text>
+					<Text fontStyle={'italic'} pb='5rem'>
 						** Technically, stack is the vertical distance from the center of
 						the bottom bracket to the top of the head tube. Therefore, just like
 						reach*, it cannot be changed without altering the height of the head
@@ -647,7 +624,7 @@ export default function Help(): JSX.Element {
 						the vertical distance between their hands and feet, this ideology
 						will be used throughout the MTB Tuning Guide. While technically
 						incorrect, it does effectively convey how tall the bike feels.
-					</i>
+					</Text>
 				</VStack>
 			</HStack>
 		</Container>
