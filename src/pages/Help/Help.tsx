@@ -208,16 +208,16 @@ export default function Help(): JSX.Element {
 					<Divider />
 					<Text fontWeight={'350'} pb='1rem'>
 						The MTB Tuning Guide cannot give you a perfect bike fit. Stating it
-						does, would be an ignorant claim. Your perfect mountain bike fit
-						will constantly evolve as your skills, personal preferences,
-						physical strengths, weaknesses and imbalances change. Different
-						bikes will require different setups to customize the bike and rider
-						as a single harmonized system. Different terrain fundamentally
-						changes the demands on your equipment, and the distribution of your
-						weight relative to your bike. My goal is to get 90% of people 90% of
-						the way to an excellent bike fit. While my tuning guide can help
-						direct you, this page exists to teach you the principles behind its
-						decisions.
+						does would be an ignorant claim. Your perfect mountain bike fit may
+						constantly evolve as your skills, personal preferences, physical
+						strengths, weaknesses and imbalances change. Different bikes will
+						require different setups to combine both the bike and rider into a
+						single harmonized system. Different terrain fundamentally changes
+						the demands on your equipment, and the distribution of your weight
+						relative to your bike. The goal is to get 90% of people 90% of the
+						way to an excellent bike fit. While the MTB Tuning Guide can help
+						direct you, the help page exists to teach you the principles behind
+						its decisions.
 					</Text>
 					<Heading as='h1' fontSize={'4xl'} id='understandingInputs'>
 						Understanding Inputs
@@ -235,19 +235,19 @@ export default function Help(): JSX.Element {
 					</Heading>
 					<Text fontWeight={'350'} pb='1rem'>
 						A riders height and weight are the most critical components of a
-						bike fit. The MTB Tuning Guide uses your height to approximate if
-						your bike is too big, too small or just right, then recommends
-						adjustments that will alter your reach, stack and handlebar
-						width/rise. It is worth noting that individual proportions (inseam,
-						ape index.. etc), as well as the frames overall balance (chainstay,
-						wheelbase.. etc) are of utmost importance. However, due to the
-						limitations on what the consumer can adjust, they are not considered
-						in the MtbTG.
-						<br />
-						The MtbTG requires rider weight when determining tire pressure and
-						tire inserts. In practice, weight must be considered for virtually
-						every aspect of the bike, some of the most important being
-						suspension, brakes and tires.
+						bike fit. The MTB Tuning Guide uses your height to approximate
+						whether your bike is the correct size, then recommends adjustments
+						that will alter your reach*, stack** and handlebar width/rise. It is
+						worth noting that individual proportions (inseam, ape index.. etc),
+						as well as the frames overall balance (chainstay, wheelbase.. etc)
+						are of utmost importance. However, due to the limitations on what
+						the consumer can adjust, they are not considered in the MTB Tuning
+						Guide.
+						<br /> <br />
+						The MTB Tuning Guide requires rider weight when determining tire
+						pressure and tire inserts. In practice, weight must be considered
+						for virtually every aspect of the bike, some of the most important
+						being suspension, brakes and tires.
 					</Text>
 					<Heading
 						as='h3'
@@ -259,12 +259,13 @@ export default function Help(): JSX.Element {
 						Accommodating a bike that is too small
 					</Heading>
 					<Text fontWeight={'350'} pb='1rem'>
-						For riders who are too large for their bike, the MtbTG recommends a
-						setup that involves fewer stem spacers and a riser bar. This
-						maximizes the reach of the bike while ensuring the handlebars are at
-						an appropriate height. Similarly, the width of the handlebar must be
-						considered when deciding how long the bike feels, and how easily it
-						can be cornered.
+						For riders who are too large for their bike, the MTB Tuning Guide
+						recommends a setup that involves fewer stem spacers and a riser bar.
+						This maximizes the reach* of the bike while ensuring the handlebars
+						are at an appropriate height. Similarly, the width of the handlebar
+						must be considered when deciding how long the bike feels, and how
+						well it corners. <br />
+						<br />
 					</Text>
 					<Heading
 						as='h3'
@@ -276,12 +277,12 @@ export default function Help(): JSX.Element {
 						Accommodating a bike that is too large
 					</Heading>
 					<Text fontWeight={'350'} pb='1rem'>
-						For riders who are too small for their bike, the MtbTG recommends a
-						setup that involves additional stem spacers and a low-rise
-						handlebar. This reduces the reach of the bike while ensuring the
-						handlebars are at an appropriate height. Similarly, the width of the
-						handlebar must be considered when deciding how long the bike feels,
-						and how easily it can be cornered.
+						For riders who are too small for their bike, the MTB Tuning Guide
+						recommends a setup that involves additional stem spacers and a
+						low-rise handlebar. This reduces the reach* of the bike while
+						ensuring the handlebars are at an appropriate height. Similarly, the
+						width of the handlebar must be considered when deciding how long the
+						bike feels, and how well it corners.
 					</Text>
 					<Heading
 						as='h2'
@@ -294,17 +295,15 @@ export default function Help(): JSX.Element {
 						Handling
 					</Heading>
 					<Text fontWeight={'350'} pb='1rem'>
-						Different riding styles require different setups. Look at
-						professional athletes competing at Red Bull Rampage versus a Cross
-						Country Olympic track race versus a Downhill World Cup. Even amongst
-						the same discipline rider preferences vary greatly. More agile
-						riders often prefer a narrower handlebar to help initiate turns by
-						getting the bike onto the side knobs of the tires with ease, while a
-						wider bar can offer better stability in a straight line. Many other
-						factors like head angle, chainstay length, wheelbase, suspension
-						settings, tire pressures and many more play a role. For the purposes
-						of the MtbTG, the handling preference is only used to aid in
-						recommending a handlebar width and rise.
+						Different riding styles require different setups, just look at
+						professional athletes competing in different disciplines. Even
+						amongst the same discipline rider preferences vary greatly. More
+						agile riders often prefer a narrower handlebar to help initiate
+						turns by getting the bike onto the side knobs of the tires with
+						ease, while a wider bar can offer better stability and make a small
+						bike feels larger. Many other factors like head angle, chainstay
+						length, wheelbase, suspension settings, tire pressures and many more
+						play vital role in the handling of your mountain bike.
 					</Text>
 					<Heading
 						as='h2'
@@ -365,13 +364,12 @@ export default function Help(): JSX.Element {
 						Stack
 					</Heading>
 					<Text fontWeight={'350'} pb='1rem'>
-						Stack is the vertical height between a horizontal line through the
-						center of the bottom bracket and the top of the head tube. It is
-						commonly used the get a sense of how high your handlebars feel. You
-						can find the stack the same way you find reach, by finding the
-						geometry chart for your specific bike on the manufactures website.
-						If that fails, you can always use a measuring tape to the best of
-						your abilities.
+						Stack is the vertical height between the center of the bottom
+						bracket and the top of the head tube. It is commonly used the get a
+						sense of how high your handlebars feel. You can find the stack the
+						same way you find reach, by finding the geometry chart for your
+						specific bike on the manufactures website. If that fails, you can
+						always use a measuring tape to the best of your abilities.
 					</Text>
 					<Heading
 						as='h2'
@@ -385,16 +383,16 @@ export default function Help(): JSX.Element {
 					</Heading>
 					<Text fontWeight={'350'} pb='1rem'>
 						There are many types of mountain bikes with narrower
-						classifications, but the MtbTG currently only handles trail and
-						enduro bikes. For the purposes of the MtbTG, and enduro bike is
-						considered to have roughly 150-180mm of travel, slack geometry, and
-						thick casing tires (Maxxis Double Down or thicker for most users).
-						Trail bikes fall between the definition of an enduro bike, and a
-						proper cross country race bike. Typically trail bikes will have
-						120-150mm of travel, moderate geometry, light to medium casing tires
-						(Maxxis Exo+ or Exo) and be ridden less aggressively. If you treat
-						your trail bike like an enduro bike, you will likely want to choose
-						the Enduro bike option.
+						classifications, but the MTB Tuning Guide currently only handles
+						trail and enduro bikes. For the purposes of the MTB Tuning Guide,
+						and enduro bike is considered to have roughly 150-180mm of travel,
+						slack geometry, and thick casing tires (Maxxis DD or DH). Trail
+						bikes fall between the definition of an enduro bike, and a proper
+						cross country race bike. Typically trail bikes will have 120-150mm
+						of travel, moderate geometry, light to medium casing tires (Maxxis
+						Exo+ or Exo) and be ridden less aggressively. If you treat your
+						trail bike like an enduro bike, you will likely want to choose the
+						Enduro bike option.
 					</Text>
 					<Heading as='h1' fontSize={'4xl'} id='yourSettings'>
 						Your Settings
@@ -423,8 +421,8 @@ export default function Help(): JSX.Element {
 					</Heading>
 					<Text fontWeight={'350'} pb='1rem' as='div'>
 						Handlebar width is measured with the grips removed, from end to end.
-						Many handlebars will come with markings to inform you where to cut,
-						but even these are sometimes erroneously labelled. Always mark and
+						Many handlebars will come with marks to inform you where to cut, but
+						even these are sometimes erroneously labelled. Always mark and
 						measure the handlebars before trimming. Don&apos;t forget! Removing
 						5mm of width requires a 2.5mm cut from both the left and right side
 						of the handlebar.
@@ -447,12 +445,12 @@ export default function Help(): JSX.Element {
 							</ListItem>
 							<ListItem>
 								Check the manufactures recommendations. Some handlebars have a
-								minimum width they can be cut to. The MtbTG does it&apos;s best
-								to recommend widths that all handlebars can accommodate, but it
-								is not guaranteed. All handlebars will have a torque
-								recommendation when mounting your cockpit. Carbon handlebars are
-								particularly sensitive to torque specifications and are prone to
-								cracking when over tightened. Nightmare fuel.
+								minimum width they can be cut to. The MTB Tuning Guide does
+								it&apos;s best to recommend widths that all handlebars can
+								accommodate, but it is not guaranteed. All handlebars will have
+								a torque recommendation when mounting your cockpit. Carbon
+								handlebars are particularly sensitive to torque specifications
+								and are prone to cracking when over tightened.
 							</ListItem>
 							<ListItem>
 								Experiment with effective handlebar width before cutting the
@@ -479,16 +477,16 @@ export default function Help(): JSX.Element {
 					<Text fontWeight={'350'} pb='1rem'>
 						To adjust handlebar rise, the handlebars need to be replaced. The
 						reason handlebar rise is so important, is that it allows you to
-						alter the height of your cockpit without impacting the reach of the
-						bike. Trigonometry tells us that for a 63&deg; head angle
-						(aggressive enduro bike), a 10mm rise in stem spacers will shorten
-						the reach by roughly 4.5mm. Similarly, a 66&deg; head angle (trail
-						bike) would see approximately a 4mm reduction in reach from the same
-						10mm of additional spacers. While this may seem insignificant,
-						riders who use a 30mm of stem spacers on an enduro bike are
-						shortening their reach by nearly 14mm. Companies like Atherton Bikes
-						are selling frames in 10mm reach increments to better match the size
-						of the bike to the rider.
+						alter the height of your cockpit without impacting the reach* of the
+						bike. Trigonometry tells us for a 63&deg; head angle (aggressive
+						enduro bike), a 10mm rise in stem spacers will shorten the reach* by
+						roughly 4.5mm. Similarly, a 66&deg; head angle (trail bike) would
+						see approximately a 4mm reduction in reach* from the same 10mm of
+						additional spacers. While this may seem insignificant, riders who
+						use a 30mm of stem spacers on an enduro bike are shortening their
+						reach* by nearly 14mm. Companies like Atherton Bikes are selling
+						frames in 10mm reach increments to better match the size of the bike
+						to the rider. This is important!
 					</Text>
 					<Heading
 						as='h2'
@@ -508,14 +506,17 @@ export default function Help(): JSX.Element {
 						by riders who like to <i>steer from the back</i>, or remain more
 						vertical within the bike. A longer stem (like a 50mm) helps get more
 						weight on the front tire to initiate turns and reduce the risk of
-						front wheel wash outs. This is increasingly important as the head
-						angle gets slacker and the head tube becomes taller, because the
-						front axle is further in front of the riders hands. The MtbTG
-						admittedly states this is one of the hardest areas of a proper bike
-						fit, because it seems too strongly related to personal preference to
-						give consistent recommendations. With this in mind, I strongly
-						recommend riders consider the handling implications before changing
-						stem length to adjust the reach of the bike.
+						front wheel wash outs. This is particularly important for people
+						over six feet tall, since most companies do not have proportionally
+						sized chainstays. Therefore, forcing taller riders center of mass to
+						be rearward biased. Stem length is increasingly important as the
+						head angle gets slacker and the head tube becomes taller, because
+						the front axle is further in front of the riders hands. The MTB
+						Tuning Guide admittedly states this is one of the hardest areas of a
+						proper bike fit, because it seems too strongly related to personal
+						preference to give consistent recommendations. With this in mind, I
+						strongly recommend riders consider the handling implications before
+						changing stem length to adjust the reach* of the bike.
 					</Text>
 					<Heading
 						as='h2'
@@ -528,13 +529,13 @@ export default function Help(): JSX.Element {
 						Stem Spacers
 					</Heading>
 					<Text fontWeight={'350'} pb='1rem'>
-						For the purposes on the MtbTG, stem spacers refer to the total
-						diagonal distance (in 2D space) between the top of the head tube,
-						and the bottom of the stem. This means a spacer that sits 10mm tall
-						on a flat surface should still be called 10mm, despite it raising
-						the handle bar by less than 10mm vertically. A 10mm headset top cap
-						should also be considered a <i>stem spacer</i> to easily account for
-						all material between the head tube and the stem.
+						For the purposes on the MTB Tuning Guide, stem spacers refer to the
+						total diagonal distance (in 2D space) between the top of the head
+						tube, and the bottom of the stem. This means a spacer that sits 10mm
+						tall on a flat surface should still be called 10mm, despite it
+						raising the handle bar by less than 10mm vertically. A 10mm headset
+						top cap should also be considered a <i>stem spacer</i> to easily
+						account for all material between the head tube and the stem.
 						<br />
 						<br />
 						Stem spacers are one of the most overlooked adjustments riders make.
@@ -542,18 +543,19 @@ export default function Help(): JSX.Element {
 						<Link href='#handlebarRise' textDecoration='underline'>
 							handlebar rise
 						</Link>{' '}
-						section, altering the number of stem spaces can adjust your reach
-						and stack a significant amount, especially in extreme scenarios.
+						section, altering the number of stem spaces can adjust your reach*
+						and stack** a significant amount, especially in extreme scenarios.
 						This shouldn&apos;t be viewed as a problem, but rather an
-						opportunity. Adding stem spacers will shorten the reach of your
+						opportunity. Adding stem spacers will shorten the reach* of your
 						bike, making it feel like the handlebars are closer to the rider
-						horizontally. It will also raise the stack, which lifts your hands
+						horizontally. It will also raise the stack**, which lifts your hands
 						further from the ground, leading to a more vertical position on the
 						bike. The third implication is bringing the weight of your hands
-						further behind the front axle of the bike, therefore reducing the
-						weight on the front tire. Reducing the amount of stem spacers has
-						the opposite effect, where the reach is increased, the hands feel
-						closer to the ground, and more weight is placed on the front tire.
+						further behind the front axle of the bike, therefore shifting rider
+						weight from the hands to the feet. Reducing the amount of stem
+						spacers has the opposite effect, where the reach* is increased, the
+						hands feel closer to the ground, and more weight is placed through
+						the hands directly to the front tire.
 						<br />
 					</Text>
 					<Heading
@@ -576,7 +578,7 @@ export default function Help(): JSX.Element {
 						tires. Particularly light or timid riders may prefer a lighter
 						casing tire (like a Maxxis Exo) while the heavier and or more
 						aggressive riders should consider categorizing their bike type as
-						<i>Enduro</i> for the purposes of this tuning guide.
+						<i> Enduro</i> for the purposes of this tuning guide.
 					</Text>
 					<Heading
 						as='h2'
@@ -593,7 +595,7 @@ export default function Help(): JSX.Element {
 						characteristics. This tuning guide is referencing inserts that offer
 						both rim protection, and support for the tire. Cush Core and Rimpact
 						are the recommended options. Tire inserts can offer many benefits to
-						the rider. The most significant of which, are
+						riders. The most significant of which, are:
 						<UnorderedList pl='10px' my='1rem'>
 							<ListItem>
 								Allowing the rider to run lower tire pressures, which increase
@@ -624,6 +626,28 @@ export default function Help(): JSX.Element {
 							<ListItem>Additional tire sealant required</ListItem>
 						</UnorderedList>
 					</Text>
+					<br />
+					<i>
+						* Technically, reach is measured between the top of the head tube
+						and an imaginary vertical line through your bottom bracket, which
+						means it cannot be changed with stem and spacers alone. Rather, you
+						would need to adjust the height of the head tube itself, with a
+						different length axle to crown fork, an angleset or similar. Since
+						most riders are only familiar with reach being the horizontal
+						distance between your hands and feet, this ideology will be used
+						throughout the MTB Tuning Guide. While technically incorrect, it
+						does effectively convey how large the bike feels.
+					</i>
+					<br />
+					<i>
+						** Technically, stack is the vertical distance from the center of
+						the bottom bracket to the top of the head tube. Therefore, just like
+						reach*, it cannot be changed without altering the height of the head
+						tube itself. Since most riders are only familiar with stack being
+						the vertical distance between their hands and feet, this ideology
+						will be used throughout the MTB Tuning Guide. While technically
+						incorrect, it does effectively convey how tall the bike feels.
+					</i>
 				</VStack>
 			</HStack>
 		</Container>
