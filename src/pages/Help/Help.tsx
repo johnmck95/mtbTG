@@ -44,11 +44,18 @@ export default function Help(): JSX.Element {
 		<Container
 			h='100%'
 			// h='calc(100% - 50px)'
+			position='sticky'
 			w='100%'
 			maxW='64rem'
 			pr='2rem'
-			bg='cyan'>
-			<HStack h='100%' spacing='0px' align='start' bg='purple'>
+			// bg='cyan'
+		>
+			<HStack
+				h='100%'
+				spacing='0px'
+				align='start'
+				// bg='purple'
+				position='sticky'>
 				{showPanel && (
 					<VStack
 						alignItems='flex-start'
@@ -167,6 +174,7 @@ export default function Help(): JSX.Element {
 					<Icon
 						top='0.5rem'
 						onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
+						position='sticky'
 						as={FaChevronCircleRight}
 						w={5}
 						h={5}
