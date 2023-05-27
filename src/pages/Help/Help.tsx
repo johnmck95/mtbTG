@@ -45,9 +45,11 @@ export default function Help(): JSX.Element {
 			h='100%'
 			// h='calc(100% - 50px)'
 			position='sticky'
+			top='0'
 			w='100%'
 			maxW='64rem'
 			pr='2rem'
+			mt='1rem'
 			// bg='cyan'
 		>
 			<HStack
@@ -55,7 +57,8 @@ export default function Help(): JSX.Element {
 				spacing='0px'
 				align='start'
 				// bg='purple'
-				position='sticky'>
+				position='sticky'
+				top='0'>
 				{showPanel && (
 					<VStack
 						alignItems='flex-start'
