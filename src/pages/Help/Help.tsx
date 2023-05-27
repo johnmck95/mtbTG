@@ -41,8 +41,14 @@ export default function Help(): JSX.Element {
 	}
 
 	return (
-		<Container w='100%' maxW='64rem' pr='2rem'>
-			<HStack h='calc(100vh - 50px)' py='1rem' spacing='0px' align='start'>
+		<Container
+			h='100%'
+			// h='calc(100% - 50px)'
+			w='100%'
+			maxW='64rem'
+			pr='2rem'
+			bg='cyan'>
+			<HStack h='100%' spacing='0px' align='start' bg='purple'>
 				{showPanel && (
 					<VStack
 						alignItems='flex-start'
