@@ -66,6 +66,7 @@ export default function Help(): JSX.Element {
 						spacing='0.6rem'
 						w={width < smallScreen ? '100vw' : '50%'}
 						h='100%'
+						pt='50px'
 						pr={width < smallScreen ? '0rem' : '1.5rem'}
 						css={{
 							'&::-webkit-scrollbar': {
@@ -180,6 +181,7 @@ export default function Help(): JSX.Element {
 						onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
 						position='sticky'
 						top='0.5rem'
+						mt='50px'
 						as={FaChevronCircleRight}
 						w={5}
 						h={5}
@@ -192,6 +194,7 @@ export default function Help(): JSX.Element {
 					overflow='scroll'
 					w={width < smallScreen ? (showPanel ? '0vw' : '100vw') : '90%'}
 					h='100%'
+					// r='2rem' TODO JOHN - Add this to better center help page content
 					css={{
 						'&::-webkit-scrollbar': {
 							display: 'none',
