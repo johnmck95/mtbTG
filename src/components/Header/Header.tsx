@@ -41,7 +41,8 @@ export default function Header(): JSX.Element {
 			w='100%'
 			position='fixed'
 			top='0'
-			bg='brand.headerGradient'
+			// bg='brand.headerGradient'
+			bg='brand.black'
 			color='brand.white'
 			zIndex='200'>
 			<Container maxW='50rem' p='0px'>

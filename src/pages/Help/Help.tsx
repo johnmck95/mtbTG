@@ -41,15 +41,20 @@ export default function Help(): JSX.Element {
 	}
 
 	return (
-		<Container w='100%' maxW='64rem' pr='2rem'>
-			<HStack h='calc(100vh - 50px)' py='1rem' spacing='0px' align='start'>
+		<Container h='100%' position='sticky' top='50px' w='100%' maxW='64rem'>
+			<HStack h='100%' spacing='0px' align='start'>
 				{showPanel && (
 					<VStack
 						alignItems='flex-start'
 						overflow='scroll'
+						position='sticky'
+						top='100px'
+						mx='0px'
+						pl='1rem'
 						spacing='0.6rem'
 						w={width < smallScreen ? '100vw' : '50%'}
 						h='100%'
+						pt={width < smallScreen ? '50px' : '0px'}
 						pr={width < smallScreen ? '0rem' : '1.5rem'}
 						css={{
 							'&::-webkit-scrollbar': {
@@ -63,7 +68,8 @@ export default function Help(): JSX.Element {
 							top='0rem'
 							overflow='clipped'
 							opacity={1}
-							w='100%'>
+							w='100%'
+							pt='1rem'>
 							<Link
 								onClick={closePanelForSmallScreen}
 								href='#usingTheTuningGuide'>
@@ -77,7 +83,6 @@ export default function Help(): JSX.Element {
 								as={FaChevronCircleLeft}
 								w={5}
 								h={5}
-								cursor='pointer'
 							/>
 						</HStack>
 
@@ -159,8 +164,10 @@ export default function Help(): JSX.Element {
 				)}
 				{!showPanel && (
 					<Icon
-						top='0.5rem'
 						onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
+						position='sticky'
+						top='0.5rem'
+						mt={width < smallScreen ? '50px' : '0px'}
 						as={FaChevronCircleRight}
 						w={5}
 						h={5}
@@ -171,8 +178,11 @@ export default function Help(): JSX.Element {
 				<VStack
 					alignItems={'flex-start'}
 					overflow='scroll'
-					w={width < smallScreen ? (showPanel ? '0vw' : '100vw') : '90%'}
+					w={width < smallScreen ? (showPanel ? '0vw' : '100vw') : '87%'}
 					h='100%'
+					mr={!showPanel ? '0rem' : '2rem'}
+					pr={!showPanel ? '2rem' : '0rem'}
+					// r='2rem' TODO JOHN - Add this to better center help page content
 					css={{
 						'&::-webkit-scrollbar': {
 							display: 'none',
@@ -180,7 +190,11 @@ export default function Help(): JSX.Element {
 						overflowStyle: 'none',
 						scrollbarWidth: 'none',
 					}}>
-					<Heading as='h1' fontSize={'4xl'} id='usingTheTuningGuide'>
+					<Heading
+						as='h1'
+						fontSize={'4xl'}
+						id='usingTheTuningGuide'
+						pt={width < smallScreen ? '50px' : '0px'}>
 						Using The Tuning Guide
 					</Heading>
 					<Divider />
@@ -197,7 +211,11 @@ export default function Help(): JSX.Element {
 						direct you, the help page exists to teach you the principles behind
 						its decisions.
 					</Text>
-					<Heading as='h1' fontSize={'4xl'} id='understandingInputs'>
+					<Heading
+						as='h1'
+						fontSize={'4xl'}
+						id='understandingInputs'
+						pt={width < smallScreen ? '50px' : '0px'}>
 						Understanding Inputs
 					</Heading>
 					<Divider />
@@ -205,6 +223,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='riderSize'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -266,6 +285,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handling'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -287,6 +307,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='skillLevel'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -311,6 +332,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='reach'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -335,6 +357,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stack'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -353,6 +376,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='bikeType'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -372,7 +396,11 @@ export default function Help(): JSX.Element {
 						trail bike like an enduro bike, you will likely want to choose the
 						Enduro bike option.
 					</Text>
-					<Heading as='h1' fontSize={'4xl'} id='yourSettings'>
+					<Heading
+						as='h1'
+						fontSize={'4xl'}
+						id='yourSettings'
+						pt={width < smallScreen ? '50px' : '0px'}>
 						Your Settings
 					</Heading>
 					<Divider />
@@ -391,6 +419,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handlebarWidth'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -446,6 +475,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handlebarRise'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -470,6 +500,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stemLength'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -500,6 +531,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stemSpacers'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -518,7 +550,7 @@ export default function Help(): JSX.Element {
 						<br />
 						Stem spacers are one of the most overlooked adjustments riders make.
 						As discussed under the{' '}
-						<Link href='#handlebarRise' textDecoration='underline'>
+						<Link href='#handlebarRise' textDecoration='underline' pt='16px'>
 							handlebar rise
 						</Link>{' '}
 						section, altering the number of stem spaces can adjust your reach*
@@ -540,6 +572,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='tirePressures'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -562,6 +595,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='tireInserts'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
