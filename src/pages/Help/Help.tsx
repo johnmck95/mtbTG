@@ -41,32 +41,20 @@ export default function Help(): JSX.Element {
 	}
 
 	return (
-		<Container
-			h='100%'
-			// h='calc(100% - 50px)'
-			position='sticky'
-			top='50px'
-			w='100%'
-			maxW='64rem'
-			pr='2rem'
-			// mt='1rem'
-			bg='green'>
-			<HStack
-				h='100%'
-				spacing='0px'
-				align='start'
-				bg='purple'
-				// position='sticky'
-				// top='50px'
-			>
+		<Container h='100%' position='sticky' top='50px' w='100%' maxW='64rem'>
+			<HStack h='100%' spacing='0px' align='start'>
 				{showPanel && (
 					<VStack
 						alignItems='flex-start'
 						overflow='scroll'
+						position='sticky'
+						top='100px'
+						mx='0px'
+						pl='1rem'
 						spacing='0.6rem'
 						w={width < smallScreen ? '100vw' : '50%'}
 						h='100%'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						pr={width < smallScreen ? '0rem' : '1.5rem'}
 						css={{
 							'&::-webkit-scrollbar': {
@@ -81,7 +69,6 @@ export default function Help(): JSX.Element {
 							overflow='clipped'
 							opacity={1}
 							w='100%'
-							// color='red'
 							pt='1rem'>
 							<Link
 								onClick={closePanelForSmallScreen}
@@ -96,7 +83,6 @@ export default function Help(): JSX.Element {
 								as={FaChevronCircleLeft}
 								w={5}
 								h={5}
-								cursor='pointer'
 							/>
 						</HStack>
 
@@ -181,7 +167,7 @@ export default function Help(): JSX.Element {
 						onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
 						position='sticky'
 						top='0.5rem'
-						mt='50px'
+						mt={width < smallScreen ? '50px' : '0px'}
 						as={FaChevronCircleRight}
 						w={5}
 						h={5}
@@ -192,8 +178,10 @@ export default function Help(): JSX.Element {
 				<VStack
 					alignItems={'flex-start'}
 					overflow='scroll'
-					w={width < smallScreen ? (showPanel ? '0vw' : '100vw') : '90%'}
+					w={width < smallScreen ? (showPanel ? '0vw' : '100vw') : '87%'}
 					h='100%'
+					mr={!showPanel ? '0rem' : '2rem'}
+					pr={!showPanel ? '2rem' : '0rem'}
 					// r='2rem' TODO JOHN - Add this to better center help page content
 					css={{
 						'&::-webkit-scrollbar': {
@@ -202,7 +190,11 @@ export default function Help(): JSX.Element {
 						overflowStyle: 'none',
 						scrollbarWidth: 'none',
 					}}>
-					<Heading as='h1' fontSize={'4xl'} id='usingTheTuningGuide' pt='50px'>
+					<Heading
+						as='h1'
+						fontSize={'4xl'}
+						id='usingTheTuningGuide'
+						pt={width < smallScreen ? '50px' : '0px'}>
 						Using The Tuning Guide
 					</Heading>
 					<Divider />
@@ -219,7 +211,11 @@ export default function Help(): JSX.Element {
 						direct you, the help page exists to teach you the principles behind
 						its decisions.
 					</Text>
-					<Heading as='h1' fontSize={'4xl'} id='understandingInputs' pt='50px'>
+					<Heading
+						as='h1'
+						fontSize={'4xl'}
+						id='understandingInputs'
+						pt={width < smallScreen ? '50px' : '0px'}>
 						Understanding Inputs
 					</Heading>
 					<Divider />
@@ -227,7 +223,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='riderSize'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -289,7 +285,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handling'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -311,7 +307,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='skillLevel'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -336,7 +332,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='reach'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -361,7 +357,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stack'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -380,7 +376,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='bikeType'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -400,7 +396,11 @@ export default function Help(): JSX.Element {
 						trail bike like an enduro bike, you will likely want to choose the
 						Enduro bike option.
 					</Text>
-					<Heading as='h1' fontSize={'4xl'} id='yourSettings' pt='50px'>
+					<Heading
+						as='h1'
+						fontSize={'4xl'}
+						id='yourSettings'
+						pt={width < smallScreen ? '50px' : '0px'}>
 						Your Settings
 					</Heading>
 					<Divider />
@@ -419,7 +419,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handlebarWidth'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -475,7 +475,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handlebarRise'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -500,7 +500,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stemLength'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -531,7 +531,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stemSpacers'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -572,7 +572,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='tirePressures'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -595,7 +595,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='tireInserts'
-						pt='50px'
+						pt={width < smallScreen ? '50px' : '0px'}
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
