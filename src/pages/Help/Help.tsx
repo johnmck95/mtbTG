@@ -80,6 +80,7 @@ export default function Help(): JSX.Element {
 							overflow='clipped'
 							opacity={1}
 							w='100%'
+							// color='red'
 							pt='1rem'>
 							<Link
 								onClick={closePanelForSmallScreen}
@@ -198,7 +199,7 @@ export default function Help(): JSX.Element {
 						overflowStyle: 'none',
 						scrollbarWidth: 'none',
 					}}>
-					<Heading as='h1' fontSize={'4xl'} id='usingTheTuningGuide'>
+					<Heading as='h1' fontSize={'4xl'} id='usingTheTuningGuide' pt='50px'>
 						Using The Tuning Guide
 					</Heading>
 					<Divider />
@@ -215,7 +216,7 @@ export default function Help(): JSX.Element {
 						direct you, the help page exists to teach you the principles behind
 						its decisions.
 					</Text>
-					<Heading as='h1' fontSize={'4xl'} id='understandingInputs'>
+					<Heading as='h1' fontSize={'4xl'} id='understandingInputs' pt='50px'>
 						Understanding Inputs
 					</Heading>
 					<Divider />
@@ -223,6 +224,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='riderSize'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -284,6 +286,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handling'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -305,6 +308,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='skillLevel'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -329,6 +333,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='reach'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -353,6 +358,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stack'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -371,6 +377,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='bikeType'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -390,7 +397,7 @@ export default function Help(): JSX.Element {
 						trail bike like an enduro bike, you will likely want to choose the
 						Enduro bike option.
 					</Text>
-					<Heading as='h1' fontSize={'4xl'} id='yourSettings'>
+					<Heading as='h1' fontSize={'4xl'} id='yourSettings' pt='50px'>
 						Your Settings
 					</Heading>
 					<Divider />
@@ -409,6 +416,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handlebarWidth'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -464,6 +472,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='handlebarRise'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -488,6 +497,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stemLength'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -518,6 +528,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='stemSpacers'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -536,7 +547,7 @@ export default function Help(): JSX.Element {
 						<br />
 						Stem spacers are one of the most overlooked adjustments riders make.
 						As discussed under the{' '}
-						<Link href='#handlebarRise' textDecoration='underline'>
+						<Link href='#handlebarRise' textDecoration='underline' pt='16px'>
 							handlebar rise
 						</Link>{' '}
 						section, altering the number of stem spaces can adjust your reach*
@@ -558,6 +569,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='tirePressures'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
@@ -580,6 +592,7 @@ export default function Help(): JSX.Element {
 						as='h2'
 						fontSize={'2xl'}
 						id='tireInserts'
+						pt='50px'
 						fontWeight={'500'}
 						textDecoration='underline'
 						textDecorationThickness={'.1rem'}
