@@ -45,20 +45,20 @@ export default function Help(): JSX.Element {
 			h='100%'
 			// h='calc(100% - 50px)'
 			position='sticky'
-			top='0'
+			top='50px'
 			w='100%'
 			maxW='64rem'
 			pr='2rem'
-			mt='1rem'
-			// bg='cyan'
-		>
+			// mt='1rem'
+			bg='green'>
 			<HStack
 				h='100%'
 				spacing='0px'
 				align='start'
-				// bg='purple'
-				position='sticky'
-				top='0'>
+				bg='purple'
+				// position='sticky'
+				// top='50px'
+			>
 				{showPanel && (
 					<VStack
 						alignItems='flex-start'
@@ -79,7 +79,8 @@ export default function Help(): JSX.Element {
 							top='0rem'
 							overflow='clipped'
 							opacity={1}
-							w='100%'>
+							w='100%'
+							pt='1rem'>
 							<Link
 								onClick={closePanelForSmallScreen}
 								href='#usingTheTuningGuide'>
@@ -175,9 +176,9 @@ export default function Help(): JSX.Element {
 				)}
 				{!showPanel && (
 					<Icon
-						top='0.5rem'
 						onClick={() => setShowPanel((prevShowPanel) => !prevShowPanel)}
 						position='sticky'
+						top='0.5rem'
 						as={FaChevronCircleRight}
 						w={5}
 						h={5}
